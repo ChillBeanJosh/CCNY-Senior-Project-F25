@@ -140,6 +140,7 @@ MonoBehaviour:
   lightReflection: {fileID: 7600370247431198308}
   followerObject: {fileID: 0}
   moveSpeed: 5
+  startKey: 113
   loop: 0
 --- !u!1 &7415200870358190765
 GameObject:
@@ -295,11 +296,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laserPoints: []
   lazerDistance: 10
+  lineMaterial: {fileID: 2100000, guid: 4cf5a6a91f15cd642bf970c2a7c4f623, type: 2}
   lensLayer:
     serializedVersion: 2
     m_Bits: 64
   lensHit: 0
   lazerOffset: 0
+  prismLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  prismHit: 0
   obstructionPointMarkerPrefab: {fileID: 5648934325104969992, guid: 3bb24c76aa4fce7448f2a08348b726f8, type: 3}
   imagePointMarkerPrefab: {fileID: 1630546774146983372, guid: 973d565dd2c708643b070d970d328a5d, type: 3}
+  endPointMarkerPrefab: {fileID: 1036962242990389164, guid: bd8977801d6de954289b253f6005eca6, type: 3}
   laserWidth: 0.01
