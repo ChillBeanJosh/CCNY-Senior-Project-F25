@@ -5,6 +5,7 @@ using static UnityEngine.UI.Image;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEngine.Timeline;
 
 
 [RequireComponent(typeof(LineRenderer))]
@@ -15,22 +16,31 @@ public class LightReflection : MonoBehaviour
     public RaycastHit[] hits;
     public float lazerDistance;
     private LineRenderer lineRenderer;
+    public Material lineMaterial;
+    private List<GameObject> laserPointMarkers = new List<GameObject>();
 
     [Header("Lens Collision: ")]
     private Lens lens;
     public LayerMask lensLayer;
     public bool lensHit;
     public float lazerOffset;
-
     Vector3 ImagePoint = Vector3.zero;
+    private List<Vector3> imagePoints = new List<Vector3>();
+
+    [Header("Prism Collision:")]
+    private Prism prism;
+    public LayerMask prismLayer;
+    public bool prismHit;
+    private List<GameObject> prismSplitBeams = new List<GameObject>();
+    private List<GameObject> splitRayMarkers = new List<GameObject>();
 
     [Header("Debug Visualization")]
     public GameObject obstructionPointMarkerPrefab;
     public GameObject imagePointMarkerPrefab;
-
-    private List<GameObject> laserPointMarkers = new List<GameObject>();
+    public GameObject endPointMarkerPrefab;
     private List<Vector3> obstructionPoints = new List<Vector3>();
-    private List<Vector3> imagePoints = new List<Vector3>();
+ 
+
 
     public float laserWidth;
 
@@ -38,19 +48,23 @@ public class LightReflection : MonoBehaviour
     private void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
+
+        if (laserPoints == null) laserPoints = new List<Vector3>();
     }
 
 
     private void Update()
     {
         ClearMarkers();
+        ClearPrismSplits();
+        ClearSplitRayMarkers();
 
         //Laser Setup:
-        Vector3 ObjectPostion = transform.position;
+        Vector3 ObjectPosition = transform.position;
         Vector3 ObjectDirection = transform.up;
         float remainingLazerDistance = lazerDistance;
 
-        laserPoints.Add(ObjectPostion);
+        laserPoints.Add(ObjectPosition);
         List<Collider> lensesHit = new List<Collider>();
 
         Vector3? previousImage = null;
@@ -59,76 +73,226 @@ public class LightReflection : MonoBehaviour
         while (remainingLazerDistance > 0f)
         {
             //Ray Setup:
-            Ray ray = new Ray(ObjectPostion, ObjectDirection);
-            hits = Physics.RaycastAll(ray, remainingLazerDistance, lensLayer);
+            Ray ray = new Ray(ObjectPosition, ObjectDirection);
+            hits = Physics.RaycastAll(ray, remainingLazerDistance, lensLayer | prismLayer);
 
-            //No Lens Collision:
+            //No Lens Collision + End of Ray:
             if (!ClosestValidHit(hits, lensesHit, out RaycastHit hit))
             {
-                laserPoints.Add(ObjectPostion + ObjectDirection * remainingLazerDistance);
+                Vector3 endPoint = ObjectPosition + ObjectDirection * remainingLazerDistance;
+                laserPoints.Add(endPoint);
+
+                if (endPointMarkerPrefab != null)
+                {
+                    GameObject endMarker = Instantiate(endPointMarkerPrefab, endPoint, Quaternion.identity);
+                    laserPointMarkers.Add(endMarker);
+                }
                 break;
             }
 
+            //Object Refrences:
+            lens = hit.collider.GetComponent<Lens>() ?? hit.collider.GetComponentInParent<Lens>();
+            prism = hit.collider.GetComponent<Prism>() ?? hit.collider.GetComponentInParent<Prism>();
+
+            //Null Object Checks:
+            if (lens == null && prism == null)
+            {
+                laserPoints.Add(ObjectPosition + ObjectDirection * remainingLazerDistance);
+                break;
+            }
 
             //Lens Collison:
-            lens = hit.collider.GetComponent<Lens>() ?? hit.collider.GetComponentInParent<Lens>();
-            if (lens == null) break;
-
-            //Add Lens to a Hit Collection:
-            lensesHit.Add(hit.collider);
-
-            //Add Lens Posistion For Markers:
-            laserPoints.Add(hit.point);
-            obstructionPoints.Add(hit.point);
-
-
-            //Use image point from previous lens as object:
-            Vector3 objectPosForThisLens = previousImage ?? ObjectPostion;
-
-
-            //When Calculating Image Location:
-            if (CalculateImagePoint(objectPosForThisLens, hit.point, lens, out Vector3 calculatedImagePoint))
+            if (lens != null)
             {
-                //Save Image Point to Use As Object Position For Obstruction:
-                previousImage = calculatedImagePoint;
-
-                //Setup Distance Line between hit Location and Image Location:
-                Vector3 toImage = calculatedImagePoint - hit.point;
-                float toImageDistance = toImage.magnitude;
-                Vector3 toImageDir = toImage.normalized;
-
-                //Check For Any Additional Lens Positions Between Hit and Image Positions:
-                if (HandleObstructionRecursive(hit.point, toImageDir, toImageDistance, lensesHit, out Vector3 finalImagePoint, out Vector3 nextPosition, out Vector3 nextDirection, out float distanceUsed, previousImage))
-                {
-                    ImagePoint = finalImagePoint;
-
-                    ObjectPostion = nextPosition;
-                    ObjectDirection = nextDirection;
-
-                    remainingLazerDistance -= distanceUsed;
-                    continue;
-                }
-
-                //No obstruction, Single Lens:
-                ImagePoint = calculatedImagePoint;
-                imagePoints.Add(ImagePoint);
-                laserPoints.Add(ImagePoint);
-
-                ObjectDirection = (ImagePoint - hit.point).normalized;
-                ObjectPostion = ImagePoint + ObjectDirection * lazerOffset;
-
-                remainingLazerDistance -= Vector3.Distance(hit.point, ImagePoint);
+                lensHit = true;
+                HandleLensHit(hit, lensesHit, ref ObjectPosition, ref ObjectDirection, ref remainingLazerDistance, ref previousImage);
+                continue;
             }
-            else break;
-        }
 
-        //Condition to tell if a Lens is Hit or Not:
-        lensHit = obstructionPoints.Count > 0;
+            //Prism Collision:
+            if (prism != null)
+            {
+                prismHit = true;
+                HandlePrismHit(hit, prism, ObjectDirection, remainingLazerDistance - hit.distance);
+                break;
+            }
+        }
 
         //Function Used to Display Hit Points & Image Points:
         Visualize();
     }
 
+    private void HandleLensHit(RaycastHit hit, List<Collider> lensesHit, ref Vector3 ObjectPosition, ref Vector3 ObjectDirection, ref float remainingLazerDistance, ref Vector3? previousImage)
+    {
+        lensesHit.Add(hit.collider);
+        laserPoints.Add(hit.point);
+        obstructionPoints.Add(hit.point);
+
+        Vector3 objectPosForThisLens = previousImage ?? ObjectPosition;
+
+        //When Calculating Image Location:
+        if (CalculateImagePoint(objectPosForThisLens, hit.point, lens, out Vector3 calculatedImagePoint))
+        {
+            //Save Image Point to Use As Object Position For Obstruction:
+            previousImage = calculatedImagePoint;
+
+            //Setup Distance Line between hit Location and Image Location:
+            Vector3 toImage = calculatedImagePoint - hit.point;
+            float toImageDistance = toImage.magnitude;
+            Vector3 toImageDir = toImage.normalized;
+
+            //Check For Any Additional Lens Positions Between Hit and Image Positions:
+            if (HandleObstructionRecursive(hit.point, toImageDir, toImageDistance, lensesHit, out Vector3 finalImagePoint, out Vector3 nextPosition, out Vector3 nextDirection, out float distanceUsed, previousImage))
+            {
+                ImagePoint = finalImagePoint;
+
+                ObjectPosition = nextPosition;
+                ObjectDirection = nextDirection;
+
+                remainingLazerDistance -= distanceUsed;
+                return;
+            }
+
+            //No obstruction, Single Lens:
+            ImagePoint = calculatedImagePoint;
+            imagePoints.Add(ImagePoint);
+            laserPoints.Add(ImagePoint);
+
+            ObjectDirection = (ImagePoint - hit.point).normalized;
+            ObjectPosition = ImagePoint + ObjectDirection * lazerOffset;
+
+            remainingLazerDistance -= Vector3.Distance(hit.point, ImagePoint);
+        }
+    }
+
+    private void HandlePrismHit(RaycastHit hit, Prism prism, Vector3 incomingDir, float remainingDistance)
+    {
+        //Null Check:
+        if (prism == null || prism.amountOfSplits <= 0 || prism.range <= 0f || prism.range > 2f * Mathf.PI) return;
+
+        //Contact Point:
+        laserPoints.Add(hit.point);
+        obstructionPoints.Add(hit.point);
+
+        //Calculate Image Point, To Be Used as Center Point For Prism Split:
+        Vector3 centerDir = incomingDir.normalized;
+        Vector3 centerImagePoint = hit.point + centerDir * remainingDistance;
+
+        //Calculate Angle Each Ray Is Seperated By:
+        float angleStep = prism.range / prism.amountOfSplits;
+        float halfRange = prism.range / 2f;
+        
+        //For Each Ray:
+        for (int i = 0; i < prism.amountOfSplits; i++)
+        {
+            //Apply the Relative Angle in XY Axis:
+            float relativeAngle = -halfRange + i * angleStep;
+            Vector3 splitDir = Quaternion.AngleAxis(Mathf.Rad2Deg * relativeAngle, Vector3.forward) * centerDir;
+
+            //Create Empty GameObject, Child of Initial Ray:
+            GameObject splitObj = new GameObject($"Split Ray - {i}");
+            splitObj.transform.parent = transform;
+            splitObj.transform.position = hit.point;
+            splitObj.transform.rotation = Quaternion.LookRotation(Vector3.forward, splitDir);
+
+            //Line Render Setup, For Visualization:
+            LineRenderer lr = splitObj.AddComponent<LineRenderer>();
+            lr.material = lineMaterial != null ? lineMaterial : lineRenderer.material;
+            lr.startWidth = laserWidth * 0.8f;
+            lr.endWidth = laserWidth * 0.8f;
+
+            //New list, Holds Information of Singular Ray:
+            List<Vector3> splitPoints = TraceSplitRay(hit.point, splitDir, remainingDistance);
+            lr.positionCount = splitPoints.Count;
+            lr.SetPositions(splitPoints.ToArray());
+
+            //Add Ray to List that Holds All Other Split Rays:
+            prismSplitBeams.Add(splitObj);
+        }  
+    }
+
+    private List<Vector3> TraceSplitRay(Vector3 origin, Vector3 dir, float maxDistance)
+    {
+        //[Origin == prism collision point]:
+        //[Direction == angle calculated based off angleStep]:
+        //[Remaining == current ray distance upon collision]:
+        List<Vector3> points = new List<Vector3> { origin };
+        Vector3 currentPos = origin;
+        Vector3 currentDir = dir;
+        float remaining = maxDistance;
+
+        //List holding All Lenses that Collided with current ray (avoids collision issues):
+        List<Collider> hitLenses = new List<Collider>();
+        Vector3? previousImage = null;
+
+        //While there is still Distance on the Ray:
+        while (remaining > 0f)
+        {
+            //Ray Setup:
+            Ray ray = new Ray(currentPos, currentDir);
+            RaycastHit[] hits = Physics.RaycastAll(ray, remaining, lensLayer | prismLayer);
+
+            //No Collision + End of Ray:
+            if (!ClosestValidHit(hits, hitLenses, out RaycastHit hit))
+            {
+                Vector3 endPoint = currentPos + currentDir * remaining;
+                points.Add(endPoint);
+
+                //Another Object (Point) at End of Ray (For Visualization):
+                if (obstructionPointMarkerPrefab != null)
+                {
+                    GameObject dataPoint = Instantiate(endPointMarkerPrefab, endPoint, Quaternion.identity);
+                    splitRayMarkers.Add(dataPoint);
+                }
+                break;
+            }
+
+            //Object Refrences:
+            Lens hitLens = hit.collider.GetComponent<Lens>() ?? hit.collider.GetComponentInParent<Lens>();
+            Prism hitPrism = hit.collider.GetComponent<Prism>() ?? hit.collider.GetComponentInParent<Prism>();
+
+            //Lens Collision:
+            if (hitLens != null)
+            {
+                if (CalculateImagePoint(previousImage ?? currentPos, hit.point, hitLens, out Vector3 imagePoint))
+                {
+                    points.Add(hit.point);
+                    points.Add(imagePoint);
+
+                    //Collision Points:
+                    if (obstructionPointMarkerPrefab != null)
+                    {
+                        GameObject dataPoint = Instantiate(obstructionPointMarkerPrefab, hit.point, Quaternion.identity);
+                        splitRayMarkers.Add(dataPoint);
+                    }
+                        
+                    //Image Points:
+                    if (imagePointMarkerPrefab != null)
+                    {
+                        GameObject dataPoint = Instantiate(imagePointMarkerPrefab, imagePoint, Quaternion.identity);
+                        splitRayMarkers.Add(dataPoint);
+                    }
+                     
+                    currentPos = imagePoint + (imagePoint - hit.point).normalized * lazerOffset;
+                    currentDir = (imagePoint - hit.point).normalized;
+                    remaining -= Vector3.Distance(hit.point, imagePoint);
+                    previousImage = imagePoint;
+                    hitLenses.Add(hit.collider);
+                    continue;
+                }
+            }
+
+            //Collision with non-lens Surface:
+            points.Add(hit.point);
+            if (obstructionPointMarkerPrefab != null)
+            {
+                GameObject dataPoint = Instantiate(obstructionPointMarkerPrefab, hit.point, Quaternion.identity);
+                splitRayMarkers.Add(dataPoint);
+            }
+            break;
+        }
+        return points;
+    }
 
     private void ClearMarkers()
     {
@@ -138,8 +302,24 @@ public class LightReflection : MonoBehaviour
         obstructionPoints.Clear();
         imagePoints.Clear();
         laserPoints.Clear();
+
+        lensHit = false;
     }
 
+    private void ClearPrismSplits()
+    {
+        foreach (var beam in prismSplitBeams) Destroy(beam);
+        prismSplitBeams.Clear();
+
+        prismHit = false;
+    }
+
+    private void ClearSplitRayMarkers()
+    {
+        foreach (var marker in splitRayMarkers)
+            Destroy(marker);
+        splitRayMarkers.Clear();
+    }
 
     private bool ClosestValidHit(RaycastHit[] hitArray, List<Collider> lensesHit, out RaycastHit closestHit)
     {
