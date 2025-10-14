@@ -24,17 +24,20 @@ public class PlayerMovement : MonoBehaviour
     [Header("Slope Handling")]
     [SerializeField] float maxSlopeAngle;
     RaycastHit slopeHit;
+    bool exitingSlope;
 
     [Space(15)]
-    public Transform camOrientation; // Grab orientation for rotation 
+    public Transform camOrientation; // Grab orientation for rotation
+    public DetectPlayer moveableObj = null;
+    bool moveObj;
 
     // Not sure if we need this yet
 
     public PlayerState state;
     public enum PlayerState
     {
-        moving,
-        pushing,
+        walking,
+        grabbing,
         light,
     }
 
@@ -43,28 +46,48 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         player = this;
     }
     void Start()
     {
+        Physics.gravity = new Vector3(0, -27f, 0);
+        Cursor.lockState = CursorLockMode.Locked;
+
         gm = GameManager.instance;
         rb = GetComponent<Rigidbody>();
-        Physics.gravity = new Vector3(0, -27f, 0);
     }
 
     void PlayerInput()
     {
-        // Get keyboard input
+        // Get forward position from camera Y rotation
         Transform orientation = camOrientation;
         orientation.localEulerAngles = new Vector3(0f, orientation.localEulerAngles.y, 0f);
-        moveDirection = orientation.forward * Input.GetAxisRaw("Vertical") + orientation.right * Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetKeyDown(KeyCode.Space) && canJump && grounded)
+        // Get keyboard input
+        if (state == PlayerState.grabbing)
+            // Prevent left or right movement while grabbing
+            moveDirection = transform.forward * Input.GetAxisRaw("Vertical") + (orientation.right * Input.GetAxisRaw("Horizontal") * 0.2f);
+        else
+            // Move in direction of camera
+            moveDirection = orientation.forward * Input.GetAxisRaw("Vertical") + orientation.right * Input.GetAxisRaw("Horizontal");
+
+        if (Input.GetKeyDown(KeyCode.Space) && canJump && grounded && state != PlayerState.grabbing)
         {
             canJump = false;
             Jump();
             Invoke(nameof(ResetJump), jumpCooldown); // Wait before resetting jump
+        }
+
+
+        // Check if player is facing moveable object
+        if (moveableObj != null)
+        {
+            moveObj = Physics.Raycast(transform.position, transform.forward, 0.55f, isGround);
+            //Debug.DrawLine(transform.position, new Vector3(transform.position.x - 0.55f, transform.position.y, transform.position.z), Color.magenta);
+        }
+        else
+        {
+            if (moveObj) moveObj = false;
         }
     }
 
@@ -77,27 +100,65 @@ public class PlayerMovement : MonoBehaviour
     {
         PlayerInput();
         GroundCheck();
+        StateHandler();
+    }
+
+    void StateHandler()
+    {
+        if (Input.GetMouseButton(0) && moveObj)
+        {
+            state = PlayerState.grabbing;
+            moveSpeed = 2.5f; // Limit player speed while grabbing
+            // Set player as the Move Transform object parent
+            if (moveableObj != null) moveableObj.transform.SetParent(this.transform);
+        }
+        else if (!Input.GetMouseButton(0) || moveableObj == null)
+        {
+            state = PlayerState.walking;
+            // Unparent player
+            if (moveableObj != null) moveableObj.transform.SetParent(null);
+            moveSpeed = 5.0f; // Reset speed
+        }
     }
 
     void Movement()
     {
         Vector3 move = new Vector3(moveDirection.x * moveSpeed, rb.linearVelocity.y, moveDirection.z * moveSpeed);
 
-        if (OnSlope()) // Adjust speed while on slope
-            rb.linearVelocity = GetSlopeMoveDirection() * moveSpeed * 10.0f;
+        if (OnSlope() && !exitingSlope)
+        {
+            // Adjust speed while on slope
+            rb.linearVelocity = GetSlopeMoveDirection() * moveSpeed;
 
-        // Limit movement in air
-        rb.linearVelocity = (grounded) ? move : new Vector3(move.x * airMult, rb.linearVelocity.y, move.z * airMult);
+            // Prevent bump effect when running upward
+            if (rb.linearVelocity.y > 0f) rb.AddForce(Vector3.down * 80.0f, ForceMode.Force);
+        }
+        else
+        {
+            // Limit movement in air
+            rb.linearVelocity = (grounded) ? move : new Vector3(move.x * airMult, rb.linearVelocity.y, move.z * airMult);
+        }
 
         // Turn off gravity on slope
         rb.useGravity = !OnSlope();
+
+        // Handle rotation
+        if (moveDirection != Vector3.zero && state != PlayerState.grabbing)
+        {
+            float angleDiff = Vector3.SignedAngle(transform.forward, moveDirection, Vector3.up);
+            rb.angularVelocity = new Vector3(rb.angularVelocity.x, angleDiff * 0.2f, rb.angularVelocity.z);
+        }
+        else
+        {
+            rb.angularVelocity = Vector3.zero;
+        }
     }
 
     void GroundCheck()
     {
         // Ground check 
-        grounded = Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z), Vector3.down, 1.2f, isGround);
-        //Debug.DrawLine(new Vector3(transform.position.x, transform.position.y, transform.position.z), new Vector3(transform.position.x, transform.position.y - 1.2f, transform.position.z), Color.magenta);
+        grounded = Physics.Raycast(transform.position, Vector3.down, 1.2f, isGround);
+        //Debug.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - 1.2f, transform.position.z), Color.magenta);
 
         // Handle drag
         rb.linearDamping = (grounded) ? groundDrag : 0;
@@ -105,6 +166,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
+        exitingSlope = true;
         // Always start with Y Vel at 0
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
@@ -114,11 +176,12 @@ public class PlayerMovement : MonoBehaviour
     void ResetJump()
     {
         canJump = true;
+        exitingSlope = false;
     }
 
     bool OnSlope()
     {
-        if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Vector3.down, out slopeHit, 0.8f))
+        if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z), Vector3.down, out slopeHit, 1.2f))
         {
             float angle = Vector3.Angle(Vector3.up, slopeHit.normal); // Calculate slope steepness
             return angle < maxSlopeAngle && angle != 0;
