@@ -28,11 +28,18 @@ public class PlayerMovement : MonoBehaviour
 
     [Space(15)]
     public Transform camOrientation; // Grab orientation for rotation
-    public DetectPlayer moveableObj = null;
+
+    [Space(15)]
+    [Header("Grab Objects")]
+    //public DetectPlayer moveableObj = null;
+
+    // Moveable object script
+    public GrabObject grab = null;
     bool moveObj;
 
     // Not sure if we need this yet
 
+    [Space(15)]
     public PlayerState state;
     public enum PlayerState
     {
@@ -66,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
         // Get keyboard input
         if (state == PlayerState.grabbing)
             // Prevent left or right movement while grabbing
-            moveDirection = transform.forward * Input.GetAxisRaw("Vertical") + (orientation.right * Input.GetAxisRaw("Horizontal") * 0.2f);
+            moveDirection = transform.forward * Input.GetAxisRaw("Vertical"); //(orientation.right * Input.GetAxisRaw("Horizontal") * 0.2f);
         else
             // Move in direction of camera
             moveDirection = orientation.forward * Input.GetAxisRaw("Vertical") + orientation.right * Input.GetAxisRaw("Horizontal");
@@ -80,9 +87,9 @@ public class PlayerMovement : MonoBehaviour
 
 
         // Check if player is facing moveable object
-        if (moveableObj != null)
+        if (grab != null)
         {
-            moveObj = Physics.Raycast(transform.position, transform.forward, 0.55f, isGround);
+            moveObj = Physics.Raycast(transform.position, transform.forward, 0.6f, isGround);
             //Debug.DrawLine(transform.position, new Vector3(transform.position.x - 0.55f, transform.position.y, transform.position.z), Color.magenta);
         }
         else
@@ -105,18 +112,37 @@ public class PlayerMovement : MonoBehaviour
 
     void StateHandler()
     {
+        // Check if player is holding left click while facing moveable object
         if (Input.GetMouseButton(0) && moveObj)
         {
             state = PlayerState.grabbing;
             moveSpeed = 2.5f; // Limit player speed while grabbing
-            // Set player as the Move Transform object parent
-            if (moveableObj != null) moveableObj.transform.SetParent(this.transform);
+
+            if (grab != null)
+            {
+                // Set player as object parent
+                grab.transform.SetParent(this.transform);
+
+                // Make kinematic when moving backward
+                grab.rb.isKinematic = (Input.GetAxisRaw("Vertical") < 0f) ? true : false;
+
+                // Make lighter so player can push object forward
+                grab.rb.mass = 1.0f;
+            }
         }
-        else if (!Input.GetMouseButton(0) || moveableObj == null)
+        else
         {
             state = PlayerState.walking;
-            // Unparent player
-            if (moveableObj != null) moveableObj.transform.SetParent(null);
+
+
+            if (grab != null)
+            {
+                // Unparent player and make object static again
+                grab.transform.SetParent(null);
+                grab.rb.isKinematic = false;
+                grab.rb.mass = 50.0f;
+            }
+
             moveSpeed = 5.0f; // Reset speed
         }
     }
@@ -142,7 +168,7 @@ public class PlayerMovement : MonoBehaviour
         // Turn off gravity on slope
         rb.useGravity = !OnSlope();
 
-        // Handle rotation
+        // Handle rotation while player is not grabbing an object
         if (moveDirection != Vector3.zero && state != PlayerState.grabbing)
         {
             float angleDiff = Vector3.SignedAngle(transform.forward, moveDirection, Vector3.up);

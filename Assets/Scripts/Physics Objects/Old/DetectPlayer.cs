@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class DetectPlayer : MonoBehaviour
 {
+    // NO LONGER USING //
     [SerializeField] Transform moveableObj;
 
     void Start()
@@ -27,7 +28,7 @@ public class DetectPlayer : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             // Link script to player that enters collider
-            col.gameObject.GetComponent<PlayerMovement>().moveableObj = this;
+            //col.gameObject.GetComponent<PlayerMovement>().moveableObj = this;
         }
     }
 
@@ -36,7 +37,7 @@ public class DetectPlayer : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             // Unlink script from player
-            col.gameObject.GetComponent<PlayerMovement>().moveableObj = null;
+            //col.gameObject.GetComponent<PlayerMovement>().moveableObj = null;
         }
     }
 }
