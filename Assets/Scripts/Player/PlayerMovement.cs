@@ -8,8 +8,12 @@ public class PlayerMovement : MonoBehaviour
     // Get only instance of player script 
     public static PlayerMovement player;
 
+    // Allow inputs to affect player
+    public bool playerControl = true;
+
     [Header("Movement")]
     [SerializeField] float moveSpeed;
+    float maxSpeed = 4.5f;
     [Space(5)]
     [SerializeField] float jumpForce;
     [SerializeField] float jumpCooldown;
@@ -31,13 +35,9 @@ public class PlayerMovement : MonoBehaviour
 
     [Space(15)]
     [Header("Grab Objects")]
-    //public DetectPlayer moveableObj = null;
-
     // Moveable object script
     public GrabObject grab = null;
     bool moveObj;
-
-    // Not sure if we need this yet
 
     [Space(15)]
     public PlayerState state;
@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody rb;
     Vector3 moveDirection;
+    RaycastHit floorHit;
 
     void Awake()
     {
@@ -105,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        PlayerInput();
+        if (playerControl) PlayerInput();
         GroundCheck();
         StateHandler();
     }
@@ -116,7 +117,8 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetMouseButton(0) && moveObj)
         {
             state = PlayerState.grabbing;
-            moveSpeed = 2.5f; // Limit player speed while grabbing
+
+            moveSpeed = 3.0f; // Limit player speed while grabbing
 
             if (grab != null)
             {
@@ -163,6 +165,9 @@ public class PlayerMovement : MonoBehaviour
         {
             // Limit movement in air
             rb.linearVelocity = (grounded) ? move : new Vector3(move.x * airMult, rb.linearVelocity.y, move.z * airMult);
+
+            // Clamp velocity
+            if (rb.linearVelocity.magnitude > maxSpeed) rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, maxSpeed);
         }
 
         // Turn off gravity on slope
@@ -183,7 +188,7 @@ public class PlayerMovement : MonoBehaviour
     void GroundCheck()
     {
         // Ground check 
-        grounded = Physics.Raycast(transform.position, Vector3.down, 1.2f, isGround);
+        grounded = Physics.BoxCast(transform.position, transform.localScale * 0.5f, Vector3.down, out floorHit, transform.rotation, 1.2f, isGround);
         //Debug.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - 1.2f, transform.position.z), Color.magenta);
 
         // Handle drag
@@ -193,6 +198,7 @@ public class PlayerMovement : MonoBehaviour
     void Jump()
     {
         exitingSlope = true;
+
         // Always start with Y Vel at 0
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
@@ -201,6 +207,7 @@ public class PlayerMovement : MonoBehaviour
 
     void ResetJump()
     {
+        // Reset jump variables
         canJump = true;
         exitingSlope = false;
     }
@@ -225,7 +232,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (col.gameObject.tag == "Exit")
         {
-            gm.ResetScene();
+            gm.ResetScene(); // Restart demo
         }
     }
 }
