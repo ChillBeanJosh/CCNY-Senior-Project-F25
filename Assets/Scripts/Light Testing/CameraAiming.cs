@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CameraAiming : MonoBehaviour
 {
-    public Camera mainCamera;       
+    public Camera mainCamera;
     public float rotationSpeed = 10f;
 
     void Update()
@@ -23,7 +23,7 @@ public class CameraAiming : MonoBehaviour
         Vector3 direction = worldMousePos - objPos;
 
         //Set Z to 0 for 2.5D:
-        direction.z = 0; 
+        direction.z = 0;
 
         if (direction.sqrMagnitude > 0.001f)
         {
