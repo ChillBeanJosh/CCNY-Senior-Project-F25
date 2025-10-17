@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using UnityEditor.Experimental.GraphView;
+//using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using static UnityEngine.UI.Image;
 using System.Collections.Generic;
@@ -51,7 +51,7 @@ public class LightReflection : MonoBehaviour
     public GameObject endPointMarkerPrefab;
     private List<Vector3> obstructionPoints = new List<Vector3>();
     [Space]
- 
+
 
 
     public float laserWidth;
@@ -202,7 +202,7 @@ public class LightReflection : MonoBehaviour
         //Calculate Angle Each Ray Is Seperated By:
         float angleStep = prism.range / prism.amountOfSplits;
         float halfRange = prism.range / 2f;
-        
+
         //For Each Ray:
         for (int i = 0; i < prism.amountOfSplits; i++)
         {
@@ -229,7 +229,7 @@ public class LightReflection : MonoBehaviour
 
             //Add Ray to List that Holds All Other Split Rays:
             prismSplitBeams.Add(splitObj);
-        }  
+        }
     }
 
     private List<Vector3> TraceSplitRay(Vector3 origin, Vector3 dir, float maxDistance)
@@ -288,14 +288,14 @@ public class LightReflection : MonoBehaviour
                         GameObject dataPoint = Instantiate(obstructionPointMarkerPrefab, hit.point, Quaternion.identity);
                         splitRayMarkers.Add(dataPoint);
                     }
-                        
+
                     //Image Points:
                     if (imagePointMarkerPrefab != null)
                     {
                         GameObject dataPoint = Instantiate(imagePointMarkerPrefab, imagePoint, Quaternion.identity);
                         splitRayMarkers.Add(dataPoint);
                     }
-                     
+
                     currentPos = imagePoint + (imagePoint - hit.point).normalized * lazerOffset;
                     currentDir = (imagePoint - hit.point).normalized;
                     remaining -= Vector3.Distance(hit.point, imagePoint);
@@ -313,7 +313,7 @@ public class LightReflection : MonoBehaviour
                 if (obstructionPointMarkerPrefab != null) splitRayMarkers.Add(Instantiate(obstructionPointMarkerPrefab, hit.point, Quaternion.identity));
                 HandlePrismHit(hit, hitPrism, currentDir, remaining);
 
-                break; 
+                break;
             }
 
             //Burnable collision:

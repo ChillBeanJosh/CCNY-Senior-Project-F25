@@ -90,8 +90,8 @@ public class PlayerMovement : MonoBehaviour
         // Check if player is facing moveable object
         if (grab != null)
         {
-            moveObj = Physics.Raycast(transform.position, transform.forward, 0.6f, isGround);
-            //Debug.DrawLine(transform.position, new Vector3(transform.position.x - 0.55f, transform.position.y, transform.position.z), Color.magenta);
+            moveObj = Physics.Raycast(new Vector3(transform.position.x, transform.position.y - 0.2f, transform.position.z), transform.forward, 0.6f, isGround);
+            //Debug.DrawLine(transform.position, new Vector3(transform.position.x + 0.6f, transform.position.y, transform.position.z), Color.magenta);
         }
         else
         {
