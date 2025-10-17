@@ -118,10 +118,13 @@ public class PlayerMovement : MonoBehaviour
         {
             state = PlayerState.grabbing;
 
-            moveSpeed = 3.0f; // Limit player speed while grabbing
+            moveSpeed = 2.7f; // Limit player speed while grabbing
 
             if (grab != null)
             {
+                // Signals to object script to remove itself from grab variable
+                grab.isGrabbed = true;
+
                 // Set player as object parent
                 grab.transform.SetParent(this.transform);
 
@@ -134,9 +137,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            state = PlayerState.walking;
-
-
             if (grab != null)
             {
                 // Unparent player and make object static again
@@ -145,13 +145,17 @@ public class PlayerMovement : MonoBehaviour
                 grab.rb.mass = 50.0f;
             }
 
+            state = PlayerState.walking;
+
             moveSpeed = 5.0f; // Reset speed
         }
     }
 
     void Movement()
     {
+        // Create move Vector from player inputs on X and Z axis
         Vector3 move = new Vector3(moveDirection.x * moveSpeed, rb.linearVelocity.y, moveDirection.z * moveSpeed);
+
 
         if (OnSlope() && !exitingSlope)
         {
@@ -166,8 +170,8 @@ public class PlayerMovement : MonoBehaviour
             // Limit movement in air
             rb.linearVelocity = (grounded) ? move : new Vector3(move.x * airMult, rb.linearVelocity.y, move.z * airMult);
 
-            // Clamp velocity
-            if (rb.linearVelocity.magnitude > maxSpeed) rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, maxSpeed);
+            // Clamp magnitude while on ground
+            if (grounded && canJump) rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, maxSpeed);
         }
 
         // Turn off gravity on slope
@@ -188,7 +192,7 @@ public class PlayerMovement : MonoBehaviour
     void GroundCheck()
     {
         // Ground check 
-        grounded = Physics.BoxCast(transform.position, transform.localScale * 0.5f, Vector3.down, out floorHit, transform.rotation, 1.2f, isGround);
+        grounded = Physics.BoxCast(transform.position, transform.localScale * 0.25f, Vector3.down, out floorHit, transform.rotation, 1.2f, isGround);
         //Debug.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - 1.2f, transform.position.z), Color.magenta);
 
         // Handle drag
