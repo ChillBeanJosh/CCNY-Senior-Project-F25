@@ -134,7 +134,7 @@ public class LightReflection : MonoBehaviour
             if (burnable != null)
             {
                 burnableHit = true;
-                HandleBurnableHit(hit, ref remainingLazerDistance);
+                HandleBurnableHit(hit);
                 break;
             }
         }
@@ -320,10 +320,9 @@ public class LightReflection : MonoBehaviour
             if (hitBurnable != null)
             {
                 points.Add(hit.point);
-                hitBurnable.ApplyBurn(Time.deltaTime);
 
                 if (obstructionPointMarkerPrefab != null) splitRayMarkers.Add(Instantiate(obstructionPointMarkerPrefab, hit.point, Quaternion.identity));
-                remaining = 0f;
+                HandleBurnableHit(hit);
 
                 break;
             }
@@ -340,18 +339,16 @@ public class LightReflection : MonoBehaviour
         return points;
     }
 
-    private void HandleBurnableHit(RaycastHit hit, ref float remainingDistance)
+    private void HandleBurnableHit(RaycastHit hit)
     {
         burnable = hit.collider.GetComponent<Burnable>();
         if (burnable != null)
         {
-            burnableHit = true; 
-            burnable.ApplyBurn(Time.deltaTime);
+            burnableHit = true;
+            burnable.hitsThisFrame++;
 
             laserPoints.Add(hit.point);
             obstructionPoints.Add(hit.point);
-
-            remainingDistance = 0f;
         }
         else
         {

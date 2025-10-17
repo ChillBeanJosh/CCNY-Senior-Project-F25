@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Burnable : MonoBehaviour
@@ -5,6 +6,7 @@ public class Burnable : MonoBehaviour
     [Header("Burn Settings: ")]
     public bool isMultipleLensesEffected = false;
     public float burnTime;
+    [HideInInspector] public int hitsThisFrame = 0;
     [SerializeField] private float currentBurnTime = 0f;
 
 
@@ -31,14 +33,23 @@ public class Burnable : MonoBehaviour
             materialInstance.color = initialColor;
         }
     }
-
-    public void ApplyBurn(float deltaTime, int hitCount = 1)
+    private void Update()
     {
-        float burnIncrement = deltaTime / burnTime;
-        if (isMultipleLensesEffected) burnIncrement *= hitCount;
+        if (hitsThisFrame > 0)
+        {
+            ApplyBurn(Time.deltaTime);
+            hitsThisFrame = 0; 
+        }
+    }
+
+    public void ApplyBurn(float deltaTime)
+    {
+        float burnIncrement = deltaTime / burnTime * (isMultipleLensesEffected ? hitsThisFrame : 1);
 
         currentBurnTime += burnIncrement;
         currentBurnTime = Mathf.Clamp01(currentBurnTime);
+        if (!isMultipleLensesEffected) hitsThisFrame = 1;
+        Debug.Log(hitsThisFrame);
 
         UpdateMaterial();
 

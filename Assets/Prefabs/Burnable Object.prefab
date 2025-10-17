@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMultipleLensesEffected: 0
   burnTime: 5
+  hitsThisFrame: 0
   currentBurnTime: 0
   initialColor: {r: 1, g: 1, b: 1, a: 0}
   initalColorBreach: 0.5
