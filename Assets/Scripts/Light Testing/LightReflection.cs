@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using UnityEditor.Experimental.GraphView;
+//using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using static UnityEngine.UI.Image;
 using System.Collections.Generic;
@@ -11,35 +11,47 @@ using UnityEngine.Timeline;
 [RequireComponent(typeof(LineRenderer))]
 public class LightReflection : MonoBehaviour
 {
-    [Header("Lazer Parameters: ")]
+    [Header("Laser Parameters: ")]
     public List<Vector3> laserPoints;
     public RaycastHit[] hits;
     public float lazerDistance;
     private LineRenderer lineRenderer;
     public Material lineMaterial;
     private List<GameObject> laserPointMarkers = new List<GameObject>();
+    [Space]
 
     [Header("Lens Collision: ")]
-    private Lens lens;
     public LayerMask lensLayer;
     public bool lensHit;
+    [Space]
+    [Tooltip("After Colliding, Offsets The Point By X Distance.")]
     public float lazerOffset;
+    private Lens lens;
     Vector3 ImagePoint = Vector3.zero;
     private List<Vector3> imagePoints = new List<Vector3>();
+    [Space]
 
-    [Header("Prism Collision:")]
-    private Prism prism;
+    [Header("Prism Collision: ")]
     public LayerMask prismLayer;
     public bool prismHit;
+    private Prism prism;
     private List<GameObject> prismSplitBeams = new List<GameObject>();
     private List<GameObject> splitRayMarkers = new List<GameObject>();
+    [Space]
+
+    [Header("Burnable Collision: ")]
+    public LayerMask burnableLayer;
+    public bool burnableHit;
+    private Burnable burnable;
+    [Space]
 
     [Header("Debug Visualization")]
     public GameObject obstructionPointMarkerPrefab;
     public GameObject imagePointMarkerPrefab;
     public GameObject endPointMarkerPrefab;
     private List<Vector3> obstructionPoints = new List<Vector3>();
- 
+    [Space]
+
 
 
     public float laserWidth;
@@ -74,7 +86,7 @@ public class LightReflection : MonoBehaviour
         {
             //Ray Setup:
             Ray ray = new Ray(ObjectPosition, ObjectDirection);
-            hits = Physics.RaycastAll(ray, remainingLazerDistance, lensLayer | prismLayer);
+            hits = Physics.RaycastAll(ray, remainingLazerDistance, lensLayer | prismLayer | burnableLayer);
 
             //No Lens Collision + End of Ray:
             if (!ClosestValidHit(hits, lensesHit, out RaycastHit hit))
@@ -93,9 +105,10 @@ public class LightReflection : MonoBehaviour
             //Object Refrences:
             lens = hit.collider.GetComponent<Lens>() ?? hit.collider.GetComponentInParent<Lens>();
             prism = hit.collider.GetComponent<Prism>() ?? hit.collider.GetComponentInParent<Prism>();
+            burnable = hit.collider.GetComponent<Burnable>() ?? hit.collider.GetComponentInParent<Burnable>();
 
             //Null Object Checks:
-            if (lens == null && prism == null)
+            if (lens == null && prism == null && burnable == null)
             {
                 laserPoints.Add(ObjectPosition + ObjectDirection * remainingLazerDistance);
                 break;
@@ -114,6 +127,14 @@ public class LightReflection : MonoBehaviour
             {
                 prismHit = true;
                 HandlePrismHit(hit, prism, ObjectDirection, remainingLazerDistance - hit.distance);
+                break;
+            }
+
+            //Burnable Collision:
+            if (burnable != null)
+            {
+                burnableHit = true;
+                HandleBurnableHit(hit);
                 break;
             }
         }
@@ -181,7 +202,7 @@ public class LightReflection : MonoBehaviour
         //Calculate Angle Each Ray Is Seperated By:
         float angleStep = prism.range / prism.amountOfSplits;
         float halfRange = prism.range / 2f;
-        
+
         //For Each Ray:
         for (int i = 0; i < prism.amountOfSplits; i++)
         {
@@ -208,7 +229,7 @@ public class LightReflection : MonoBehaviour
 
             //Add Ray to List that Holds All Other Split Rays:
             prismSplitBeams.Add(splitObj);
-        }  
+        }
     }
 
     private List<Vector3> TraceSplitRay(Vector3 origin, Vector3 dir, float maxDistance)
@@ -230,7 +251,7 @@ public class LightReflection : MonoBehaviour
         {
             //Ray Setup:
             Ray ray = new Ray(currentPos, currentDir);
-            RaycastHit[] hits = Physics.RaycastAll(ray, remaining, lensLayer | prismLayer);
+            RaycastHit[] hits = Physics.RaycastAll(ray, remaining, lensLayer | prismLayer | burnableLayer);
 
             //No Collision + End of Ray:
             if (!ClosestValidHit(hits, hitLenses, out RaycastHit hit))
@@ -250,6 +271,8 @@ public class LightReflection : MonoBehaviour
             //Object Refrences:
             Lens hitLens = hit.collider.GetComponent<Lens>() ?? hit.collider.GetComponentInParent<Lens>();
             Prism hitPrism = hit.collider.GetComponent<Prism>() ?? hit.collider.GetComponentInParent<Prism>();
+            Burnable hitBurnable = hit.collider.GetComponent<Burnable>() ?? hit.collider.GetComponentInParent<Burnable>();
+
 
             //Lens Collision:
             if (hitLens != null)
@@ -265,14 +288,14 @@ public class LightReflection : MonoBehaviour
                         GameObject dataPoint = Instantiate(obstructionPointMarkerPrefab, hit.point, Quaternion.identity);
                         splitRayMarkers.Add(dataPoint);
                     }
-                        
+
                     //Image Points:
                     if (imagePointMarkerPrefab != null)
                     {
                         GameObject dataPoint = Instantiate(imagePointMarkerPrefab, imagePoint, Quaternion.identity);
                         splitRayMarkers.Add(dataPoint);
                     }
-                     
+
                     currentPos = imagePoint + (imagePoint - hit.point).normalized * lazerOffset;
                     currentDir = (imagePoint - hit.point).normalized;
                     remaining -= Vector3.Distance(hit.point, imagePoint);
@@ -280,6 +303,28 @@ public class LightReflection : MonoBehaviour
                     hitLenses.Add(hit.collider);
                     continue;
                 }
+            }
+
+            //Prism collision:
+            if (hitPrism != null)
+            {
+                points.Add(hit.point);
+
+                if (obstructionPointMarkerPrefab != null) splitRayMarkers.Add(Instantiate(obstructionPointMarkerPrefab, hit.point, Quaternion.identity));
+                HandlePrismHit(hit, hitPrism, currentDir, remaining);
+
+                break;
+            }
+
+            //Burnable collision:
+            if (hitBurnable != null)
+            {
+                points.Add(hit.point);
+
+                if (obstructionPointMarkerPrefab != null) splitRayMarkers.Add(Instantiate(obstructionPointMarkerPrefab, hit.point, Quaternion.identity));
+                HandleBurnableHit(hit);
+
+                break;
             }
 
             //Collision with non-lens Surface:
@@ -292,6 +337,23 @@ public class LightReflection : MonoBehaviour
             break;
         }
         return points;
+    }
+
+    private void HandleBurnableHit(RaycastHit hit)
+    {
+        burnable = hit.collider.GetComponent<Burnable>();
+        if (burnable != null)
+        {
+            burnableHit = true;
+            burnable.hitsThisFrame++;
+
+            laserPoints.Add(hit.point);
+            obstructionPoints.Add(hit.point);
+        }
+        else
+        {
+            burnableHit = false;
+        }
     }
 
     private void ClearMarkers()
