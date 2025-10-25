@@ -127,6 +127,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""5868e3c4-3d49-492a-9b97-3221ec9af552"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -261,6 +270,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""SwitchShoulder"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ef8c79d0-cead-4324-95bb-20261dee6e23"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8afd58b7-0135-4ffe-8a75-b7e092d2d44c"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -387,6 +418,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Aim = m_Gameplay.FindAction("Aim", throwIfNotFound: true);
         m_Gameplay_SwitchShoulder = m_Gameplay.FindAction("SwitchShoulder", throwIfNotFound: true);
+        m_Gameplay_SwitchAbility = m_Gameplay.FindAction("SwitchAbility", throwIfNotFound: true);
         // CameraControls
         m_CameraControls = asset.FindActionMap("CameraControls", throwIfNotFound: true);
         m_CameraControls_Look = m_CameraControls.FindAction("Look", throwIfNotFound: true);
@@ -476,6 +508,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Aim;
     private readonly InputAction m_Gameplay_SwitchShoulder;
+    private readonly InputAction m_Gameplay_SwitchAbility;
     /// <summary>
     /// Provides access to input actions defined in input action map "Gameplay".
     /// </summary>
@@ -503,6 +536,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Gameplay/SwitchShoulder".
         /// </summary>
         public InputAction @SwitchShoulder => m_Wrapper.m_Gameplay_SwitchShoulder;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/SwitchAbility".
+        /// </summary>
+        public InputAction @SwitchAbility => m_Wrapper.m_Gameplay_SwitchAbility;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -541,6 +578,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @SwitchShoulder.started += instance.OnSwitchShoulder;
             @SwitchShoulder.performed += instance.OnSwitchShoulder;
             @SwitchShoulder.canceled += instance.OnSwitchShoulder;
+            @SwitchAbility.started += instance.OnSwitchAbility;
+            @SwitchAbility.performed += instance.OnSwitchAbility;
+            @SwitchAbility.canceled += instance.OnSwitchAbility;
         }
 
         /// <summary>
@@ -564,6 +604,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @SwitchShoulder.started -= instance.OnSwitchShoulder;
             @SwitchShoulder.performed -= instance.OnSwitchShoulder;
             @SwitchShoulder.canceled -= instance.OnSwitchShoulder;
+            @SwitchAbility.started -= instance.OnSwitchAbility;
+            @SwitchAbility.performed -= instance.OnSwitchAbility;
+            @SwitchAbility.canceled -= instance.OnSwitchAbility;
         }
 
         /// <summary>
@@ -739,6 +782,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSwitchShoulder(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SwitchAbility" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSwitchAbility(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "CameraControls" which allows adding and removing callbacks.
