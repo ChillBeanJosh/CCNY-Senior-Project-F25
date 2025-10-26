@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine.Timeline;
+using UnityEditor.PackageManager;
 
 
 [RequireComponent(typeof(LineRenderer))]
@@ -43,6 +44,12 @@ public class LightReflection : MonoBehaviour
     public LayerMask burnableLayer;
     public bool burnableHit;
     private Burnable burnable;
+    [Space]
+
+    [Header("Mirror Collision: ")]
+    public LayerMask mirrorLayer;
+    public bool mirrorHit;
+    private Mirror mirror;
     [Space]
 
     [Header("Debug Visualization")]
@@ -94,7 +101,7 @@ public class LightReflection : MonoBehaviour
         {
             //Ray Setup:
             Ray ray = new Ray(ObjectPosition, ObjectDirection);
-            hits = Physics.RaycastAll(ray, remainingLazerDistance, lensLayer | prismLayer | burnableLayer);
+            hits = Physics.RaycastAll(ray, remainingLazerDistance, lensLayer | prismLayer | burnableLayer | mirrorLayer);
 
             //No Lens Collision + End of Ray:
             if (!ClosestValidHit(hits, lensesHit, out RaycastHit hit))
@@ -114,9 +121,10 @@ public class LightReflection : MonoBehaviour
             lens = hit.collider.GetComponent<Lens>() ?? hit.collider.GetComponentInParent<Lens>();
             prism = hit.collider.GetComponent<Prism>() ?? hit.collider.GetComponentInParent<Prism>();
             burnable = hit.collider.GetComponent<Burnable>() ?? hit.collider.GetComponentInParent<Burnable>();
+            mirror = hit.collider.GetComponent<Mirror>() ?? hit.collider.GetComponentInParent<Mirror>();
 
             //Null Object Checks:
-            if (lens == null && prism == null && burnable == null)
+            if (lens == null && prism == null && burnable == null && mirror == null)
             {
                 laserPoints.Add(ObjectPosition + ObjectDirection * remainingLazerDistance);
                 break;
@@ -145,6 +153,14 @@ public class LightReflection : MonoBehaviour
                 HandleBurnableHit(hit);
                 break;
             }
+
+            //Mirror Collision:
+            if (mirror != null)
+            {
+                mirrorHit = true;
+                HandleMirrorHit(hit, mirror, ref ObjectPosition, ref ObjectDirection, ref remainingLazerDistance);
+                continue;
+            }
         }
 
         //Function Used to Display Hit Points & Image Points:
@@ -171,26 +187,31 @@ public class LightReflection : MonoBehaviour
             Vector3 toImageDir = toImage.normalized;
 
             //Check For Any Additional Lens Positions Between Hit and Image Positions:
-            if (HandleObstructionRecursive(hit.point, toImageDir, toImageDistance, lensesHit, out Vector3 finalImagePoint, out Vector3 nextPosition, out Vector3 nextDirection, out float distanceUsed, previousImage))
+            if (HandleObstructionRecursive(hit.point, toImageDir, toImageDistance, lensesHit, out Vector3 finalImagePoint, out Vector3 nextPosition, out Vector3 nextDirection, out float distanceUsed, previousImage, additionalDistanceUsed))
             {
                 ImagePoint = finalImagePoint;
 
                 ObjectPosition = nextPosition;
                 ObjectDirection = nextDirection;
 
-                remainingLazerDistance -= distanceUsed + additionalDistanceUsed;
-                return;
+                remainingLazerDistance -= distanceUsed;
+
+                imagePoints.Add(finalImagePoint);
+                laserPoints.Add(finalImagePoint);
             }
+            else
+            {
+                //No obstruction, Single Lens:
+                ImagePoint = calculatedImagePoint;
+                imagePoints.Add(ImagePoint);
+                laserPoints.Add(ImagePoint);
 
-            //No obstruction, Single Lens:
-            ImagePoint = calculatedImagePoint;
-            imagePoints.Add(ImagePoint);
-            laserPoints.Add(ImagePoint);
+                ObjectDirection = (ImagePoint - hit.point).normalized;
+                ObjectPosition = ImagePoint + ObjectDirection * lazerOffset;
 
-            ObjectDirection = (ImagePoint - hit.point).normalized;
-            ObjectPosition = ImagePoint + ObjectDirection * lazerOffset;
-
-            remainingLazerDistance -= toImageDistance + additionalDistanceUsed;
+                remainingLazerDistance -= toImageDistance;
+                remainingLazerDistance += additionalDistanceUsed;
+            }
         }
     }
 
@@ -259,7 +280,7 @@ public class LightReflection : MonoBehaviour
         {
             //Ray Setup:
             Ray ray = new Ray(currentPos, currentDir);
-            RaycastHit[] hits = Physics.RaycastAll(ray, remaining, lensLayer | prismLayer | burnableLayer);
+            RaycastHit[] hits = Physics.RaycastAll(ray, remaining, lensLayer | prismLayer | burnableLayer | mirrorLayer);
 
             //No Collision + End of Ray:
             if (!ClosestValidHit(hits, hitLenses, out RaycastHit hit))
@@ -280,7 +301,7 @@ public class LightReflection : MonoBehaviour
             Lens hitLens = hit.collider.GetComponent<Lens>() ?? hit.collider.GetComponentInParent<Lens>();
             Prism hitPrism = hit.collider.GetComponent<Prism>() ?? hit.collider.GetComponentInParent<Prism>();
             Burnable hitBurnable = hit.collider.GetComponent<Burnable>() ?? hit.collider.GetComponentInParent<Burnable>();
-
+            Mirror hitMirror = hit.collider.GetComponent<Mirror>() ?? hit.collider.GetComponentInParent<Mirror>();
 
             //Lens Collision:
             if (hitLens != null)
@@ -335,6 +356,17 @@ public class LightReflection : MonoBehaviour
                 break;
             }
 
+            //Mirror collision:
+            if (hitMirror != null)
+            {
+                points.Add(hit.point);
+
+                if (obstructionPointMarkerPrefab != null) splitRayMarkers.Add(Instantiate(obstructionPointMarkerPrefab, hit.point, Quaternion.identity));
+                HandleMirrorHit(hit, hitMirror, ref currentPos, ref currentDir, ref remaining);
+
+                continue;
+            }
+
             //Collision with non-lens Surface:
             points.Add(hit.point);
             if (obstructionPointMarkerPrefab != null)
@@ -364,6 +396,49 @@ public class LightReflection : MonoBehaviour
         }
     }
 
+    private void HandleMirrorHit(RaycastHit hit, Mirror mirror, ref Vector3 ObjectPosition, ref Vector3 ObjectDirection, ref float remainingLazerDistance)
+    {
+        //Record hit:
+        laserPoints.Add(hit.point);
+        obstructionPoints.Add(hit.point);
+
+        //Incoming Direction & Surface Normal:
+        Vector3 incomingDir = ObjectDirection.normalized;
+        Vector3 hitNormal = hit.normal.normalized;
+
+        Vector3 newDir;
+
+        //Default Reflection Direction:
+        if (mirror.useSurfaceNormal)
+        {
+            newDir = Vector3.Reflect(incomingDir, hitNormal);
+        }
+        //Custon Reflection Direction:
+        else
+        {
+            Vector3 rotationAxis = Vector3.Cross(incomingDir, hitNormal);
+            if (rotationAxis == Vector3.zero) rotationAxis = Vector3.up;
+
+            //Rotate The Ray By Parameter Angle:
+            newDir = Quaternion.AngleAxis(mirror.reflectionAngle, rotationAxis) * Vector3.Reflect(incomingDir, hitNormal);
+        }
+
+        newDir.Normalize();
+
+        //Update Direction & Position:
+        ObjectDirection = newDir;
+        ObjectPosition = hit.point + ObjectDirection * lazerOffset;
+
+        remainingLazerDistance -= hit.distance;
+
+        //Endpoint:
+        if (obstructionPointMarkerPrefab != null)
+        {
+            GameObject mirrorMarker = Instantiate(obstructionPointMarkerPrefab, hit.point, Quaternion.identity);
+            laserPointMarkers.Add(mirrorMarker);
+        }
+    }
+
     private void ClearMarkers()
     {
         foreach (var marker in laserPointMarkers)
@@ -375,6 +450,9 @@ public class LightReflection : MonoBehaviour
         laserPoints.Clear();
 
         lensHit = false;
+        prismHit = false;
+        burnableHit = false;
+        mirrorHit = false;
     }
 
     private void ClearPrismSplits()
@@ -445,7 +523,6 @@ public class LightReflection : MonoBehaviour
         //Image Height:
         float finalHeight = magnification * initialHeight;
 
-
         //Final Image Position:
         Vector3 imageDirection = (i >= 0) ? (hitPoint - objectPos).normalized : -(hitPoint - objectPos).normalized;
         Vector3 baseImagePoint = hitPoint + imageDirection * Mathf.Abs(i);
@@ -464,10 +541,10 @@ public class LightReflection : MonoBehaviour
     }
 
 
-    private bool HandleObstructionRecursive(Vector3 currentHitPoint, Vector3 toImageDir, float toImageDistance, List<Collider> lensesHit, out Vector3 finalImagePoint, out Vector3 nextPosition, out Vector3 nextDirection, out float totalDistanceUsed, Vector3? incomingObjectPoint)
+    private bool HandleObstructionRecursive(Vector3 currentHitPoint, Vector3 toImageDir, float toImageDistance, List<Collider> lensesHit, out Vector3 finalImagePoint, out Vector3 nextPosition, out Vector3 nextDirection, out float totalDistanceUsed, Vector3? incomingObjectPoint, float extraDistanceUsed = 0f)
     {
         //Default Parameters for outputs:
-        finalImagePoint = Vector3.zero;
+        finalImagePoint = currentHitPoint;
         nextPosition = currentHitPoint;
         nextDirection = toImageDir;
         totalDistanceUsed = 0f;
@@ -475,58 +552,119 @@ public class LightReflection : MonoBehaviour
 
         //Ray Setup:
         Ray obstructionRay = new Ray(currentHitPoint, toImageDir);
-        RaycastHit[] obstructionHits = Physics.RaycastAll(obstructionRay, toImageDistance, lensLayer);
+        float rayDistance = toImageDistance + extraDistanceUsed;
+        RaycastHit[] obstructionHits = Physics.RaycastAll(obstructionRay, rayDistance, lensLayer | prismLayer | burnableLayer | mirrorLayer);
 
 
         //No Lens Collision: [Return False Since This Function is Used to Check Multiple Lens Collisions]
         if (!ClosestValidHit(obstructionHits, lensesHit, out RaycastHit obstructionHit)) return false;
 
 
-        //Lens Collison:
         var nextLens = obstructionHit.collider.GetComponent<Lens>() ?? obstructionHit.collider.GetComponentInParent<Lens>();
-        if (nextLens == null) return false;
+        var hitMirror = obstructionHit.collider.GetComponent<Mirror>() ?? obstructionHit.collider.GetComponentInParent<Mirror>();
+        var hitPrism = obstructionHit.collider.GetComponent<Prism>() ?? obstructionHit.collider.GetComponentInParent<Prism>();
+        var hitBurnable = obstructionHit.collider.GetComponent<Burnable>() ?? obstructionHit.collider.GetComponentInParent<Burnable>();
 
-
-        //Add Lens to a Hit Collection:
-        lensesHit.Add(obstructionHit.collider);
-
-        //Add Lens Posistion For Markers:
-        obstructionPoints.Add(obstructionHit.point);
-        laserPoints.Add(obstructionHit.point);
-
-        Vector3 objectPos = incomingObjectPoint ?? currentHitPoint;
-
-        //When Calculating Image Location:
-        if (CalculateImagePoint(objectPos, obstructionHit.point, nextLens, out Vector3 newImagePoint))
+        //Lens Collison:
+        if (nextLens != null)
         {
-            imagePoints.Add(newImagePoint);
-            laserPoints.Add(newImagePoint);
+            //Add Lens to a Hit Collection:
+            lensesHit.Add(obstructionHit.collider);
 
-            //Set the laser path:
-            Vector3 nextDir = (newImagePoint - obstructionHit.point).normalized;
-            Vector3 nextPos = newImagePoint + nextDir * lazerOffset;
+            //Add Lens Posistion For Markers:
+            obstructionPoints.Add(obstructionHit.point);
+            laserPoints.Add(obstructionHit.point);
 
-            //Set the laser remaining Distance:
-            float nextDist = Vector3.Distance(obstructionHit.point, newImagePoint);
+            Vector3 objectPos = incomingObjectPoint ?? currentHitPoint;
 
-            //Recursively check for further obstructions down the new path of "newImagePoint":
-            if (HandleObstructionRecursive(obstructionHit.point, nextDir, nextDist, lensesHit, out Vector3 deeperImage, out Vector3 deeperPos, out Vector3 deeperDir, out float deeperUsed, newImagePoint))
+            //When Calculating Image Location:
+            if (CalculateImagePoint(objectPos, obstructionHit.point, nextLens, out Vector3 newImagePoint))
             {
-                finalImagePoint = deeperImage;
-                nextPosition = deeperPos;
-                nextDirection = deeperDir;
-                totalDistanceUsed = Vector3.Distance(currentHitPoint, obstructionHit.point) + deeperUsed;
-                return true;
+                imagePoints.Add(newImagePoint);
+
+                //Set the laser path:
+                Vector3 nextDir = (newImagePoint - obstructionHit.point).normalized;
+                Vector3 nextPos = newImagePoint + nextDir * lazerOffset;
+
+                //Set the laser remaining Distance:
+                float nextDist = Vector3.Distance(obstructionHit.point, newImagePoint);
+
+                //Recursively check for further obstructions down the new path of "newImagePoint":
+                if (HandleObstructionRecursive(obstructionHit.point, nextDir, nextDist, lensesHit, out Vector3 deeperImage, out Vector3 deeperPos, out Vector3 deeperDir, out float deeperUsed, newImagePoint, extraDistanceUsed + additionalDistanceUsed))
+                {
+                    finalImagePoint = deeperImage;
+                    nextPosition = deeperPos;
+                    nextDirection = deeperDir;
+
+                    totalDistanceUsed = Vector3.Distance(currentHitPoint, obstructionHit.point) + deeperUsed + extraDistanceUsed;
+
+                    return true;
+                }
+                else
+                {
+                    //No Recursive Checks, 1 Obstruction:
+                    finalImagePoint = newImagePoint;
+                    nextPosition = nextPos;
+                    nextDirection = nextDir;
+
+                    totalDistanceUsed = Vector3.Distance(currentHitPoint, newImagePoint) + extraDistanceUsed;
+
+                    return true;
+                }
             }
-            else
-            {
-                //No Recursive Checks, 1 Obstruction:
-                finalImagePoint = newImagePoint;
-                nextPosition = nextPos;
-                nextDirection = nextDir;
-                totalDistanceUsed = Vector3.Distance(currentHitPoint, newImagePoint);
-                return true;
-            }
+        }
+        //Mirror Collision:
+        else if(hitMirror != null)
+        {
+            mirrorHit = true;
+
+            //Mark hit:
+            obstructionPoints.Add(obstructionHit.point);
+            laserPoints.Add(obstructionHit.point);
+
+            HandleMirrorHit(obstructionHit, hitMirror, ref currentHitPoint, ref toImageDir, ref toImageDistance);
+
+            // Update outputs
+            finalImagePoint = currentHitPoint;
+            nextPosition = currentHitPoint;
+            nextDirection = toImageDir;
+            totalDistanceUsed = lazerDistance - toImageDistance; // distance used so far
+
+            return true;
+        }
+        else if (hitPrism != null)
+        {
+            prismHit = true;
+
+            //Mark hit:
+            obstructionPoints.Add(obstructionHit.point);
+            laserPoints.Add(obstructionHit.point);
+
+            HandlePrismHit(obstructionHit, hitPrism, toImageDir, toImageDistance);
+
+            totalDistanceUsed = Vector3.Distance(currentHitPoint, obstructionHit.point) + extraDistanceUsed;
+            finalImagePoint = obstructionHit.point;
+            nextPosition = obstructionHit.point;
+            nextDirection = toImageDir;
+
+            return true;
+        }
+        else if (hitBurnable != null)
+        {
+            burnableHit = true;
+
+            //Mark hit:
+            obstructionPoints.Add(obstructionHit.point);
+            laserPoints.Add(obstructionHit.point);
+
+
+            HandleBurnableHit(obstructionHit);
+
+            totalDistanceUsed = Vector3.Distance(currentHitPoint, obstructionHit.point) + extraDistanceUsed;
+            finalImagePoint = obstructionHit.point;
+            nextPosition = obstructionHit.point;
+            nextDirection = toImageDir;
+            return true;
         }
 
         return false;

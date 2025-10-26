@@ -26,6 +26,8 @@ public class LightAuraFollower : MonoBehaviour
     [Space]
     public LayerMask burnableLayer;
     [Space]
+    public LayerMask mirrorLayer;
+    [Space]
 
     [Header("Debug Prefabs: ")]
     public GameObject obstructionPointMarkerPrefab;
@@ -114,6 +116,7 @@ public class LightAuraFollower : MonoBehaviour
                 reflection.lazerOffset = laserOffset;
                 reflection.prismLayer = prismLayer;
                 reflection.burnableLayer = burnableLayer;
+                reflection.mirrorLayer = mirrorLayer;
 
                 reflection.obstructionPointMarkerPrefab = obstructionPointMarkerPrefab;
                 reflection.imagePointMarkerPrefab = imagePointMarkerPrefab;

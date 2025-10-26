@@ -11,17 +11,17 @@ public class CameraAiming : MonoBehaviour
         //Camera Refrence:
         if (mainCamera == null) mainCamera = Camera.main;
 
-        // Get camera forward direction
+        //Get camera forward direction:
         Vector3 targetDirection = mainCamera.transform.forward;
         if (targetDirection.sqrMagnitude < 0.001f) return;
 
-        // Base rotation to look in camera direction
+        //Target Rotation Being the mainCamera's Rotation:
         Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
 
-        // Apply the rotation offset
+        //Apply Rotation Offset: (NEEDED TO PROPERLY ALLIGN AIMING TO CAMERA)
         targetRotation *= Quaternion.Euler(rotationOffset);
 
-        // Smoothly rotate
+        //Rotation Lerp:
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
     }

@@ -5,7 +5,8 @@ public class LightFollower : MonoBehaviour
 {
     [Header("References")]
     public LightReflection lightReflection;  
-    public GameObject followerObject;        
+    public GameObject followerObject;
+    public PlayerController player;
 
     [Header("Movement Settings")]
     public float moveSpeed = 5f;            
@@ -37,6 +38,10 @@ public class LightFollower : MonoBehaviour
             Vector3 startPos = pathPoints[currentIndex];
             startPos.z = followerObject.transform.position.z;
             followerObject.transform.position = startPos;
+
+            if (player != null)
+                player.enabled = false;
+
             isMoving = true;
         }
 
@@ -47,7 +52,7 @@ public class LightFollower : MonoBehaviour
             {
                 //Get the Position of the Next Position:
                 Vector3 target = pathPoints[currentIndex + 1];
-                target.z = followerObject.transform.position.z;
+                //target.z = followerObject.transform.position.z;
 
                 //Movement Logic:
                 followerObject.transform.position = Vector3.MoveTowards(
@@ -65,11 +70,12 @@ public class LightFollower : MonoBehaviour
             //In the case to Reset Back to Default:
             else
             {
+                if (player != null)
+                    player.enabled = true;
+
                 if (loop) currentIndex = 0;
                 else isMoving = false;
             }
-        }
-
-            
+        }         
     }
 }
