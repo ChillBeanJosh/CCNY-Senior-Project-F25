@@ -55,11 +55,19 @@ public class LightReflection : MonoBehaviour
 
 
     public float laserWidth;
+    private float additionalDistanceUsed;
 
+    private void OnDisable()
+    {
+        ClearMarkers();
+        ClearPrismSplits();
+        ClearSplitRayMarkers();
+    }
 
     private void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.material = lineMaterial;
 
         if (laserPoints == null) laserPoints = new List<Vector3>();
     }
@@ -170,7 +178,7 @@ public class LightReflection : MonoBehaviour
                 ObjectPosition = nextPosition;
                 ObjectDirection = nextDirection;
 
-                remainingLazerDistance -= distanceUsed;
+                remainingLazerDistance -= distanceUsed + additionalDistanceUsed;
                 return;
             }
 
@@ -182,7 +190,7 @@ public class LightReflection : MonoBehaviour
             ObjectDirection = (ImagePoint - hit.point).normalized;
             ObjectPosition = ImagePoint + ObjectDirection * lazerOffset;
 
-            remainingLazerDistance -= Vector3.Distance(hit.point, ImagePoint);
+            remainingLazerDistance -= toImageDistance + additionalDistanceUsed;
         }
     }
 
@@ -358,7 +366,8 @@ public class LightReflection : MonoBehaviour
 
     private void ClearMarkers()
     {
-        foreach (var marker in laserPointMarkers) Destroy(marker);
+        foreach (var marker in laserPointMarkers)
+            if (marker != null) Destroy(marker);
 
         laserPointMarkers.Clear();
         obstructionPoints.Clear();
@@ -370,7 +379,9 @@ public class LightReflection : MonoBehaviour
 
     private void ClearPrismSplits()
     {
-        foreach (var beam in prismSplitBeams) Destroy(beam);
+        foreach (var beam in prismSplitBeams)
+            if (beam != null) Destroy(beam);
+
         prismSplitBeams.Clear();
 
         prismHit = false;
@@ -379,7 +390,8 @@ public class LightReflection : MonoBehaviour
     private void ClearSplitRayMarkers()
     {
         foreach (var marker in splitRayMarkers)
-            Destroy(marker);
+            if (marker != null) Destroy(marker);
+
         splitRayMarkers.Clear();
     }
 
@@ -409,6 +421,7 @@ public class LightReflection : MonoBehaviour
     {
         //Default Image Point:
         imagePoint = Vector3.zero;
+        additionalDistanceUsed = 0f;
         if (lens == null) return false;
 
         //Focal Length:     [Convex = Positive]     [Concave = Negative]
@@ -437,8 +450,16 @@ public class LightReflection : MonoBehaviour
         Vector3 imageDirection = (i >= 0) ? (hitPoint - objectPos).normalized : -(hitPoint - objectPos).normalized;
         Vector3 baseImagePoint = hitPoint + imageDirection * Mathf.Abs(i);
 
-        imagePoint = new Vector3(baseImagePoint.x, hitPoint.y + finalHeight, baseImagePoint.z);
+        Vector3 adjustedImagePoint = new Vector3(baseImagePoint.x, hitPoint.y + finalHeight, baseImagePoint.z);
 
+        //Increases Laser Ray By Given Additional Distance:
+        if (lens.additionalDistance != 0f)
+        {
+            adjustedImagePoint += imageDirection * lens.additionalDistance;
+            additionalDistanceUsed = lens.additionalDistance;
+        }
+
+        imagePoint = adjustedImagePoint;
         return true;
     }
 

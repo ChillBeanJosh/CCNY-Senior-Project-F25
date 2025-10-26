@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
   rotationSpeed: 10
+  rotationOffset: {x: 82, y: 0, z: -1}
 --- !u!114 &7782728245971579762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +307,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   prismHit: 0
+  burnableLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  burnableHit: 0
   obstructionPointMarkerPrefab: {fileID: 5648934325104969992, guid: 3bb24c76aa4fce7448f2a08348b726f8, type: 3}
   imagePointMarkerPrefab: {fileID: 1630546774146983372, guid: 973d565dd2c708643b070d970d328a5d, type: 3}
   endPointMarkerPrefab: {fileID: 1036962242990389164, guid: bd8977801d6de954289b253f6005eca6, type: 3}

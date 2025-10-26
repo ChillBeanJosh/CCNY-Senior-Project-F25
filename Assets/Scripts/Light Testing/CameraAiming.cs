@@ -4,37 +4,25 @@ public class CameraAiming : MonoBehaviour
 {
     public Camera mainCamera;
     public float rotationSpeed = 10f;
-    public PlayerMovement playerMovement;
+    public Vector3 rotationOffset = new Vector3(-90f, 0f, 0f);
 
     void Update()
     {
         //Camera Refrence:
         if (mainCamera == null) mainCamera = Camera.main;
 
-        //Mouse Position in Screen Space:
-        //Vector3 mousePos = Input.mousePosition;
+        // Get camera forward direction
+        Vector3 targetDirection = mainCamera.transform.forward;
+        if (targetDirection.sqrMagnitude < 0.001f) return;
 
-        //Rotated Object Position:
-        //Vector3 objPos = transform.position;
+        // Base rotation to look in camera direction
+        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
 
-        //Mouse Position, Relative to Camera:
-        //Vector3 worldMousePos = mainCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mainCamera.WorldToScreenPoint(objPos).y, mousePos.z));
+        // Apply the rotation offset
+        targetRotation *= Quaternion.Euler(rotationOffset);
 
-        //Direction from Mouse to Object:
-        Vector3 direction = mainCamera.transform.forward;
-       
+        // Smoothly rotate
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
-        //Set Z to 0 for 2.5D:
-        //direction.y = 0;
-
-        if (direction.sqrMagnitude > 0.001f)
-        {
-            //Target Rotation, using Direction:
-            Quaternion targetRotation = Quaternion.LookRotation(mainCamera.transform.up, mainCamera.transform.forward);
-
-            //Rotation Lerping:
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        }
     }
-
 }
