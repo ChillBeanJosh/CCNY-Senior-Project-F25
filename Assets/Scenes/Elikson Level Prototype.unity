@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.078
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
+  m_AmbientSkyColor: {r: 0.001611863, g: 0, b: 0.05660379, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -5148,11 +5148,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6722085885383957590, guid: a8b6ff01834a69b4a894fa8002ebd17c, type: 3}
       propertyPath: m_Range
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -6722085885383957590, guid: a8b6ff01834a69b4a894fa8002ebd17c, type: 3}
       propertyPath: m_Intensity
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -6722085885383957590, guid: a8b6ff01834a69b4a894fa8002ebd17c, type: 3}
       propertyPath: m_Shadows.m_Type
@@ -5177,6 +5177,14 @@ PrefabInstance:
     - target: {fileID: -5786060314825918683, guid: a8b6ff01834a69b4a894fa8002ebd17c, type: 3}
       propertyPath: m_RenderingLayers
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5786060314825918683, guid: a8b6ff01834a69b4a894fa8002ebd17c, type: 3}
+      propertyPath: m_CustomShadowLayers
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5786060314825918683, guid: a8b6ff01834a69b4a894fa8002ebd17c, type: 3}
+      propertyPath: m_ShadowRenderingLayers
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: -447275898630060098, guid: a8b6ff01834a69b4a894fa8002ebd17c, type: 3}
       propertyPath: m_LocalScale.x
@@ -5210,6 +5218,18 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6317578925029434746, guid: a8b6ff01834a69b4a894fa8002ebd17c, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6317578925029434746, guid: a8b6ff01834a69b4a894fa8002ebd17c, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6317578925029434746, guid: a8b6ff01834a69b4a894fa8002ebd17c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 08b3a21926021bf4ea7c93eadbe7c98d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 65702495048144492, guid: a8b6ff01834a69b4a894fa8002ebd17c, type: 3}
@@ -18857,31 +18877,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5248206846409925261, guid: 3c04082cb39501c4cb53c2ab2b9baa82, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.589462
+      value: 12.839462
       objectReference: {fileID: 0}
     - target: {fileID: 5248206846409925261, guid: 3c04082cb39501c4cb53c2ab2b9baa82, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.4000015
+      value: 4.007057
       objectReference: {fileID: 0}
     - target: {fileID: 5248206846409925261, guid: 3c04082cb39501c4cb53c2ab2b9baa82, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.652161
+      value: -21.189331
       objectReference: {fileID: 0}
     - target: {fileID: 5248206846409925261, guid: 3c04082cb39501c4cb53c2ab2b9baa82, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.98836154
       objectReference: {fileID: 0}
     - target: {fileID: 5248206846409925261, guid: 3c04082cb39501c4cb53c2ab2b9baa82, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.1521233
       objectReference: {fileID: 0}
     - target: {fileID: 5248206846409925261, guid: 3c04082cb39501c4cb53c2ab2b9baa82, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.000000096757255
       objectReference: {fileID: 0}
     - target: {fileID: 5248206846409925261, guid: 3c04082cb39501c4cb53c2ab2b9baa82, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.0000000148923585
       objectReference: {fileID: 0}
     - target: {fileID: 6611716548704113796, guid: 3c04082cb39501c4cb53c2ab2b9baa82, type: 3}
       propertyPath: yawTarget
@@ -20804,7 +20824,7 @@ MonoBehaviour:
   currentBurnTime: 0
   initialColor: {r: 1, g: 0, b: 0, a: 0}
   initalColorBreach: 0.3
-  middleColor: {r: 0.7075472, g: 0.25039783, b: 0.018356178, a: 0}
+  middleColor: {r: 0.83396226, g: 0.44008806, b: 0, a: 0}
   middleColorBreach: 0.9
   finalColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1899696251
