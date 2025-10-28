@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Exit
+  - Moveable
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Burnable
   - Level Boundaries
   - Ground
-  - 
+  - Moveable
   - 
   - 
   - 
