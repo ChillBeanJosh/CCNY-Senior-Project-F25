@@ -1,5 +1,4 @@
 using JetBrains.Annotations;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -51,6 +50,9 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     Vector3 moveDirection;
     RaycastHit floorHit;
+    public bool isAiming;
+    [SerializeField] Transform yawTarget;
+    [SerializeField] GameObject lightTool;
 
     void Awake()
     {
@@ -91,12 +93,14 @@ public class PlayerMovement : MonoBehaviour
         if (grab != null)
         {
             moveObj = Physics.Raycast(new Vector3(transform.position.x, transform.position.y - 0.2f, transform.position.z), transform.forward, 0.6f, isGround);
-            //Debug.DrawLine(transform.position, new Vector3(transform.position.x + 0.6f, transform.position.y, transform.position.z), Color.magenta);
+            //Debug.DrawLine(transform.position, new Vector3(transform.position.x - 0.6f, transform.position.y - 0.2f, transform.position.z), Color.magenta);
         }
         else
         {
             if (moveObj) moveObj = false;
         }
+
+        isAiming = Input.GetMouseButton(1);
     }
 
     void FixedUpdate()
@@ -120,6 +124,7 @@ public class PlayerMovement : MonoBehaviour
 
             moveSpeed = 2.7f; // Limit player speed while grabbing
 
+            // THIS ALL SHOULDNT BE IN PLAYER SCRIPT BUT I'LL LEAVE FOR NOW 
             if (grab != null)
             {
                 // Signals to object script to remove itself from grab variable
@@ -130,6 +135,9 @@ public class PlayerMovement : MonoBehaviour
 
                 // Make kinematic when moving backward
                 grab.rb.isKinematic = (Input.GetAxisRaw("Vertical") < 0f) ? true : false;
+
+                // Unfreezes position constraints and prevents rotation
+                grab.rb.constraints = RigidbodyConstraints.FreezeRotation;
 
                 // Make lighter so player can push object forward
                 grab.rb.mass = 1.0f;
@@ -143,6 +151,9 @@ public class PlayerMovement : MonoBehaviour
                 grab.transform.SetParent(null);
                 grab.rb.isKinematic = false;
                 grab.rb.mass = 50.0f;
+
+                // Freeze everything but Y position 
+                grab.rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
             }
 
             state = PlayerState.walking;
@@ -156,6 +167,18 @@ public class PlayerMovement : MonoBehaviour
         // Create move Vector from player inputs on X and Z axis
         Vector3 move = new Vector3(moveDirection.x * moveSpeed, rb.linearVelocity.y, moveDirection.z * moveSpeed);
 
+        if (isAiming)
+        {
+            Vector3 forward = transform.forward;
+            Vector3 right = transform.right;
+
+            forward.y = 0;
+            right.y = 0;
+
+            forward.Normalize();
+            right.Normalize();
+            move = forward * moveDirection.y + right * moveDirection.x;
+        }
 
         if (OnSlope() && !exitingSlope)
         {
@@ -177,8 +200,8 @@ public class PlayerMovement : MonoBehaviour
         // Turn off gravity on slope
         rb.useGravity = !OnSlope();
 
-        // Handle rotation while player is not grabbing an object
-        if (moveDirection != Vector3.zero && state != PlayerState.grabbing)
+        // Handle rotation while player is not grabbing an object or aiming lightbeam
+        if (moveDirection != Vector3.zero && state != PlayerState.grabbing && !isAiming)
         {
             float angleDiff = Vector3.SignedAngle(transform.forward, moveDirection, Vector3.up);
             rb.angularVelocity = new Vector3(rb.angularVelocity.x, angleDiff * 0.2f, rb.angularVelocity.z);
@@ -196,7 +219,7 @@ public class PlayerMovement : MonoBehaviour
         //Debug.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - 1.2f, transform.position.z), Color.magenta);
 
         // Handle drag
-        rb.linearDamping = (grounded) ? groundDrag : 0;
+        rb.linearDamping = grounded ? groundDrag : 0;
     }
 
     void Jump()
