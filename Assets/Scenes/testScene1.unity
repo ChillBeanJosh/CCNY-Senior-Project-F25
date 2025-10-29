@@ -11701,7 +11701,7 @@ GameObject:
   - component: {fileID: 1877675008}
   - component: {fileID: 1877675007}
   - component: {fileID: 1877675006}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Moveable Obj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12645,8 +12645,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   grabRange: 2
+  attachDistance: 1
   moveSpeed: 3
-  pushForce: 4
 --- !u!1001 &6675374971563446309
 PrefabInstance:
   m_ObjectHideFlags: 0
