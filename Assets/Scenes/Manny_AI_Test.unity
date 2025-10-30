@@ -31956,6 +31956,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8980312984220129662, guid: ea3737eb810595546b55d2c892b436dd, type: 3}
   m_PrefabInstance: {fileID: 6038530285824416159}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3153876580728255136 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1727539801824731985, guid: ea3737eb810595546b55d2c892b436dd, type: 3}
+  m_PrefabInstance: {fileID: 6038530285824416159}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17f81db832932ae4f9fe0d67012e6824, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4762362558815246237 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7723243515246494528, guid: ea3737eb810595546b55d2c892b436dd, type: 3}
@@ -31986,10 +31997,18 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 891840705}
+    - target: {fileID: 2797616788014823885, guid: ea3737eb810595546b55d2c892b436dd, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 828499327}
     - target: {fileID: 5873238340896209282, guid: ea3737eb810595546b55d2c892b436dd, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 891840705}
+    - target: {fileID: 8895901341474633356, guid: ea3737eb810595546b55d2c892b436dd, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 3153876580728255136}
     - target: {fileID: 8980312984220129662, guid: ea3737eb810595546b55d2c892b436dd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.339462

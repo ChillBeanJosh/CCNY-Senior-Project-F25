@@ -4,12 +4,12 @@ using UnityEngine;
 public class LightFollower : MonoBehaviour
 {
     [Header("References")]
-    public LightReflection lightReflection;  
+    public LightReflection lightReflection;
     public GameObject followerObject;
-    public PlayerController player;
+    public PlayerMovement player;
 
     [Header("Movement Settings")]
-    public float moveSpeed = 5f;            
+    public float moveSpeed = 5f;
     public KeyCode startKey = KeyCode.Q;
     public bool loop = false;
 
@@ -76,6 +76,6 @@ public class LightFollower : MonoBehaviour
                 if (loop) currentIndex = 0;
                 else isMoving = false;
             }
-        }         
+        }
     }
 }

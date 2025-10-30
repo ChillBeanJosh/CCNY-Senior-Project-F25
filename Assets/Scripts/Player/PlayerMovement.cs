@@ -158,7 +158,7 @@ public class PlayerMovement : MonoBehaviour
 
             state = PlayerState.walking;
 
-            moveSpeed = 5.0f; // Reset speed
+            moveSpeed = 6.0f; // Reset speed
         }
     }
 
@@ -180,6 +180,8 @@ public class PlayerMovement : MonoBehaviour
             move = forward * moveDirection.y + right * moveDirection.x;
         }
 
+        //Debug.Log(OnSlope());
+
         if (OnSlope() && !exitingSlope)
         {
             // Adjust speed while on slope
@@ -191,7 +193,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             // Limit movement in air
-            rb.linearVelocity = (grounded) ? move : new Vector3(move.x * airMult, rb.linearVelocity.y, move.z * airMult);
+            rb.linearVelocity = grounded ? move : new Vector3(move.x * airMult, rb.linearVelocity.y, move.z * airMult);
 
             // Clamp magnitude while on ground
             if (grounded && canJump) rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, maxSpeed);
@@ -240,10 +242,17 @@ public class PlayerMovement : MonoBehaviour
     }
 
     bool OnSlope()
-    {
-        if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z), Vector3.down, out slopeHit, 1.2f))
+    {   //Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z), Vector3.down, out slopeHit, 1.2f)
+        if (Physics.BoxCast(transform.position, transform.localScale * 0.25f, Vector3.down, out slopeHit, transform.rotation, 1.2f, isGround))
         {
             float angle = Vector3.Angle(Vector3.up, slopeHit.normal); // Calculate slope steepness
+
+            // Slide down if slope is too steep
+            if (angle > maxSlopeAngle && angle != 0)
+            {
+                rb.AddForce(Vector3.down * 60.0f, ForceMode.Force);
+            }
+
             return angle < maxSlopeAngle && angle != 0;
         }
 
