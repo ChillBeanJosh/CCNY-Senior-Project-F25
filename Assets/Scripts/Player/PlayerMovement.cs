@@ -4,6 +4,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     GameManager gm;
+
+    // Maybe temporary -- to turn off lightsource while not aiming 
+    [SerializeField] GameObject lightSource;
     // Get only instance of player script 
     public static PlayerMovement player;
 
@@ -12,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] float moveSpeed;
-    float maxSpeed = 4.5f;
+    float maxSpeed = 7.5f;
     [Space(5)]
     [SerializeField] float jumpForce;
     [SerializeField] float jumpCooldown;
@@ -37,6 +40,11 @@ public class PlayerMovement : MonoBehaviour
     // Moveable object script
     public GrabObject grab = null;
     bool moveObj;
+
+    [Space(15)]
+    [Header("Held Items")]
+    // Will make static if we only ever need one 
+    public GameObject item;
 
     [Space(15)]
     public PlayerState state;
@@ -99,8 +107,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if (moveObj) moveObj = false;
         }
-
         isAiming = Input.GetMouseButton(1);
+
+        if (!item.activeInHierarchy) return;
+        if (Input.GetMouseButtonDown(1)) LightSwitch(true);
+        else if (Input.GetMouseButtonUp(1)) LightSwitch(false);
     }
 
     void FixedUpdate()
@@ -158,7 +169,7 @@ public class PlayerMovement : MonoBehaviour
 
             state = PlayerState.walking;
 
-            moveSpeed = 6.0f; // Reset speed
+            moveSpeed = 8.0f;
         }
     }
 
@@ -194,10 +205,10 @@ public class PlayerMovement : MonoBehaviour
         {
             // Limit movement in air
             rb.linearVelocity = grounded ? move : new Vector3(move.x * airMult, rb.linearVelocity.y, move.z * airMult);
-
-            // Clamp magnitude while on ground
-            if (grounded && canJump) rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, maxSpeed);
         }
+
+        // Clamp magnitude while on ground
+        if (grounded && canJump) rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, maxSpeed);
 
         // Turn off gravity on slope
         rb.useGravity = !OnSlope();
@@ -262,6 +273,11 @@ public class PlayerMovement : MonoBehaviour
     Vector3 GetSlopeMoveDirection()
     {
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
+    }
+
+    void LightSwitch(bool active)
+    {
+        lightSource.SetActive(active);
     }
 
     void OnCollisionEnter(Collision col)
