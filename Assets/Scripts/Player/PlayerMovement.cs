@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Space(15)]
     public Transform camOrientation; // Grab orientation for rotation
+    public Transform aimCamOrientation; // ^Same for when aiming
 
     [Space(15)]
     [Header("Grab Objects")]
@@ -78,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
     void PlayerInput()
     {
         // Get forward position from camera Y rotation
-        Transform orientation = camOrientation;
+        Transform orientation = isAiming ? aimCamOrientation : camOrientation;
         orientation.localEulerAngles = new Vector3(0f, orientation.localEulerAngles.y, 0f);
 
         // Get keyboard input
@@ -177,18 +178,17 @@ public class PlayerMovement : MonoBehaviour
     {
         // Create move Vector from player inputs on X and Z axis
         Vector3 move = new Vector3(moveDirection.x * moveSpeed, rb.linearVelocity.y, moveDirection.z * moveSpeed);
-
         if (isAiming)
         {
-            Vector3 forward = transform.forward;
-            Vector3 right = transform.right;
+            Vector3 forward = aimCamOrientation.forward;
+            Vector3 right = aimCamOrientation.right;
 
-            forward.y = 0;
+            forward.y = rb.linearVelocity.y;
             right.y = 0;
 
             forward.Normalize();
             right.Normalize();
-            move = forward * moveDirection.y + right * moveDirection.x;
+            move = -forward * moveDirection.x + right * moveDirection.z;
         }
 
         //Debug.Log(OnSlope());

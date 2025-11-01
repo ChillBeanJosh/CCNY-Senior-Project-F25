@@ -8590,6 +8590,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c04082cb39501c4cb53c2ab2b9baa82, type: 3}
+--- !u!4 &521126883 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4578357764221149348, guid: 3c04082cb39501c4cb53c2ab2b9baa82, type: 3}
+  m_PrefabInstance: {fileID: 521126882}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &523140143
 Mesh:
   m_ObjectHideFlags: 0
@@ -13005,6 +13010,10 @@ PrefabInstance:
       propertyPath: camOrientation
       value: 
       objectReference: {fileID: 542165890}
+    - target: {fileID: 1727539801824731985, guid: ea3737eb810595546b55d2c892b436dd, type: 3}
+      propertyPath: aimCamOrientation
+      value: 
+      objectReference: {fileID: 521126883}
     - target: {fileID: 2098174557503251385, guid: ea3737eb810595546b55d2c892b436dd, type: 3}
       propertyPath: m_Mesh
       value: 
