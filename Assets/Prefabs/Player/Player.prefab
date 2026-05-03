@@ -402,14 +402,14 @@ MonoBehaviour:
   DebugActive: 0
   InScriptDrivenPause: 0
   FeedbacksList:
-  - rid: 885602802889130139
-  - rid: 885602802889130140
-  - rid: 885602802889130141
-  - rid: 885602802889130142
-  - rid: 885602802889130143
-  - rid: 885602802889130144
-  - rid: 885602802889130145
-  - rid: 885602802889130146
+  - rid: 885602808402542657
+  - rid: 885602808402542658
+  - rid: 885602808402542659
+  - rid: 885602808402542660
+  - rid: 885602808402542661
+  - rid: 885602808402542662
+  - rid: 885602808402542663
+  - rid: 885602808402542664
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   RestoreInitialValuesOnDisable: 0
@@ -421,11 +421,11 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 885602802889130139
+    - rid: 885602808402542657
       type: {class: MMF_MaterialSetProperty, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
       data:
         Active: 1
-        UniqueID: 186287366
+        UniqueID: -1479596552
         Label: Material Set Property
         OriginalLabel: Material Set Property
         ChannelMode: 0
@@ -442,7 +442,7 @@ MonoBehaviour:
           NumberOfRepeats: 0
           RepeatForever: 0
           DelayBetweenRepeats: 1
-          PlayCount: 35
+          PlayCount: 18
           LimitPlayCount: 0
           MaxPlayCount: 3
           SetPlayCountToZeroOnReset: 0
@@ -549,11 +549,11 @@ MonoBehaviour:
           ConditionPropertyName: InterpolateValue
           EnumConditionPropertyName: 
           EnumConditions: 0000000000000000000000000000000000000000000000000000000000000000
-    - rid: 885602802889130140
+    - rid: 885602808402542658
       type: {class: MMF_MaterialSetProperty, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
       data:
         Active: 1
-        UniqueID: -1405282567
+        UniqueID: 312538847
         Label: Material Set Property
         OriginalLabel: Material Set Property
         ChannelMode: 0
@@ -570,7 +570,7 @@ MonoBehaviour:
           NumberOfRepeats: 0
           RepeatForever: 0
           DelayBetweenRepeats: 1
-          PlayCount: 35
+          PlayCount: 18
           LimitPlayCount: 0
           MaxPlayCount: 3
           SetPlayCountToZeroOnReset: 0
@@ -677,11 +677,11 @@ MonoBehaviour:
           ConditionPropertyName: InterpolateValue
           EnumConditionPropertyName: 
           EnumConditions: 0000000000000000000000000000000000000000000000000000000000000000
-    - rid: 885602802889130141
+    - rid: 885602808402542659
       type: {class: MMF_Scale, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
       data:
         Active: 1
-        UniqueID: -614280813
+        UniqueID: -1431632424
         Label: Scale
         OriginalLabel: Scale
         ChannelMode: 0
@@ -698,7 +698,7 @@ MonoBehaviour:
           NumberOfRepeats: 0
           RepeatForever: 0
           DelayBetweenRepeats: 1
-          PlayCount: 35
+          PlayCount: 18
           LimitPlayCount: 0
           MaxPlayCount: 3
           SetPlayCountToZeroOnReset: 0
@@ -904,11 +904,11 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-    - rid: 885602802889130142
+    - rid: 885602808402542660
       type: {class: MMF_MaterialSetProperty, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
       data:
         Active: 1
-        UniqueID: -724585922
+        UniqueID: 332044109
         Label: Material Set Property
         OriginalLabel: Material Set Property
         ChannelMode: 0
@@ -925,7 +925,7 @@ MonoBehaviour:
           NumberOfRepeats: 0
           RepeatForever: 0
           DelayBetweenRepeats: 1
-          PlayCount: 35
+          PlayCount: 18
           LimitPlayCount: 0
           MaxPlayCount: 3
           SetPlayCountToZeroOnReset: 0
@@ -1032,11 +1032,11 @@ MonoBehaviour:
           ConditionPropertyName: InterpolateValue
           EnumConditionPropertyName: 
           EnumConditions: 0000000000000000000000000000000000000000000000000000000000000000
-    - rid: 885602802889130143
+    - rid: 885602808402542661
       type: {class: MMF_Events, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
       data:
         Active: 0
-        UniqueID: -940006179
+        UniqueID: -1193288416
         Label: Unity Events
         OriginalLabel: Unity Events
         ChannelMode: 0
@@ -1130,11 +1130,11 @@ MonoBehaviour:
         ResetEvents:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 885602802889130144
+    - rid: 885602808402542662
       type: {class: MMF_TrailRenderer, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
       data:
         Active: 1
-        UniqueID: -1117540376
+        UniqueID: -1141840051
         Label: Trail Renderer
         OriginalLabel: Trail Renderer
         ChannelMode: 0
@@ -1151,7 +1151,7 @@ MonoBehaviour:
           NumberOfRepeats: 0
           RepeatForever: 0
           DelayBetweenRepeats: 1
-          PlayCount: 35
+          PlayCount: 18
           LimitPlayCount: 0
           MaxPlayCount: 3
           SetPlayCountToZeroOnReset: 0
@@ -1255,14 +1255,14 @@ MonoBehaviour:
           - serializedVersion: 3
             time: 0
             value: 0
-            inSlope: 0
-            outSlope: 0
+            inSlope: 5.1905737
+            outSlope: 5.1905737
             tangentMode: 0
             weightedMode: 0
             inWeight: 0
-            outWeight: 0
+            outWeight: 0.08436445
           - serializedVersion: 3
-            time: 0.5
+            time: 0.2
             value: 0.4
             inSlope: 0
             outSlope: 0
@@ -1315,11 +1315,11 @@ MonoBehaviour:
           m_NumAlphaKeys: 2
         ModifyTime: 1
         NewTime: 0.5
-    - rid: 885602802889130145
+    - rid: 885602808402542663
       type: {class: MMF_HoldingPause, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
       data:
         Active: 1
-        UniqueID: 998389955
+        UniqueID: -669436141
         Label: Holding Pause
         OriginalLabel: Holding Pause
         ChannelMode: 0
@@ -1336,7 +1336,7 @@ MonoBehaviour:
           NumberOfRepeats: 0
           RepeatForever: 0
           DelayBetweenRepeats: 1
-          PlayCount: 35
+          PlayCount: 18
           LimitPlayCount: 0
           MaxPlayCount: 3
           SetPlayCountToZeroOnReset: 0
@@ -1397,11 +1397,11 @@ MonoBehaviour:
         ScriptDriven: 0
         AutoResume: 0
         AutoResumeAfter: 0.25
-    - rid: 885602802889130146
+    - rid: 885602808402542664
       type: {class: MMF_TrailRenderer, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
       data:
         Active: 1
-        UniqueID: -512919888
+        UniqueID: 684576055
         Label: Trail Renderer
         OriginalLabel: Trail Renderer
         ChannelMode: 0
@@ -1418,7 +1418,7 @@ MonoBehaviour:
           NumberOfRepeats: 0
           RepeatForever: 0
           DelayBetweenRepeats: 1
-          PlayCount: 35
+          PlayCount: 18
           LimitPlayCount: 0
           MaxPlayCount: 3
           SetPlayCountToZeroOnReset: 0
@@ -1770,7 +1770,7 @@ MonoBehaviour:
   playerControl: 1
   moveSpeed: 6
   teleportForce: 4
-  teleportCooldown: 0.4
+  teleportCooldown: 0.5
   airMult: 0.6
   isGround:
     serializedVersion: 2
