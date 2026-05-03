@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 8952541}
   - component: {fileID: 8952546}
   m_Layer: 10
-  m_Name: Invisible Wallf
+  m_Name: Invisible Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12402,7 +12402,7 @@ GameObject:
   - component: {fileID: 847073344}
   - component: {fileID: 847073343}
   m_Layer: 10
-  m_Name: Invisible Wallf (1)
+  m_Name: Invisible Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13085,7 +13085,7 @@ Transform:
   m_GameObject: {fileID: 862673489}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.22, y: 9.53, z: 18.161}
+  m_LocalPosition: {x: -15.22, y: 9.012, z: 18.161}
   m_LocalScale: {x: 0.013921025, y: 0.59372914, z: 0.0130422525}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17888,7 +17888,7 @@ Transform:
   m_GameObject: {fileID: 1218362465}
   serializedVersion: 2
   m_LocalRotation: {x: 0.9996229, y: 0.0031870836, z: -0.027276738, w: 0.000086965774}
-  m_LocalPosition: {x: -15.003702, y: 8.980178, z: 18.889194}
+  m_LocalPosition: {x: -15.89, y: 8.97, z: 18.94}
   m_LocalScale: {x: 0.04824984, y: 0.50398105, z: 0.027007528}
   m_ConstrainProportionsScale: 0
   m_Children:
