@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Tools;
+using MoreMountains.Feedbacks;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -59,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
     [Space(15)]
     [Header("Dash")]
     [SerializeField] LayerMask phaseLayer;
+    [SerializeField] MMF_Player dashFeedback;
     RaycastHit glassHit;
 
 
@@ -340,10 +342,11 @@ public class PlayerMovement : MonoBehaviour
                 canTeleport = false;
                 rb.isKinematic = true; // player unaffected by physics
                 //if (ladder != null) teleportFromLadder = true;
-                playerModel.SetActive(false); // Make player invisible
+                //playerModel.SetActive(false); // Make player invisible
                 transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, camOrientation.localEulerAngles.y, transform.localEulerAngles.z);
                 exitingSlope = true;
                 aura.SetActive(false); // Turn off lightball thing
+                if (dashFeedback != null) dashFeedback.PlayFeedbacks();
                 StartCoroutine(FlashTeleport(line.GetPosition(1))); // Lerp player to position
                 //transform.position = new Vector3(line.GetPosition(1).x, transform.position.y, line.GetPosition(1).z);
                 line.enabled = false;
