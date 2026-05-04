@@ -1002,6 +1002,14 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1217897555}
+    - target: {fileID: 8004364911097166140, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
+      propertyPath: verticalSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8004364911097166140, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
+      propertyPath: horizontalSpeed
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 8358260772009126331, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: travelRange
       value: 50
@@ -3662,7 +3670,7 @@ Transform:
   m_GameObject: {fileID: 1904274112}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.05, y: -3.17, z: -5.4135895}
+  m_LocalPosition: {x: 14.49, y: -5.69, z: -5.4135895}
   m_LocalScale: {x: 0.41283664, y: 9.493938, z: 26.031048}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3787,7 +3795,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1974979291}
-  m_Layer: 0
+  - component: {fileID: 1974979292}
+  m_Layer: 10
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3817,6 +3826,18 @@ Transform:
   - {fileID: 1039055776}
   m_Father: {fileID: 1583059106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1974979292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974979290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c11b639fc6b75a447810f549e2ffabb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1977652838 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 37562906047566399, guid: dd91614b5e2c3444caf6f8b44b77bb02, type: 3}
