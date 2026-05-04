@@ -6,7 +6,7 @@ public class PedestalRotation : MonoBehaviour
 {
     [Header("RotationSettings")] 
     public float degreesPerHit = 120f;
-    public float rotationDuration = 1f;
+    public float rotationSpeed;
     
     private bool rotationInProgress = false;
 
@@ -17,26 +17,29 @@ public class PedestalRotation : MonoBehaviour
             Debug.Log("Rotation triggered");
             StartCoroutine(Turn());
         }
+        else
+        {
+            Debug.Log("Rotation already in progress");
+        }
     }
 
     IEnumerator Turn()
     {
         rotationInProgress = true;
+        Debug.Log("Rotation started");
         Quaternion startRotation = transform.rotation;
         Quaternion targetRotation = startRotation * Quaternion.Euler(0, degreesPerHit, 0);
-        float elapsedTime = 0f;
         
-        Debug.Log("Rotation started");
+        
 
-        while (elapsedTime < rotationDuration)
+        while (Quaternion.Angle(transform.rotation, targetRotation) > 0.1f)
         {
-            float t = elapsedTime / rotationDuration;
-            transform.rotation = Quaternion.Lerp(startRotation, targetRotation, t);
-            elapsedTime += Time.deltaTime;
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             yield return null;
         }
         
         transform.rotation = targetRotation;
         rotationInProgress = false;
+        Debug.Log("Rotation finished");
     }
 }
