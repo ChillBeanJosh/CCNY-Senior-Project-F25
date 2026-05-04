@@ -25,7 +25,7 @@ public class CharacterSwitcher : MonoBehaviour
 
     [Header("Cinemachine References")]
     [SerializeField] private CameraSwitcher camManager;
-    [SerializeField] private Test_CamDistance mainCam;
+    [SerializeField] private PlayerCamDistance mainCam;
     [SerializeField] private Transform player1Anchor; // child obj on player1 for the cam to follow
     [SerializeField] private Transform player2Anchor;
 
