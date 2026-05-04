@@ -2,6 +2,7 @@ using MoreMountains.Feedbacks;
 using MoreMountains.Tools;
 using TMPro;
 using UnityEngine;
+using Unity.Cinemachine;
 
 public class SpeechBubble : MonoBehaviour, MMEventListener<MMGameEvent> {
     [Header("Speech Bubble Settings")]
@@ -12,9 +13,23 @@ public class SpeechBubble : MonoBehaviour, MMEventListener<MMGameEvent> {
     [SerializeField] private float bubbleSpringDampening = 0.5f;
     [SerializeField] private float bubbleSpringFrequency = 5f;
 
+    [Header("Cinemachine Settings")]
+    [SerializeField] private CinemachineCamera cinemachineCamera;
+    [SerializeField] private int activePriority = 20;
+    [SerializeField] private int inactivePriority = 0;
+    [SerializeField] private float cameraSwitchDuration = 5f;
+    [SerializeField] private bool useCameraTimer = true;
+    [SerializeField] private bool disablePlayerControlOnSwitch = true;
+    [SerializeField] private bool triggerCameraOnlyOncePerScene = false;
+
     [Header("Event Settings")]
-    [SerializeField] private string eventNameToListen = "";
-    [SerializeField] private string newSpeechText = "";
+    [SerializeField] private System.Collections.Generic.List<SpeechBubbleEventUpdate> eventUpdates;
+
+    [System.Serializable]
+    public class SpeechBubbleEventUpdate {
+        public string eventNameToListen;
+        public string newSpeechText;
+    }
 
     [Header("Feedbacks")]
     [SerializeField] private MMF_Player spawnFeedback;
@@ -38,6 +53,10 @@ public class SpeechBubble : MonoBehaviour, MMEventListener<MMGameEvent> {
     private bool isShowing = false;
     private float lastExitTime;
     private Vector3 anchorPosition;
+    private bool cameraTriggeredThisEnter = false;
+    private bool cameraAlreadyTriggeredInScene = false;
+    private Coroutine cameraTimerCoroutine;
+    private bool playerControlDisabled = false;
 
     void Awake() {
         // Store the initial world position as anchor
@@ -88,13 +107,21 @@ public class SpeechBubble : MonoBehaviour, MMEventListener<MMGameEvent> {
     }
 
     public void OnMMEvent(MMGameEvent gameEvent) {
-        if (!string.IsNullOrEmpty(eventNameToListen) && gameEvent.EventName == eventNameToListen) {
-            UpdateSpeechText(newSpeechText);
+        if (eventUpdates == null) return;
+
+        foreach (var update in eventUpdates) {
+            if (!string.IsNullOrEmpty(update.eventNameToListen) && gameEvent.EventName == update.eventNameToListen) {
+                UpdateSpeechText(update.newSpeechText);
+                break;
+            }
         }
     }
 
     public void UpdateSpeechText(string newText) {
+        if (speechText == newText) return;
+
         speechText = newText;
+        cameraAlreadyTriggeredInScene = false;
 
         // Update the TMP Text Reveal feedback's text if assigned
         if (spawnFeedback != null) {
@@ -146,6 +173,7 @@ public class SpeechBubble : MonoBehaviour, MMEventListener<MMGameEvent> {
         if (distance <= detectionRadius) {
             if (!playerInRange) {
                 playerInRange = true;
+                cameraTriggeredThisEnter = false;
                 ShowSpeechBubble();
             }
         }
@@ -167,6 +195,30 @@ public class SpeechBubble : MonoBehaviour, MMEventListener<MMGameEvent> {
         SetSpringScaleProperties(smallSpringScale);
         SetSpringScaleProperties(mediumSpringScale);
         SetSpringScaleProperties(largeSpringScale);
+
+        bool canTriggerCamera = cinemachineCamera != null && !cameraTriggeredThisEnter;
+        if (triggerCameraOnlyOncePerScene && cameraAlreadyTriggeredInScene) {
+            canTriggerCamera = false;
+        }
+
+        if (canTriggerCamera) {
+            cinemachineCamera.Priority = activePriority;
+            cameraTriggeredThisEnter = true;
+            cameraAlreadyTriggeredInScene = true;
+
+            if (disablePlayerControlOnSwitch && GameManager.Instance != null) {
+                GameManager.Instance.PausePlayerControl();
+                playerControlDisabled = true;
+            }
+
+            if (useCameraTimer) {
+                if (cameraTimerCoroutine != null) {
+                    StopCoroutine(cameraTimerCoroutine);
+                }
+                cameraTimerCoroutine = StartCoroutine(CameraTimer());
+            }
+        }
+
         if (!isShowing && spawnFeedback != null) {
             // Clear the TMP text before playing the reveal feedback
             if (tmpText != null) {
@@ -182,9 +234,33 @@ public class SpeechBubble : MonoBehaviour, MMEventListener<MMGameEvent> {
         SetSpringScaleProperties(smallSpringScale);
         SetSpringScaleProperties(mediumSpringScale);
         SetSpringScaleProperties(largeSpringScale);
+
+        if (!useCameraTimer) {
+            if (cinemachineCamera != null) {
+                cinemachineCamera.Priority = inactivePriority;
+            }
+            RestorePlayerControl();
+        }
+
         if (isShowing && despawnFeedback != null) {
             despawnFeedback.PlayFeedbacks();
             isShowing = false;
+        }
+    }
+
+    private System.Collections.IEnumerator CameraTimer() {
+        yield return new WaitForSeconds(cameraSwitchDuration);
+        if (cinemachineCamera != null) {
+            cinemachineCamera.Priority = inactivePriority;
+        }
+        RestorePlayerControl();
+        cameraTimerCoroutine = null;
+    }
+
+    private void RestorePlayerControl() {
+        if (playerControlDisabled && GameManager.Instance != null) {
+            GameManager.Instance.ResumePlayerControl();
+            playerControlDisabled = false;
         }
     }
 
