@@ -17748,31 +17748,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6592084117046535992, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.02663
+      value: -27.740948
       objectReference: {fileID: 0}
     - target: {fileID: 6592084117046535992, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.1305294
+      value: 7.5508537
       objectReference: {fileID: 0}
     - target: {fileID: 6592084117046535992, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 21.021416
+      value: 23.58444
       objectReference: {fileID: 0}
     - target: {fileID: 6592084117046535992, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.98836154
+      value: -0.89600253
       objectReference: {fileID: 0}
     - target: {fileID: 6592084117046535992, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.15212338
+      value: -0.17324694
       objectReference: {fileID: 0}
     - target: {fileID: 6592084117046535992, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000022966027
+      value: -0.40142244
       objectReference: {fileID: 0}
     - target: {fileID: 6592084117046535992, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000035348098
+      value: 0.07762065
       objectReference: {fileID: 0}
     - target: {fileID: 6884226154788866539, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: AvoidObstacles.Damping
@@ -18944,10 +18944,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7350412238253776735, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
-      propertyPath: hideDelay
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7350412238253776735, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
       propertyPath: speechText
       value: HELP ME I NEED CARROTSSS!!!!
       objectReference: {fileID: 0}
@@ -18958,10 +18954,6 @@ PrefabInstance:
     - target: {fileID: 7350412238253776735, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
       propertyPath: eventUpdates.Array.size
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7350412238253776735, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
-      propertyPath: triggerCameraOnlyOncePerScene
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7350412238253776735, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
       propertyPath: eventUpdates.Array.data[0].newSpeechText
@@ -18985,30 +18977,6 @@ PrefabInstance:
     - target: {fileID: 7962654530444586366, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
       propertyPath: m_Name
       value: SpeechBubble
-      objectReference: {fileID: 0}
-    - target: {fileID: 8503347328111667951, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 8503347328111667951, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 8503347328111667951, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 8503347328111667951, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.2599983
-      objectReference: {fileID: 0}
-    - target: {fileID: 8503347328111667951, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.12000084
-      objectReference: {fileID: 0}
-    - target: {fileID: 8503347328111667951, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.35000038
       objectReference: {fileID: 0}
     - target: {fileID: 8758255109804583219, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
       propertyPath: m_LocalPosition.x
