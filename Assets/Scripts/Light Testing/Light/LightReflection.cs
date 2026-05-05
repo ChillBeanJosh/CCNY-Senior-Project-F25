@@ -779,13 +779,16 @@ public class LightReflection : MonoBehaviour
 
     private void ClearMarkers()
     {
-        foreach (var marker in laserPointMarkers)
-            if (marker != null) Destroy(marker);
-
-        laserPointMarkers.Clear();
-        obstructionPoints.Clear();
-        imagePoints.Clear();
-        laserPoints.Clear();
+        if (laserPoints != null)
+        {
+            foreach (var marker in laserPointMarkers)
+                if (marker != null) Destroy(marker);
+            laserPointMarkers.Clear();
+        }
+        
+        if (obstructionPoints != null) obstructionPoints.Clear();
+        if (imagePoints != null) imagePoints.Clear();
+        if (laserPoints != null) laserPoints.Clear();
 
         lensHit = false;
         prismHit = false;

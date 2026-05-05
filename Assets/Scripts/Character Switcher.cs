@@ -211,8 +211,8 @@ public class CharacterSwitcher : MonoBehaviour
             }
 
             // Set player 2 to active
-            //if (!player2Controller.gameObject.activeInHierarchy)
-            //    player2Controller.gameObject.SetActive(true);
+            if (!player2Controller.gameObject.activeInHierarchy)
+               player2Controller.gameObject.SetActive(true);
 
             // Empty player references in Game Manager
             GameManager.Instance.Player = null;
