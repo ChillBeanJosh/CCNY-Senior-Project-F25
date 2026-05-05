@@ -33,4 +33,29 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void PausePlayerControl()
+    {
+        if (Player != null)
+        {
+            Player.playerControl = false;
+            Player.moveDirection = Vector3.zero;
+            Player.isAiming = false;
+
+            Rigidbody rb = Player.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
+        }
+    }
+
+    public void ResumePlayerControl()
+    {
+        if (Player != null)
+        {
+            Player.playerControl = true;
+        }
+    }
 }

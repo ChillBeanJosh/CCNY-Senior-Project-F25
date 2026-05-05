@@ -114,35 +114,12 @@ public class Projector : MonoBehaviour
         if (!beamRoot.gameObject.activeSelf)
             beamRoot.gameObject.SetActive(true);
 
-        // Update beam material based on whether it's hitting an unlit lantern
+        //Update beam material based on whether it's hitting an unlit lantern or burnable
         if (beamLight != null)
         {
-            var lr = beamLight.GetComponent<LineRenderer>();
-            if (lr != null)
-            {
-                if (!hasDefaultMaterial)
-                {
-                    defaultBeamMaterial = lr.sharedMaterial;
-                    hasDefaultMaterial = true;
-                }
-
-                bool isCharging = beamLight.lanternHit && beamLight.currentLanternHit != null && !beamLight.currentLanternHit.activeLantern;
-                Material targetMaterial;
-                
-                if (isCharging)
-                {
-                    targetMaterial = (chargingMaterial != null) ? chargingMaterial : defaultBeamMaterial;
-                }
-                else
-                {
-                    targetMaterial = (nonchargingMaterial != null) ? nonchargingMaterial : defaultBeamMaterial;
-                }
-                
-                if (lr.sharedMaterial != targetMaterial)
-                {
-                    lr.sharedMaterial = targetMaterial;
-                }
-            }
+            if (beamLight.chargingMaterial == null) beamLight.chargingMaterial = chargingMaterial;
+            if (beamLight.nonchargingMaterial == null) beamLight.nonchargingMaterial = nonchargingMaterial;
+            if (beamLight.lineMaterial == null) beamLight.lineMaterial = nonchargingMaterial;
         }
 
         //Align Beam Root with Projector Transform:
