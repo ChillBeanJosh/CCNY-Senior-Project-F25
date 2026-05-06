@@ -6,6 +6,10 @@ public class ShadowDetection : MonoBehaviour
     [SerializeField] Collider sizeCheckCol; // Additional collider to use as max size for shadow sprite
     bool shadowDetected;
     public bool shadowIsInside;
+    [SerializeField] ShadowPuzzleTrigger shadowTrigger;
+    [SerializeField] ShadowCaster shadowCaster;
+    public bool completed;
+    bool turnOffPlayerCheck;
     //Vector3 testCorner = Vector3.zero;
     Outline outline;
 
@@ -20,8 +24,16 @@ public class ShadowDetection : MonoBehaviour
 
     void Update()
     {
-        if (shadowCol != null && shadowDetected)
+        if (completed)
         {
+            PuzzleComplete();
+            return;
+        }
+        if (shadowCol != null && shadowDetected && shadowCaster.isChecking)
+        {
+            // Debug.Log(ContainsCollider(detectionCol, shadowCol) + "   " +
+            //       NoCornersDetected(sizeCheckCol, shadowCol));
+
             shadowIsInside = ContainsCollider(detectionCol, shadowCol) &&
                              NoCornersDetected(sizeCheckCol, shadowCol);
 
@@ -74,6 +86,19 @@ public class ShadowDetection : MonoBehaviour
 
         // If no corners are within the inner box collider, return true
         return true;
+    }
+
+    void PuzzleComplete()
+    {
+        if (outline.OutlineColor != Color.black) outline.OutlineColor = Color.black;
+        if (shadowDetected) shadowDetected = false;
+        if (shadowCol != null) shadowCol = null;
+        if (shadowTrigger.detectPlayer) shadowTrigger.detectPlayer = false;
+        if (!turnOffPlayerCheck)
+        {
+            turnOffPlayerCheck = true;
+            GameManager.Instance.Player.gameObject.GetComponent<DrawShadows>().shadowPuzzleActive = false;
+        }
     }
 
     void OnDrawGizmos()

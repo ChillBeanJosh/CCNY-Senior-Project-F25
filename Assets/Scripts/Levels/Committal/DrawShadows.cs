@@ -6,15 +6,16 @@ using System.Collections.Generic;
 public class DrawShadows : MonoBehaviour
 {
     [Header("Shadow Object")]
-    [SerializeField] Transform box; // Object that will cast the shadow
+    public Transform box; // Object that will cast the shadow
     [Tooltip("Leave empty. Fills out at runtime.")]
-    [SerializeField] Transform[] boxCorners; // All corners of the shadow object
+    public Transform[] boxCorners; // All corners of the shadow object
+    public Vector3 shadowOrientation;
     [Space(15)]
     [SerializeField] List<Vector3> currentRayPoints = new List<Vector3>(); // List of all points hitting wall that projects shadow
     Transform playerLight; // Light inside player
-    [SerializeField] GameObject testPrefab; // Test for shadow sprite
+    [SerializeField] GameObject shadowPrefab;
     [SerializeField] LayerMask layerMask;
-    GameObject shadow; // This will store the prefab once instantiated
+    public GameObject shadow; // This will store the prefab once instantiated
     bool shadowCreated; // Track when shadow is created to avoid duplicates
     float rayDistance = 10.0f; // ya know
     RaycastHit hit;
@@ -22,23 +23,24 @@ public class DrawShadows : MonoBehaviour
     float time = 0.15f; // Time it takes for shadow to move into position
     public bool shadowPuzzleActive;
 
-
     void Start()
     {
         // Get player light
         playerLight = GetComponentInChildren<Light>().transform;
-        boxCorners = new Transform[box.childCount];
+        //boxCorners = new Transform[box.childCount];
 
         // Use children as reference for all corners
-        for (int i = 0; i < boxCorners.Length; i++)
-        {
-            boxCorners[i] = box.GetChild(i);
-        }
+        // int burnables = hasBurnables ? 1 : 0;
+        // for (int i = 0; i < boxCorners.Length - burnables; i++)
+        // {
+        //     boxCorners[i] = box.GetChild(i);
+        // }
     }
     void Update()
     {
         if (!shadowPuzzleActive)
         {
+            // Clear shadow
             if (currentRayPoints.Count > 0) currentRayPoints.Clear();
             if (shadow != null) Destroy(shadow);
             if (shadowCreated) shadowCreated = false;
@@ -54,20 +56,14 @@ public class DrawShadows : MonoBehaviour
             // Get direction of raycast
             Vector3 direction = boxCorners[i].position - playerLight.position;
             direction.Normalize();
-            //Debug.DrawRay(boxCorners[i].position, direction * rayDistance, Color.cyan);
+            Debug.DrawRay(boxCorners[i].position, direction * rayDistance, Color.cyan);
 
             // If ray hits wall that will project the shadow, store the hit point in a list
             if (Physics.Raycast(boxCorners[i].position, direction, out hit, rayDistance, layerMask))
             {
-                Vector3 offset = hit.point - direction * 0.005f;
+                Vector3 offset = hit.point - direction * 0.001f;
                 currentRayPoints.Add(offset);
             }
-        }
-
-        if (!shadowCreated)
-        {
-            shadowCreated = true;
-            shadow = Instantiate(testPrefab, GetAveragePosition(currentRayPoints), Quaternion.identity);
         }
 
         if (shadow != null)
@@ -85,6 +81,18 @@ public class DrawShadows : MonoBehaviour
             // Scale shadow sprite based on distance to shadow object
             float dist = Vector3.Distance(box.position, playerLight.position);
             shadow.transform.localScale = Vector3.one / dist;
+        }
+    }
+
+    public void CreateShadow(GameObject _shadow)
+    {
+        // Draw shadow at center of the raycasts
+        if (!shadowCreated)
+        {
+            shadow = _shadow;
+
+            shadowCreated = true;
+            shadow = Instantiate(shadow, GetAveragePosition(currentRayPoints), Quaternion.Euler(shadowOrientation));
         }
     }
 

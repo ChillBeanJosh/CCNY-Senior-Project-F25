@@ -7,18 +7,84 @@ public class ShadowRegen : MonoBehaviour
     [SerializeField] GameObject piecesPrefab;
     [SerializeField] List<GameObject> allPillars;
     [SerializeField] GameObject regenObj;
+    [SerializeField] CycleSprites sprites;
+    DrawShadows drawShadows;
+    [SerializeField] ShadowCaster shadowCaster;
+    public enum PillarsDestroyed
+    {
+        None,
+        Left,
+        Right,
+        Top,
+    }
+    public PillarsDestroyed state;
     bool regenInProgress;
+
+    void Start()
+    {
+        state = PillarsDestroyed.None;
+    }
 
     void Update()
     {
+        // Update shadow script reference when player switches
+        if (GameManager.Instance.Player.gameObject.GetComponent<DrawShadows>() != drawShadows) drawShadows = GameManager.Instance.Player.gameObject.GetComponent<DrawShadows>();
+
+        if (drawShadows.shadow != null && sprites == null)
+        {
+            // Update shadow sprite based on which burnables are burned off
+            sprites = drawShadows.shadow.GetComponent<CycleSprites>();
+        }
+
         bool regen = true;
+
         for (int i = 0; i < allPillars.Count; i++)
         {
             if (allPillars[i].activeInHierarchy) regen = false;
         }
 
+        UpdateShadowSprite();
+
         // Regenerate object if all pillars have been removed
         if (regen && !regenInProgress) StartCoroutine(SpawnObject());
+    }
+
+    void UpdateShadowSprite()
+    {
+        if (allPillars[0].activeInHierarchy && allPillars[1].activeInHierarchy)
+        {
+            if (state is not PillarsDestroyed.None)
+            {
+                state = PillarsDestroyed.None;
+                sprites.ChangeSprite(0);
+                shadowCaster.isChecking = false;
+            }
+        }
+        else if (allPillars[0].activeInHierarchy && !allPillars[1].activeInHierarchy)
+        {
+            if (state is not PillarsDestroyed.Left)
+            {
+                state = PillarsDestroyed.Left;
+                sprites.ChangeSprite(1);
+            }
+        }
+        else if (!allPillars[0].activeInHierarchy && allPillars[1].activeInHierarchy)
+        {
+            if (state is not PillarsDestroyed.Right)
+            {
+                state = PillarsDestroyed.Right;
+                sprites.ChangeSprite(2);
+            }
+        }
+        else if (!allPillars[0].activeInHierarchy && !allPillars[1].activeInHierarchy)
+        {
+            if (state is not PillarsDestroyed.Top)
+            {
+                state = PillarsDestroyed.Top;
+                sprites.ChangeSprite(3);
+                shadowCaster.isChecking = true;
+            }
+        }
     }
     IEnumerator SpawnObject()
     {
