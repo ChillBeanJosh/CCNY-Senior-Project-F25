@@ -167,6 +167,8 @@ public class Burnable : MonoBehaviour
                 outline.OutlineWidth = 0f;
                 outline.OutlineColor = Color.white;
                 completed = false;
+                isBurning = false;
+                hitsThisFrame = 0;
             }
         }
     }
