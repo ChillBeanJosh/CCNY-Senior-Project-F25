@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class DoorActivate : MonoBehaviour
 {
-    [Header("Gems")] 
+    [Header("References")] 
     public Collider topGemCollider;
     public Collider bottomGemCollider;
     public GameObject bottomGemObject;
-
-    [Header("Door Animations")] 
     public Animator doorAnimator;
     public string openTrigger = "DoorSwing";
+    private CharacterSwitcher characterSwitcher;
     
+    [Header("Settings")]
     public float hitRadius = 0.5f;
     private bool doorOpened = false;
     private LightReflection[] allLasers;
@@ -23,7 +23,14 @@ public class DoorActivate : MonoBehaviour
 
     public void RefreshLasers()
     {
-        allLasers = FindObjectsByType<LightReflection>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        if (characterSwitcher != null)
+        {
+            allLasers = characterSwitcher.GetComponentsInChildren<LightReflection>(includeInactive: true);
+        }
+        else
+        {
+            allLasers = FindObjectsByType<LightReflection>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        }
     }
 
     private void LateUpdate()
