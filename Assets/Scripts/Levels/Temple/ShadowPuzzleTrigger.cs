@@ -7,6 +7,9 @@ public class ShadowPuzzleTrigger : MonoBehaviour
     [SerializeField] bool hasBurnables;
     [SerializeField] Vector3 orientation;
     [SerializeField] GameObject shadowPrefab;
+    [Header("Two Player Check")]
+    [Tooltip("Leave empty if puzzle requires only one shadow.")]
+    [SerializeField] ShadowDetection shadowDetection;
 
 
     void Start()
@@ -45,6 +48,7 @@ public class ShadowPuzzleTrigger : MonoBehaviour
                 drawShadows.shadowOrientation = Vector3.zero;
                 drawShadows.box = null;
                 drawShadows.boxCorners = null;
+                if (shadowDetection != null) shadowDetection.RemoveShadowFromList(col);
                 drawShadows.shadowPuzzleActive = false;
             }
         }

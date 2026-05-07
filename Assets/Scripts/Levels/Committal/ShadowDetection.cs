@@ -14,6 +14,9 @@ public class ShadowDetection : MonoBehaviour
     [Space(15)]
     [SerializeField] Collider leftSizeCheckCol;
     [SerializeField] Collider rightSizeCheckCol;
+    [Space(15)]
+    [SerializeField] Collider leftCol;
+    [SerializeField] Collider rightCol;
     [Header("One Player Check")]
     [SerializeField] Collider sizeCheckCol; // Additional collider to use as max size for shadow sprite
     [Space(15)]
@@ -48,29 +51,34 @@ public class ShadowDetection : MonoBehaviour
         {
             // Debug.Log(ContainsCollider(detectionCol, shadowCol) + "   " +
             //       NoCornersDetected(sizeCheckCol, shadowCol));
-            Collider leftCol, rightCol;
+            //Collider leftCol, rightCol;
 
             // Check to see which player is on left side of puzzle
-            if (playerShadows[0].transform.position.x <= playerShadows[1].transform.position.x)
+            if (playerShadows[0] != null && playerShadows[1] != null)
             {
-                leftCol = playerShadows[0];
-                rightCol = playerShadows[1];
+                if (playerShadows[0].transform.position.x <= playerShadows[1].transform.position.x)
+                {
+                    leftCol = playerShadows[0];
+                    rightCol = playerShadows[1];
+                }
+                else
+                {
+                    leftCol = playerShadows[1];
+                    rightCol = playerShadows[0];
+                }
+
+                bool check1 = ContainsCollider(leftDetectionCol, leftCol) &&
+                              NoCornersDetected(leftSizeCheckCol, leftCol);
+
+                bool check2 = ContainsCollider(rightDetectionCol, rightCol) &&
+                              NoCornersDetected(rightSizeCheckCol, rightCol);
+
+                Debug.Log(check1 + "   " + check2);
+
+                shadowIsInside = check1 && check2;
+
+                OutlineHandler();
             }
-            else
-            {
-                leftCol = playerShadows[1];
-                rightCol = playerShadows[0];
-            }
-
-            bool check1 = ContainsCollider(leftDetectionCol, leftCol) &&
-                          NoCornersDetected(leftSizeCheckCol, leftCol);
-
-            bool check2 = ContainsCollider(rightDetectionCol, rightCol) &&
-                          NoCornersDetected(rightSizeCheckCol, rightCol);
-
-            shadowIsInside = check1 && check2;
-
-            OutlineHandler();
         }
         else if (shadowCol != null && shadowDetected && shadowCaster.isChecking)
         {
@@ -83,6 +91,15 @@ public class ShadowDetection : MonoBehaviour
         {
             if (shadowIsInside) shadowIsInside = false;
             if (outline.enabled) outline.enabled = false;
+        }
+
+        if (requiresTwoPlayers)
+        {
+            for (int i = 0; i < playerShadows.Count; i++)
+            {
+                if (playerShadows[i] == null)
+                    playerShadows.Remove(playerShadows[i]);
+            }
         }
     }
 
@@ -152,13 +169,23 @@ public class ShadowDetection : MonoBehaviour
         //Gizmos.DrawWireSphere(test, 0.01f);
     }
 
+    public void RemoveShadowFromList(Collider col)
+    {
+        if (requiresTwoPlayers && playerShadows.Count > 0)
+        {
+            if (playerShadows.Contains(col))
+                playerShadows.Remove(col);
+        }
+    }
+
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.CompareTag("Shadow"))
         {
             if (requiresTwoPlayers)
             {
-                playerShadows.Add(col);
+                if (!playerShadows.Contains(col))
+                    playerShadows.Add(col);
             }
             else
             {
@@ -175,7 +202,8 @@ public class ShadowDetection : MonoBehaviour
         {
             if (requiresTwoPlayers)
             {
-                //playerShadows.IndexOf(col) = null;
+                if (playerShadows.Contains(col))
+                    playerShadows.Remove(col);
             }
             else
             {
