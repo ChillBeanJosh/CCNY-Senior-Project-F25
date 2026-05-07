@@ -135,7 +135,7 @@ public class LightReflection : MonoBehaviour
         lanternHit = false;
         projectorHit = false;
         gemHit = false;
-        crystalHitTimer = 0f;
+        //crystalHitTimer = 0f;
         currentLanternHit = null;
         currentProjectorHit = null;
 
@@ -815,6 +815,7 @@ public class LightReflection : MonoBehaviour
 
         if (!IsCrystalBeingHit())
         {
+            Debug.Log("CRYSTAL NOT HIT");
             crystalHitTimer = 0f;
             // if (pressFPrompt != null && !crystalActivated)
             //     pressFPrompt.SetActive(false);
@@ -1199,10 +1200,12 @@ public class LightReflection : MonoBehaviour
 
         // if (pressFPrompt != null)
         //     pressFPrompt.SetActive(true);
+        //Debug.Log(crystalHitTimer + "   " + crystalActivated);
 
         if (crystalHitTimer >= crystalActivationTime && !crystalActivated)
         {
             crystalActivated = true;
+            Debug.Log("ACTIVATED");
             //pressFPrompt?.SetActive(false);
             spawnedPlayer.SetActive(true);
             spawnedPlayer.transform.position = hit.point;

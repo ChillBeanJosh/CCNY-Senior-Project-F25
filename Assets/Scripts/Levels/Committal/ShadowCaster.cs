@@ -1,10 +1,13 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 public class ShadowCaster : MonoBehaviour
 {
     public bool isChecking = true;
+    public int requiredPlayers = 1;
     [SerializeField] Transform player;
+    [SerializeField] List<Transform> players;
     [SerializeField] float castingTime, currentCastingTime = 0f;
     bool castComplete;
     [Space(15)]
@@ -25,9 +28,27 @@ public class ShadowCaster : MonoBehaviour
     [SerializeField] GameObject shadowPrefab;
     GameObject shadow;
 
+    void Start()
+    {
+        if (player == null)
+            player = GameManager.Instance.Player.GetComponentInChildren<Light>().transform;
+
+        players.Add(player);
+    }
+
     void Update()
     {
         if (!isChecking) return;
+
+        // Update reference to current player when switching characters
+        Transform currentPlayer = GameManager.Instance.Player.GetComponentInChildren<Light>().transform;
+        if (currentPlayer != player)
+        {
+            if (players.Count == 1)
+                players.Add(currentPlayer);
+
+            player = currentPlayer;
+        }
 
         if (castComplete)
         {
