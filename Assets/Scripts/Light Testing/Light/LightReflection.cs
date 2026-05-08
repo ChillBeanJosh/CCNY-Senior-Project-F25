@@ -12,8 +12,6 @@ public class LightReflection : MonoBehaviour
     public float lazerDistance;
     private LineRenderer lineRenderer;
     public Material lineMaterial;
-    public Material chargingMaterial;
-    public Material nonchargingMaterial;
     private List<GameObject> laserPointMarkers = new List<GameObject>();
     [Space]
 
@@ -93,12 +91,12 @@ public class LightReflection : MonoBehaviour
 
     [Header("Crystal Activation")]
     public LayerMask crystalLayer;
-    private float crystalHitTimer = 0f;
-    private float crystalActivationTime = 3f;
-    private bool crystalActivated = false;
+    //private float crystalHitTimer = 0f;
+    //private float crystalActivationTime = 3f;
+    //private bool crystalActivated = false;
     //[SerializeField] private GameObject pressFPrompt;
-    [SerializeField] private CharacterSwitcher characterSwitcher;
-    [SerializeField] private GameObject spawnedPlayer;
+    //[SerializeField] private CharacterSwitcher characterSwitcher;
+    //[SerializeField] private GameObject spawnedPlayer;
 
 
 
@@ -123,22 +121,6 @@ public class LightReflection : MonoBehaviour
 
     private void Update()
     {
-        laserPoints.Clear();
-        obstructionPoints.Clear();
-        imagePoints.Clear();
-
-        wallHit = false;
-        lensHit = false;
-        prismHit = false;
-        burnableHit = false;
-        mirrorHit = false;
-        lanternHit = false;
-        projectorHit = false;
-        gemHit = false;
-        //crystalHitTimer = 0f;
-        currentLanternHit = null;
-        currentProjectorHit = null;
-
         ClearMarkers();
         ClearPrismSplits();
         ClearSplitRayMarkers();
@@ -184,7 +166,7 @@ public class LightReflection : MonoBehaviour
 
                 for (int i = 0; i < hits.Length; i++)
                 {
-                    if (hits[i].collider != null && hits[i].collider.CompareTag("Burn"))
+                    if (hits[i].transform.tag == "Burn")
                         extinguish = false;
                 }
 
@@ -808,6 +790,7 @@ public class LightReflection : MonoBehaviour
         if (imagePoints != null) imagePoints.Clear();
         if (laserPoints != null) laserPoints.Clear();
 
+        wallHit = false;
         lensHit = false;
         prismHit = false;
         burnableHit = false;
@@ -818,7 +801,7 @@ public class LightReflection : MonoBehaviour
 
         if (!IsCrystalBeingHit())
         {
-            crystalHitTimer = 0f;
+            //crystalHitTimer = 0f;
             // if (pressFPrompt != null && !crystalActivated)
             //     pressFPrompt.SetActive(false);
         }
@@ -826,11 +809,11 @@ public class LightReflection : MonoBehaviour
 
     private bool IsCrystalBeingHit()
     {
-        if (hits == null || hits.Length == 0) return false;
+        if (hits == null) return false;
 
         foreach (var hit in hits)
         {
-            if (hit.collider != null && hit.collider.gameObject.layer == 16) return true;
+            if (hit.collider.gameObject.layer == 16) return true;
         }
         return false;
     }
@@ -1133,27 +1116,6 @@ public class LightReflection : MonoBehaviour
 
     private void Visualize()
     {
-        //Update Material based on hit state:
-        if (lineRenderer != null)
-        {
-            bool isCharging = (lanternHit && currentLanternHit != null && !currentLanternHit.activeLantern) || (burnableHit && burnable != null);
-            Material targetMaterial = lineMaterial;
-
-            if (isCharging && chargingMaterial != null)
-            {
-                targetMaterial = chargingMaterial;
-            }
-            else if (!isCharging && nonchargingMaterial != null)
-            {
-                targetMaterial = nonchargingMaterial;
-            }
-
-            if (lineRenderer.sharedMaterial != targetMaterial)
-            {
-                lineRenderer.sharedMaterial = targetMaterial;
-            }
-        }
-
         //Visualization of Line Render For Light Source:
         lineRenderer.startWidth = laserWidth;
         lineRenderer.endWidth = laserWidth;
@@ -1198,21 +1160,11 @@ public class LightReflection : MonoBehaviour
     {
         laserPoints.Add(hit.point);
 
-        crystalHitTimer += Time.deltaTime;
+        CrystalActivation crytal = hit.collider.GetComponent<CrystalActivation>()
+            ?? hit.collider.GetComponentInParent<CrystalActivation>();
 
-        // if (pressFPrompt != null)
-        //     pressFPrompt.SetActive(true);
-        //Debug.Log(crystalHitTimer + "   " + crystalActivated);
-
-        if (crystalHitTimer >= crystalActivationTime && !crystalActivated)
-        {
-            crystalActivated = true;
-            Debug.Log("ACTIVATED");
-            //pressFPrompt?.SetActive(false);
-            spawnedPlayer.SetActive(true);
-            spawnedPlayer.transform.position = hit.point;
-            characterSwitcher.UnlockSplitMode();
-        }
+        if (crytal != null)
+            crytal.RegisterBeamHit(this);
     }
 
     public void HandleGemHit(RaycastHit hit)
