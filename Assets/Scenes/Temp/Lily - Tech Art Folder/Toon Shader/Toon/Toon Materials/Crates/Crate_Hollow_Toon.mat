@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Toon Broken Plank
+  m_Name: Crate_Hollow_Toon
   m_Shader: {fileID: -6465566751694194690, guid: f4457cd2cf90aaf4cbf707e205821be3, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -61,7 +61,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DiffuseTex:
-        m_Texture: {fileID: 2800000, guid: 4f6c9eec61bb5d54fa796644fa4a58a5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0c75b31618dde1b40afe8106c6cba413, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -89,7 +89,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ToonRamp:
-        m_Texture: {fileID: 2800000, guid: 768dabc66ae25f94bbdbc9563b8ab95b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 966982cab7aac7b469d64c4e8aa2f6a0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
