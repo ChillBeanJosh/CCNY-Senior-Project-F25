@@ -534,7 +534,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 9dc8cbc91e1fa3d4189d29cfaea1d2c8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f637824669355dd4e982b193ac5fccc6, type: 2}
+      objectReference: {fileID: 2100000, guid: 8116066143b63da45a8931979bd7bd89, type: 2}
     - target: {fileID: 919132149155446097, guid: 9dc8cbc91e1fa3d4189d29cfaea1d2c8, type: 3}
       propertyPath: m_Name
       value: Lantern 3
@@ -1192,7 +1192,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7813091bf02f39644b6e5037b70efae4, type: 2}
+  - {fileID: 2100000, guid: 44d15ef3fd5027e4cbc70a1e8c534f3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3669,11 +3669,11 @@ PrefabInstance:
     - target: {fileID: 2983158810534173362, guid: 7531f8b9d084bea43a99b43248e310cc, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 7813091bf02f39644b6e5037b70efae4, type: 2}
+      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
     - target: {fileID: 7312468171110900250, guid: 7531f8b9d084bea43a99b43248e310cc, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 7813091bf02f39644b6e5037b70efae4, type: 2}
+      objectReference: {fileID: 2100000, guid: ea917784e1074204cb7249c3d27e4f85, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10112,6 +10112,7 @@ MonoBehaviour:
   isMultipleLensesEffected: 0
   burnTime: 3
   destroyOnComplete: 0
+  activeAfterBurn: 0
   onBurnComplete:
     m_PersistentCalls:
       m_Calls: []
@@ -10842,7 +10843,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7813091bf02f39644b6e5037b70efae4, type: 2}
+  - {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11276,7 +11277,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7813091bf02f39644b6e5037b70efae4, type: 2}
+  - {fileID: 2100000, guid: 28af44ecf8094cd4abae54d57f0dc9cd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11336,6 +11337,7 @@ MonoBehaviour:
   isMultipleLensesEffected: 0
   burnTime: 3
   destroyOnComplete: 0
+  activeAfterBurn: 0
   onBurnComplete:
     m_PersistentCalls:
       m_Calls:
@@ -12426,6 +12428,7 @@ MonoBehaviour:
   isMultipleLensesEffected: 0
   burnTime: 3
   destroyOnComplete: 0
+  activeAfterBurn: 0
   onBurnComplete:
     m_PersistentCalls:
       m_Calls:
@@ -12464,6 +12467,7 @@ MonoBehaviour:
   isMultipleLensesEffected: 0
   burnTime: 3
   destroyOnComplete: 0
+  activeAfterBurn: 0
   onBurnComplete:
     m_PersistentCalls:
       m_Calls: []
@@ -13044,7 +13048,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7813091bf02f39644b6e5037b70efae4, type: 2}
+  - {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13709,7 +13713,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7813091bf02f39644b6e5037b70efae4, type: 2}
+  - {fileID: 2100000, guid: 44d15ef3fd5027e4cbc70a1e8c534f3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15010,7 +15014,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 9dc8cbc91e1fa3d4189d29cfaea1d2c8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f637824669355dd4e982b193ac5fccc6, type: 2}
+      objectReference: {fileID: 2100000, guid: 8116066143b63da45a8931979bd7bd89, type: 2}
     - target: {fileID: 919132149155446097, guid: 9dc8cbc91e1fa3d4189d29cfaea1d2c8, type: 3}
       propertyPath: m_Name
       value: Lantern 2
@@ -16259,7 +16263,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 9dc8cbc91e1fa3d4189d29cfaea1d2c8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f637824669355dd4e982b193ac5fccc6, type: 2}
+      objectReference: {fileID: 2100000, guid: 8116066143b63da45a8931979bd7bd89, type: 2}
     - target: {fileID: 919132149155446097, guid: 9dc8cbc91e1fa3d4189d29cfaea1d2c8, type: 3}
       propertyPath: m_Name
       value: Lantern 5
@@ -20558,6 +20562,7 @@ MonoBehaviour:
   isMultipleLensesEffected: 0
   burnTime: 3
   destroyOnComplete: 0
+  activeAfterBurn: 0
   onBurnComplete:
     m_PersistentCalls:
       m_Calls:
@@ -21367,7 +21372,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 9dc8cbc91e1fa3d4189d29cfaea1d2c8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f637824669355dd4e982b193ac5fccc6, type: 2}
+      objectReference: {fileID: 2100000, guid: 8116066143b63da45a8931979bd7bd89, type: 2}
     - target: {fileID: 919132149155446097, guid: 9dc8cbc91e1fa3d4189d29cfaea1d2c8, type: 3}
       propertyPath: m_Name
       value: Lantern 1
@@ -30847,7 +30852,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 9dc8cbc91e1fa3d4189d29cfaea1d2c8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f637824669355dd4e982b193ac5fccc6, type: 2}
+      objectReference: {fileID: 2100000, guid: 8116066143b63da45a8931979bd7bd89, type: 2}
     - target: {fileID: 919132149155446097, guid: 9dc8cbc91e1fa3d4189d29cfaea1d2c8, type: 3}
       propertyPath: m_Name
       value: Lantern 4
