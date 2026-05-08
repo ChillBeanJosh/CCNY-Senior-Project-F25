@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [DefaultExecutionOrder(200)]
-public class Test_CamDistance : MonoBehaviour
+public class PlayerCamDistance : MonoBehaviour
 {
     public Transform playerTarget;
     [SerializeField] float minDisFromPlayer = 1.5f;

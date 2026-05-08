@@ -25,7 +25,7 @@ public class CharacterSwitcher : MonoBehaviour
 
     [Header("Cinemachine References")]
     [SerializeField] private CameraSwitcher camManager;
-    [SerializeField] private Test_CamDistance mainCam;
+    [SerializeField] private PlayerCamDistance mainCam;
     [SerializeField] private Transform player1Anchor; // child obj on player1 for the cam to follow
     [SerializeField] private Transform player2Anchor;
 
@@ -211,8 +211,8 @@ public class CharacterSwitcher : MonoBehaviour
             }
 
             // Set player 2 to active
-            //if (!player2Controller.gameObject.activeInHierarchy)
-            //    player2Controller.gameObject.SetActive(true);
+            if (!player2Controller.gameObject.activeInHierarchy)
+               player2Controller.gameObject.SetActive(true);
 
             // Empty player references in Game Manager
             GameManager.Instance.Player = null;
