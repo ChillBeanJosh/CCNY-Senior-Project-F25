@@ -31,6 +31,8 @@ public class AimCameraController : MonoBehaviour
     private float pitch;
     private float targetCameraSide;
 
+    private bool isAiming = false;
+
     private void Awake()
     {
         if (aimCam == null)
@@ -94,11 +96,20 @@ public class AimCameraController : MonoBehaviour
         yawTarget.rotation = Quaternion.Euler(0f, yaw, 0f);
         pitchTarget.localRotation = Quaternion.Euler(pitch, 0f, 0f);
 
-        aimCam.CameraSide = Mathf.Lerp(aimCam.CameraSide, targetCameraSide, shoulderSwitchSpeed * Time.deltaTime);
+        
+        if (playerModel != null && isAiming)
+        {
+            playerModel.rotation = Quaternion.Lerp(
+                playerModel.rotation,
+                Quaternion.Euler(0f, yaw, 0f),
+                Time.deltaTime * 15f
+            );
+        }
 
+        aimCam.CameraSide = Mathf.Lerp(aimCam.CameraSide, targetCameraSide, shoulderSwitchSpeed * Time.deltaTime);
     }
 
-    private void InitYawPitchFromTransform(Transform source)
+    public void InitYawPitchFromTransform(Transform source)
     {
         if (source == null)
         {
@@ -120,6 +131,11 @@ public class AimCameraController : MonoBehaviour
             pitch = 0f;
         }
         pitch = Mathf.Clamp(pitch, pitchMin, pitchMax);
+    }
+
+    public void InitYawPitchFromCurrentTargets()
+    {
+        InitYawPitchFromTransform(yawTarget);
     }
 
     public void SetTargets(Transform newYaw, Transform newPitch, Transform newModel)
@@ -152,5 +168,10 @@ public class AimCameraController : MonoBehaviour
         pitchTarget.localRotation = Quaternion.Euler(pitch, 0f, 0f);
 
         aimCam.ForceCameraPosition(cameraTransform.position, cameraTransform.rotation);
+    }
+
+    public void SetAiming(bool aiming)
+    {
+        isAiming = aiming;
     }
 }
