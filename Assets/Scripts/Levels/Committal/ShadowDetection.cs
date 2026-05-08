@@ -1,18 +1,39 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class ShadowDetection : MonoBehaviour
 {
+    public bool requiresTwoPlayers = false;
     Collider detectionCol, shadowCol; // Colliders for puzzle detection 
+    [SerializeField] List<Collider> playerShadows = new List<Collider>(); // Colliders for puzzle requiring both players
+    [Header("Two Player Check")]
+    [Tooltip("Leave empty if puzzle does not require two players.")]
+    [SerializeField] Collider leftDetectionCol;
+    [SerializeField] Collider rightDetectionCol;
+    [Space(15)]
+    [SerializeField] Collider leftSizeCheckCol;
+    [SerializeField] Collider rightSizeCheckCol;
+    [Space(15)]
+    [SerializeField] Collider leftCol;
+    [SerializeField] Collider rightCol;
+    [Header("One Player Check")]
     [SerializeField] Collider sizeCheckCol; // Additional collider to use as max size for shadow sprite
+    [Space(15)]
     bool shadowDetected;
     public bool shadowIsInside;
+    [SerializeField] ShadowPuzzleTrigger shadowTrigger;
+    [SerializeField] ShadowCaster shadowCaster;
+    public bool completed;
+    bool turnOffPlayerCheck;
     //Vector3 testCorner = Vector3.zero;
+    [SerializeField] Outline finalCheckOutline;
     Outline outline;
 
     void Start()
     {
         detectionCol = GetComponent<Collider>();
-        outline = sizeCheckCol.transform.gameObject.GetComponent<Outline>();
+        outline = requiresTwoPlayers ? finalCheckOutline : sizeCheckCol.transform.gameObject.GetComponent<Outline>();
         outline.OutlineWidth = 10f;
         outline.OutlineColor = Color.white;
         outline.enabled = false;
@@ -20,25 +41,65 @@ public class ShadowDetection : MonoBehaviour
 
     void Update()
     {
-        if (shadowCol != null && shadowDetected)
+        if (completed)
+        {
+            PuzzleComplete();
+            return;
+        }
+
+        if (requiresTwoPlayers && playerShadows.Count == 2)
+        {
+            // Debug.Log(ContainsCollider(detectionCol, shadowCol) + "   " +
+            //       NoCornersDetected(sizeCheckCol, shadowCol));
+            //Collider leftCol, rightCol;
+
+            // Check to see which player is on left side of puzzle
+            if (playerShadows[0] != null && playerShadows[1] != null)
+            {
+                if (playerShadows[0].transform.position.x <= playerShadows[1].transform.position.x)
+                {
+                    leftCol = playerShadows[0];
+                    rightCol = playerShadows[1];
+                }
+                else
+                {
+                    leftCol = playerShadows[1];
+                    rightCol = playerShadows[0];
+                }
+
+                bool check1 = ContainsCollider(leftDetectionCol, leftCol) &&
+                              NoCornersDetected(leftSizeCheckCol, leftCol);
+
+                bool check2 = ContainsCollider(rightDetectionCol, rightCol) &&
+                              NoCornersDetected(rightSizeCheckCol, rightCol);
+
+                Debug.Log(check1 + "   " + check2);
+
+                shadowIsInside = check1 && check2;
+
+                OutlineHandler();
+            }
+        }
+        else if (shadowCol != null && shadowDetected && shadowCaster.isChecking)
         {
             shadowIsInside = ContainsCollider(detectionCol, shadowCol) &&
-                             NoCornersDetected(sizeCheckCol, shadowCol);
+                         NoCornersDetected(sizeCheckCol, shadowCol);
 
-            // Turn outline on 
-            if (!outline.enabled) outline.enabled = true;
-
-            // Set outline to cyan if at correct position
-            if (shadowIsInside && outline.OutlineColor != Color.cyan)
-                outline.OutlineColor = Color.cyan;
-            // Set outline to white if at wrong position
-            else if (!shadowIsInside && outline.OutlineColor != Color.white)
-                outline.OutlineColor = Color.white;
+            OutlineHandler();
         }
         else
         {
             if (shadowIsInside) shadowIsInside = false;
             if (outline.enabled) outline.enabled = false;
+        }
+
+        if (requiresTwoPlayers)
+        {
+            for (int i = 0; i < playerShadows.Count; i++)
+            {
+                if (playerShadows[i] == null)
+                    playerShadows.Remove(playerShadows[i]);
+            }
         }
     }
 
@@ -61,7 +122,7 @@ public class ShadowDetection : MonoBehaviour
             // Get all corners of the box collider using its center and size as reference
             corner.x = i % 2 == 0 ? shadowEdges.x : -shadowEdges.x;
             corner.y = i % 2 == 0 ? shadowEdges.y : -shadowEdges.y;
-            corner.z = 0f; // We may need to change which axis is at 0 based on rotation of shadow 
+            corner.z = 0f;
 
             Vector3 point = shadowCenter + corner;
 
@@ -76,18 +137,62 @@ public class ShadowDetection : MonoBehaviour
         return true;
     }
 
+    void PuzzleComplete()
+    {
+        if (outline.OutlineColor != Color.black) outline.OutlineColor = Color.black;
+        if (shadowDetected) shadowDetected = false;
+        if (shadowCol != null) shadowCol = null;
+        if (shadowTrigger.detectPlayer) shadowTrigger.detectPlayer = false;
+        if (!turnOffPlayerCheck)
+        {
+            turnOffPlayerCheck = true;
+            GameManager.Instance.Player.gameObject.GetComponent<DrawShadows>().shadowPuzzleActive = false;
+        }
+    }
+
+    void OutlineHandler()
+    {
+        // Turn outline on 
+        if (!outline.enabled) outline.enabled = true;
+
+        // Set outline to cyan if at correct position
+        if (shadowIsInside && outline.OutlineColor != Color.cyan)
+            outline.OutlineColor = Color.cyan;
+        // Set outline to white if at wrong position
+        else if (!shadowIsInside && outline.OutlineColor != Color.white)
+            outline.OutlineColor = Color.white;
+    }
+
     void OnDrawGizmos()
     {
         //Gizmos.color = Color.red;
         //Gizmos.DrawWireSphere(test, 0.01f);
     }
 
+    public void RemoveShadowFromList(Collider col)
+    {
+        if (requiresTwoPlayers && playerShadows.Count > 0)
+        {
+            if (playerShadows.Contains(col))
+                playerShadows.Remove(col);
+        }
+    }
+
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.CompareTag("Shadow"))
         {
-            shadowCol = col;
-            shadowDetected = true;
+            if (requiresTwoPlayers)
+            {
+                if (!playerShadows.Contains(col))
+                    playerShadows.Add(col);
+            }
+            else
+            {
+                shadowCol = col;
+                shadowDetected = true;
+            }
+
         }
     }
 
@@ -95,8 +200,17 @@ public class ShadowDetection : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Shadow"))
         {
-            shadowCol = null;
-            shadowDetected = false;
+            if (requiresTwoPlayers)
+            {
+                if (playerShadows.Contains(col))
+                    playerShadows.Remove(col);
+            }
+            else
+            {
+                shadowCol = null;
+                shadowDetected = false;
+            }
+
         }
     }
 }

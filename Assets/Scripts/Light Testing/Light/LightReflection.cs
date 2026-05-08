@@ -135,7 +135,7 @@ public class LightReflection : MonoBehaviour
         lanternHit = false;
         projectorHit = false;
         gemHit = false;
-        crystalHitTimer = 0f;
+        //crystalHitTimer = 0f;
         currentLanternHit = null;
         currentProjectorHit = null;
 
@@ -803,7 +803,7 @@ public class LightReflection : MonoBehaviour
                 if (marker != null) Destroy(marker);
             laserPointMarkers.Clear();
         }
-        
+
         if (obstructionPoints != null) obstructionPoints.Clear();
         if (imagePoints != null) imagePoints.Clear();
         if (laserPoints != null) laserPoints.Clear();
@@ -1202,10 +1202,12 @@ public class LightReflection : MonoBehaviour
 
         // if (pressFPrompt != null)
         //     pressFPrompt.SetActive(true);
+        //Debug.Log(crystalHitTimer + "   " + crystalActivated);
 
         if (crystalHitTimer >= crystalActivationTime && !crystalActivated)
         {
             crystalActivated = true;
+            Debug.Log("ACTIVATED");
             //pressFPrompt?.SetActive(false);
             spawnedPlayer.SetActive(true);
             spawnedPlayer.transform.position = hit.point;
