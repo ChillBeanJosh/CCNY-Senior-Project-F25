@@ -48,7 +48,7 @@ public class DrawShadows : MonoBehaviour
             // Get direction of raycast
             Vector3 direction = boxCorners[i].position - playerLight.position;
             direction.Normalize();
-            //Debug.DrawRay(boxCorners[i].position, direction * rayDistance, Color.cyan);
+            Debug.DrawRay(boxCorners[i].position, direction * rayDistance, Color.cyan);
 
             // If ray hits wall that will project the shadow, store the hit point in a list
             if (Physics.Raycast(boxCorners[i].position, direction, out hit, rayDistance, layerMask))
