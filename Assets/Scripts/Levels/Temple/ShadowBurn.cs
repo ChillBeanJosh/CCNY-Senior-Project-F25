@@ -42,6 +42,8 @@ public class ShadowBurn : MonoBehaviour
     [Space]
     [Header("Testing New Mechanic")]
     [SerializeField] ShadowPuzzleTrigger shadowTrigger;
+    [SerializeField] GameObject shadowPrefab;
+    GameObject shadow;
 
 
 
@@ -62,9 +64,22 @@ public class ShadowBurn : MonoBehaviour
         if (doorOpened)
         {
             if (hasDoor && !moveDoor)
+            {
+                if (shadowPrefab != null && !shadowDetection.completed)
+                {
+                    GameObject playerShadow = GameManager.Instance.Player.gameObject.GetComponent<DrawShadows>().shadow;
+                    shadow = shadowPrefab;
+                    shadow.transform.localScale = playerShadow.transform.localScale;
+                    Instantiate(shadow, playerShadow.transform.position, playerShadow.transform.rotation);
+                    shadowDetection.completed = true;
+                }
+
                 StartCoroutine(OpenDoor(doorTarget.position));
+            }
             else
+            {
                 return;
+            }
         }
         else if (!doorOpened)
         {
@@ -94,8 +109,11 @@ public class ShadowBurn : MonoBehaviour
             }
             else
             {
-                if (committalLevel) GameObject.Find("Coffin").GetComponent<FourKeyPlatform>().NextThreshold();
-                doorOpened = true;
+                if (committalLevel)
+                {
+                    GameObject.Find("Coffin").GetComponent<FourKeyPlatform>().NextThreshold();
+                }
+                if (!doorOpened) doorOpened = true;
                 //Debug.Log("HOLY MOLY MOLY");
             }
         }

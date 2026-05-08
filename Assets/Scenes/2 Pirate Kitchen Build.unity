@@ -8766,6 +8766,17 @@ Transform:
   - {fileID: 243444547}
   m_Father: {fileID: 6705201}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &425714971 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2477404827400592620, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
+  m_PrefabInstance: {fileID: 980267770}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd48b27a4bcde354a99ab15f0bd82486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &426341309
 Mesh:
   m_ObjectHideFlags: 0
@@ -16346,6 +16357,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a8b6ff01834a69b4a894fa8002ebd17c, type: 3}
   m_PrefabInstance: {fileID: 840377475}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &843681036 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 170210246782658771, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
+  m_PrefabInstance: {fileID: 980267770}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd48b27a4bcde354a99ab15f0bd82486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &847073341
 GameObject:
   m_ObjectHideFlags: 0
@@ -19169,10 +19191,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4740939353975125514, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
+      propertyPath: managedReferences[3778812675933077581].BumpAmount.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740939353975125514, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
+      propertyPath: managedReferences[3778812675933077581].BumpAmount.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740939353975125514, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
+      propertyPath: managedReferences[3778812675933077581].BumpAmount.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740939353975125514, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
+      propertyPath: managedReferences[3778812675933077581].TargetSpring
+      value: 
+      objectReference: {fileID: 425714971}
     - target: {fileID: 7350412238253776735, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
       propertyPath: speechText
       value: HELP ME I NEED CARROTSSS!!!!
       objectReference: {fileID: 0}
+    - target: {fileID: 7350412238253776735, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
+      propertyPath: defaultSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d59b61ae6f4ba0a48ab867e85cb82696, type: 3}
     - target: {fileID: 7350412238253776735, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
       propertyPath: cinemachineCamera
       value: 
@@ -19181,6 +19223,14 @@ PrefabInstance:
       propertyPath: eventUpdates.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7350412238253776735, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
+      propertyPath: eventUpdates.Array.data[0].newSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d59b61ae6f4ba0a48ab867e85cb82696, type: 3}
+    - target: {fileID: 7350412238253776735, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
+      propertyPath: eventUpdates.Array.data[1].newSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 53b99a83b782a134eb297b80015ab58c, type: 3}
     - target: {fileID: 7350412238253776735, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
       propertyPath: eventUpdates.Array.data[0].newSpeechText
       value: I NEED MORRREEEEEEE!!!1!
@@ -19204,6 +19254,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeechBubble
       objectReference: {fileID: 0}
+    - target: {fileID: 7987315646184294368, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
+      propertyPath: managedReferences[885602852898078793].BumpAmount.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987315646184294368, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
+      propertyPath: managedReferences[885602852898078793].BumpAmount.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987315646184294368, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
+      propertyPath: managedReferences[885602852898078793].BumpAmount.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987315646184294368, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
+      propertyPath: managedReferences[885602852898078793].TargetSpring
+      value: 
+      objectReference: {fileID: 843681036}
     - target: {fileID: 8758255109804583219, guid: ee1e8eb4bc18f3c4ead4705cbbf12187, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.417
