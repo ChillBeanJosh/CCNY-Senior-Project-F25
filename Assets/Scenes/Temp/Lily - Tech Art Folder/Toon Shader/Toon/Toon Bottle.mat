@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Toon Chest 1
+  m_Name: Toon Bottle
   m_Shader: {fileID: -6465566751694194690, guid: f4457cd2cf90aaf4cbf707e205821be3, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -61,7 +61,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DiffuseTex:
-        m_Texture: {fileID: 2800000, guid: 89b5d68cd56f805428dcace717bf52b1, type: 3}
+        m_Texture: {fileID: 2800000, guid: c0d8f6416ef295e40a1a031ab48920ef, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:

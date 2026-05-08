@@ -123,8 +123,11 @@ public class ProjectorTraversal : MonoBehaviour
 
 
             //Beam Visual:
-            Vector3 point = detected.beamRoot != null ? detected.beamRoot.position : detected.transform.position;
-            lightReflection.RefreshProjectorProjection(detected, point, registerHit: true, insideProjector: true);
+            if (detected != null)
+            {
+                Vector3 point = detected.beamRoot != null ? detected.beamRoot.position : detected.transform.position;
+                lightReflection.RefreshProjectorProjection(detected, point, registerHit: true, insideProjector: true);
+            }
         }
 
         // Exit Projector Mode:
