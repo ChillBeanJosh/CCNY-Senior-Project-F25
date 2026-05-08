@@ -41,6 +41,9 @@ public class CameraSwitcher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.Instance.Player == null || GameManager.Instance.LanternTravel == null)
+                return;
+
         bool aimPressed = Input.GetMouseButton(1) ||
         (GameManager.Instance.Player.projector != null && GameManager.Instance.Player.projector.isPlayerInside)
         || GameManager.Instance.LanternTravel.isInsideLantern;
@@ -56,6 +59,7 @@ public class CameraSwitcher : MonoBehaviour
     {
         isAiming = false;
         SnapFreeLookToAimForward();
+        aimCamController.SetAiming(false);
 
         aimCam.Priority = 10;
         freelookCam.Priority = 20;
@@ -91,7 +95,9 @@ public class CameraSwitcher : MonoBehaviour
     private void EnterAimMode()
     {
         isAiming = true;
-        SnapAimCameraToFreelookForward();
+        
+        aimCamController.InitYawPitchFromCurrentTargets();
+        aimCamController.SetAiming(true);
 
         aimCam.Priority = 20;
         freelookCam.Priority = 10;
@@ -111,7 +117,11 @@ public class CameraSwitcher : MonoBehaviour
         aimCam.LookAt = pitchTarget;
 
         aimController.SetTargets(yawTarget, pitchTarget, playerModel);
+        aimCamController = aimController;
+
         SnapFreeLookToAimForward();
+
+        aimController.InitYawPitchFromCurrentTargets();
     }
 
 }
