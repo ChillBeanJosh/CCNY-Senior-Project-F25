@@ -15,6 +15,8 @@ TagManager:
   - Shadow
   - Ladder End Point
   - Gem 1
+  - Gem 2
+  - Player Light
   layers:
   - Default
   - TransparentFX
@@ -43,7 +45,7 @@ TagManager:
   - 
   - Shadows
   - 
-  - 
+  - Shadow Cast
   - 
   - 
   - 
@@ -51,6 +53,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Shadow
+    uniqueID: 3865320537
     locked: 0
   m_RenderingLayers:
   - Default
