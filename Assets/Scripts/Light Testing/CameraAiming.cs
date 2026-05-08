@@ -17,13 +17,22 @@ public class CameraAiming : MonoBehaviour
     {
         if (mainCamera == null)
             mainCamera = Camera.main;
+        SyncToCamera();
+    }
 
-        //NOTE: [Euler Angles Are in the order of (X, Y, Z) => (Pitch, Yaw, Roll)]
-        Vector3 initialEuler = transform.eulerAngles;
+    void OnEnable()
+    {
+        if (mainCamera == null)
+            mainCamera = Camera.main;
+        SyncToCamera();
+    }
 
-        //Store Initial Rotation As Starting Point For Smooth Transition:
-        currentYaw = initialEuler.y;
-        currentPitch = initialEuler.x;
+    void SyncToCamera()
+    {
+        if (mainCamera == null) return;
+        Vector3 cameraEuler = mainCamera.transform.eulerAngles;
+        currentYaw = cameraEuler.y + rotationOffset.y;
+        currentPitch = cameraEuler.x + rotationOffset.x;
     }
 
     void LateUpdate()
