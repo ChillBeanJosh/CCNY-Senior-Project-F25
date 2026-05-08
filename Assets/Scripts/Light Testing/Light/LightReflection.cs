@@ -803,7 +803,7 @@ public class LightReflection : MonoBehaviour
                 if (marker != null) Destroy(marker);
             laserPointMarkers.Clear();
         }
-        
+
         if (obstructionPoints != null) obstructionPoints.Clear();
         if (imagePoints != null) imagePoints.Clear();
         if (laserPoints != null) laserPoints.Clear();
@@ -818,7 +818,6 @@ public class LightReflection : MonoBehaviour
 
         if (!IsCrystalBeingHit())
         {
-            Debug.Log("CRYSTAL NOT HIT");
             crystalHitTimer = 0f;
             // if (pressFPrompt != null && !crystalActivated)
             //     pressFPrompt.SetActive(false);
