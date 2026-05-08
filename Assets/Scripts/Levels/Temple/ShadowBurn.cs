@@ -38,6 +38,13 @@ public class ShadowBurn : MonoBehaviour
     [SerializeField] ShadowCheck shadowBoundary;
     [SerializeField] ShadowCheck[] multChecks, multBoundaries;
     [SerializeField] bool committalLevel;
+    [SerializeField] ShadowDetection shadowDetection;
+    [Space]
+    [Header("Testing New Mechanic")]
+    [SerializeField] ShadowPuzzleTrigger shadowTrigger;
+    [SerializeField] GameObject shadowPrefab;
+    GameObject shadow;
+
 
 
     void Awake()
@@ -57,9 +64,22 @@ public class ShadowBurn : MonoBehaviour
         if (doorOpened)
         {
             if (hasDoor && !moveDoor)
+            {
+                if (shadowPrefab != null && !shadowDetection.completed)
+                {
+                    GameObject playerShadow = GameManager.Instance.Player.gameObject.GetComponent<DrawShadows>().shadow;
+                    shadow = shadowPrefab;
+                    shadow.transform.localScale = playerShadow.transform.localScale;
+                    Instantiate(shadow, playerShadow.transform.position, playerShadow.transform.rotation);
+                    shadowDetection.completed = true;
+                }
+
                 StartCoroutine(OpenDoor(doorTarget.position));
+            }
             else
+            {
                 return;
+            }
         }
         else if (!doorOpened)
         {
@@ -89,8 +109,11 @@ public class ShadowBurn : MonoBehaviour
             }
             else
             {
-                if (committalLevel) GameObject.Find("Coffin").GetComponent<FourKeyPlatform>().NextThreshold();
-                doorOpened = true;
+                if (committalLevel)
+                {
+                    GameObject.Find("Coffin").GetComponent<FourKeyPlatform>().NextThreshold();
+                }
+                if (!doorOpened) doorOpened = true;
                 //Debug.Log("HOLY MOLY MOLY");
             }
         }
@@ -107,7 +130,7 @@ public class ShadowBurn : MonoBehaviour
     void CheckForShadow()
     {
         //If first ShadowCheck is in shadow and the second is not, the player has correctly positioned the shadow
-        if (shadowCheck.IsInShadow() && !shadowBoundary.IsInShadow())
+        if ((shadowCheck.IsInShadow() && !shadowBoundary.IsInShadow()) || (shadowDetection != null && shadowDetection.shadowIsInside))
         {
             if (currentBurnTime != 1f)
             {

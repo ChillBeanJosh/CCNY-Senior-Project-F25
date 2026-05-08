@@ -187,6 +187,8 @@ public class Burnable : MonoBehaviour
                 }
                 
                 completed = false;
+                isBurning = false;
+                hitsThisFrame = 0;
             }
             else
             {
