@@ -53,7 +53,7 @@ public class DrawShadows : MonoBehaviour
             // If ray hits wall that will project the shadow, store the hit point in a list
             if (Physics.Raycast(boxCorners[i].position, direction, out hit, rayDistance, layerMask))
             {
-                Vector3 offset = hit.point - direction * 0.001f;
+                Vector3 offset = hit.point - direction * 0.05f;
                 currentRayPoints.Add(offset);
             }
         }
