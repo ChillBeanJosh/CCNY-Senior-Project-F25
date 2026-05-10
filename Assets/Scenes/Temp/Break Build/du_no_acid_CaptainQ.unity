@@ -3167,6 +3167,10 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7970941470154264764, guid: 1ba25b6e0a6dee34a834bf9974523517, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 2097152
+      objectReference: {fileID: 0}
     - target: {fileID: 8457515670323191235, guid: 1ba25b6e0a6dee34a834bf9974523517, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -3606,7 +3610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.484
+      value: 1.491
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4620,7 +4624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 343dca2dc30474441908b85fbd8985e5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9
+      value: 1.37
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 343dca2dc30474441908b85fbd8985e5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9094,6 +9098,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7970941470154264764, guid: 1ba25b6e0a6dee34a834bf9974523517, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8457515670323191235, guid: 1ba25b6e0a6dee34a834bf9974523517, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -12257,6 +12265,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7970941470154264764, guid: 1ba25b6e0a6dee34a834bf9974523517, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 2097152
+      objectReference: {fileID: 0}
     - target: {fileID: 8457515670323191235, guid: 1ba25b6e0a6dee34a834bf9974523517, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -12585,6 +12597,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5713319144654989260, guid: 1ba25b6e0a6dee34a834bf9974523517, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970941470154264764, guid: 1ba25b6e0a6dee34a834bf9974523517, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8457515670323191235, guid: 1ba25b6e0a6dee34a834bf9974523517, type: 3}
@@ -13990,7 +14006,7 @@ GameObject:
   - component: {fileID: 742721737}
   - component: {fileID: 742721736}
   - component: {fileID: 742721735}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: glass wall (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41709,6 +41725,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5713319144654989260, guid: 1ba25b6e0a6dee34a834bf9974523517, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970941470154264764, guid: 1ba25b6e0a6dee34a834bf9974523517, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8457515670323191235, guid: 1ba25b6e0a6dee34a834bf9974523517, type: 3}
