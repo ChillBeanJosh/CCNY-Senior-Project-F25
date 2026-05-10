@@ -211,7 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1951394}
   m_Layer: 12
-  m_Name: LanternCore
+  m_Name: LanternCore 3
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1767,7 +1767,7 @@ GameObject:
   m_Component:
   - component: {fileID: 79929118}
   m_Layer: 12
-  m_Name: LanternCore
+  m_Name: LanternCore 1
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3694,8 +3694,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b6402585d867541abddd097af72998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lanternCore: {fileID: 0}
-  aimCollider: {fileID: 591553111}
+  lanternCore: {fileID: 79929118}
+  aimCollider: {fileID: 1166724040}
   nextLantern: {fileID: 0}
   previousLantern: {fileID: 0}
   activationTime: 2
@@ -9363,7 +9363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b6402585d867541abddd097af72998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lanternCore: {fileID: 0}
+  lanternCore: {fileID: 845638537}
   aimCollider: {fileID: 1192654130}
   nextLantern: {fileID: 0}
   previousLantern: {fileID: 0}
@@ -13922,7 +13922,7 @@ GameObject:
   m_Component:
   - component: {fileID: 739266173}
   m_Layer: 12
-  m_Name: LanternCore
+  m_Name: LanternCore 5
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -15729,7 +15729,7 @@ GameObject:
   m_Component:
   - component: {fileID: 845638537}
   m_Layer: 12
-  m_Name: LanternCore
+  m_Name: LanternCore 2
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -20665,6 +20665,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
+--- !u!65 &1166724040 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 1896651691475205334, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
+  m_PrefabInstance: {fileID: 1166724039}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1176599447
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21879,7 +21884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b6402585d867541abddd097af72998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lanternCore: {fileID: 0}
+  lanternCore: {fileID: 1951394}
   aimCollider: {fileID: 1837181928}
   nextLantern: {fileID: 0}
   previousLantern: {fileID: 0}
@@ -22320,7 +22325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b6402585d867541abddd097af72998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lanternCore: {fileID: 0}
+  lanternCore: {fileID: 1517676414}
   aimCollider: {fileID: 1112977500}
   nextLantern: {fileID: 0}
   previousLantern: {fileID: 0}
@@ -26502,7 +26507,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1517676414}
   m_Layer: 12
-  m_Name: LanternCore
+  m_Name: LanternCore 4
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -29461,6 +29466,59 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &1652576408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1652576410}
+  - component: {fileID: 1652576409}
+  m_Layer: 0
+  m_Name: Aim Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!135 &1652576409
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652576408}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1652576410
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652576408}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.34, y: 3.0840414, z: 3.7103324}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1656633136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42703,3 +42761,4 @@ SceneRoots:
   - {fileID: 1166724039}
   - {fileID: 501532105}
   - {fileID: 1380008616}
+  - {fileID: 1652576410}
