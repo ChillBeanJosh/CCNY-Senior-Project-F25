@@ -11946,7 +11946,7 @@ Transform:
   m_GameObject: {fileID: 598242397}
   serializedVersion: 2
   m_LocalRotation: {x: 0.000000059604645, y: 0.7071068, z: 0.000000059604645, w: 0.7071068}
-  m_LocalPosition: {x: -0.015678287, y: -0.017160596, z: 0.05319058}
+  m_LocalPosition: {x: -0.01567829, y: -0.0171606, z: 0.05319058}
   m_LocalScale: {x: 0.0008700641, y: 0.037108075, z: 0.00091846834}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21564,7 +21564,7 @@ PrefabInstance:
     - target: {fileID: 3353387870159638831, guid: 7c16f912ba7ddc8498156900c931c9fe, type: 3}
       propertyPath: onBurnComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2079998183}
+      objectReference: {fileID: 9100000, guid: 698d9904518584b248d8cd29fda05d3b, type: 2}
     - target: {fileID: 3353387870159638831, guid: 7c16f912ba7ddc8498156900c931c9fe, type: 3}
       propertyPath: onBurnComplete.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -21579,7 +21579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3353387870159638831, guid: 7c16f912ba7ddc8498156900c931c9fe, type: 3}
       propertyPath: onBurnComplete.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetTrigger
+      value: set_name
       objectReference: {fileID: 0}
     - target: {fileID: 3353387870159638831, guid: 7c16f912ba7ddc8498156900c931c9fe, type: 3}
       propertyPath: onBurnComplete.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -21587,7 +21587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3353387870159638831, guid: 7c16f912ba7ddc8498156900c931c9fe, type: 3}
       propertyPath: onBurnComplete.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.Animator, UnityEngine
+      value: UnityEditor.Animations.AnimatorController, UnityEditor.CoreModule
       objectReference: {fileID: 0}
     - target: {fileID: 3353387870159638831, guid: 7c16f912ba7ddc8498156900c931c9fe, type: 3}
       propertyPath: onBurnComplete.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -21595,7 +21595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3353387870159638831, guid: 7c16f912ba7ddc8498156900c931c9fe, type: 3}
       propertyPath: onBurnComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: SlidingPot
+      value: PotSliding
       objectReference: {fileID: 0}
     - target: {fileID: 3353387870159638831, guid: 7c16f912ba7ddc8498156900c931c9fe, type: 3}
       propertyPath: onBurnComplete.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
