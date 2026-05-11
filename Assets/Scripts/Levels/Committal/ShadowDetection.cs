@@ -27,14 +27,13 @@ public class ShadowDetection : MonoBehaviour
     public bool completed;
     bool turnOffPlayerCheck;
     //Vector3 testCorner = Vector3.zero;
-    [SerializeField] Outline shadowObjOutline;
     [SerializeField] Outline finalCheckOutline;
     Outline outline;
 
     void Start()
     {
         detectionCol = GetComponent<Collider>();
-        outline = requiresTwoPlayers ? finalCheckOutline : shadowObjOutline;
+        outline = requiresTwoPlayers ? finalCheckOutline : sizeCheckCol.transform.gameObject.GetComponent<Outline>();
         outline.OutlineWidth = 10f;
         outline.OutlineColor = Color.white;
         outline.enabled = false;
@@ -85,8 +84,6 @@ public class ShadowDetection : MonoBehaviour
         {
             shadowIsInside = ContainsCollider(detectionCol, shadowCol) &&
                          NoCornersDetected(sizeCheckCol, shadowCol);
-
-            Debug.Log(ContainsCollider(detectionCol, shadowCol) + "  |  " + NoCornersDetected(sizeCheckCol, shadowCol));
 
             OutlineHandler();
         }

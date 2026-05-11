@@ -49,7 +49,7 @@ public class TempBurn : MonoBehaviour
             spawnedPlayer.SetActive(true);
             spawnedPlayer.transform.position = hit.point;
             pressFPrompt.SetActive(false);
-            characterSwitcher.EnableSplitMode();
+            characterSwitcher.UnlockSplitMode();
         }
     }
 

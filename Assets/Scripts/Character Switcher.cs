@@ -54,9 +54,11 @@ public class CharacterSwitcher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         if (!isSplitModeUnlocked && isPlayerInside && Input.GetKeyDown(KeyCode.C))
         {
-            EnableSplitMode();
+            UnlockSplitMode();
         }
         else if (isSplitModeUnlocked && Input.GetKeyDown(KeyCode.C) && (GameManager.Instance.LanternTravel == null || !GameManager.Instance.LanternTravel.isInsideLantern))
         {
@@ -64,16 +66,11 @@ public class CharacterSwitcher : MonoBehaviour
         }
     }
 
-    public void EnableSplitMode()
+    public void UnlockSplitMode()
     {
         isSplitModeUnlocked = true;
+        //uiElement.SetActive(false);
         povUIPanel.SetActive(true); // shows small pov window
-
-        if (!player1Controller.gameObject.activeInHierarchy)
-            player1Controller.gameObject.SetActive(true);
-
-        if (!player2Controller.gameObject.activeInHierarchy)
-            player2Controller.gameObject.SetActive(true);
 
         foreach (PromptTrigger pt in promptTriggers)
         {
@@ -81,26 +78,7 @@ public class CharacterSwitcher : MonoBehaviour
         }
 
         SwitchPlayer();
-    }
 
-    public void DisableSplitMode()
-    {
-        isSplitModeUnlocked = false;
-        povUIPanel.SetActive(false);
-
-
-        // figures out which player is not currently controlled, and disables their game obj
-        if (player1Active)
-        {
-            // player 1 is active, disable player 2
-            player2Controller.enabled = false;
-            player2Controller.gameObject.SetActive(false);
-        }
-        else
-        {
-            player1Controller.enabled = false;
-            player1Controller.gameObject.SetActive(false);
-        }
     }
 
     public bool IsAnyLensActive()

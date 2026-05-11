@@ -36,12 +36,11 @@ public class ShadowRegen : MonoBehaviour
             sprites = drawShadows.shadow.GetComponent<CycleSprites>();
         }
 
-        bool regen = false;
+        bool regen = true;
 
-        for (int i = 2; i < allPillars.Count; i++)
+        for (int i = 0; i < allPillars.Count; i++)
         {
-            // Check last three burnables
-            if (!allPillars[i].activeInHierarchy) regen = true;
+            if (allPillars[i].activeInHierarchy) regen = false;
         }
 
         UpdateShadowSprite();
