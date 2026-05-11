@@ -860,7 +860,7 @@ PrefabInstance:
       objectReference: {fileID: 563466620}
     - target: {fileID: 4020236304273871723, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: gemLayer.m_Bits
-      value: 0
+      value: 8388608
       objectReference: {fileID: 0}
     - target: {fileID: 4020236304273871723, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: characterSwitcher
@@ -868,7 +868,7 @@ PrefabInstance:
       objectReference: {fileID: 2019812565}
     - target: {fileID: 4020236304273871723, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: mirrorBlock.m_Bits
-      value: 0
+      value: 134217728
       objectReference: {fileID: 0}
     - target: {fileID: 4020236304273871723, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: crystalLayer.m_Bits
@@ -1516,35 +1516,12 @@ MonoBehaviour:
   nextLantern: {fileID: 0}
   previousLantern: {fileID: 0}
   activationTime: 2
-  detectionRadius: 5
   activationMode: 0
   activeLantern: 1
   currentActivation: 0
   hitsThisFrame: 0
-  defaultMaterial: {fileID: 0}
-  unlitColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  litColor: {r: 1, g: 1, b: 1, a: 1}
-  closeColorMaterial: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  insideColorMaterial: {r: 0, g: 1, b: 1, a: 1}
-  colorPropertyName: _BaseColor
-  unlitGlow: 0
-  litGlow: 1
-  closeGlow: 2
-  insideGlow: 4
-  emissionPropertyName: _EmissionColor
-  outline: {fileID: 0}
-  insideOutlineColor: {r: 0, g: 1, b: 1, a: 1}
-  closeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  litOutlineColor: {r: 1, g: 1, b: 1, a: 1}
-  offColor: {r: 1, g: 1, b: 1, a: 1}
-  insideOutlineWidth: 8
-  closeWidth: 5
-  litOutlineWidth: 2
-  offWidth: 0
-  lerpTime: 0.5
-  inputCanvas: {fileID: 0}
-  buttonPromptText: {fileID: 0}
-  lightModel: {fileID: 0}
+  unlitMaterial: {fileID: 2100000, guid: 36d72ad9e04c5fc4a9e6485bedbcc137, type: 2}
+  litMaterial: {fileID: 2100000, guid: 569ddaa21eeb3a64e96f1fd322af11cb, type: 2}
   lanternLight: {fileID: 151063815}
 --- !u!114 &151063814
 MonoBehaviour:
@@ -2352,8 +2329,6 @@ MonoBehaviour:
   multChecks: []
   multBoundaries: []
   committalLevel: 1
-  shadowDetection: {fileID: 0}
-  shadowTrigger: {fileID: 0}
 --- !u!43 &190661603
 Mesh:
   m_ObjectHideFlags: 0
@@ -5253,35 +5228,12 @@ MonoBehaviour:
   nextLantern: {fileID: 0}
   previousLantern: {fileID: 0}
   activationTime: 2
-  detectionRadius: 5
   activationMode: 0
   activeLantern: 1
   currentActivation: 0
   hitsThisFrame: 0
-  defaultMaterial: {fileID: 0}
-  unlitColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  litColor: {r: 1, g: 1, b: 1, a: 1}
-  closeColorMaterial: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  insideColorMaterial: {r: 0, g: 1, b: 1, a: 1}
-  colorPropertyName: _BaseColor
-  unlitGlow: 0
-  litGlow: 1
-  closeGlow: 2
-  insideGlow: 4
-  emissionPropertyName: _EmissionColor
-  outline: {fileID: 0}
-  insideOutlineColor: {r: 0, g: 1, b: 1, a: 1}
-  closeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  litOutlineColor: {r: 1, g: 1, b: 1, a: 1}
-  offColor: {r: 1, g: 1, b: 1, a: 1}
-  insideOutlineWidth: 8
-  closeWidth: 5
-  litOutlineWidth: 2
-  offWidth: 0
-  lerpTime: 0.5
-  inputCanvas: {fileID: 0}
-  buttonPromptText: {fileID: 0}
-  lightModel: {fileID: 0}
+  unlitMaterial: {fileID: 2100000, guid: 36d72ad9e04c5fc4a9e6485bedbcc137, type: 2}
+  litMaterial: {fileID: 2100000, guid: 569ddaa21eeb3a64e96f1fd322af11cb, type: 2}
   lanternLight: {fileID: 542336525}
 --- !u!114 &542336524
 MonoBehaviour:
@@ -5567,7 +5519,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 300165265513381704, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.09
+      value: -9.13
       objectReference: {fileID: 0}
     - target: {fileID: 300165265513381704, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5575,7 +5527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 300165265513381704, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.62
+      value: -8.219999
       objectReference: {fileID: 0}
     - target: {fileID: 300165265513381704, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6282,8 +6234,6 @@ MonoBehaviour:
   - {fileID: 117671238}
   - {fileID: 1914093743}
   committalLevel: 1
-  shadowDetection: {fileID: 0}
-  shadowTrigger: {fileID: 0}
 --- !u!114 &577928254 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8004364911097166140, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
@@ -6778,7 +6728,6 @@ GameObject:
   - component: {fileID: 724526976}
   - component: {fileID: 724526975}
   - component: {fileID: 724526974}
-  - component: {fileID: 724526978}
   m_Layer: 16
   m_Name: Crystal
   m_TagString: Untagged
@@ -6879,20 +6828,6 @@ Transform:
   - {fileID: 1301213564}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &724526978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 724526973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7a75f3fff3d0a4499e95d1ada5a2e52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterSwitcher: {fileID: 1784643899}
-  activationTime: 3
 --- !u!1 &729811461
 GameObject:
   m_ObjectHideFlags: 0
@@ -7459,35 +7394,12 @@ MonoBehaviour:
   nextLantern: {fileID: 0}
   previousLantern: {fileID: 0}
   activationTime: 2
-  detectionRadius: 5
   activationMode: 0
   activeLantern: 0
   currentActivation: 0
   hitsThisFrame: 0
-  defaultMaterial: {fileID: 0}
-  unlitColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  litColor: {r: 1, g: 1, b: 1, a: 1}
-  closeColorMaterial: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  insideColorMaterial: {r: 0, g: 1, b: 1, a: 1}
-  colorPropertyName: _BaseColor
-  unlitGlow: 0
-  litGlow: 1
-  closeGlow: 2
-  insideGlow: 4
-  emissionPropertyName: _EmissionColor
-  outline: {fileID: 0}
-  insideOutlineColor: {r: 0, g: 1, b: 1, a: 1}
-  closeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  litOutlineColor: {r: 1, g: 1, b: 1, a: 1}
-  offColor: {r: 1, g: 1, b: 1, a: 1}
-  insideOutlineWidth: 8
-  closeWidth: 5
-  litOutlineWidth: 2
-  offWidth: 0
-  lerpTime: 0.5
-  inputCanvas: {fileID: 0}
-  buttonPromptText: {fileID: 0}
-  lightModel: {fileID: 0}
+  unlitMaterial: {fileID: 2100000, guid: 36d72ad9e04c5fc4a9e6485bedbcc137, type: 2}
+  litMaterial: {fileID: 2100000, guid: 569ddaa21eeb3a64e96f1fd322af11cb, type: 2}
   lanternLight: {fileID: 748947670}
 --- !u!114 &748947669
 MonoBehaviour:
@@ -8361,35 +8273,12 @@ MonoBehaviour:
   nextLantern: {fileID: 0}
   previousLantern: {fileID: 0}
   activationTime: 2
-  detectionRadius: 5
   activationMode: 0
   activeLantern: 1
   currentActivation: 0
   hitsThisFrame: 0
-  defaultMaterial: {fileID: 0}
-  unlitColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  litColor: {r: 1, g: 1, b: 1, a: 1}
-  closeColorMaterial: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  insideColorMaterial: {r: 0, g: 1, b: 1, a: 1}
-  colorPropertyName: _BaseColor
-  unlitGlow: 0
-  litGlow: 1
-  closeGlow: 2
-  insideGlow: 4
-  emissionPropertyName: _EmissionColor
-  outline: {fileID: 0}
-  insideOutlineColor: {r: 0, g: 1, b: 1, a: 1}
-  closeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  litOutlineColor: {r: 1, g: 1, b: 1, a: 1}
-  offColor: {r: 1, g: 1, b: 1, a: 1}
-  insideOutlineWidth: 8
-  closeWidth: 5
-  litOutlineWidth: 2
-  offWidth: 0
-  lerpTime: 0.5
-  inputCanvas: {fileID: 0}
-  buttonPromptText: {fileID: 0}
-  lightModel: {fileID: 0}
+  unlitMaterial: {fileID: 2100000, guid: 36d72ad9e04c5fc4a9e6485bedbcc137, type: 2}
+  litMaterial: {fileID: 2100000, guid: 569ddaa21eeb3a64e96f1fd322af11cb, type: 2}
   lanternLight: {fileID: 824215898}
 --- !u!114 &824215897
 MonoBehaviour:
@@ -9257,8 +9146,6 @@ MonoBehaviour:
   multChecks: []
   multBoundaries: []
   committalLevel: 1
-  shadowDetection: {fileID: 0}
-  shadowTrigger: {fileID: 0}
 --- !u!65 &971169339
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9617,7 +9504,6 @@ GameObject:
   - component: {fileID: 983242628}
   - component: {fileID: 983242627}
   - component: {fileID: 983242626}
-  - component: {fileID: 983242629}
   m_Layer: 16
   m_Name: Crystal (1)
   m_TagString: Untagged
@@ -9634,7 +9520,7 @@ Transform:
   m_GameObject: {fileID: 983242624}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.35, y: 1.8, z: 14.62}
+  m_LocalPosition: {x: -1.35, y: 1.8, z: -14.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9718,20 +9604,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983242624}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &983242629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 983242624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7a75f3fff3d0a4499e95d1ada5a2e52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterSwitcher: {fileID: 2019812565}
-  activationTime: 3
 --- !u!4 &1012402872 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4117951679205858909, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
@@ -23697,8 +23569,6 @@ MonoBehaviour:
   multChecks: []
   multBoundaries: []
   committalLevel: 1
-  shadowDetection: {fileID: 0}
-  shadowTrigger: {fileID: 0}
 --- !u!1 &7052851497509423778 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7665252996418111961, guid: 5a296b88b3002144eadcf7d6fed73a58, type: 3}

@@ -9,16 +9,12 @@ public class LensPrompt : MonoBehaviour
     void Start()
     {
         outline = GetComponentInChildren<Outline>();
-        if (outline != null)
-            outline.enabled = false;
-        if (text != null)
-            text.SetActive(false);
+        outline.enabled = false;
+        text.SetActive(false);
     }
 
     void Update()
     {
-        if (text == null || outline == null) return;
-
         if (projector != null)
         {
             if (!text.activeInHierarchy && !projector.isInsideProjector)
@@ -38,8 +34,6 @@ public class LensPrompt : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            if (text == null || outline == null) return;
-
             text.SetActive(true);
             outline.enabled = true;
             projector = col.gameObject.GetComponent<ProjectorTraversal>();
@@ -50,8 +44,6 @@ public class LensPrompt : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            if (text == null || outline == null) return;
-
             text.SetActive(false);
             outline.enabled = false;
             projector = null;
