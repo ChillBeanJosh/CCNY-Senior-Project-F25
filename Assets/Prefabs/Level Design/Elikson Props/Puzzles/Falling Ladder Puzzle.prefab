@@ -6586,7 +6586,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+  - {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25817,7 +25817,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+  - {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25988,6 +25988,7 @@ MonoBehaviour:
   isMultipleLensesEffected: 0
   burnTime: 3
   destroyOnComplete: 0
+  activeAfterBurn: 0
   onBurnComplete:
     m_PersistentCalls:
       m_Calls: []
@@ -30077,6 +30078,7 @@ MonoBehaviour:
   isMultipleLensesEffected: 0
   burnTime: 3
   destroyOnComplete: 0
+  activeAfterBurn: 0
   onBurnComplete:
     m_PersistentCalls:
       m_Calls: []
@@ -36420,7 +36422,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Step Plank
@@ -36537,7 +36539,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Step Plank
@@ -36654,7 +36656,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Step Plank
@@ -36771,7 +36773,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Step Plank
@@ -36888,7 +36890,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Step Plank
@@ -37005,7 +37007,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Step Plank
@@ -37122,7 +37124,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Step Plank
@@ -37239,7 +37241,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Step Plank
@@ -37356,7 +37358,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Step Plank
@@ -37473,7 +37475,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Step Plank

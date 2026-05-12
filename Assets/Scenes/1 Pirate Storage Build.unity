@@ -1380,7 +1380,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ea917784e1074204cb7249c3d27e4f85, type: 2}
+      objectReference: {fileID: 2100000, guid: 119bd117a612c4146a3bd09b7d629943, type: 2}
     - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: m_Name
       value: Plank Broken (11)
@@ -1945,7 +1945,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Upper Wooden Floor
@@ -2060,7 +2060,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 8116066143b63da45a8931979bd7bd89, type: 2}
+      objectReference: {fileID: 2100000, guid: 183adde49b2c783429f0bd2bd4bf916e, type: 2}
     - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_Name
       value: Lantern Round (9)
@@ -2223,7 +2223,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ea917784e1074204cb7249c3d27e4f85, type: 2}
+      objectReference: {fileID: 2100000, guid: 119bd117a612c4146a3bd09b7d629943, type: 2}
     - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: m_Name
       value: Plank Broken (22)
@@ -7761,7 +7761,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ea917784e1074204cb7249c3d27e4f85, type: 2}
+      objectReference: {fileID: 2100000, guid: 119bd117a612c4146a3bd09b7d629943, type: 2}
     - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: m_Name
       value: Plank Broken (8)
@@ -7899,7 +7899,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (12)
@@ -8603,7 +8603,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 8116066143b63da45a8931979bd7bd89, type: 2}
+      objectReference: {fileID: 2100000, guid: 183adde49b2c783429f0bd2bd4bf916e, type: 2}
     - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_Name
       value: Lantern Round (7)
@@ -8683,7 +8683,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2bb8148f431d0274c8b3552a4f3a6e25, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f1c0b296d3ed8fb4aad353ea0fa3dc0b, type: 2}
+      objectReference: {fileID: 2100000, guid: 2dbd8e0dd1d6eb34181637340d215654, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bb8148f431d0274c8b3552a4f3a6e25, type: 3}
       propertyPath: m_Name
       value: Barrel (2)
@@ -8907,7 +8907,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (44)
@@ -8991,7 +8991,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ea917784e1074204cb7249c3d27e4f85, type: 2}
+      objectReference: {fileID: 2100000, guid: 119bd117a612c4146a3bd09b7d629943, type: 2}
     - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: m_Name
       value: Plank Broken (4)
@@ -9098,7 +9098,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: WoodenFloor
@@ -9425,7 +9425,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (40)
@@ -10056,7 +10056,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ea917784e1074204cb7249c3d27e4f85, type: 2}
+      objectReference: {fileID: 2100000, guid: 119bd117a612c4146a3bd09b7d629943, type: 2}
     - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: m_Name
       value: Plank Broken (16)
@@ -10364,7 +10364,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 8116066143b63da45a8931979bd7bd89, type: 2}
+      objectReference: {fileID: 2100000, guid: 183adde49b2c783429f0bd2bd4bf916e, type: 2}
     - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_Name
       value: Lantern Round (11)
@@ -15280,7 +15280,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 8116066143b63da45a8931979bd7bd89, type: 2}
+      objectReference: {fileID: 2100000, guid: 183adde49b2c783429f0bd2bd4bf916e, type: 2}
     - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_Name
       value: Lantern Round (10)
@@ -15404,7 +15404,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (19)
@@ -15748,7 +15748,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (26)
@@ -17574,7 +17574,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: eddd522af5945964994a5b6453694784, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 6c02bba190566f3489a74ce9876ec824, type: 2}
+      objectReference: {fileID: 2100000, guid: 36615caa320afc3478be257a62f3e857, type: 2}
     - target: {fileID: 919132149155446097, guid: eddd522af5945964994a5b6453694784, type: 3}
       propertyPath: m_Name
       value: Chest (3)
@@ -22055,7 +22055,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2bb8148f431d0274c8b3552a4f3a6e25, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f1c0b296d3ed8fb4aad353ea0fa3dc0b, type: 2}
+      objectReference: {fileID: 2100000, guid: 2dbd8e0dd1d6eb34181637340d215654, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bb8148f431d0274c8b3552a4f3a6e25, type: 3}
       propertyPath: m_Name
       value: Barrel
@@ -26868,7 +26868,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (6)
@@ -27164,7 +27164,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ea917784e1074204cb7249c3d27e4f85, type: 2}
+      objectReference: {fileID: 2100000, guid: 119bd117a612c4146a3bd09b7d629943, type: 2}
     - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: m_Name
       value: Plank Broken (20)
@@ -27271,7 +27271,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (35)
@@ -27351,7 +27351,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (18)
@@ -28424,7 +28424,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ea917784e1074204cb7249c3d27e4f85, type: 2}
+      objectReference: {fileID: 2100000, guid: 119bd117a612c4146a3bd09b7d629943, type: 2}
     - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: m_Name
       value: Plank Broken (14)
@@ -32212,7 +32212,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (23)
@@ -32292,7 +32292,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (14)
@@ -33341,7 +33341,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: WoodenFloor
@@ -33646,7 +33646,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ea917784e1074204cb7249c3d27e4f85, type: 2}
+      objectReference: {fileID: 2100000, guid: 119bd117a612c4146a3bd09b7d629943, type: 2}
     - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: m_Name
       value: Plank Broken (7)
@@ -34266,7 +34266,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 8116066143b63da45a8931979bd7bd89, type: 2}
+      objectReference: {fileID: 2100000, guid: 183adde49b2c783429f0bd2bd4bf916e, type: 2}
     - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_Name
       value: Lantern Round (2)
@@ -34346,7 +34346,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ea917784e1074204cb7249c3d27e4f85, type: 2}
+      objectReference: {fileID: 2100000, guid: 119bd117a612c4146a3bd09b7d629943, type: 2}
     - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: m_Name
       value: Plank Broken (19)
@@ -34541,7 +34541,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2bb8148f431d0274c8b3552a4f3a6e25, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f1c0b296d3ed8fb4aad353ea0fa3dc0b, type: 2}
+      objectReference: {fileID: 2100000, guid: 2dbd8e0dd1d6eb34181637340d215654, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bb8148f431d0274c8b3552a4f3a6e25, type: 3}
       propertyPath: m_Name
       value: Barrel (5)
@@ -34653,7 +34653,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (36)
@@ -34874,7 +34874,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ea917784e1074204cb7249c3d27e4f85, type: 2}
+      objectReference: {fileID: 2100000, guid: 119bd117a612c4146a3bd09b7d629943, type: 2}
     - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: m_Name
       value: Plank Broken (13)
@@ -37143,7 +37143,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (43)
@@ -44018,7 +44018,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 8116066143b63da45a8931979bd7bd89, type: 2}
+      objectReference: {fileID: 2100000, guid: 183adde49b2c783429f0bd2bd4bf916e, type: 2}
     - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_Name
       value: Lantern Round (5)
@@ -44385,7 +44385,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (41)
@@ -44778,7 +44778,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 8116066143b63da45a8931979bd7bd89, type: 2}
+      objectReference: {fileID: 2100000, guid: 183adde49b2c783429f0bd2bd4bf916e, type: 2}
     - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_Name
       value: Lantern Round (3)
@@ -45330,7 +45330,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (17)
@@ -45410,7 +45410,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: WoodenFloor
@@ -45521,7 +45521,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (24)
@@ -46253,7 +46253,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (8)
@@ -46829,7 +46829,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Upper Wooden Floor
@@ -46971,7 +46971,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ea917784e1074204cb7249c3d27e4f85, type: 2}
+      objectReference: {fileID: 2100000, guid: 119bd117a612c4146a3bd09b7d629943, type: 2}
     - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: m_Name
       value: Plank Broken (9)
@@ -47557,7 +47557,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ea917784e1074204cb7249c3d27e4f85, type: 2}
+      objectReference: {fileID: 2100000, guid: 119bd117a612c4146a3bd09b7d629943, type: 2}
     - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: m_Name
       value: Plank Broken (21)
@@ -47633,7 +47633,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ea917784e1074204cb7249c3d27e4f85, type: 2}
+      objectReference: {fileID: 2100000, guid: 119bd117a612c4146a3bd09b7d629943, type: 2}
     - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: m_Name
       value: Plank Broken (1)
@@ -53341,7 +53341,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 8116066143b63da45a8931979bd7bd89, type: 2}
+      objectReference: {fileID: 2100000, guid: 183adde49b2c783429f0bd2bd4bf916e, type: 2}
     - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_Name
       value: Lantern Round (8)
@@ -53425,7 +53425,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ea917784e1074204cb7249c3d27e4f85, type: 2}
+      objectReference: {fileID: 2100000, guid: 119bd117a612c4146a3bd09b7d629943, type: 2}
     - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: m_Name
       value: Plank Broken (18)
@@ -53737,7 +53737,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (10)
@@ -57593,7 +57593,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2bb8148f431d0274c8b3552a4f3a6e25, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f1c0b296d3ed8fb4aad353ea0fa3dc0b, type: 2}
+      objectReference: {fileID: 2100000, guid: 2dbd8e0dd1d6eb34181637340d215654, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bb8148f431d0274c8b3552a4f3a6e25, type: 3}
       propertyPath: m_Name
       value: Barrel (6)
@@ -63523,7 +63523,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ea917784e1074204cb7249c3d27e4f85, type: 2}
+      objectReference: {fileID: 2100000, guid: 119bd117a612c4146a3bd09b7d629943, type: 2}
     - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: m_Name
       value: Plank Broken (15)
@@ -63840,7 +63840,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: eddd522af5945964994a5b6453694784, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 6c02bba190566f3489a74ce9876ec824, type: 2}
+      objectReference: {fileID: 2100000, guid: 36615caa320afc3478be257a62f3e857, type: 2}
     - target: {fileID: 919132149155446097, guid: eddd522af5945964994a5b6453694784, type: 3}
       propertyPath: m_Name
       value: Chest (1)
@@ -63986,7 +63986,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (13)
@@ -66172,7 +66172,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: WoodenFloor
@@ -66287,7 +66287,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (2)
@@ -67592,7 +67592,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: WoodenFloor
@@ -67811,7 +67811,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (15)
@@ -67999,7 +67999,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: WoodenFloor
@@ -70401,7 +70401,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 8116066143b63da45a8931979bd7bd89, type: 2}
+      objectReference: {fileID: 2100000, guid: 183adde49b2c783429f0bd2bd4bf916e, type: 2}
     - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_Name
       value: Lantern Round (12)
@@ -72038,7 +72038,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ea917784e1074204cb7249c3d27e4f85, type: 2}
+      objectReference: {fileID: 2100000, guid: 119bd117a612c4146a3bd09b7d629943, type: 2}
     - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: m_Name
       value: Plank Broken (10)
@@ -72390,7 +72390,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (37)
@@ -74997,7 +74997,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (9)
@@ -75397,7 +75397,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (34)
@@ -75673,7 +75673,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (21)
@@ -75899,7 +75899,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (4)
@@ -76010,7 +76010,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2bb8148f431d0274c8b3552a4f3a6e25, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f1c0b296d3ed8fb4aad353ea0fa3dc0b, type: 2}
+      objectReference: {fileID: 2100000, guid: 2dbd8e0dd1d6eb34181637340d215654, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bb8148f431d0274c8b3552a4f3a6e25, type: 3}
       propertyPath: m_Name
       value: Barrel (1)
@@ -76532,7 +76532,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 8116066143b63da45a8931979bd7bd89, type: 2}
+      objectReference: {fileID: 2100000, guid: 183adde49b2c783429f0bd2bd4bf916e, type: 2}
     - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_Name
       value: Lantern Lit
@@ -76649,7 +76649,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2bb8148f431d0274c8b3552a4f3a6e25, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f1c0b296d3ed8fb4aad353ea0fa3dc0b, type: 2}
+      objectReference: {fileID: 2100000, guid: 2dbd8e0dd1d6eb34181637340d215654, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bb8148f431d0274c8b3552a4f3a6e25, type: 3}
       propertyPath: m_Name
       value: Barrel (4)
@@ -76761,7 +76761,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (16)
@@ -78001,7 +78001,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (38)
@@ -78251,7 +78251,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (39)
@@ -78527,7 +78527,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ea917784e1074204cb7249c3d27e4f85, type: 2}
+      objectReference: {fileID: 2100000, guid: 119bd117a612c4146a3bd09b7d629943, type: 2}
     - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: m_Name
       value: Plank Broken (12)
@@ -85182,7 +85182,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (22)
@@ -85901,7 +85901,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (11)
@@ -91110,7 +91110,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ea917784e1074204cb7249c3d27e4f85, type: 2}
+      objectReference: {fileID: 2100000, guid: 119bd117a612c4146a3bd09b7d629943, type: 2}
     - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: m_Name
       value: Plank Broken (5)
@@ -93569,7 +93569,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 8116066143b63da45a8931979bd7bd89, type: 2}
+      objectReference: {fileID: 2100000, guid: 183adde49b2c783429f0bd2bd4bf916e, type: 2}
     - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_Name
       value: Lantern Round (4)
@@ -94632,7 +94632,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2bb8148f431d0274c8b3552a4f3a6e25, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f1c0b296d3ed8fb4aad353ea0fa3dc0b, type: 2}
+      objectReference: {fileID: 2100000, guid: 2dbd8e0dd1d6eb34181637340d215654, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bb8148f431d0274c8b3552a4f3a6e25, type: 3}
       propertyPath: m_Name
       value: Barrel (3)
@@ -94976,7 +94976,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 8116066143b63da45a8931979bd7bd89, type: 2}
+      objectReference: {fileID: 2100000, guid: 183adde49b2c783429f0bd2bd4bf916e, type: 2}
     - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_Name
       value: Lantern Round (1)
@@ -95295,7 +95295,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (5)
@@ -95518,7 +95518,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 8116066143b63da45a8931979bd7bd89, type: 2}
+      objectReference: {fileID: 2100000, guid: 183adde49b2c783429f0bd2bd4bf916e, type: 2}
     - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_Name
       value: Lantern Lit
@@ -95799,7 +95799,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (7)
@@ -96667,7 +96667,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (20)
@@ -96747,7 +96747,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (06)
@@ -97707,7 +97707,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 8116066143b63da45a8931979bd7bd89, type: 2}
+      objectReference: {fileID: 2100000, guid: 183adde49b2c783429f0bd2bd4bf916e, type: 2}
     - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_Name
       value: Lantern Lit
@@ -99034,7 +99034,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 8116066143b63da45a8931979bd7bd89, type: 2}
+      objectReference: {fileID: 2100000, guid: 183adde49b2c783429f0bd2bd4bf916e, type: 2}
     - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_Name
       value: Lantern Round (6)
@@ -99737,7 +99737,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 8116066143b63da45a8931979bd7bd89, type: 2}
+      objectReference: {fileID: 2100000, guid: 183adde49b2c783429f0bd2bd4bf916e, type: 2}
     - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_Name
       value: Lantern Round
@@ -107252,7 +107252,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ea917784e1074204cb7249c3d27e4f85, type: 2}
+      objectReference: {fileID: 2100000, guid: 119bd117a612c4146a3bd09b7d629943, type: 2}
     - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: m_Name
       value: Plank Broken (6)
@@ -107689,7 +107689,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ea917784e1074204cb7249c3d27e4f85, type: 2}
+      objectReference: {fileID: 2100000, guid: 119bd117a612c4146a3bd09b7d629943, type: 2}
     - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: m_Name
       value: Plank Broken (17)
@@ -107828,7 +107828,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (3)
