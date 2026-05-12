@@ -10,10 +10,10 @@ public class FlipMirror : GemInteractions
     Coroutine currentCoroutine;
     [SerializeField] Material unlit, lit;
     //public LightReflection lightReflection;
-    [SerializeField] ShadowBurn shadowBurn;
+    [SerializeField] ShadowCaster shadowCaster;
 
     bool flip;
-    //[SerializeField] bool temp = true;
+    bool test = false;
 
     public override void Start()
     {
@@ -27,7 +27,7 @@ public class FlipMirror : GemInteractions
         //LightReflection light = GameManager.Instance.Player.gameObject.GetComponentInChildren<LightReflection>();
         isHitting = LightTool() != null;
 
-        if (isHitting && !flip)
+        if ((isHitting && !flip) || (test && !flip))
         {
             if (currentCoroutine != null) StopCoroutine(currentCoroutine);
             currentCoroutine = StartCoroutine(Flip(Quaternion.Euler(0f, 180f, 0f)));
@@ -57,11 +57,7 @@ public class FlipMirror : GemInteractions
         }
 
         mirror.transform.rotation = target;
-        shadowBurn.isChecking = flip;
         currentCoroutine = null;
 
     }
-
-
-
 }

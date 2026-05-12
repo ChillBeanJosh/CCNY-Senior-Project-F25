@@ -746,7 +746,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 5c67a919498f11d49835043c0e594bf0, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5e597eb7b203ad147bb9f7e7ba002323, type: 2}
+      objectReference: {fileID: 2100000, guid: 21b694fb40408144c8db91ef14de8a56, type: 2}
     - target: {fileID: 919132149155446097, guid: 5c67a919498f11d49835043c0e594bf0, type: 3}
       propertyPath: m_Name
       value: Sand Bag 2 (8)
@@ -908,7 +908,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (19)
@@ -1347,7 +1347,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c5db3e3757c551d49bd36eb15316c6a8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0ccfd8cb11471254a94cca6fc6d43a53, type: 2}
+      objectReference: {fileID: 2100000, guid: dafd5541cd6911f47979d5d5cb5b0b6e, type: 2}
     - target: {fileID: 919132149155446097, guid: c5db3e3757c551d49bd36eb15316c6a8, type: 3}
       propertyPath: m_Name
       value: Crate Handled (3)
@@ -1689,7 +1689,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 5c67a919498f11d49835043c0e594bf0, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5e597eb7b203ad147bb9f7e7ba002323, type: 2}
+      objectReference: {fileID: 2100000, guid: 21b694fb40408144c8db91ef14de8a56, type: 2}
     - target: {fileID: 919132149155446097, guid: 5c67a919498f11d49835043c0e594bf0, type: 3}
       propertyPath: m_Name
       value: Sand Bag 2 (5)
@@ -1876,7 +1876,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 1ad2736ea6a5dac4abcbd1d2867cd00b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: a71f88694095c984ab71982413c3f726, type: 2}
+      objectReference: {fileID: 2100000, guid: 1cc4dd2ee6498544f989a8f26f950e4c, type: 2}
     - target: {fileID: 919132149155446097, guid: 1ad2736ea6a5dac4abcbd1d2867cd00b, type: 3}
       propertyPath: m_Name
       value: Sand Bag 1 (2)
@@ -1983,7 +1983,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: d09acb5e97b71ee4390fdbb619b1be5d, type: 2}
+      objectReference: {fileID: 2100000, guid: 10c4a83e48712844f86c429373b1c4d0, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: m_Name
       value: Crate Hollow (5)
@@ -2063,7 +2063,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 34db5d6b044035f4685c5ae0a91c1fd9, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 6dae42d097de2a94a9f01907d5705a2c, type: 2}
+      objectReference: {fileID: 2100000, guid: 40cd3dba4c771ff438626f4d88c12932, type: 2}
     - target: {fileID: 919132149155446097, guid: 34db5d6b044035f4685c5ae0a91c1fd9, type: 3}
       propertyPath: m_Name
       value: Box Cardboard
@@ -3534,7 +3534,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 8116066143b63da45a8931979bd7bd89, type: 2}
+      objectReference: {fileID: 2100000, guid: 183adde49b2c783429f0bd2bd4bf916e, type: 2}
     - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_Name
       value: Lantern Round (5)
@@ -3614,7 +3614,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: d09acb5e97b71ee4390fdbb619b1be5d, type: 2}
+      objectReference: {fileID: 2100000, guid: 10c4a83e48712844f86c429373b1c4d0, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: m_Name
       value: Crate Hollow (12)
@@ -4335,7 +4335,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: d09acb5e97b71ee4390fdbb619b1be5d, type: 2}
+      objectReference: {fileID: 2100000, guid: 10c4a83e48712844f86c429373b1c4d0, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: m_Name
       value: Crate Hollow (11)
@@ -5236,7 +5236,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: d09acb5e97b71ee4390fdbb619b1be5d, type: 2}
+      objectReference: {fileID: 2100000, guid: 10c4a83e48712844f86c429373b1c4d0, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: m_Name
       value: Crate Hollow (7)
@@ -5481,7 +5481,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 1ad2736ea6a5dac4abcbd1d2867cd00b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: a71f88694095c984ab71982413c3f726, type: 2}
+      objectReference: {fileID: 2100000, guid: 1cc4dd2ee6498544f989a8f26f950e4c, type: 2}
     - target: {fileID: 919132149155446097, guid: 1ad2736ea6a5dac4abcbd1d2867cd00b, type: 3}
       propertyPath: m_Name
       value: Sand Bag 1
@@ -5584,7 +5584,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 61ea8234875b9694cacb7d3b1cb090c4, type: 2}
+      objectReference: {fileID: 2100000, guid: be5d4f64591547445807162503480dbc, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Name
       value: Plank (20)
@@ -5807,7 +5807,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 5c67a919498f11d49835043c0e594bf0, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5e597eb7b203ad147bb9f7e7ba002323, type: 2}
+      objectReference: {fileID: 2100000, guid: 21b694fb40408144c8db91ef14de8a56, type: 2}
     - target: {fileID: 919132149155446097, guid: 5c67a919498f11d49835043c0e594bf0, type: 3}
       propertyPath: m_Name
       value: Sand Bag 2 (1)
@@ -6515,7 +6515,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 34db5d6b044035f4685c5ae0a91c1fd9, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 6dae42d097de2a94a9f01907d5705a2c, type: 2}
+      objectReference: {fileID: 2100000, guid: 40cd3dba4c771ff438626f4d88c12932, type: 2}
     - target: {fileID: 919132149155446097, guid: 34db5d6b044035f4685c5ae0a91c1fd9, type: 3}
       propertyPath: m_Name
       value: Box Cardboard (5)
@@ -6792,7 +6792,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: d09acb5e97b71ee4390fdbb619b1be5d, type: 2}
+      objectReference: {fileID: 2100000, guid: 10c4a83e48712844f86c429373b1c4d0, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: m_Name
       value: Crate Hollow (6)
@@ -7673,7 +7673,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 5c67a919498f11d49835043c0e594bf0, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5e597eb7b203ad147bb9f7e7ba002323, type: 2}
+      objectReference: {fileID: 2100000, guid: 21b694fb40408144c8db91ef14de8a56, type: 2}
     - target: {fileID: 919132149155446097, guid: 5c67a919498f11d49835043c0e594bf0, type: 3}
       propertyPath: m_Name
       value: Sand Bag 2 (6)
@@ -8703,7 +8703,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: eb4ababbf9b150547a32080f794fc599, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 75e0125ee10c7c64a925e9dddf4e123b, type: 2}
+      objectReference: {fileID: 2100000, guid: cb22ad1e414f83c4b9853b7aa0207674, type: 2}
     - target: {fileID: 919132149155446097, guid: eb4ababbf9b150547a32080f794fc599, type: 3}
       propertyPath: m_Name
       value: Chair
@@ -8783,7 +8783,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: d09acb5e97b71ee4390fdbb619b1be5d, type: 2}
+      objectReference: {fileID: 2100000, guid: 10c4a83e48712844f86c429373b1c4d0, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: m_Name
       value: Crate Hollow (4)
@@ -9215,7 +9215,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: d09acb5e97b71ee4390fdbb619b1be5d, type: 2}
+      objectReference: {fileID: 2100000, guid: 10c4a83e48712844f86c429373b1c4d0, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: m_Name
       value: Crate Hollow (2)
@@ -9492,7 +9492,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: d09acb5e97b71ee4390fdbb619b1be5d, type: 2}
+      objectReference: {fileID: 2100000, guid: 10c4a83e48712844f86c429373b1c4d0, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: m_Name
       value: Crate Hollow (1)
@@ -10231,7 +10231,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 5c67a919498f11d49835043c0e594bf0, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5e597eb7b203ad147bb9f7e7ba002323, type: 2}
+      objectReference: {fileID: 2100000, guid: 21b694fb40408144c8db91ef14de8a56, type: 2}
     - target: {fileID: 919132149155446097, guid: 5c67a919498f11d49835043c0e594bf0, type: 3}
       propertyPath: m_Name
       value: Sand Bag 2 (10)
@@ -11309,7 +11309,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 5c67a919498f11d49835043c0e594bf0, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5e597eb7b203ad147bb9f7e7ba002323, type: 2}
+      objectReference: {fileID: 2100000, guid: 21b694fb40408144c8db91ef14de8a56, type: 2}
     - target: {fileID: 919132149155446097, guid: 5c67a919498f11d49835043c0e594bf0, type: 3}
       propertyPath: m_Name
       value: Sand Bag 2 (7)
@@ -11480,7 +11480,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: d09acb5e97b71ee4390fdbb619b1be5d, type: 2}
+      objectReference: {fileID: 2100000, guid: 10c4a83e48712844f86c429373b1c4d0, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: m_Name
       value: Crate Hollow (8)
@@ -11642,7 +11642,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: d09acb5e97b71ee4390fdbb619b1be5d, type: 2}
+      objectReference: {fileID: 2100000, guid: 10c4a83e48712844f86c429373b1c4d0, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: m_Name
       value: Crate Hollow (3)
@@ -12119,7 +12119,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 34db5d6b044035f4685c5ae0a91c1fd9, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 6dae42d097de2a94a9f01907d5705a2c, type: 2}
+      objectReference: {fileID: 2100000, guid: 40cd3dba4c771ff438626f4d88c12932, type: 2}
     - target: {fileID: 919132149155446097, guid: 34db5d6b044035f4685c5ae0a91c1fd9, type: 3}
       propertyPath: m_Name
       value: Box Cardboard (4)
@@ -12371,7 +12371,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 5c67a919498f11d49835043c0e594bf0, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5e597eb7b203ad147bb9f7e7ba002323, type: 2}
+      objectReference: {fileID: 2100000, guid: 21b694fb40408144c8db91ef14de8a56, type: 2}
     - target: {fileID: 919132149155446097, guid: 5c67a919498f11d49835043c0e594bf0, type: 3}
       propertyPath: m_Name
       value: Sand Bag 2 (3)
@@ -13347,7 +13347,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c5db3e3757c551d49bd36eb15316c6a8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0ccfd8cb11471254a94cca6fc6d43a53, type: 2}
+      objectReference: {fileID: 2100000, guid: dafd5541cd6911f47979d5d5cb5b0b6e, type: 2}
     - target: {fileID: 919132149155446097, guid: c5db3e3757c551d49bd36eb15316c6a8, type: 3}
       propertyPath: m_Name
       value: Crate Handled (4)
@@ -13459,7 +13459,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 5c67a919498f11d49835043c0e594bf0, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5e597eb7b203ad147bb9f7e7ba002323, type: 2}
+      objectReference: {fileID: 2100000, guid: 21b694fb40408144c8db91ef14de8a56, type: 2}
     - target: {fileID: 919132149155446097, guid: 5c67a919498f11d49835043c0e594bf0, type: 3}
       propertyPath: m_Name
       value: Sand Bag 2 (2)
@@ -13539,7 +13539,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 5c67a919498f11d49835043c0e594bf0, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5e597eb7b203ad147bb9f7e7ba002323, type: 2}
+      objectReference: {fileID: 2100000, guid: 21b694fb40408144c8db91ef14de8a56, type: 2}
     - target: {fileID: 919132149155446097, guid: 5c67a919498f11d49835043c0e594bf0, type: 3}
       propertyPath: m_Name
       value: Sand Bag 2 (4)
@@ -13873,7 +13873,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 1ad2736ea6a5dac4abcbd1d2867cd00b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: a71f88694095c984ab71982413c3f726, type: 2}
+      objectReference: {fileID: 2100000, guid: 1cc4dd2ee6498544f989a8f26f950e4c, type: 2}
     - target: {fileID: 919132149155446097, guid: 1ad2736ea6a5dac4abcbd1d2867cd00b, type: 3}
       propertyPath: m_Name
       value: Sand Bag 1 (1)
@@ -14762,7 +14762,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c5db3e3757c551d49bd36eb15316c6a8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0ccfd8cb11471254a94cca6fc6d43a53, type: 2}
+      objectReference: {fileID: 2100000, guid: dafd5541cd6911f47979d5d5cb5b0b6e, type: 2}
     - target: {fileID: 919132149155446097, guid: c5db3e3757c551d49bd36eb15316c6a8, type: 3}
       propertyPath: m_Name
       value: Crate Handled (5)
@@ -14999,7 +14999,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c5db3e3757c551d49bd36eb15316c6a8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0ccfd8cb11471254a94cca6fc6d43a53, type: 2}
+      objectReference: {fileID: 2100000, guid: dafd5541cd6911f47979d5d5cb5b0b6e, type: 2}
     - target: {fileID: 919132149155446097, guid: c5db3e3757c551d49bd36eb15316c6a8, type: 3}
       propertyPath: m_Name
       value: Crate Handled (2)
@@ -15114,7 +15114,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: d09acb5e97b71ee4390fdbb619b1be5d, type: 2}
+      objectReference: {fileID: 2100000, guid: 10c4a83e48712844f86c429373b1c4d0, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: m_Name
       value: Crate Hollow (13)
@@ -15674,7 +15674,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: d09acb5e97b71ee4390fdbb619b1be5d, type: 2}
+      objectReference: {fileID: 2100000, guid: 10c4a83e48712844f86c429373b1c4d0, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: m_Name
       value: Crate Hollow (10)
@@ -15923,7 +15923,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2bb8148f431d0274c8b3552a4f3a6e25, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f1c0b296d3ed8fb4aad353ea0fa3dc0b, type: 2}
+      objectReference: {fileID: 2100000, guid: 2dbd8e0dd1d6eb34181637340d215654, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bb8148f431d0274c8b3552a4f3a6e25, type: 3}
       propertyPath: m_Name
       value: Barrel (1)
@@ -16097,7 +16097,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 34db5d6b044035f4685c5ae0a91c1fd9, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 6dae42d097de2a94a9f01907d5705a2c, type: 2}
+      objectReference: {fileID: 2100000, guid: 40cd3dba4c771ff438626f4d88c12932, type: 2}
     - target: {fileID: 919132149155446097, guid: 34db5d6b044035f4685c5ae0a91c1fd9, type: 3}
       propertyPath: m_Name
       value: Box Cardboard (1)
@@ -17605,7 +17605,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c5db3e3757c551d49bd36eb15316c6a8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0ccfd8cb11471254a94cca6fc6d43a53, type: 2}
+      objectReference: {fileID: 2100000, guid: dafd5541cd6911f47979d5d5cb5b0b6e, type: 2}
     - target: {fileID: 919132149155446097, guid: c5db3e3757c551d49bd36eb15316c6a8, type: 3}
       propertyPath: m_Name
       value: Crate Handled (1)
@@ -17685,7 +17685,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 34db5d6b044035f4685c5ae0a91c1fd9, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 6dae42d097de2a94a9f01907d5705a2c, type: 2}
+      objectReference: {fileID: 2100000, guid: 40cd3dba4c771ff438626f4d88c12932, type: 2}
     - target: {fileID: 919132149155446097, guid: 34db5d6b044035f4685c5ae0a91c1fd9, type: 3}
       propertyPath: m_Name
       value: Box Cardboard (3)
@@ -18132,7 +18132,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: d09acb5e97b71ee4390fdbb619b1be5d, type: 2}
+      objectReference: {fileID: 2100000, guid: 10c4a83e48712844f86c429373b1c4d0, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: m_Name
       value: Crate Hollow (9)
@@ -18212,7 +18212,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 34db5d6b044035f4685c5ae0a91c1fd9, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 6dae42d097de2a94a9f01907d5705a2c, type: 2}
+      objectReference: {fileID: 2100000, guid: 40cd3dba4c771ff438626f4d88c12932, type: 2}
     - target: {fileID: 919132149155446097, guid: 34db5d6b044035f4685c5ae0a91c1fd9, type: 3}
       propertyPath: m_Name
       value: Box Cardboard (2)
@@ -18947,7 +18947,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: d09acb5e97b71ee4390fdbb619b1be5d, type: 2}
+      objectReference: {fileID: 2100000, guid: 10c4a83e48712844f86c429373b1c4d0, type: 2}
     - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: m_Name
       value: Crate Hollow
@@ -19438,7 +19438,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 8116066143b63da45a8931979bd7bd89, type: 2}
+      objectReference: {fileID: 2100000, guid: 183adde49b2c783429f0bd2bd4bf916e, type: 2}
     - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_Name
       value: Lantern Round (4)
@@ -19923,7 +19923,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 5c67a919498f11d49835043c0e594bf0, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5e597eb7b203ad147bb9f7e7ba002323, type: 2}
+      objectReference: {fileID: 2100000, guid: 21b694fb40408144c8db91ef14de8a56, type: 2}
     - target: {fileID: 919132149155446097, guid: 5c67a919498f11d49835043c0e594bf0, type: 3}
       propertyPath: m_Name
       value: Sand Bag 2 (9)
@@ -20003,7 +20003,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 5c67a919498f11d49835043c0e594bf0, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5e597eb7b203ad147bb9f7e7ba002323, type: 2}
+      objectReference: {fileID: 2100000, guid: 21b694fb40408144c8db91ef14de8a56, type: 2}
     - target: {fileID: 919132149155446097, guid: 5c67a919498f11d49835043c0e594bf0, type: 3}
       propertyPath: m_Name
       value: Sand Bag 2
