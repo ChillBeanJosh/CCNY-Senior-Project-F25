@@ -44,6 +44,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 17d0c094a5b62704b93b8abb565005d6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ToonRamp:
+        m_Texture: {fileID: 2800000, guid: 768dabc66ae25f94bbdbc9563b8ab95b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _QueueControl: 0
