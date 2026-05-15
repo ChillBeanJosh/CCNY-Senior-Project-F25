@@ -191,7 +191,7 @@ public class LanternTravel : MonoBehaviour
 
         if (target != null && Input.GetKeyDown(moveLanternKey) && !isTraveling)
         {
-            AudioController.Instance.OneShot("Swap", 2f, 0.7f);
+            AudioController.Instance.OneShot("Swap", 2f);
             StartCoroutine(MoveToLantern(target));
         }
     }
