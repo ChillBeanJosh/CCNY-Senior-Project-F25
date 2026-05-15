@@ -1187,7 +1187,7 @@ public class LightReflection : MonoBehaviour
             //pressFPrompt?.SetActive(false);
             spawnedPlayer.SetActive(true);
             spawnedPlayer.transform.position = hit.point;
-            characterSwitcher.UnlockSplitMode();
+            //characterSwitcher.UnlockSplitMode();
         }
     }
 
