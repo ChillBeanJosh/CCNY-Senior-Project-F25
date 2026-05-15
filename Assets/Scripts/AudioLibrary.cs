@@ -43,5 +43,13 @@ public enum Sfx
 {
     None = 0,
     Walk = 1,
-    Dash = 2
+    Dash = 2,
+    Fire = 3,
+    MapOpen = 4,
+    WaterDrip = 5,
+    WoodCreek = 6,
+    WhaleCall = 7,
+    WhaleHearbeat = 8,
+    WhispySoul = 9
+
 }
