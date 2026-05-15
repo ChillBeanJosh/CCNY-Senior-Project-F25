@@ -87,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
     KeyCode currentMoveKey;
     SunWheelController sunWheel;
     [SerializeField] Animator anim;
+    [SerializeField] AudioSource walkingAudio;
     bool test;
     bool teleportFromLadder;
 
@@ -100,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
         gm = GameManager.Instance;
         rb = GetComponent<Rigidbody>();
         sunWheel = SunWheelController.Instance;
+        walkingAudio = GetComponent<AudioSource>();
 
         //line.material = new Material(Shader.Find("Sprites/Default"));
         line.startWidth = 0.01f;
@@ -210,10 +212,16 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetFloat("Walk", 1f);
             //AudioLibrary.Instance.PlaySound(Sfx.Walk);
+
+            //Walking Audio Conditions (Start):
+            AudioController.Instance.Play("Walking", 2f);
         }
         else
         {
             anim.SetFloat("Walk", 0f);
+
+            //Walking Audio Conditions (End):
+            AudioController.Instance.Stop("Walking");
         }
 
         if (GetComponent<LanternTravel>().isTraveling)
