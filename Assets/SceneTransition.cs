@@ -2,11 +2,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
 using System;
+using MoreMountains.Feedbacks;
 
 public class SceneTransition : MonoBehaviour
 {
-    public Image FaderImage;
+    public List<Image> FaderImages;
+    public MMF_Player EntrancePlayer;
+    public MMF_Player ExitPlayer;
     public AnimationCurve FadeCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
     public float FadeTime = 1f;
     public float WaitTime = 0.5f;
@@ -33,11 +37,17 @@ public class SceneTransition : MonoBehaviour
             return;
         }
 
-        if (FaderImage != null)
+        if (FaderImages != null)
         {
-            Color c = FaderImage.color;
-            c.a = 0;
-            FaderImage.color = c;
+            foreach (var faderImage in FaderImages)
+            {
+                if (faderImage != null)
+                {
+                    Color c = faderImage.color;
+                    c.a = 0;
+                    faderImage.color = c;
+                }
+            }
         }
     }
 
@@ -59,6 +69,11 @@ public class SceneTransition : MonoBehaviour
     private IEnumerator TransitionCoroutine(string sceneName)
     {
         // Fade Out
+        if (EntrancePlayer != null)
+        {
+            EntrancePlayer.PlayFeedbacks();
+        }
+
         float elapsed = 0f;
         while (elapsed < FadeTime)
         {
@@ -80,6 +95,11 @@ public class SceneTransition : MonoBehaviour
         }
 
         // Fade In
+        if (ExitPlayer != null)
+        {
+            ExitPlayer.PlayFeedbacks();
+        }
+
         elapsed = 0f;
         while (elapsed < FadeTime)
         {
@@ -93,11 +113,17 @@ public class SceneTransition : MonoBehaviour
 
     private void SetAlpha(float alpha)
     {
-        if (FaderImage != null)
+        if (FaderImages != null)
         {
-            Color c = FaderImage.color;
-            c.a = alpha;
-            FaderImage.color = c;
+            foreach (var faderImage in FaderImages)
+            {
+                if (faderImage != null)
+                {
+                    Color c = faderImage.color;
+                    c.a = alpha;
+                    faderImage.color = c;
+                }
+            }
         }
     }
 }
