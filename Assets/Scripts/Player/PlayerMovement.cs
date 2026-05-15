@@ -213,17 +213,15 @@ public class PlayerMovement : MonoBehaviour
             anim.SetFloat("Walk", 1f);
             //AudioLibrary.Instance.PlaySound(Sfx.Walk);
 
-            //Walking Audio Conditions:
-            walkingAudio.Play();
-            Debug.Log("Walking is Being Played!!!");
-
+            //Walking Audio Conditions (Start):
+            AudioController.Instance.Play("Walking", 2f);
         }
         else
         {
             anim.SetFloat("Walk", 0f);
-            walkingAudio.Stop();
-            Debug.Log("Walking is NOT Being Played!!!");
 
+            //Walking Audio Conditions (End):
+            AudioController.Instance.Stop("Walking");
         }
 
         if (GetComponent<LanternTravel>().isTraveling)

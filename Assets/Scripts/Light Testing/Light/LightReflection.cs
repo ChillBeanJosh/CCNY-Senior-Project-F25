@@ -297,6 +297,9 @@ public class LightReflection : MonoBehaviour
 
         //Function Used to Display Hit Points & Image Points:
         Visualize();
+
+        //Call all audio related to the laser hits at the end of the frame to ensure all hits are registered before playing sounds:
+        AudioManage();
     }
 
     private void HandleLensHit(RaycastHit hit, List<Collider> lensesHit, ref Vector3 ObjectPosition, ref Vector3 ObjectDirection, ref float remainingLazerDistance, ref Vector3? previousImage)
@@ -613,41 +616,14 @@ public class LightReflection : MonoBehaviour
         lantern = hit.collider.GetComponent<Lantern>();
         if (lantern != null)
         {
-            lanternHit = true;
             currentLanternHit = lantern;
+            lanternHit = true;
 
             //Increment The Lantern Activation Time:
             lantern.hitsThisFrame++;
 
             laserPoints.Add(hit.point);
             obstructionPoints.Add(hit.point);
-
-
-            /*
-            //If Enough Increments & Bool Becomes True:
-            if (lantern.activeLantern && GameManager.Instance.LanternTravel != null)
-            {
-                //If The Hit Lantern IS NOT In The List:
-                if (!GameManager.Instance.LanternTravel.ActivatedLanterns.Contains(lantern))
-                {
-                    DestoryFireVFX();
-                    GameManager.Instance.LanternTravel.ActivatedLanterns.Add(lantern);
-                }
-            }
-            else if (!lantern.activeLantern)
-            {
-                // Get fire VFX position when lantern is unlit
-                fireParent.position = obstructionPoints[0];
-
-                if (!playFire)
-                {
-                    // Create fire
-                    Instantiate(firePrefab, fireParent.position, Quaternion.identity, fireParent);
-                    playFire = true;
-                }
-            }
-
-            */
         }
         else
         {
@@ -1220,5 +1196,17 @@ public class LightReflection : MonoBehaviour
         laserPoints.Add(hit.point);
 
         if (gem.lightReflection == null) gem.lightReflection = this;
+    }
+
+    public void AudioManage()
+    {
+        if (burnableHit || lanternHit)
+        {
+            AudioController.Instance.Play("Burning");
+        }
+        else
+        {
+            AudioController.Instance.Stop("Burning");
+        }
     }
 }
