@@ -26,6 +26,7 @@ public class AimCameraController : MonoBehaviour
     [SerializeField] private Transform playerModel;
     [SerializeField] private LayerMask collisionMask;
     //public Transform YawTarget => yawTarget;
+    public CinemachineCamera getCam;
 
     private float yaw;
     private float pitch;
@@ -96,7 +97,7 @@ public class AimCameraController : MonoBehaviour
         yawTarget.rotation = Quaternion.Euler(0f, yaw, 0f);
         pitchTarget.localRotation = Quaternion.Euler(pitch, 0f, 0f);
 
-        
+
         if (playerModel != null && isAiming)
         {
             playerModel.rotation = Quaternion.Lerp(

@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject lightTool;
     [SerializeField] LineRenderer line;
     [SerializeField] GameObject playerModel;
-    [SerializeField] GameObject aura;
+    //[SerializeField] GameObject aura;
     [Space]
     public Lantern lantern;
     public bool inLantern;
@@ -198,7 +198,7 @@ public class PlayerMovement : MonoBehaviour
             rb.isKinematic = true; // player unaffected by physics
             playerModel.SetActive(false); // Make player invisible
             exitingSlope = true;
-            aura.SetActive(false); // Turn off lightball thing
+            //aura.SetActive(false); // Turn off lightball thing
             line.enabled = false;
             transform.position = startPos;
             Invoke(nameof(ResetTeleport), teleportCooldown);
@@ -345,7 +345,7 @@ public class PlayerMovement : MonoBehaviour
                 //playerModel.SetActive(false); // Make player invisible
                 transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, camOrientation.localEulerAngles.y, transform.localEulerAngles.z);
                 exitingSlope = true;
-                aura.SetActive(false); // Turn off lightball thing
+                //aura.SetActive(false); // Turn off lightball thing
                 if (dashFeedback != null) dashFeedback.PlayFeedbacks();
                 StartCoroutine(FlashTeleport(line.GetPosition(1))); // Lerp player to position
                 //transform.position = new Vector3(line.GetPosition(1).x, transform.position.y, line.GetPosition(1).z);
