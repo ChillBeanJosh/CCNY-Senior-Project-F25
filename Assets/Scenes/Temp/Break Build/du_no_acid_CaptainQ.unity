@@ -2776,10 +2776,11 @@ Transform:
   m_GameObject: {fileID: 105154662}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 55.6, y: 5.74, z: 1.0992813}
+  m_LocalPosition: {x: 45.44, y: 8.3, z: 1.0992813}
   m_LocalScale: {x: 1.7022084, y: 1.7022084, z: 1.7022084}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 901181364}
   - {fileID: 1891032382}
   - {fileID: 379947932}
   - {fileID: 1582920782}
@@ -6192,6 +6193,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sand Bag 2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5c67a919498f11d49835043c0e594bf0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9179,6 +9184,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 21712953c6bb53d41a46fc3b0c8b6745, type: 3}
       propertyPath: m_Name
       value: Captain's Chair (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 21712953c6bb53d41a46fc3b0c8b6745, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12503,6 +12512,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: eddd522af5945964994a5b6453694784, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13854,47 +13867,47 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1939292147}
+    m_TransformParent: {fileID: 105154663}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 830223d40545d7c438cded8a2cd0bb87, type: 3}
       propertyPath: m_LocalScale.x
-      value: 89.18562
+      value: 52.394073
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 830223d40545d7c438cded8a2cd0bb87, type: 3}
       propertyPath: m_LocalScale.y
-      value: 172.00468
+      value: 101.04795
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 830223d40545d7c438cded8a2cd0bb87, type: 3}
       propertyPath: m_LocalScale.z
-      value: 218.18228
+      value: 128.17601
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 830223d40545d7c438cded8a2cd0bb87, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.683184
+      value: 3.193679
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 830223d40545d7c438cded8a2cd0bb87, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.887638
+      value: 9.69
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 830223d40545d7c438cded8a2cd0bb87, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.832133
+      value: 17.97
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 830223d40545d7c438cded8a2cd0bb87, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9999266
+      value: 0.5060191
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 830223d40545d7c438cded8a2cd0bb87, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.4939075
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 830223d40545d7c438cded8a2cd0bb87, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.012111576
+      value: -0.4939075
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 830223d40545d7c438cded8a2cd0bb87, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.5060191
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 830223d40545d7c438cded8a2cd0bb87, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -15746,6 +15759,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dresser Tall
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7b23361e0d9498b44ac2df476c52c68a, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17003,6 +17020,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1ad2736ea6a5dac4abcbd1d2867cd00b, type: 3}
       propertyPath: m_Name
       value: Sand Bag 1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1ad2736ea6a5dac4abcbd1d2867cd00b, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23078,7 +23099,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 46edab56042fd064690331b70208e7f7, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25922,6 +25943,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e7a7dec0811d7e94cb27c661cb3801e1, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26755,15 +26780,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.07618
+      value: 26.076
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.7262297
+      value: 2.714
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.147666
+      value: -5.147
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -31164,6 +31189,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c5db3e3757c551d49bd36eb15316c6a8, type: 3}
       propertyPath: m_Name
       value: Crate Handled
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c5db3e3757c551d49bd36eb15316c6a8, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -47200,7 +47229,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 901181364}
   - {fileID: 1242066737}
   - {fileID: 1657851013}
   - {fileID: 607582260}
