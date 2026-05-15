@@ -23798,6 +23798,75 @@ Transform:
   - {fileID: 386318021}
   m_Father: {fileID: 1688918949}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &418926882
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2156577674085594782, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.5199966
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156577674085594782, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 54.49998
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156577674085594782, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -69.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156577674085594782, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156577674085594782, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156577674085594782, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156577674085594782, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156577674085594782, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156577674085594782, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156577674085594782, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017252358573770333, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: soundPool.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017252358573770333, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: 'soundPool.Array.data[0]'
+      value: Water Drip
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017252358573770333, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: 'soundPool.Array.data[1]'
+      value: Whispy Soul
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910016224972050789, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: m_Name
+      value: Audio Manager v2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
 --- !u!1 &428680433
 GameObject:
   m_ObjectHideFlags: 0
@@ -30056,6 +30125,10 @@ PrefabInstance:
       propertyPath: gemLayer.m_Bits
       value: 2147483648
       objectReference: {fileID: 0}
+    - target: {fileID: 4020236304273871723, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
+      propertyPath: wallLayer.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 5460015821586086780, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: camOrientation
       value: 
@@ -30076,6 +30149,10 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 2135482916}
+    - target: {fileID: 8358260772009126331, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 8506147056806153075, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -84260,6 +84337,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1856569730}
     m_Modifications:
+    - target: {fileID: 1223914698519971620, guid: b7976069cb2726c41a0d4b1fd5924433, type: 3}
+      propertyPath: additionalDistance
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 2853254914259068117, guid: 1ba25b6e0a6dee34a834bf9974523517, type: 3}
       propertyPath: lineMaterial
       value: 
@@ -84375,10 +84456,6 @@ PrefabInstance:
     - target: {fileID: 8749961355824728295, guid: 1ba25b6e0a6dee34a834bf9974523517, type: 3}
       propertyPath: m_Name
       value: Projector
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223914698519971620, guid: b7976069cb2726c41a0d4b1fd5924433, type: 3}
-      propertyPath: additionalDistance
-      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -90844,7 +90921,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4020236304273871723, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: wallLayer.m_Bits
-      value: 512
+      value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 5460015821586086780, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: camOrientation
@@ -90877,6 +90954,10 @@ PrefabInstance:
     - target: {fileID: 8358260772009126331, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: lanternMask.m_Bits
       value: 4096
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358260772009126331, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 8506147056806153075, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: m_Enabled
@@ -93428,6 +93509,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1529499356}
     m_Modifications:
+    - target: {fileID: 1223914698519971620, guid: b7976069cb2726c41a0d4b1fd5924433, type: 3}
+      propertyPath: additionalDistance
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 2853254914259068117, guid: 1ba25b6e0a6dee34a834bf9974523517, type: 3}
       propertyPath: gem
       value: 
@@ -93547,10 +93632,6 @@ PrefabInstance:
     - target: {fileID: 8749961355824728295, guid: 1ba25b6e0a6dee34a834bf9974523517, type: 3}
       propertyPath: m_Name
       value: Projector
-      objectReference: {fileID: 0}
-    - target: {fileID: 1223914698519971620, guid: b7976069cb2726c41a0d4b1fd5924433, type: 3}
-      propertyPath: additionalDistance
-      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -138506,3 +138587,4 @@ SceneRoots:
   - {fileID: 56759494}
   - {fileID: 1887133696}
   - {fileID: 887046385}
+  - {fileID: 418926882}

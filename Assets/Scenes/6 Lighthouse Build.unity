@@ -1591,6 +1591,75 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85340343}
   m_Mesh: {fileID: -3481501719365375840, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
+--- !u!1001 &85689250
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2156577674085594782, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.5199966
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156577674085594782, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 54.49998
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156577674085594782, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -69.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156577674085594782, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156577674085594782, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156577674085594782, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156577674085594782, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156577674085594782, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156577674085594782, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2156577674085594782, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017252358573770333, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: soundPool.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017252358573770333, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: 'soundPool.Array.data[0]'
+      value: Water Drip
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017252358573770333, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: 'soundPool.Array.data[1]'
+      value: Whispy Soul
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910016224972050789, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      propertyPath: m_Name
+      value: Audio Manager v2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
 --- !u!1001 &94984129
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23909,6 +23978,10 @@ PrefabInstance:
       value: 8388608
       objectReference: {fileID: 0}
     - target: {fileID: 4020236304273871723, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
+      propertyPath: wallLayer.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020236304273871723, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: mirrorBlock.m_Bits
       value: 134217728
       objectReference: {fileID: 0}
@@ -24008,6 +24081,10 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 1179065863}
+    - target: {fileID: 8358260772009126331, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 8506147056806153075, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: lightModeToggle
       value: 
@@ -26999,7 +27076,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4020236304273871723, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: gemLayer.m_Bits
-      value: 8388608
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020236304273871723, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
+      propertyPath: wallLayer.m_Bits
+      value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 4020236304273871723, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: mirrorBlock.m_Bits
@@ -27081,6 +27162,10 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 1179065863}
+    - target: {fileID: 8358260772009126331, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 8358260772009126331, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: ActivatedLanterns.Array.size
       value: 0
@@ -30602,3 +30687,4 @@ SceneRoots:
   - {fileID: 151076796}
   - {fileID: 356104618}
   - {fileID: 837226236}
+  - {fileID: 85689250}

@@ -304,12 +304,12 @@ public class LanternTravel : MonoBehaviour
             while (fovElapsed < 0.4f)
             {
                 float time = fovElapsed / fovDuration;
-                //aimCam.getCam.Lens.FieldOfView = Mathf.Lerp(aimCam.getCam.Lens.FieldOfView, targetPOV, time);
+                aimCam.getCam.Lens.FieldOfView = Mathf.Lerp(aimCam.getCam.Lens.FieldOfView, targetPOV, time);
                 fovElapsed += Time.deltaTime;
                 yield return null;
             }
 
-            //aimCam.getCam.Lens.FieldOfView = targetPOV;
+            aimCam.getCam.Lens.FieldOfView = targetPOV;
         }
 
         Vector3 startPos = transform.position;
@@ -322,7 +322,7 @@ public class LanternTravel : MonoBehaviour
         while (elapsed < duration)
         {
             transform.position = Vector3.Lerp(startPos, endPos, elapsed / duration);
-            //aimCam.getCam.Lens.FieldOfView = Mathf.Lerp(aimCam.getCam.Lens.FieldOfView, 60f, elapsed / duration);
+            aimCam.getCam.Lens.FieldOfView = Mathf.Lerp(aimCam.getCam.Lens.FieldOfView, 60f, elapsed / duration);
             elapsed += Time.deltaTime;
             yield return null;
         }

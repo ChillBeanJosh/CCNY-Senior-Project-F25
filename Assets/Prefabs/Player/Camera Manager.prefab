@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6884226154788866539}
   - component: {fileID: 5293348295130915186}
   - component: {fileID: 3589468055466419821}
+  - component: {fileID: 1701990907107475302}
   m_Layer: 0
   m_Name: ThirdPersonCam
   m_TagString: Untagged
@@ -30,8 +31,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2874259126456258518}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15212339, y: 0.000000022981801, z: -0.0000000038557375, w: 0.98836154}
-  m_LocalPosition: {x: 26.97337, y: 3.6305292, z: 15.771416}
+  m_LocalRotation: {x: 0.15212338, y: -6.696643e-10, z: 2.4749177e-11, w: 0.98836154}
+  m_LocalPosition: {x: -18.766632, y: 7.1305294, z: 21.661415}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -285,6 +286,23 @@ MonoBehaviour:
   minZoom: 0.25
   maxZoom: 2.5
   zoomSpeed: 5
+--- !u!114 &1701990907107475302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2874259126456258518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 449ef5ebbe24720439ec31d15f7b6f3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Weight: 1
+  FocusTracking: 0
+  FocusTarget: {fileID: 0}
+  FocusOffset: 0
+  Profile: {fileID: 11400000, guid: 5664a5a80be506c4dab89e87dce119df, type: 2}
 --- !u!1 &6061795446548339513
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,6 +561,7 @@ GameObject:
   - component: {fileID: 2660206828628741513}
   - component: {fileID: 435118750858532625}
   - component: {fileID: 2860158776699781754}
+  - component: {fileID: 4664837517476285649}
   m_Layer: 0
   m_Name: AimCamera
   m_TagString: Untagged
@@ -559,7 +578,7 @@ Transform:
   m_GameObject: {fileID: 6747330202179520230}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 26.22337, y: 3.5270002, z: 22.54}
+  m_LocalPosition: {x: -19.516632, y: 7.0270004, z: 28.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -661,6 +680,24 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 1536
+  getCam: {fileID: 2660206828628741513}
+--- !u!114 &4664837517476285649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6747330202179520230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 449ef5ebbe24720439ec31d15f7b6f3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Weight: 1
+  FocusTracking: 0
+  FocusTarget: {fileID: 0}
+  FocusOffset: 0
+  Profile: {fileID: 11400000, guid: 5664a5a80be506c4dab89e87dce119df, type: 2}
 --- !u!1 &7566157878215062213
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,6 +712,7 @@ GameObject:
   - component: {fileID: 992015353727966457}
   - component: {fileID: 1965393729115208932}
   - component: {fileID: 2445362771142322577}
+  - component: {fileID: 6566198158838876032}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -690,8 +728,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7566157878215062213}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15212339, y: 0.000000022931589, z: -0.0000000035295094, w: 0.98836154}
-  m_LocalPosition: {x: 26.97337, y: 3.6305292, z: 15.771416}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -19.516632, y: 7.0270004, z: 28.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -833,6 +871,21 @@ MonoBehaviour:
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
 --- !u!114 &2445362771142322577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7566157878215062213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a2c415cb5db4f8590dca1e6201b4a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTarget: {fileID: 0}
+  minDisFromPlayer: 1.5
+  pushBackSpeed: 10
+--- !u!114 &6566198158838876032
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
