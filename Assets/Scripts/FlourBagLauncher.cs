@@ -16,6 +16,7 @@ public class FlourBagLauncher : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Debug.Log("landed");
             if (plankDestroyed)
             {
                 TriggerSequence();
