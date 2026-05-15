@@ -30016,6 +30016,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1636535574859789902, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
+      propertyPath: lightAuraFollower
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1879981959113891099, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: m_Name
       value: Player 2
@@ -30065,6 +30069,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1339507123}
     - target: {fileID: 8358260772009126331, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
+      propertyPath: aimCam
+      value: 
+      objectReference: {fileID: 1607611081}
+    - target: {fileID: 8358260772009126331, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 2135482916}
@@ -30073,10 +30081,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7303448709236753856, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 300165265513381704, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
-      insertIndex: 1
+      insertIndex: 0
       addedObject: {fileID: 1055424593}
     - targetCorrespondingSourceObject: {fileID: 300165265513381704, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       insertIndex: -1
@@ -46143,7 +46152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb7d52679e416848aee81e1cba2e05f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: StorageRoom
+  nextLevel: 
+  previousLevel: 
 --- !u!1001 &663923928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54161,7 +54171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb7d52679e416848aee81e1cba2e05f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: Neo Level Prototype
+  nextLevel: 
+  previousLevel: 
 --- !u!1 &867441956
 GameObject:
   m_ObjectHideFlags: 0
@@ -58823,6 +58834,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885620031}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &887046383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 887046385}
+  - component: {fileID: 887046384}
+  m_Layer: 0
+  m_Name: Level Exit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &887046384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887046383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb7d52679e416848aee81e1cba2e05f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextLevel: 5 Committal Build
+  previousLevel: 3 Captain Quarters Build
+--- !u!4 &887046385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887046383}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 36.632225, y: 55.26851, z: -101.571945}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &893010760
 GameObject:
   m_ObjectHideFlags: 0
@@ -90749,6 +90806,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1636535574859789902, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
+      propertyPath: lightAuraFollower
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1879981959113891099, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: m_Name
       value: Player 1
@@ -90802,6 +90863,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2135482920}
     - target: {fileID: 8358260772009126331, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
+      propertyPath: aimCam
+      value: 
+      objectReference: {fileID: 1607611081}
+    - target: {fileID: 8358260772009126331, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: lanternTravel
       value: 
       objectReference: {fileID: 1748318047}
@@ -90818,7 +90883,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7303448709236753856, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 300165265513381704, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       insertIndex: -1
@@ -112991,6 +113057,10 @@ PrefabInstance:
       propertyPath: Target.TrackingTarget
       value: 
       objectReference: {fileID: 1076138303}
+    - target: {fileID: 2860158776699781754, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
+      propertyPath: getCam
+      value: 
+      objectReference: {fileID: 1607611080}
     - target: {fileID: 2860158776699781754, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: yawTarget
       value: 
@@ -138435,3 +138505,4 @@ SceneRoots:
   - {fileID: 49063623}
   - {fileID: 56759494}
   - {fileID: 1887133696}
+  - {fileID: 887046385}
