@@ -58,4 +58,9 @@ public class GameManager : MonoBehaviour
             Player.playerControl = true;
         }
     }
+
+    public void SwitchToScene(string sceneName)
+    {
+        SceneTransition.InvokeSceneChange(sceneName);
+    }
 }
