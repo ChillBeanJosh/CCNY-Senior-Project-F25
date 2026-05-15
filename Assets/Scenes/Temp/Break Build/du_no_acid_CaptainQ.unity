@@ -4978,7 +4978,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 343dca2dc30474441908b85fbd8985e5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 3ac679cba68bafc4c8e6b4998cef2a30, type: 2}
+      objectReference: {fileID: 2100000, guid: 91c3fabcd7d4aea4ead80bc6cb2954f9, type: 2}
     - target: {fileID: 919132149155446097, guid: 343dca2dc30474441908b85fbd8985e5, type: 3}
       propertyPath: m_Name
       value: Big Bottle
@@ -6011,7 +6011,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 8363b5dca37a6c04e96850237494713b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 486c87d483657904b9fdbdf89739a491, type: 2}
+      objectReference: {fileID: 2100000, guid: 6b09ea9f19caba54ba7012e42c989b59, type: 2}
     - target: {fileID: 919132149155446097, guid: 8363b5dca37a6c04e96850237494713b, type: 3}
       propertyPath: m_Name
       value: Ink Bottle
@@ -9464,7 +9464,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2b92c550dab244f4d9a5065876c1c242, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 7878459330ba61548855c55aa7d72b11, type: 2}
+      objectReference: {fileID: 2100000, guid: d98924f40aed4ab41bf4e355908ced90, type: 2}
     - target: {fileID: 919132149155446097, guid: 2b92c550dab244f4d9a5065876c1c242, type: 3}
       propertyPath: m_Name
       value: Square Window (1)
@@ -10784,7 +10784,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 343dca2dc30474441908b85fbd8985e5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 6b94c5079c7dce64ebac58dabd6c644f, type: 2}
+      objectReference: {fileID: 2100000, guid: 0aa8717938168b54cb62e7a48c6258b4, type: 2}
     - target: {fileID: 919132149155446097, guid: 343dca2dc30474441908b85fbd8985e5, type: 3}
       propertyPath: m_Name
       value: Big Bottle (3)
@@ -24004,7 +24004,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 343dca2dc30474441908b85fbd8985e5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 6b94c5079c7dce64ebac58dabd6c644f, type: 2}
+      objectReference: {fileID: 2100000, guid: 0aa8717938168b54cb62e7a48c6258b4, type: 2}
     - target: {fileID: 919132149155446097, guid: 343dca2dc30474441908b85fbd8985e5, type: 3}
       propertyPath: m_Name
       value: Big Bottle (2)
@@ -28412,6 +28412,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3c9186bf9cce4c2439b756619ba00622, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6388f5d62d768f14f88c4e977b738270, type: 2}
     - target: {fileID: 919132149155446097, guid: 3c9186bf9cce4c2439b756619ba00622, type: 3}
       propertyPath: m_Name
       value: Medium Candle Trio
@@ -28632,7 +28636,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2b92c550dab244f4d9a5065876c1c242, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 7878459330ba61548855c55aa7d72b11, type: 2}
+      objectReference: {fileID: 2100000, guid: d98924f40aed4ab41bf4e355908ced90, type: 2}
     - target: {fileID: 919132149155446097, guid: 2b92c550dab244f4d9a5065876c1c242, type: 3}
       propertyPath: m_Name
       value: Square Window (2)
@@ -30997,7 +31001,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2b92c550dab244f4d9a5065876c1c242, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 7878459330ba61548855c55aa7d72b11, type: 2}
+      objectReference: {fileID: 2100000, guid: d98924f40aed4ab41bf4e355908ced90, type: 2}
     - target: {fileID: 919132149155446097, guid: 2b92c550dab244f4d9a5065876c1c242, type: 3}
       propertyPath: m_Name
       value: Square Window
@@ -38472,7 +38476,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 343dca2dc30474441908b85fbd8985e5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 6b94c5079c7dce64ebac58dabd6c644f, type: 2}
+      objectReference: {fileID: 2100000, guid: 0aa8717938168b54cb62e7a48c6258b4, type: 2}
     - target: {fileID: 919132149155446097, guid: 343dca2dc30474441908b85fbd8985e5, type: 3}
       propertyPath: m_Name
       value: Big Bottle (5)
@@ -50167,7 +50171,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 343dca2dc30474441908b85fbd8985e5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 3ac679cba68bafc4c8e6b4998cef2a30, type: 2}
+      objectReference: {fileID: 2100000, guid: 91c3fabcd7d4aea4ead80bc6cb2954f9, type: 2}
     - target: {fileID: 919132149155446097, guid: 343dca2dc30474441908b85fbd8985e5, type: 3}
       propertyPath: m_Name
       value: Big Bottle (1)
@@ -50243,7 +50247,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 343dca2dc30474441908b85fbd8985e5, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 6b94c5079c7dce64ebac58dabd6c644f, type: 2}
+      objectReference: {fileID: 2100000, guid: 0aa8717938168b54cb62e7a48c6258b4, type: 2}
     - target: {fileID: 919132149155446097, guid: 343dca2dc30474441908b85fbd8985e5, type: 3}
       propertyPath: m_Name
       value: Big Bottle (4)

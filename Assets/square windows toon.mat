@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Globe Toon
+  m_Name: square windows toon
   m_Shader: {fileID: -6465566751694194690, guid: f4457cd2cf90aaf4cbf707e205821be3, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -28,7 +28,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _DiffuseTex:
-        m_Texture: {fileID: 2800000, guid: 3669ff7b637174146a241efb6ec481d8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 89027ef44c0996d4a9954a86300fe022, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ToonRamp:
@@ -57,7 +57,7 @@ Material:
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &1007881361574210397
+--- !u!114 &2915881067521785172
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

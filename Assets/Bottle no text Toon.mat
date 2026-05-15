@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mirror Toon
+  m_Name: Bottle no text Toon
   m_Shader: {fileID: -6465566751694194690, guid: f4457cd2cf90aaf4cbf707e205821be3, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -61,7 +61,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DiffuseTex:
-        m_Texture: {fileID: 2800000, guid: 7294a1d7e2123be4b8934e456ec4c5de, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5e7ef5be874588543a3d8dcf1e9ab03a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
