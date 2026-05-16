@@ -269,6 +269,7 @@ public class LightReflection : MonoBehaviour
 
         // function used to display hit points and image points:
         Visualize();
+        AudioManage();
     }
 
     private void HandleLensHit(RaycastHit hit, List<Collider> lensesHit, ref Vector3 ObjectPosition, ref Vector3 ObjectDirection, ref float remainingLazerDistance, ref Vector3? previousImage)
@@ -743,7 +744,7 @@ public class LightReflection : MonoBehaviour
         projectorHit = false;
         gemHit = false;
 
-        
+
     }
 
     private bool IsCrystalBeingHit()
@@ -1091,5 +1092,17 @@ public class LightReflection : MonoBehaviour
         laserPoints.Add(hit.point);
 
         if (gem.lightReflection == null) gem.lightReflection = this;
+    }
+
+    public void AudioManage()
+    {
+        if (burnableHit || lanternHit)
+        {
+            AudioController.Instance.Play("Burning");
+        }
+        else
+        {
+            AudioController.Instance.Stop("Burning");
+        }
     }
 }

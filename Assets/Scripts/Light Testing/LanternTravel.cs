@@ -52,6 +52,9 @@ public class LanternTravel : MonoBehaviour
     public bool isTraveling;
     private float currentLineLerp = 0f;
     private Lantern lastTarget = null;
+    [Space(15)]
+    [Header("Camera")]
+    [SerializeField] AimCameraController aimCam;
 
 
     private void Awake()
@@ -188,6 +191,7 @@ public class LanternTravel : MonoBehaviour
 
         if (target != null && Input.GetKeyDown(moveLanternKey) && !isTraveling)
         {
+            AudioController.Instance.OneShot("Swap", 2f);
             StartCoroutine(MoveToLantern(target));
         }
     }
@@ -245,7 +249,7 @@ public class LanternTravel : MonoBehaviour
     {
         if (cameraTransform == null) return null;
 
-       
+
         Vector3 origin = currentLantern.lanternCore.position;
         Lantern best = null;
         float bestScore = float.NegativeInfinity;
@@ -258,7 +262,7 @@ public class LanternTravel : MonoBehaviour
 
             //Calculate The Score For Each Lantern Based On Angle To Camera Forward:
             Vector3 targetPos = lit.lanternCore.position;
-            Vector3 toFromCamera = (targetPos - cameraTransform.position).normalized; 
+            Vector3 toFromCamera = (targetPos - cameraTransform.position).normalized;
             float score = Vector3.Dot(cameraTransform.forward, toFromCamera);
 
             //If Angle Is Within Threshold (e.g., 60 degrees = dot > 0.5), Consider For Best Candidate:
@@ -289,6 +293,25 @@ public class LanternTravel : MonoBehaviour
         if (currentLantern != null & currentLantern.aimCollider != null)
             currentLantern.aimCollider.enabled = true;
 
+        if (player.lantern != targetLantern)
+        {
+            float dist = Vector3.Distance(transform.position, targetLantern.transform.position);
+            float targetPOV = Map(dist, 1f, 20f, 60f, 80f);
+
+            float fovElapsed = 0f;
+            float fovDuration = 1f;
+
+            while (fovElapsed < 0.4f)
+            {
+                float time = fovElapsed / fovDuration;
+                aimCam.getCam.Lens.FieldOfView = Mathf.Lerp(aimCam.getCam.Lens.FieldOfView, targetPOV, time);
+                fovElapsed += Time.deltaTime;
+                yield return null;
+            }
+
+            aimCam.getCam.Lens.FieldOfView = targetPOV;
+        }
+
         Vector3 startPos = transform.position;
         Vector3 endPos = targetLantern.lanternCore.position;
 
@@ -299,6 +322,7 @@ public class LanternTravel : MonoBehaviour
         while (elapsed < duration)
         {
             transform.position = Vector3.Lerp(startPos, endPos, elapsed / duration);
+            aimCam.getCam.Lens.FieldOfView = Mathf.Lerp(aimCam.getCam.Lens.FieldOfView, 60f, elapsed / duration);
             elapsed += Time.deltaTime;
             yield return null;
         }
@@ -413,6 +437,8 @@ public class LanternTravel : MonoBehaviour
         //Path To Target Lantern:
         if (target != null)
         {
+            if (currentLantern == null || currentLantern.lanternCore == null || target.lanternCore == null) return;
+
             //Initial Variables:
             Vector3 startPos = currentLantern.lanternCore.position;
             Vector3 targetPos = target.lanternCore.position;
@@ -455,5 +481,15 @@ public class LanternTravel : MonoBehaviour
         Gizmos.DrawLine(start + forward, end + forward);
         //Bottom Side Line:
         Gizmos.DrawLine(start - forward, end - forward);
+    }
+
+    float Map(float value, float minA, float maxA, float minB, float maxB)
+    {
+        float range = maxA - minA;
+        float valuePercent = (value - minA) / range;
+
+        float newRange = maxB - minB;
+
+        return valuePercent * newRange + minB;
     }
 }

@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Spoon Toon
   m_Shader: {fileID: -6465566751694194690, guid: f4457cd2cf90aaf4cbf707e205821be3, type: 3}
-  m_Parent: {fileID: 2100000, guid: 21b694fb40408144c8db91ef14de8a56, type: 2}
+  m_Parent: {fileID: 2100000, guid: 79f7c17f2e1723c45a452fbf6618e903, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - MAIN_LIGHT_CALCULATE_SHADOWS
@@ -28,7 +28,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _DiffuseTex:
-        m_Texture: {fileID: 2800000, guid: 4ad48328274eba94bbd8f9a7b1eda8a7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0851fc20c95b22a4dbc8ba3b67fd2032, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
