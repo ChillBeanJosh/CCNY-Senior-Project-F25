@@ -1622,6 +1622,8 @@ GameObject:
   - component: {fileID: 2293655241027342894}
   - component: {fileID: 8358260772009126331}
   - component: {fileID: 2567343082137966075}
+  - component: {fileID: 2578817574203850008}
+  - component: {fileID: 4549951850583950906}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -1794,7 +1796,6 @@ MonoBehaviour:
   lightTool: {fileID: 618828042576285089}
   line: {fileID: 2293655241027342894}
   playerModel: {fileID: 6204566210901383350}
-  aura: {fileID: 7303448709236753856}
   lantern: {fileID: 0}
   inLantern: 0
   projector: {fileID: 0}
@@ -1804,6 +1805,7 @@ MonoBehaviour:
   checkpoint: 0
   movementKeys: 77000000610000007300000064000000
   anim: {fileID: 8456931886576348232}
+  walkingAudio: {fileID: 0}
 --- !u!120 &2293655241027342894
 LineRenderer:
   serializedVersion: 2
@@ -1945,7 +1947,7 @@ MonoBehaviour:
   lineLerpTime: 0.2
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   cameraTransform: {fileID: 0}
   LanternTravelRangeColor: {r: 0.91320753, g: 0.6391423, b: 0.048244953, a: 0}
   travelRange: 50
@@ -1957,7 +1959,78 @@ MonoBehaviour:
   exitLanternKey: 113
   moveLanternKey: 323
   isTraveling: 0
+  aimCam: {fileID: 0}
 --- !u!114 &2567343082137966075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879981959113891099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c37e7cfbfe6a7f546a75a50d10a1ab70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 5460015821586086780}
+  rb: {fileID: 7428839617850256430}
+  playerCamera: {fileID: 0}
+  lightReflection: {fileID: 4020236304273871723}
+  lightModeToggle: {fileID: 1636535574859789902}
+  activeWhenNear: 0
+  straightAlignWhenEntering: 0
+  playerAlignWhenEntering: 0
+  rotateYLeftKey: 97
+  rotateYRightKey: 100
+  ySpeedDegPerSec: 120
+  rotateZUpKey: 119
+  rotateZDownKey: 115
+  zSpeedDegPerSec: 60
+  xOffset: 0
+  yOffset: 0
+  zOffset: 0
+  enterTraversalKey: 113
+  exitTraversalKey: 113
+  travelSpeed: 10
+  currentProjector: {fileID: 0}
+  isInsideProjector: 0
+  isTraveling: 0
+--- !u!114 &2578817574203850008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879981959113891099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c37e7cfbfe6a7f546a75a50d10a1ab70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 5460015821586086780}
+  rb: {fileID: 7428839617850256430}
+  playerCamera: {fileID: 0}
+  lightReflection: {fileID: 4020236304273871723}
+  lightModeToggle: {fileID: 1636535574859789902}
+  activeWhenNear: 0
+  straightAlignWhenEntering: 0
+  playerAlignWhenEntering: 0
+  rotateYLeftKey: 97
+  rotateYRightKey: 100
+  ySpeedDegPerSec: 120
+  rotateZUpKey: 119
+  rotateZDownKey: 115
+  zSpeedDegPerSec: 60
+  xOffset: 0
+  yOffset: 0
+  zOffset: 0
+  enterTraversalKey: 113
+  exitTraversalKey: 113
+  travelSpeed: 10
+  currentProjector: {fileID: 0}
+  isInsideProjector: 0
+  isTraveling: 0
+--- !u!114 &4549951850583950906
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2353,7 +2426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6494742688252915358
 Transform:
   m_ObjectHideFlags: 0
@@ -3112,8 +3185,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 7989e79609915824586c285faddb019e, type: 2}
     - target: {fileID: 7600370247431198308, guid: 54cb407dd0290da4ca3118dc5259920e, type: 3}
+      propertyPath: wallLayer.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 7600370247431198308, guid: 54cb407dd0290da4ca3118dc5259920e, type: 3}
       propertyPath: mirrorLayer.m_Bits
       value: 2048
+      objectReference: {fileID: 0}
+    - target: {fileID: 7600370247431198308, guid: 54cb407dd0290da4ca3118dc5259920e, type: 3}
+      propertyPath: crystalLayer.m_Bits
+      value: 65536
       objectReference: {fileID: 0}
     - target: {fileID: 7600370247431198308, guid: 54cb407dd0290da4ca3118dc5259920e, type: 3}
       propertyPath: lanternLayer.m_Bits
