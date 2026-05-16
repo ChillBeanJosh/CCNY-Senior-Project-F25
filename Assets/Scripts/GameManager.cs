@@ -61,6 +61,15 @@ public class GameManager : MonoBehaviour
 
     public void SwitchToScene(string sceneName)
     {
-        SceneTransition.InvokeSceneChange(sceneName);
+        if (string.IsNullOrEmpty(sceneName)) return;
+
+        if (SceneTransition.HasListeners())
+        {
+            SceneTransition.InvokeSceneChange(sceneName);
+        }
+        else
+        {
+            SceneManager.LoadScene(sceneName);
+        }
     }
 }

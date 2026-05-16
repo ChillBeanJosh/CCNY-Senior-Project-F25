@@ -17,6 +17,11 @@ public class SceneTransition : MonoBehaviour
 
     public static event Action<string> SceneChange;
 
+    public static bool HasListeners()
+    {
+        return SceneChange != null;
+    }
+
     public static void InvokeSceneChange(string sceneName)
     {
         SceneChange?.Invoke(sceneName);
