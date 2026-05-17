@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class EnterLevel : MonoBehaviour
 {
@@ -8,21 +7,21 @@ public class EnterLevel : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.X) && nextLevel != null)
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.X) && !string.IsNullOrEmpty(nextLevel))
         {
-            SceneManager.LoadScene(nextLevel);
+            GameManager.Instance.SwitchToScene(nextLevel);
         }
 
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Z) && previousLevel != null)
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Z) && !string.IsNullOrEmpty(previousLevel))
         {
-            SceneManager.LoadScene(previousLevel);
+            GameManager.Instance.SwitchToScene(previousLevel);
         }
     }
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene(nextLevel);
+            GameManager.Instance.SwitchToScene(nextLevel);
         }
     }
 }

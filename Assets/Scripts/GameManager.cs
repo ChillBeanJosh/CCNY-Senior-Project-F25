@@ -58,4 +58,18 @@ public class GameManager : MonoBehaviour
             Player.playerControl = true;
         }
     }
+
+    public void SwitchToScene(string sceneName)
+    {
+        if (string.IsNullOrEmpty(sceneName)) return;
+
+        if (SceneTransition.HasListeners())
+        {
+            SceneTransition.InvokeSceneChange(sceneName);
+        }
+        else
+        {
+            SceneManager.LoadScene(sceneName);
+        }
+    }
 }
