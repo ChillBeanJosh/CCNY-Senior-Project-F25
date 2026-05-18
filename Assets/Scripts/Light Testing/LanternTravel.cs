@@ -47,7 +47,7 @@ public class LanternTravel : MonoBehaviour
     [Header("Movement Settings: ")]
     public float moveSpeed = 5f;
     public KeyCode enterLanternKey = KeyCode.Q;
-    public KeyCode exitLanternKey = KeyCode.Space;
+    public KeyCode exitLanternKey = KeyCode.Q;
     public KeyCode moveLanternKey = KeyCode.Mouse0;
     public bool isTraveling;
     private float currentLineLerp = 0f;
@@ -392,7 +392,19 @@ public class LanternTravel : MonoBehaviour
 
 
         //Restore Default Position:
-        if (followerObject != null)
+        if (currentLantern != null && currentLantern.exitTransform != null)
+        {
+            transform.position = currentLantern.exitTransform.position;
+            transform.rotation = currentLantern.exitTransform.rotation;
+            
+            // If player is separate from transform, move it too
+            if (player.transform != transform)
+            {
+                player.transform.position = currentLantern.exitTransform.position;
+                player.transform.rotation = currentLantern.exitTransform.rotation;
+            }
+        }
+        else if (followerObject != null)
         {
             transform.position = followerObject.transform.position;
         }

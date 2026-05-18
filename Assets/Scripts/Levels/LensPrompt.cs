@@ -3,33 +3,43 @@ using UnityEngine;
 public class LensPrompt : MonoBehaviour
 {
     ProjectorTraversal projector;
-    public GameObject text;
+    public ButtonIndicator indicator;
     Outline outline;
+    private bool _isHiddenByProjector;
 
     void Start()
     {
         outline = GetComponentInChildren<Outline>();
         if (outline != null)
             outline.enabled = false;
-        if (text != null)
-            text.SetActive(false);
+        
+        if (indicator != null)
+            indicator.Exit();
     }
 
     void Update()
     {
-        if (text == null || outline == null) return;
+        if (indicator == null) return;
 
         if (projector != null)
         {
-            if (!text.activeInHierarchy && !projector.isInsideProjector)
+            if (projector.isInsideProjector)
             {
-                text.SetActive(true);
-                outline.enabled = true;
+                if (!_isHiddenByProjector)
+                {
+                    indicator.Exit();
+                    if (outline != null) outline.enabled = false;
+                    _isHiddenByProjector = true;
+                }
             }
-            if (text.activeInHierarchy && projector.isInsideProjector)
+            else
             {
-                text.SetActive(false);
-                outline.enabled = false;
+                if (_isHiddenByProjector)
+                {
+                    indicator.Appearance("Q");
+                    if (outline != null) outline.enabled = true;
+                    _isHiddenByProjector = false;
+                }
             }
         }
     }
@@ -38,11 +48,12 @@ public class LensPrompt : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            if (text == null || outline == null) return;
+            if (indicator == null) return;
 
-            text.SetActive(true);
-            outline.enabled = true;
+            indicator.Appearance("Q");
+            if (outline != null) outline.enabled = true;
             projector = col.gameObject.GetComponent<ProjectorTraversal>();
+            _isHiddenByProjector = false;
         }
     }
 
@@ -50,10 +61,10 @@ public class LensPrompt : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            if (text == null || outline == null) return;
+            if (indicator == null) return;
 
-            text.SetActive(false);
-            outline.enabled = false;
+            indicator.Exit();
+            if (outline != null) outline.enabled = false;
             projector = null;
         }
     }
