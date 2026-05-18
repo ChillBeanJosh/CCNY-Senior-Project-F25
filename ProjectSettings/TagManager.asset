@@ -42,7 +42,7 @@ TagManager:
   - Soul
   - Phase
   - 
-  - 
+  - Ignore This
   - 
   - Shadows
   - 
@@ -57,6 +57,9 @@ TagManager:
     locked: 0
   - name: Shadow
     uniqueID: 3865320537
+    locked: 0
+  - name: Shadow 2
+    uniqueID: 1715067507
     locked: 0
   m_RenderingLayers:
   - Default
