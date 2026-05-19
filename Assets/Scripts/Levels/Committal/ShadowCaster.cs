@@ -27,6 +27,7 @@ public class ShadowCaster : MonoBehaviour
     [SerializeField] ShadowPuzzleTrigger shadowTrigger;
     [SerializeField] GameObject shadowPrefab;
     GameObject shadow;
+    [SerializeField] Transform shadowTarget;
     [SerializeField] bool doubleShadow;
     [SerializeField] Transform thinShadowTarget;
 
