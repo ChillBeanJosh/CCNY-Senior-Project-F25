@@ -91,6 +91,11 @@ public class LightReflection : MonoBehaviour
     [Header("Crystal Activation")]
     public LayerMask crystalLayer;
 
+    [Header("Convergence")]
+    [SerializeField] private bool useConvergence = false;
+    [SerializeField] private float convergenceDistance = 2.0f;
+    [SerializeField] private Camera cam;
+
     public float laserWidth;
     private float additionalDistanceUsed;
 
@@ -136,6 +141,45 @@ public class LightReflection : MonoBehaviour
         float remainingLazerDistance = lazerDistance;
 
         laserPoints.Add(ObjectPosition);
+
+        if (useConvergence && cam != null)
+        {
+            Vector3 camPos = cam.transform.position;
+            Vector3 camDir = cam.transform.forward;
+            Vector3 crosshairPoint = camPos + camDir * convergenceDistance;
+
+            Ray convergenceRay = new Ray(camPos, camDir);
+            RaycastHit convergenceHit;
+
+            // Use the same layer mask as the main raycast
+            LayerMask mask = wallLayer | lensLayer | prismLayer | burnableLayer | mirrorLayer | lanternLayer | projectorLayer | gemLayer | mirrorBlock | crystalLayer;
+
+            if (Physics.Raycast(convergenceRay, out convergenceHit, 50.0f, mask, QueryTriggerInteraction.Ignore))
+            {
+                float hitDistFromCam = Vector3.Distance(camPos, convergenceHit.point);
+
+                if (hitDistFromCam <= convergenceDistance)
+                {
+                    // Directly hit something before or at convergence point, just aim there
+                    ObjectDirection = (convergenceHit.point - ObjectPosition).normalized;
+                }
+                else
+                {
+                    // Converge to crosshair point, then proceed to hit point
+                    laserPoints.Add(crosshairPoint);
+                    ObjectDirection = (convergenceHit.point - crosshairPoint).normalized;
+                    ObjectPosition = crosshairPoint;
+                }
+            }
+            else
+            {
+                // No hit, converge to crosshair then go forward
+                laserPoints.Add(crosshairPoint);
+                ObjectDirection = (camPos + camDir * 50.0f - crosshairPoint).normalized;
+                ObjectPosition = crosshairPoint;
+            }
+        }
+
         List<Collider> lensesHit = new List<Collider>();
 
         Vector3? previousImage = null;

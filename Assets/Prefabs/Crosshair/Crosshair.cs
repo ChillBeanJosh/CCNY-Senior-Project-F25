@@ -14,6 +14,7 @@ public class Crosshair : MonoBehaviour, MMEventListener<MMGameEvent> {
     [Header("Raycast Settings")]
     [SerializeField] private float raycastDistance = 100f;
     [SerializeField] private LayerMask raycastLayers = ~0;
+    [SerializeField] private bool useDebugLogging = false;
 
     public enum CrosshairState {
         Default, Flame, Light, None
@@ -35,9 +36,20 @@ public class Crosshair : MonoBehaviour, MMEventListener<MMGameEvent> {
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, raycastDistance, raycastLayers)) {
-            if (hit.collider.TryGetComponent<Burnable>(out _)) {
+        if (Physics.Raycast(ray, out hit, raycastDistance, raycastLayers, QueryTriggerInteraction.Ignore)) {
+            GameObject hitObj = hit.collider.gameObject;
+            Burnable burnable = hitObj.GetComponentInParent<Burnable>();
+            Lantern lantern = hitObj.GetComponentInParent<Lantern>();
+            Projector projector = hitObj.GetComponentInParent<Projector>();
+
+            if (useDebugLogging) {
+                Debug.Log($"[DEBUG_LOG] Crosshair hit: {hitObj.name} on layer {LayerMask.LayerToName(hitObj.layer)}. Burnable: {burnable != null}, Lantern: {lantern != null}, Projector: {projector != null}");
+            }
+
+            if (burnable != null) {
                 SwitchState(CrosshairState.Flame);
+            } else if (lantern != null || projector != null) {
+                SwitchState(CrosshairState.Light);
             } else {
                 SwitchState(CrosshairState.Default);
             }
