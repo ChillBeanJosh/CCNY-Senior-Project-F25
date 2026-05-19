@@ -57,9 +57,8 @@ public class ShadowDetection : MonoBehaviour
         }
 
         //if (requiresTwoPlayers && playerShadows.Count == 2)
-        if (requiresTwoPlayers && players[1].activeInHierarchy && playerShadows.Count == 2 && playerShadows[0] != null && playerShadows[1] != null)
+        if (requiresTwoPlayers && players[1].activeInHierarchy)
         {
-            Debug.Log("IS THIS RUNNING");
             // Debug.Log(ContainsCollider(detectionCol, shadowCol) + "   " +
             //       NoCornersDetected(sizeCheckCol, shadowCol));
             //Collider leftCol, rightCol;
@@ -88,38 +87,71 @@ public class ShadowDetection : MonoBehaviour
             //Debug.Log(check1 + "   " + check2);
 
             //shadowIsInside = check1 && check2;
-            if (players[0].transform.position.x <= players[1].transform.position.x)
-            {
-                leftCol = playerShadows[0];
-                rightCol = playerShadows[1];
-            }
-            else
-            {
-                leftCol = playerShadows[1];
-                rightCol = playerShadows[0];
-            }
 
-            for (int i = 0; i < players.Length; i++)
+            // for (int i = 0; i < players.Length; i++)
+            // {
+            //     if (players[i].transform.position.x <= centerPt.position.x)
+            //     {
+            //         if (players[i].GetComponent<DrawShadows>().approximatePos != approximatePos2)
+            //         {
+            //             players[i].GetComponent<DrawShadows>().approximatePos = approximatePos2;
+            //             players[i].GetComponent<DrawShadows>().targetPos = targetPos2;
+            //         }
+            //     }
+            //     else
+            //     {
+            //         if (players[i].GetComponent<DrawShadows>().approximatePos != approximatePos)
+            //         {
+            //             players[i].GetComponent<DrawShadows>().approximatePos = approximatePos;
+            //             players[i].GetComponent<DrawShadows>().targetPos = targetPos;
+            //         }
+            //     }
+            // }
+
+
+            if (playerShadows.Count == 2 && playerShadows[0] != null && playerShadows[1] != null)
             {
-                if (players[i].transform.position.x <= centerPt.position.x)
+                if (players[0].transform.position.x <= players[1].transform.position.x)
                 {
-                    if (players[i].GetComponent<DrawShadows>().approximatePos != approximatePos2)
+                    leftCol = playerShadows[0];
+                    if (players[0].GetComponent<DrawShadows>().approximatePos != approximatePos2 ||
+                        players[0].GetComponent<DrawShadows>().targetPos != targetPos2)
                     {
-                        players[i].GetComponent<DrawShadows>().approximatePos = approximatePos2;
-                        players[i].GetComponent<DrawShadows>().targetPos = targetPos2;
+                        players[0].GetComponent<DrawShadows>().approximatePos = approximatePos2;
+                        players[0].GetComponent<DrawShadows>().targetPos = targetPos2;
+                    }
+
+                    rightCol = playerShadows[1];
+                    if (players[1].GetComponent<DrawShadows>().approximatePos != approximatePos ||
+                        players[1].GetComponent<DrawShadows>().targetPos != targetPos)
+                    {
+                        players[1].GetComponent<DrawShadows>().approximatePos = approximatePos;
+                        players[1].GetComponent<DrawShadows>().targetPos = targetPos;
                     }
                 }
                 else
                 {
-                    if (players[i].GetComponent<DrawShadows>().approximatePos != approximatePos)
+                    leftCol = playerShadows[1];
+                    if (players[1].GetComponent<DrawShadows>().approximatePos != approximatePos2 ||
+                        players[1].GetComponent<DrawShadows>().targetPos != targetPos2)
                     {
-                        players[i].GetComponent<DrawShadows>().approximatePos = approximatePos;
-                        players[i].GetComponent<DrawShadows>().targetPos = targetPos;
+                        players[1].GetComponent<DrawShadows>().approximatePos = approximatePos2;
+                        players[1].GetComponent<DrawShadows>().targetPos = targetPos2;
+                    }
+
+                    rightCol = playerShadows[0];
+                    if (players[0].GetComponent<DrawShadows>().approximatePos != approximatePos ||
+                        players[0].GetComponent<DrawShadows>().targetPos != targetPos)
+                    {
+                        players[0].GetComponent<DrawShadows>().approximatePos = approximatePos;
+                        players[0].GetComponent<DrawShadows>().targetPos = targetPos;
                     }
                 }
-            }
 
-            shadowIsInside = leftCol == targetPos && rightCol == targetPos2;
+                shadowIsInside = rightCol.transform.position == targetPos.position && leftCol.transform.position == targetPos2.position;
+                Debug.Log((rightCol.transform.position == targetPos2.position) + "  |  " + (leftCol.transform.position == targetPos2.position));
+
+            }
 
             OutlineHandler();
         }
