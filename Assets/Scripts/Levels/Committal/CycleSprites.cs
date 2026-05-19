@@ -9,21 +9,22 @@ public class CycleSprites : MonoBehaviour
 
     void Update()
     {
-        if (spr == null) spr = GetComponent<SpriteRenderer>();
+        //if (spr == null) spr = GetComponent<SpriteRenderer>();
         if (mask == null) mask = GetComponent<SpriteMask>();
 
         if (!enteredScene)
         {
             enteredScene = true;
 
-            spr.sprite = sprites[0];
-            mask.sprite = spr.sprite;
+            //spr.sprite = sprites[0];
+            mask.sprite = sprites[0];
         }
     }
 
     public void ChangeSprite(int s)
     {
-        spr.sprite = sprites[s];
-        mask.sprite = spr.sprite;
+        //spr.sprite = sprites[s];
+        //mask.sprite = spr.sprite;
+        mask.sprite = sprites[s];
     }
 }
