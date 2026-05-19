@@ -25,8 +25,16 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.B))
         {
-            Application.Quit();
+            QuitGame();
         }
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 
     public void ResetScene()

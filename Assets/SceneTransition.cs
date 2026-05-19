@@ -9,6 +9,7 @@ using MoreMountains.Feedbacks;
 public class SceneTransition : MonoBehaviour
 {
     public List<Image> FaderImages;
+    public Canvas LoadingScreenCanvas;
     public MMF_Player EntrancePlayer;
     public MMF_Player ExitPlayer;
     public AnimationCurve FadeCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
@@ -42,6 +43,11 @@ public class SceneTransition : MonoBehaviour
             return;
         }
 
+        if (LoadingScreenCanvas != null)
+        {
+            LoadingScreenCanvas.sortingOrder = -1;
+        }
+
         if (FaderImages != null)
         {
             foreach (var faderImage in FaderImages)
@@ -73,6 +79,11 @@ public class SceneTransition : MonoBehaviour
 
     private IEnumerator TransitionCoroutine(string sceneName)
     {
+        if (LoadingScreenCanvas != null)
+        {
+            LoadingScreenCanvas.sortingOrder = 1000;
+        }
+
         // Fade Out
         if (EntrancePlayer != null)
         {
@@ -114,6 +125,11 @@ public class SceneTransition : MonoBehaviour
             yield return null;
         }
         SetAlpha(0f);
+
+        if (LoadingScreenCanvas != null)
+        {
+            LoadingScreenCanvas.sortingOrder = -1;
+        }
     }
 
     private void SetAlpha(float alpha)

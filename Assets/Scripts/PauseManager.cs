@@ -9,6 +9,9 @@ public class PauseManager : MonoBehaviour
 {
     public static PauseManager Instance;
 
+    [Header("Title Screen Mode")]
+    public bool isTitleScreenMode = false;
+
     [Header("Feedbacks")]
     public MMF_Player PauseEntrance;
     public MMF_Player PauseExit;
@@ -40,51 +43,18 @@ public class PauseManager : MonoBehaviour
         }
     }
 
-    void Update()
+    void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (isTitleScreenMode)
         {
-            TogglePause();
+            InitializeAnimation();
+            _animationCoroutine = StartCoroutine(AnimatePauseUI());
         }
     }
 
-    public void TogglePause()
+    private void InitializeAnimation()
     {
-        _isPaused = !_isPaused;
-
-        if (_isPaused)
-        {
-            PauseGame();
-        }
-        else
-        {
-            UnpauseGame();
-        }
-    }
-
-    private void PauseGame()
-    {
-        Time.timeScale = 0f;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.PausePlayerControl();
-        }
-
-        if (PauseEntrance != null)
-        {
-            PauseEntrance.PlayerTimescaleMode = TimescaleModes.Unscaled;
-            PauseEntrance.PlayFeedbacks();
-        }
-
-        if (_animationCoroutine != null)
-        {
-            StopCoroutine(_animationCoroutine);
-        }
-
-        // Store initial positions of LeftGameObjects and RightGameObjects before starting animation
+        // Store initial positions of LeftGameObjects and RightGameObjects
         _leftInitialPositions.Clear();
         foreach (var go in LeftGameObjects)
         {
@@ -110,25 +80,80 @@ public class PauseManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    void Update()
+    {
+        if (isTitleScreenMode) return;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
+    }
+
+    public void TogglePause()
+    {
+        _isPaused = !_isPaused;
+
+        if (_isPaused)
+        {
+            PauseGame();
+        }
+        else
+        {
+            UnpauseGame();
+        }
+    }
+
+    private void PauseGame()
+    {
+        if (!isTitleScreenMode)
+        {
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.PausePlayerControl();
+            }
+
+            if (PauseEntrance != null)
+            {
+                PauseEntrance.PlayerTimescaleMode = TimescaleModes.Unscaled;
+                PauseEntrance.PlayFeedbacks();
+            }
+        }
+
+        if (_animationCoroutine != null)
+        {
+            StopCoroutine(_animationCoroutine);
+        }
+
+        InitializeAnimation();
 
         _animationCoroutine = StartCoroutine(AnimatePauseUI());
     }
 
     private void UnpauseGame()
     {
-        Time.timeScale = 1f;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
-        if (GameManager.Instance != null)
+        if (!isTitleScreenMode)
         {
-            GameManager.Instance.ResumePlayerControl();
-        }
+            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
 
-        if (PauseExit != null)
-        {
-            PauseExit.PlayerTimescaleMode = TimescaleModes.Unscaled;
-            PauseExit.PlayFeedbacks();
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.ResumePlayerControl();
+            }
+
+            if (PauseExit != null)
+            {
+                PauseExit.PlayerTimescaleMode = TimescaleModes.Unscaled;
+                PauseExit.PlayFeedbacks();
+            }
         }
 
         if (_animationCoroutine != null)

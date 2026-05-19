@@ -27,6 +27,7 @@ public class CutsceneController : MonoBehaviour
 
     [Header("Cutscene Sequence")]
     [SerializeField] private List<CutsceneFrame> cutsceneFrames;
+    [SerializeField] private string nextSceneName;
     [SerializeField] private Image blackImage;
     [SerializeField] private DialogueData dialogueData;
     [SerializeField] private TextMeshProUGUI dialogueText;
@@ -102,7 +103,14 @@ public class CutsceneController : MonoBehaviour
         if (cutsceneFrames == null || cutsceneFrames.Count == 0) return;
         if (_currentIndex >= cutsceneFrames.Count - 1)
         {
-            Debug.Log("Cutscene finished.");
+            if (GameManager.Instance != null && !string.IsNullOrEmpty(nextSceneName))
+            {
+                GameManager.Instance.SwitchToScene(nextSceneName);
+            }
+            else
+            {
+                Debug.Log("Cutscene finished, but no next scene defined or GameManager missing.");
+            }
             return;
         }
 
