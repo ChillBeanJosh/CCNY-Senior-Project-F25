@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using Unity.Cinemachine;
+
 
 public class FourKeyPlatform : MonoBehaviour
 {
@@ -7,7 +9,8 @@ public class FourKeyPlatform : MonoBehaviour
     Vector3[] nextPosition = new Vector3[4];
     float moveSpeed = 0.5f;
     [SerializeField] GameObject[] lights;
-    [SerializeField] Material lit;
+    [SerializeField] Material lit, unlit;
+    [SerializeField] CinemachineCamera coffinCam;
     void Start()
     {
         Vector3 startPos = transform.position;
@@ -21,11 +24,45 @@ public class FourKeyPlatform : MonoBehaviour
     // Called from Shadow Burn
     public void NextThreshold()
     {
-        StartCoroutine(MovePlatform());
+        GameManager.Instance.Player.playerControl = false;
+        StartCoroutine(TurnOnLight());
+    }
+
+    IEnumerator TurnOnLight()
+    {
+        yield return new WaitForSeconds(0.25f);
+
+        coffinCam.Priority = 20;
+
+        yield return new WaitForSeconds(1.5f);
+
+        lights[positionIndex].GetComponent<Renderer>().material = lit;
+
+        yield return new WaitForSeconds(0.1f);
+
+        lights[positionIndex].GetComponent<Renderer>().material = unlit;
+
+        yield return new WaitForSeconds(0.1f);
+
+        lights[positionIndex].GetComponent<Renderer>().material = lit;
+
+        yield return new WaitForSeconds(0.05f);
+
+        lights[positionIndex].GetComponent<Renderer>().material = unlit;
+
+        yield return new WaitForSeconds(1f);
+
+        lights[positionIndex].GetComponent<Renderer>().material = lit;
+
+        yield return new WaitForSeconds(1.5f);
+
+        coffinCam.Priority = 0;
+        GameManager.Instance.Player.playerControl = true;
     }
 
     IEnumerator MovePlatform()
     {
+
         lights[positionIndex].GetComponent<Renderer>().material = lit;
 
         Vector3 start = transform.position;
