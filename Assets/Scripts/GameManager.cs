@@ -25,16 +25,8 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.B))
         {
-            QuitGame();
+            Application.Quit();
         }
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
     }
 
     public void ResetScene()
@@ -64,20 +56,6 @@ public class GameManager : MonoBehaviour
         if (Player != null)
         {
             Player.playerControl = true;
-        }
-    }
-
-    public void SwitchToScene(string sceneName)
-    {
-        if (string.IsNullOrEmpty(sceneName)) return;
-
-        if (SceneTransition.HasListeners())
-        {
-            SceneTransition.InvokeSceneChange(sceneName);
-        }
-        else
-        {
-            SceneManager.LoadScene(sceneName);
         }
     }
 }

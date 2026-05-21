@@ -1,13 +1,11 @@
 using UnityEngine;
-using MoreMountains.Feedbacks;
 
 public class FlourBagLauncher : MonoBehaviour
 {
-    [SerializeField] private MMF_Player sequencePlayer;
+    [SerializeField] private Animator animator;
+    [SerializeField] private string animationTrigger = "FallIntoPot";
     [SerializeField] private bool plankDestroyed = false;
     [SerializeField] private ExitUnlock exitUnlock;
-
-    private bool _sequenceTriggered = false;
 
     public void SetPlankAsDestroyed()
     {
@@ -18,7 +16,7 @@ public class FlourBagLauncher : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (plankDestroyed && !_sequenceTriggered)
+            if (plankDestroyed)
             {
                 TriggerSequence();
             }
@@ -27,16 +25,11 @@ public class FlourBagLauncher : MonoBehaviour
 
     private void TriggerSequence()
     {
-        _sequenceTriggered = true;
-        
+        animator.SetTrigger(animationTrigger);
+
         if (exitUnlock != null)
         {
             exitUnlock.AddShelfIngredient();
-        }
-        
-        if (sequencePlayer != null)
-        {
-            sequencePlayer.PlayFeedbacks();
         }
     }
 

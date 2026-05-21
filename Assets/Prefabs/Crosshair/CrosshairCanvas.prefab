@@ -632,7 +632,7 @@ GameObject:
   - component: {fileID: 8221128410762726974}
   - component: {fileID: 7616035343420664222}
   - component: {fileID: 5850932932717512486}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: CrosshairCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -744,8 +744,7 @@ MonoBehaviour:
   raycastDistance: 10000
   raycastLayers:
     serializedVersion: 2
-    m_Bits: 2327052274
-  useDebugLogging: 0
+    m_Bits: 4294967295
 --- !u!1 &2793438674948024667
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,8 +22,6 @@ public class DrawShadows : MonoBehaviour
     Vector3 velocity = Vector3.zero;
     float time = 0.15f; // Time it takes for shadow to move into position
     public bool shadowPuzzleActive;
-    public Transform approximatePos, targetPos;
-    public ShadowCaster shadowCaster;
 
     void Start()
     {
@@ -50,7 +48,7 @@ public class DrawShadows : MonoBehaviour
             // Get direction of raycast
             Vector3 direction = boxCorners[i].position - playerLight.position;
             direction.Normalize();
-            //Debug.DrawRay(boxCorners[i].position, direction * rayDistance, Color.cyan);
+            Debug.DrawRay(boxCorners[i].position, direction * rayDistance, Color.cyan);
 
             // If ray hits wall that will project the shadow, store the hit point in a list
             if (Physics.Raycast(boxCorners[i].position, direction, out hit, rayDistance, layerMask))
@@ -62,35 +60,20 @@ public class DrawShadows : MonoBehaviour
 
         if (shadow != null)
         {
-            if (Vector3.Distance(transform.position, new Vector3(approximatePos.position.x, transform.position.y, approximatePos.position.z)) > 0.1f)
-            {
-                // Smoothly move shadow into position
-                shadow.transform.position = Vector3.SmoothDamp
-                (
-                    shadow.transform.position,
-                    GetAveragePosition(currentRayPoints),
-                    ref velocity,
-                    time
-                );
-            }
-            else if (shadowCaster.isChecking)
-            {
-                shadow.transform.position = Vector3.SmoothDamp
-                (
-                    shadow.transform.position,
-                    targetPos.position,
-                    ref velocity,
-                    0.10f
-                );
-            }
-
+            // Smoothly move shadow into position
+            shadow.transform.position = Vector3.SmoothDamp
+            (
+                shadow.transform.position,
+                GetAveragePosition(currentRayPoints),
+                ref velocity,
+                time
+            );
             //shadow.transform.position = GetAveragePosition(currentRayPoints);
 
             // Scale shadow sprite based on distance to shadow object
             float dist = Vector3.Distance(box.position, playerLight.position);
             shadow.transform.localScale = Vector3.one / dist;
         }
-
     }
 
     public void CreateShadow(GameObject _shadow)

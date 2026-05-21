@@ -16,7 +16,7 @@ public class LightFollower : MonoBehaviour
     public KeyCode startKey = KeyCode.Q;
     public KeyCode moveForwardKey = KeyCode.W;
     public KeyCode moveBackwardKey = KeyCode.S;
-    public KeyCode exitLanternKey = KeyCode.Q;
+    public KeyCode exitLanternKey = KeyCode.Space;
     [Space]
 
 
@@ -180,19 +180,7 @@ public class LightFollower : MonoBehaviour
 
 
         //Restore Default Position:
-        if (currentLantern != null && currentLantern.exitTransform != null)
-        {
-            transform.position = currentLantern.exitTransform.position;
-            transform.rotation = currentLantern.exitTransform.rotation;
-            
-            // If player is separate from transform, move it too
-            if (player.transform != transform)
-            {
-                player.transform.position = currentLantern.exitTransform.position;
-                player.transform.rotation = currentLantern.exitTransform.rotation;
-            }
-        }
-        else if (followerObject != null)
+        if (followerObject != null)
         {
             transform.position = followerObject.transform.position;
         }

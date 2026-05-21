@@ -41,10 +41,10 @@ public class CameraSwitcher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.Instance.Player == null || GameManager.Instance.LanternTravel == null)
-            return;
+        if(GameManager.Instance.Player == null || GameManager.Instance.LanternTravel == null)
+                return;
 
-        bool aimPressed = Input.GetMouseButton(1) && GameManager.Instance.Player.playerControl ||
+        bool aimPressed = Input.GetMouseButton(1) ||
         (GameManager.Instance.Player.projector != null && GameManager.Instance.Player.projector.isPlayerInside)
         || GameManager.Instance.LanternTravel.isInsideLantern;
 
@@ -95,7 +95,7 @@ public class CameraSwitcher : MonoBehaviour
     private void EnterAimMode()
     {
         isAiming = true;
-
+        
         aimCamController.InitYawPitchFromCurrentTargets();
         aimCamController.SetAiming(true);
 

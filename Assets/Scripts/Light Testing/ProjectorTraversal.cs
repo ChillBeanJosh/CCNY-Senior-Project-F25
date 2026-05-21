@@ -25,11 +25,13 @@ public class ProjectorTraversal : MonoBehaviour
     [Header("Projector Rotation Controls (when inside): ")]
     public KeyCode rotateYLeftKey = KeyCode.A;
     public KeyCode rotateYRightKey = KeyCode.D;
-    public float yAimSpeedDegPerSec = 30f;
+    public float ySpeedDegPerSec = 120f;
+    private float yAimSpeedDegPerSec = 30f;
     [Space]
     public KeyCode rotateZUpKey = KeyCode.W;    // increases Z rotation (positive)
     public KeyCode rotateZDownKey = KeyCode.S;  // decreases Z rotation (negative)
-    public float zAimSpeedDegPerSec = 15f;
+    public float zSpeedDegPerSec = 60f;
+    private float zAimSpeedDegPerSec = 15f;
     [Space]
 
     [Header("Camera Offset Parameters:")]

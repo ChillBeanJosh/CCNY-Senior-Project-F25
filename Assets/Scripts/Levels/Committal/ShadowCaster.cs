@@ -27,9 +27,6 @@ public class ShadowCaster : MonoBehaviour
     [SerializeField] ShadowPuzzleTrigger shadowTrigger;
     [SerializeField] GameObject shadowPrefab;
     GameObject shadow;
-    [SerializeField] Transform shadowTarget;
-    [SerializeField] bool doubleShadow;
-    [SerializeField] Transform thinShadowTarget;
 
     void Start()
     {
@@ -58,17 +55,10 @@ public class ShadowCaster : MonoBehaviour
             if (shadowPrefab != null && !shadowDetection.completed)
             {
                 // Instantiate shadow at burn site when burn is complete
-                if (!doubleShadow)
-                {
-                    GameObject playerShadow = GameManager.Instance.Player.gameObject.GetComponent<DrawShadows>().shadow;
-                    shadow = shadowPrefab;
-                    shadow.transform.localScale = playerShadow.transform.localScale;
-                    Instantiate(shadow, playerShadow.transform.position, playerShadow.transform.rotation);
-                }
-                else
-                {
-                    Instantiate(shadowPrefab, thinShadowTarget.position, thinShadowTarget.rotation);
-                }
+                GameObject playerShadow = GameManager.Instance.Player.gameObject.GetComponent<DrawShadows>().shadow;
+                shadow = shadowPrefab;
+                shadow.transform.localScale = playerShadow.transform.localScale;
+                Instantiate(shadow, playerShadow.transform.position, playerShadow.transform.rotation);
 
                 // Lower coffin 
                 if (committalLevel) GameObject.Find("Coffin").GetComponent<FourKeyPlatform>().NextThreshold();

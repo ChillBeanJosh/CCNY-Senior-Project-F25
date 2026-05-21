@@ -16,7 +16,6 @@ public class OscillateObject : MonoBehaviour
     [SerializeField] float rotRangeStart = 10f, rotRangeEnd = 20f;
     [SerializeField] float rotSpeedRangeStart = 1f, rotSpeedRangeEnd = 2f;
     float time = 0f;
-    bool heads;
 
     void Start()
     {
@@ -27,18 +26,11 @@ public class OscillateObject : MonoBehaviour
         rot = transform.localEulerAngles;
         rotDist = Random.Range(rotRangeStart, rotRangeEnd);
         rotSpeed = Random.Range(rotSpeedRangeStart, rotSpeedRangeEnd);
-
-        heads = Random.Range(1, 3) == 1 ? true : false;
     }
     void Update()
     {
         time += Time.deltaTime;
-
-        if (heads)
-            transform.position = new Vector3(pos.x, pos.y + Mathf.Sin(time * moveSpeed) * dist, pos.z);
-        else
-            transform.position = new Vector3(pos.x, pos.y - Mathf.Sin(time * moveSpeed) * dist, pos.z);
-
+        transform.position = new Vector3(pos.x, pos.y + Mathf.Sin(time * moveSpeed) * dist, pos.z);
 
         if (includeRotation)
             transform.localEulerAngles = new Vector3(rot.x, rot.y + Mathf.Sin(time * rotSpeed) * rotDist, rot.z);

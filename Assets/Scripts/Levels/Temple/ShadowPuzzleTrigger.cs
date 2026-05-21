@@ -10,13 +10,6 @@ public class ShadowPuzzleTrigger : MonoBehaviour
     [Header("Two Player Check")]
     [Tooltip("Leave empty if puzzle requires only one shadow.")]
     [SerializeField] ShadowDetection shadowDetection;
-    [Header("Target Positions")]
-    [SerializeField] Transform approximatePos;
-    [SerializeField] Transform targetPos;
-    [SerializeField] bool requiresP2;
-    [SerializeField] Transform approximatePos2;
-    [SerializeField] Transform targetPos2;
-    int playersEntered = 0;
 
 
     void Start()
@@ -36,21 +29,11 @@ public class ShadowPuzzleTrigger : MonoBehaviour
             if (col.gameObject.CompareTag("Player"))
             {
                 DrawShadows drawShadows = col.gameObject.GetComponent<DrawShadows>();
-                drawShadows.approximatePos = approximatePos;
-                drawShadows.targetPos = targetPos;
-                if (requiresP2 && playersEntered == 1)
-                {
-                    drawShadows.targetPos = approximatePos2;
-                    drawShadows.targetPos = targetPos2;
-                    Debug.Log("ADDED");
-                }
-                drawShadows.shadowCaster = GetComponent<ShadowCaster>();
                 drawShadows.box = this.transform;
                 drawShadows.boxCorners = corners;
                 drawShadows.shadowOrientation = orientation;
                 drawShadows.CreateShadow(shadowPrefab);
                 drawShadows.shadowPuzzleActive = true;
-                playersEntered++;
             }
         }
     }
@@ -65,10 +48,8 @@ public class ShadowPuzzleTrigger : MonoBehaviour
                 drawShadows.shadowOrientation = Vector3.zero;
                 drawShadows.box = null;
                 drawShadows.boxCorners = null;
-                drawShadows.shadowCaster = null;
                 if (shadowDetection != null) shadowDetection.RemoveShadowFromList(col);
                 drawShadows.shadowPuzzleActive = false;
-                playersEntered--;
             }
         }
     }

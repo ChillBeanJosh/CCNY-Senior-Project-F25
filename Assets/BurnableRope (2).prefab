@@ -128,7 +128,6 @@ MonoBehaviour:
   isMultipleLensesEffected: 0
   burnTime: 3
   destroyOnComplete: 1
-  activeAfterBurn: 0
   onBurnComplete:
     m_PersistentCalls:
       m_Calls: []

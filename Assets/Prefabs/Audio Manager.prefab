@@ -50,20 +50,6 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: 941c5b2b1add77d40a166e91a64d9b40, type: 3}
   - Type: 2
     Clip: {fileID: 0}
-  - Type: 3
-    Clip: {fileID: 8300000, guid: 043cad0fae45c408892fb85496d6101b, type: 3}
-  - Type: 4
-    Clip: {fileID: 8300000, guid: 3dddb14ee62ec4de68a819e181d4a44f, type: 3}
-  - Type: 5
-    Clip: {fileID: 8300000, guid: a1da39e3068714f75b8abda1afd8a9c4, type: 3}
-  - Type: 6
-    Clip: {fileID: 8300000, guid: 3c682bbfd0c104e98939a72dc7587dca, type: 3}
-  - Type: 7
-    Clip: {fileID: 8300000, guid: 00b1097ffb2744a52a13aaa62fdd1160, type: 3}
-  - Type: 8
-    Clip: {fileID: 8300000, guid: 0cf4b90cd1e97453080e25308093c1ab, type: 3}
-  - Type: 9
-    Clip: {fileID: 8300000, guid: 2ec01f318597e4b678549c8840d7a644, type: 3}
   Audio: {fileID: 7823200260703676084}
 --- !u!82 &7823200260703676084
 AudioSource:
