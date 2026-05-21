@@ -54,6 +54,6 @@ public class ExitUnlock : MonoBehaviour
 
     private void UnlockExit()
     {
-        exitDoor.SetActive(true);
+        exitDoor.SetActive(false);
     }
 }
