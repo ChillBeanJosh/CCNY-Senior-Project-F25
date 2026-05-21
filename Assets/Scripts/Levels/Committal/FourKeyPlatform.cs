@@ -24,7 +24,7 @@ public class FourKeyPlatform : MonoBehaviour
     // Called from Shadow Burn
     public void NextThreshold()
     {
-        GameManager.Instance.Player.playerControl = false;
+        if (positionIndex == 0 || positionIndex == 3) GameManager.Instance.Player.playerControl = false;
         StartCoroutine(TurnOnLight());
     }
 
@@ -32,9 +32,17 @@ public class FourKeyPlatform : MonoBehaviour
     {
         yield return new WaitForSeconds(0.25f);
 
-        coffinCam.Priority = 20;
+        if (positionIndex == 0 || positionIndex == 3) coffinCam.Priority = 20;
 
         yield return new WaitForSeconds(1.5f);
+
+        lights[positionIndex].GetComponent<Renderer>().material = lit;
+
+        yield return new WaitForSeconds(0.2f);
+
+        lights[positionIndex].GetComponent<Renderer>().material = unlit;
+
+        yield return new WaitForSeconds(0.1f);
 
         lights[positionIndex].GetComponent<Renderer>().material = lit;
 
@@ -56,8 +64,13 @@ public class FourKeyPlatform : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
-        coffinCam.Priority = 0;
-        GameManager.Instance.Player.playerControl = true;
+        if (positionIndex == 0 || positionIndex == 3)
+        {
+            coffinCam.Priority = 0;
+            GameManager.Instance.Player.playerControl = true;
+        }
+
+        positionIndex++;
     }
 
     IEnumerator MovePlatform()

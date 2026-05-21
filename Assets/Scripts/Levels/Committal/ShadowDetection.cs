@@ -31,8 +31,10 @@ public class ShadowDetection : MonoBehaviour
     [SerializeField] ShadowCaster shadowCaster;
     public bool completed;
     bool turnOffPlayerCheck;
+    [SerializeField] float currentBurnTime = 0f;
     //Vector3 testCorner = Vector3.zero;
     [SerializeField] Outline shadowObjOutline;
+
     [SerializeField] Outline finalCheckOutline;
     Outline outline;
     [SerializeField] Transform approximatePos;
@@ -42,7 +44,7 @@ public class ShadowDetection : MonoBehaviour
     {
         detectionCol = GetComponent<Collider>();
         outline = requiresTwoPlayers ? finalCheckOutline : shadowObjOutline;
-        outline.OutlineWidth = 5f;
+        outline.OutlineWidth = 3f;
         outline.OutlineColor = Color.white;
         outline.enabled = false;
     }
@@ -59,56 +61,6 @@ public class ShadowDetection : MonoBehaviour
         //if (requiresTwoPlayers && playerShadows.Count == 2)
         if (requiresTwoPlayers && players[1].activeInHierarchy)
         {
-            // Debug.Log(ContainsCollider(detectionCol, shadowCol) + "   " +
-            //       NoCornersDetected(sizeCheckCol, shadowCol));
-            //Collider leftCol, rightCol;
-
-            // Check to see which player is on left side of puzzle
-            // if (playerShadows[0] != null && playerShadows[1] != null)
-            // {
-            //     if (playerShadows[0].transform.position.x <= playerShadows[1].transform.position.x)
-            //     {
-            //         //leftCol = playerShadows[0];
-            //         //rightCol = playerShadows[1];
-
-            //     }
-            //     else
-            //     {
-            //         //leftCol = playerShadows[1];
-            //         //rightCol = playerShadows[0];
-            //     }
-
-            // bool check1 = ContainsCollider(leftDetectionCol, leftCol) &&
-            //               NoCornersDetected(leftSizeCheckCol, leftCol);
-
-            // bool check2 = ContainsCollider(rightDetectionCol, rightCol) &&
-            //               NoCornersDetected(rightSizeCheckCol, rightCol);
-
-            //Debug.Log(check1 + "   " + check2);
-
-            //shadowIsInside = check1 && check2;
-
-            // for (int i = 0; i < players.Length; i++)
-            // {
-            //     if (players[i].transform.position.x <= centerPt.position.x)
-            //     {
-            //         if (players[i].GetComponent<DrawShadows>().approximatePos != approximatePos2)
-            //         {
-            //             players[i].GetComponent<DrawShadows>().approximatePos = approximatePos2;
-            //             players[i].GetComponent<DrawShadows>().targetPos = targetPos2;
-            //         }
-            //     }
-            //     else
-            //     {
-            //         if (players[i].GetComponent<DrawShadows>().approximatePos != approximatePos)
-            //         {
-            //             players[i].GetComponent<DrawShadows>().approximatePos = approximatePos;
-            //             players[i].GetComponent<DrawShadows>().targetPos = targetPos;
-            //         }
-            //     }
-            // }
-
-
             if (playerShadows.Count == 2 && playerShadows[0] != null && playerShadows[1] != null)
             {
                 if (players[0].transform.position.x <= players[1].transform.position.x)
@@ -153,7 +105,14 @@ public class ShadowDetection : MonoBehaviour
 
             }
 
-            OutlineHandler();
+            if (shadowCaster.isChecking)
+            {
+                OutlineHandler();
+            }
+            else
+            {
+                if (outline.enabled) outline.enabled = false;
+            }
         }
         else if (shadowCol != null && shadowDetected && shadowCaster.isChecking)
         {
@@ -163,12 +122,25 @@ public class ShadowDetection : MonoBehaviour
             Debug.Log(shadowIsInside);
             //Debug.Log(ContainsCollider(detectionCol, shadowCol) + "  |  " + NoCornersDetected(sizeCheckCol, shadowCol));
 
-            OutlineHandler();
+            if (shadowCaster.isChecking)
+            {
+                OutlineHandler();
+            }
+            else
+            {
+                if (outline.enabled) outline.enabled = false;
+            }
+
         }
         else
         {
             if (shadowIsInside) shadowIsInside = false;
-            if (outline.enabled) outline.enabled = false;
+
+            if (outline.enabled)
+            {
+                outline.enabled = false;
+                outline.OutlineColor = Color.white;
+            }
         }
 
         if (requiresTwoPlayers)
@@ -233,12 +205,43 @@ public class ShadowDetection : MonoBehaviour
         // Turn outline on 
         if (!outline.enabled) outline.enabled = true;
 
-        // Set outline to cyan if at correct position
-        if (shadowIsInside && outline.OutlineColor != Color.cyan)
-            outline.OutlineColor = Color.cyan;
-        // Set outline to white if at wrong position
-        else if (!shadowIsInside && outline.OutlineColor != Color.white)
-            outline.OutlineColor = Color.white;
+        // // Set outline to cyan if at correct position
+        // if (shadowIsInside && outline.OutlineColor != Color.cyan)
+        //     outline.OutlineColor = Color.cyan;
+        // // Set outline to white if at wrong position
+        // else if (!shadowIsInside && outline.OutlineColor != Color.white)
+        //     outline.OutlineColor = Color.white;
+        if (currentBurnTime != 1f)
+        {
+            ApplyBurn();
+        }
+        else if (!shadowCaster.castComplete)
+        {
+            shadowCaster.castComplete = true;
+            outline.OutlineWidth = 5f;
+        }
+    }
+
+    void ApplyBurn()
+    {
+        float time = Time.deltaTime / 3f;
+
+        if (shadowIsInside)
+        {
+            currentBurnTime += time;
+        }
+        else
+        {
+            currentBurnTime -= time;
+        }
+
+        currentBurnTime = Mathf.Clamp01(currentBurnTime);
+
+        Color c = shadowIsInside ? Color.cyan : Color.white;
+        outline.OutlineColor = Color.Lerp(c, Color.black, currentBurnTime);
+        outline.OutlineWidth = Mathf.Lerp(3f, 10f, currentBurnTime);
+
+        //Debug.Log(currentBurnTime);
     }
 
     void OnDrawGizmos()
