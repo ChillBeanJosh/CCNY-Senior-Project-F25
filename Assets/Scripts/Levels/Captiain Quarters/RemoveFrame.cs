@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RemoveFrame : MonoBehaviour
 {
-    float targetTime = 3f;
+    float targetTime = 2f;
     Rigidbody rb;
 
     void Start()
