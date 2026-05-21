@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 3516739405518781392}
   - component: {fileID: 3127250399650151006}
   - component: {fileID: 3887780696330492068}
+  - component: {fileID: 3727594985992785397}
   m_Layer: 13
   m_Name: Lens with Projector
   m_TagString: Untagged
@@ -245,6 +246,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   indicator: {fileID: 7751306377940254406}
+--- !u!65 &3727594985992785397
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6343360254243816530}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2.443493, z: 2.3779345}
+  m_Center: {x: 4.505474e-16, y: -0.023949623, z: 0.15670443}
 --- !u!1 &7540613287589502257
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,6 +508,9 @@ MonoBehaviour:
   crystalLayer:
     serializedVersion: 2
     m_Bits: 0
+  useConvergence: 0
+  convergenceDistance: 2
+  cam: {fileID: 0}
   laserWidth: 0.05
 --- !u!1 &9030911415410908723
 GameObject:

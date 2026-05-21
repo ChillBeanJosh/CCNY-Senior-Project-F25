@@ -203,8 +203,8 @@ MonoBehaviour:
       YOffset: 0
     Strategy: 0
     MaximumEffort: 10
-    SmoothingTime: 1
-    Damping: 10
+    SmoothingTime: 0.5
+    Damping: 2
     DampingWhenOccluded: 0.2
   ShotQualityEvaluation:
     Enabled: 0
@@ -285,7 +285,7 @@ MonoBehaviour:
   orbitalFollow: {fileID: 2626286378967585294}
   minZoom: 0.25
   maxZoom: 2.5
-  zoomSpeed: 5
+  zoomSpeed: 3
 --- !u!114 &1701990907107475302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,8 +728,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7566157878215062213}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -19.516632, y: 7.0270004, z: 28.43}
+  m_LocalRotation: {x: 0.15212338, y: -6.696643e-10, z: 2.4749177e-11, w: 0.98836154}
+  m_LocalPosition: {x: 36.1, y: 88.717064, z: -69.98844}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -877,7 +877,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7566157878215062213}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90a2c415cb5db4f8590dca1e6201b4a7, type: 3}
   m_Name: 
@@ -892,7 +892,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7566157878215062213}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90a2c415cb5db4f8590dca1e6201b4a7, type: 3}
   m_Name: 

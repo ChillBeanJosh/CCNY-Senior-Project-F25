@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 400879}
   - component: {fileID: 400881}
   - component: {fileID: 400880}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Wall Background (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1809,6 +1809,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plank Broken (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2546,6 +2550,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plank Broken (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2645,7 +2653,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 300165265513381704, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.1
+      value: 36.422
       objectReference: {fileID: 0}
     - target: {fileID: 300165265513381704, guid: 2d74d9ce3caa00244922fc9e5cc374ac, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2968,6 +2976,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b7126882a791c664a830a0a638047f03, type: 3}
       propertyPath: m_Name
       value: LongCrate (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b7126882a791c664a830a0a638047f03, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b7126882a791c664a830a0a638047f03, type: 3}
       propertyPath: m_IsActive
@@ -5667,6 +5679,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: m_Name
       value: Crate Hollow (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12059,6 +12075,10 @@ PrefabInstance:
       value: Lantern Round (7)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -12312,7 +12332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2bb8148f431d0274c8b3552a4f3a6e25, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2bb8148f431d0274c8b3552a4f3a6e25, type: 3}
       propertyPath: m_IsActive
@@ -14364,7 +14384,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 260512305}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Window Grate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15511,7 +15531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 830223d40545d7c438cded8a2cd0bb87, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22295,7 +22315,7 @@ GameObject:
   - component: {fileID: 375212195}
   - component: {fileID: 375212194}
   - component: {fileID: 375212193}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Wall (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28482,7 +28502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: eddd522af5945964994a5b6453694784, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: eddd522af5945964994a5b6453694784, type: 3}
       propertyPath: m_IsActive
@@ -28518,7 +28538,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.021015754, y: 0.022302022, z: 0.14494447}
   m_Center: {x: 0.0000000133261375, y: 0.00014785565, z: 0.0731149}
@@ -42886,6 +42906,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plank Broken (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -53276,6 +53300,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plank Broken (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -55004,7 +55032,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2bb8148f431d0274c8b3552a4f3a6e25, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -55200,7 +55228,7 @@ GameObject:
   - component: {fileID: 764254612}
   - component: {fileID: 764254611}
   - component: {fileID: 764254610}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Wall (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55532,6 +55560,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plank Broken (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -55694,6 +55726,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plank Broken (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -55778,6 +55814,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: m_Name
       value: Crate Hollow (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -63095,7 +63135,7 @@ GameObject:
   - component: {fileID: 845341726}
   - component: {fileID: 845341725}
   - component: {fileID: 845341724}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Wall (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63364,7 +63404,7 @@ GameObject:
   - component: {fileID: 855700609}
   - component: {fileID: 855700608}
   - component: {fileID: 855700607}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Doorway
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66721,7 +66761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_IsActive
@@ -66812,7 +66852,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_IsActive
@@ -66934,7 +66974,7 @@ GameObject:
   - component: {fileID: 898684259}
   - component: {fileID: 898684258}
   - component: {fileID: 898684257}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Wall (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69267,7 +69307,7 @@ GameObject:
   - component: {fileID: 978460550}
   - component: {fileID: 978460549}
   - component: {fileID: 978460548}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Door Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69965,6 +70005,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: m_Name
       value: Plank Broken (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -71335,6 +71379,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plank Broken (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -72096,7 +72144,7 @@ GameObject:
   - component: {fileID: 1072657107}
   - component: {fileID: 1072657106}
   - component: {fileID: 1072657105}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Broken Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77452,7 +77500,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_IsActive
@@ -78021,6 +78069,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plank Broken (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -78190,6 +78242,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: m_Name
       value: Crate Hollow (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -95263,6 +95319,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LongCrate (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b7126882a791c664a830a0a638047f03, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -95504,6 +95564,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: m_Name
       value: Crate Hollow (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: m_IsActive
@@ -96087,7 +96151,7 @@ GameObject:
   - component: {fileID: 1309105021}
   - component: {fileID: 1309105020}
   - component: {fileID: 1309105019}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Wall (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96427,7 +96491,7 @@ GameObject:
   - component: {fileID: 1322488863}
   - component: {fileID: 1322488862}
   - component: {fileID: 1322488861}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Doorway (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100854,7 +100918,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
       propertyPath: m_IsActive
@@ -101020,6 +101084,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b7126882a791c664a830a0a638047f03, type: 3}
       propertyPath: m_Name
       value: LongCrate (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b7126882a791c664a830a0a638047f03, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -101744,6 +101812,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b7126882a791c664a830a0a638047f03, type: 3}
       propertyPath: m_Name
       value: LongCrate (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b7126882a791c664a830a0a638047f03, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b7126882a791c664a830a0a638047f03, type: 3}
       propertyPath: m_IsActive
@@ -116134,6 +116206,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plank Broken (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -123449,6 +123525,10 @@ PrefabInstance:
       value: LongCrate (9)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b7126882a791c664a830a0a638047f03, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b7126882a791c664a830a0a638047f03, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -129594,7 +129674,7 @@ GameObject:
   - component: {fileID: 1690342152}
   - component: {fileID: 1690342151}
   - component: {fileID: 1690342150}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Door Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129989,6 +130069,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
       propertyPath: m_Name
       value: Crate Hollow (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2bbc34972ea10cd49878dc384cac4233, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -135485,6 +135569,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2bb8148f431d0274c8b3552a4f3a6e25, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -136095,6 +136183,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_Name
       value: Lantern Round (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 12f37527181b38a499bee261fc3cee0b, type: 3}
       propertyPath: m_IsActive
@@ -139785,6 +139877,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3a2ca05486c4b0f478ed41909aa608ea, type: 3}
   m_PrefabInstance: {fileID: 1896321060}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1897686807 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 92e88178ea679492c89652ae46e85b58, type: 3}
+  m_PrefabInstance: {fileID: 1928345309}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1897686810
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897686807}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8666009350879999244, guid: 92e88178ea679492c89652ae46e85b58, type: 3}
 --- !u!1 &1898524449
 GameObject:
   m_ObjectHideFlags: 0
@@ -141668,7 +141787,7 @@ PrefabInstance:
       objectReference: {fileID: 531725925}
     - target: {fileID: 4351304180420601530, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.1
+      value: 36.422
       objectReference: {fileID: 0}
     - target: {fileID: 4351304180420601530, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -141696,7 +141815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6385797080033930924, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 35.35
+      value: 35.672
       objectReference: {fileID: 0}
     - target: {fileID: 6385797080033930924, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -141708,31 +141827,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6592084117046535992, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 35.35
+      value: 79.49214
       objectReference: {fileID: 0}
     - target: {fileID: 6592084117046535992, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 89.020004
+      value: 57.97391
       objectReference: {fileID: 0}
     - target: {fileID: 6592084117046535992, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -64.51
+      value: -55.330627
       objectReference: {fileID: 0}
     - target: {fileID: 6592084117046535992, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: -0.91267824
       objectReference: {fileID: 0}
     - target: {fileID: 6592084117046535992, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.21947555
       objectReference: {fileID: 0}
     - target: {fileID: 6592084117046535992, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: -0.33518553
       objectReference: {fileID: 0}
     - target: {fileID: 6592084117046535992, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.08062071
+      objectReference: {fileID: 0}
+    - target: {fileID: 6884226154788866539, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
+      propertyPath: MinimumDistanceFromTarget
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6884226154788866539, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
+      propertyPath: AvoidObstacles.MaximumEffort
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7184880868918079258, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -141958,10 +142085,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: shelf_broken 2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92e88178ea679492c89652ae46e85b58, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 92e88178ea679492c89652ae46e85b58, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1897686810}
   m_SourcePrefab: {fileID: 100100000, guid: 92e88178ea679492c89652ae46e85b58, type: 3}
 --- !u!1001 &1929782143
 PrefabInstance:
@@ -151698,6 +151832,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
       propertyPath: m_Name
       value: Plank Broken (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -164684,6 +164822,10 @@ PrefabInstance:
       value: LongCrate (13)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b7126882a791c664a830a0a638047f03, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b7126882a791c664a830a0a638047f03, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -165499,6 +165641,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b7126882a791c664a830a0a638047f03, type: 3}
       propertyPath: m_Name
       value: LongCrate (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b7126882a791c664a830a0a638047f03, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -166753,6 +166899,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 846607794}
     m_Modifications:
+    - target: {fileID: 1670051960218012, guid: 9f78129ce26351646afdcbc83ab1241c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 663387152979521174, guid: 9f78129ce26351646afdcbc83ab1241c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 995375453600769035, guid: 9f78129ce26351646afdcbc83ab1241c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1296885694283327092, guid: 9f78129ce26351646afdcbc83ab1241c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853046083569896103, guid: 9f78129ce26351646afdcbc83ab1241c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3023976136838390056, guid: 9f78129ce26351646afdcbc83ab1241c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 74.52439
@@ -166793,9 +166959,61 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3568751260238780996, guid: 9f78129ce26351646afdcbc83ab1241c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3624457644193772667, guid: 9f78129ce26351646afdcbc83ab1241c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666667701747595151, guid: 9f78129ce26351646afdcbc83ab1241c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3725056811898287975, guid: 9f78129ce26351646afdcbc83ab1241c, type: 3}
       propertyPath: m_Name
       value: Broken Stairs
+      objectReference: {fileID: 0}
+    - target: {fileID: 3725056811898287975, guid: 9f78129ce26351646afdcbc83ab1241c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3777679737906255452, guid: 9f78129ce26351646afdcbc83ab1241c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3781397466248611700, guid: 9f78129ce26351646afdcbc83ab1241c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4173852162582119366, guid: 9f78129ce26351646afdcbc83ab1241c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4816638917442907619, guid: 9f78129ce26351646afdcbc83ab1241c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5007184123409564853, guid: 9f78129ce26351646afdcbc83ab1241c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7487920897400075092, guid: 9f78129ce26351646afdcbc83ab1241c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993927130535654807, guid: 9f78129ce26351646afdcbc83ab1241c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042771458957112155, guid: 9f78129ce26351646afdcbc83ab1241c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532093136143873957, guid: 9f78129ce26351646afdcbc83ab1241c, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
