@@ -3,12 +3,10 @@ using MoreMountains.Tools;
 using TMPro;
 using UnityEngine;
 using Unity.Cinemachine;
-using UnityEngine.UI;
 
 public class SpeechBubble : MonoBehaviour, MMEventListener<MMGameEvent> {
     [Header("Speech Bubble Settings")]
     [SerializeField, TextArea(3, 10)] private string speechText = "Hello!";
-    [SerializeField] private Sprite defaultSprite;
     [SerializeField] private float detectionRadius = 5f;
     [SerializeField] private float hideDelay = 2f;
     [SerializeField] private string playerTag = "Player";
@@ -31,7 +29,6 @@ public class SpeechBubble : MonoBehaviour, MMEventListener<MMGameEvent> {
     public class SpeechBubbleEventUpdate {
         public string eventNameToListen;
         public string newSpeechText;
-        public Sprite newSprite;
     }
 
     [Header("Feedbacks")]
@@ -48,8 +45,6 @@ public class SpeechBubble : MonoBehaviour, MMEventListener<MMGameEvent> {
     
     [Header("References")]
     [SerializeField] private TextMeshProUGUI tmpText; // Assign your TMP text component
-    [SerializeField] private Image bubbleImage; // Assign your world space image component
-    [SerializeField] private Image screenSpaceBubbleImage; // Assign your screen space image component
 
 
     private Camera mainCamera;
@@ -76,10 +71,6 @@ public class SpeechBubble : MonoBehaviour, MMEventListener<MMGameEvent> {
         if (tmpText == null) {
             tmpText = GetComponentInChildren<TextMeshProUGUI>();
         }
-
-        // Initialize images
-        UpdateImageSprite(bubbleImage, defaultSprite);
-        UpdateImageSprite(screenSpaceBubbleImage, defaultSprite);
     }
 
     private void InitializeFeedback(MMF_Player player) {
@@ -121,51 +112,33 @@ public class SpeechBubble : MonoBehaviour, MMEventListener<MMGameEvent> {
 
         foreach (var update in eventUpdates) {
             if (!string.IsNullOrEmpty(update.eventNameToListen) && gameEvent.EventName == update.eventNameToListen) {
-                UpdateSpeechBubbleContent(update.newSpeechText, update.newSprite);
+                UpdateSpeechText(update.newSpeechText);
                 break;
             }
         }
     }
 
-    public void UpdateSpeechBubbleContent(string newText, Sprite newSprite = null) {
-        // Update text
-        if (speechText != newText) {
-            speechText = newText;
-            cameraAlreadyTriggeredInScene = false;
+    public void UpdateSpeechText(string newText) {
+        if (speechText == newText) return;
 
-            // Update the TMP Text Reveal feedback's text if assigned
-            UpdateFeedbackText(spawnFeedback);
-            UpdateFeedbackText(screenSpaceSpawnFeedback);
+        speechText = newText;
+        cameraAlreadyTriggeredInScene = false;
 
-            // If currently showing, update the actual TMP text immediately
-            if (isShowing && tmpText != null) {
-                if (spawnFeedback != null) {
-                    spawnFeedback.PlayFeedbacks();
-                }
-            }
-            
-            if (isShowingScreenSpace && screenSpaceTmpText != null) {
-                if (screenSpaceSpawnFeedback != null) {
-                    screenSpaceSpawnFeedback.PlayFeedbacks();
-                }
+        // Update the TMP Text Reveal feedback's text if assigned
+        UpdateFeedbackText(spawnFeedback);
+        UpdateFeedbackText(screenSpaceSpawnFeedback);
+
+        // If currently showing, update the actual TMP text immediately
+        if (isShowing && tmpText != null) {
+            if (spawnFeedback != null) {
+                spawnFeedback.PlayFeedbacks();
             }
         }
-
-        // Update sprites
-        UpdateImageSprite(bubbleImage, newSprite);
-        UpdateImageSprite(screenSpaceBubbleImage, newSprite);
-    }
-
-    private void UpdateImageSprite(Image image, Sprite sprite) {
-        if (image == null) return;
-
-        if (sprite != null) {
-            image.sprite = sprite;
-            image.enabled = true;
-        }
-        else {
-            image.sprite = null;
-            image.enabled = false;
+        
+        if (isShowingScreenSpace && screenSpaceTmpText != null) {
+            if (screenSpaceSpawnFeedback != null) {
+                screenSpaceSpawnFeedback.PlayFeedbacks();
+            }
         }
     }
 

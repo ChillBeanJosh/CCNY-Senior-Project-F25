@@ -11,7 +11,6 @@ public class Burnable : MonoBehaviour
     public float burnTime;
 
     public bool destroyOnComplete = true;
-    public bool activeAfterBurn = false;
     public UnityEvent onBurnComplete;
     [SerializeField] private ParticleSystem smokeParticles;
     [SerializeField] private Material ropeUnlit, ropeLit;
@@ -100,10 +99,7 @@ public class Burnable : MonoBehaviour
 
         UpdateVFX();
 
-        bool hasPlayer = GameManager.Instance.Player != null && GameManager.Instance.Player != null;
-        bool hasProjector = hasPlayer && GameManager.Instance.Player.projector != null;
-        bool isAiming = hasPlayer && GameManager.Instance.Player.isAiming;
-        /*if ((GameManager.Instance.Player.projector != null || isBurning) && !outline.enabled)
+        if ((GameManager.Instance.Player.projector != null || isBurning) && !outline.enabled)
         {
             outline.enabled = true;
         }
@@ -115,18 +111,6 @@ public class Burnable : MonoBehaviour
         else if (outline.enabled && GameManager.Instance.Player.projector == null && !GameManager.Instance.Player.isAiming)
         {
             outline.enabled = false;
-        }*/
-        if (outline != null)
-        {
-            if ((hasProjector || isBurning) && !outline.enabled)
-            {
-                outline.enabled = false;
-            }
-        }
-
-        if (isBurning)
-        {
-            ApplyBurn(Time.deltaTime);
         }
 
         hitsThisFrame = 0;
@@ -176,27 +160,15 @@ public class Burnable : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-            else if (!activeAfterBurn)
+            else
             {
                 currentBurnTime = 0f;
                 gameObject.SetActive(false);
-                if (outline != null)
-                {
-                    outline.OutlineWidth = 0f;
-                    outline.OutlineColor = Color.white;
-                }
-                
+                outline.OutlineWidth = 0f;
+                outline.OutlineColor = Color.white;
                 completed = false;
                 isBurning = false;
                 hitsThisFrame = 0;
-            }
-            else
-            {
-                if (outline != null)
-                {
-                    outline.OutlineWidth = 0f;
-                    outline.enabled = false;
-                }
             }
         }
     }
