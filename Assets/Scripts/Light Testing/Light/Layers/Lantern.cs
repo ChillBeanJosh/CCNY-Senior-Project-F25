@@ -7,6 +7,7 @@ public class Lantern : MonoBehaviour
 {
     [Header("Lantern Movement Position: ")]
     public Transform lanternCore;
+    public Transform exitTransform;
 
     public Collider aimCollider;
     [Space]
@@ -59,8 +60,7 @@ public class Lantern : MonoBehaviour
     [SerializeField] private float offWidth = 0f;
     [SerializeField] private float lerpTime = 0.5f;
 
-    [SerializeField] private GameObject inputCanvas;
-    [SerializeField] private TMP_Text buttonPromptText;
+    [SerializeField] private ButtonIndicator indicator;
     [SerializeField] private GameObject lightModel;
     bool flicker;
     Animator anim;
@@ -68,6 +68,7 @@ public class Lantern : MonoBehaviour
     PlayerMovement player;
     bool playerDetected;
     private bool isPlayerInside = false;
+    private bool wasInsideThisLantern = false;
     private Material runtimeMaterial;
     private Renderer lanternRenderer;
 
@@ -81,9 +82,6 @@ public class Lantern : MonoBehaviour
         {
             if (activeLantern) GameManager.Instance.LanternTravel?.RegisterActivatedLantern(this);
         }
-
-        if (inputCanvas != null)
-            inputCanvas.SetActive(false);
 
         anim = GetComponent<Animator>();
 
@@ -132,6 +130,9 @@ public class Lantern : MonoBehaviour
         bool wasPlayerInside = isPlayerInside;
         isPlayerInside = distToPlayer <= detectionRadius;
 
+        var lanternTravel = GameManager.Instance.LanternTravel;
+        bool isInsideThisLantern = lanternTravel != null && lanternTravel.isInsideLantern && lanternTravel.currentLantern == this;
+
         if (isPlayerInside && !wasPlayerInside)
         {
             if (activeLantern && player.lantern == null)
@@ -139,6 +140,16 @@ public class Lantern : MonoBehaviour
                 playerDetected = true;
                 player.lantern = this;
             }
+
+            if (activeLantern && indicator != null)
+            {
+                if (isInsideThisLantern)
+                    indicator.Appearance("LMB");
+                else
+                    indicator.Appearance("Q");
+            }
+            
+            wasInsideThisLantern = isInsideThisLantern;
         }
         else if (!isPlayerInside && wasPlayerInside)
         {
@@ -147,7 +158,9 @@ public class Lantern : MonoBehaviour
                 playerDetected = false;
                 if (player.lantern == this) player.lantern = null;
             }
-            if (inputCanvas != null) inputCanvas.SetActive(false);
+            if (indicator != null) indicator.Exit();
+            
+            wasInsideThisLantern = false;
         }
 
         if (isPlayerInside)
@@ -160,22 +173,24 @@ public class Lantern : MonoBehaviour
                     player.lantern = this;
                 }
 
-                if (inputCanvas != null && !inputCanvas.activeSelf)
-                    inputCanvas.SetActive(true);
+                // Handle changes while inside the radius (e.g. entering the lantern core)
+                bool isInsideNow = isInsideThisLantern;
 
-                if (buttonPromptText != null)
+                if (isInsideNow != wasInsideThisLantern)
                 {
-                    var lanternTravel = GameManager.Instance.LanternTravel;
-                    if (lanternTravel != null && lanternTravel.isInsideLantern && lanternTravel.currentLantern == this)
-                        buttonPromptText.text = "Left-Click";
-                    else
-                        buttonPromptText.text = "Q";
+                    if (indicator != null)
+                    {
+                        if (isInsideNow)
+                            indicator.Appearance("LMB");
+                        else
+                            indicator.Appearance("Q");
+                    }
+                    wasInsideThisLantern = isInsideNow;
                 }
             }
             else
             {
                 if (player.lantern == this) player.lantern = null;
-                if (inputCanvas != null && inputCanvas.activeSelf) inputCanvas.SetActive(false);
             }
         }
     }

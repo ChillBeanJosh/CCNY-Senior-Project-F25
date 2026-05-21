@@ -124,7 +124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  rotationSpeed: 10
+  horizontalSpeed: 100
+  verticalSpeed: 80
   rotationOffset: {x: 82, y: 0, z: -1}
 --- !u!114 &7782728245971579762
 MonoBehaviour:
@@ -138,10 +139,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 744dd5584568b454093c8cd51d042d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightReflection: {fileID: 7600370247431198308}
   followerObject: {fileID: 0}
+  lightReflection: {fileID: 7600370247431198308}
+  player: {fileID: 0}
+  lightModeToggle: {fileID: 0}
   moveSpeed: 5
   startKey: 113
+  moveForwardKey: 119
+  moveBackwardKey: 115
+  exitLanternKey: 113
   loop: 0
 --- !u!1 &7415200870358190765
 GameObject:
@@ -295,9 +301,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc32caca0425bba41809f3827c30a245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  suppressRaycasting: 0
   laserPoints: []
   lazerDistance: 10
   lineMaterial: {fileID: 2100000, guid: 4cf5a6a91f15cd642bf970c2a7c4f623, type: 2}
+  chargingMaterial: {fileID: 0}
+  nonchargingMaterial: {fileID: 0}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  wallHit: 0
   lensLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -311,7 +324,42 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   burnableHit: 0
+  fireParent: {fileID: 0}
+  firePrefab: {fileID: 0}
+  mirrorLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  mirrorBlock:
+    serializedVersion: 2
+    m_Bits: 0
+  mirrorHit: 0
+  lanternLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  lanternHit: 0
+  currentLanternHit: {fileID: 0}
+  projectorLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  projectorHit: 0
+  currentProjectorHit: {fileID: 0}
+  parentObjectForRotation: {fileID: 0}
+  lightRotationOffset: {x: 0, y: 0, z: 0, w: 1}
+  cameraRotationOffset: {x: 0, y: 0, z: 0, w: 1}
+  useExplicitDirection: 0
+  explicitDirection: {x: 0, y: 1, z: 0}
+  gemLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  gemHit: 0
+  gem: {fileID: 0}
   obstructionPointMarkerPrefab: {fileID: 5648934325104969992, guid: 3bb24c76aa4fce7448f2a08348b726f8, type: 3}
   imagePointMarkerPrefab: {fileID: 1630546774146983372, guid: 973d565dd2c708643b070d970d328a5d, type: 3}
   endPointMarkerPrefab: {fileID: 1036962242990389164, guid: bd8977801d6de954289b253f6005eca6, type: 3}
+  crystalLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  useConvergence: 1
+  convergenceDistance: 5
+  cam: {fileID: 0}
   laserWidth: 0.01

@@ -62,10 +62,10 @@ public class Burnable : MonoBehaviour
 
     private void HandleFPVChange(bool isFPVActive)
     {
-        if (outline != null)
+        /*if (outline != null)
         {
             outline.OutlineWidth = isFPVActive ? burnStartWidth : 0f;
-        }
+        }*/
 
         if (objectRenderer == null) return;
 
@@ -118,9 +118,13 @@ public class Burnable : MonoBehaviour
         }*/
         if (outline != null)
         {
-            if ((hasProjector || isBurning) && !outline.enabled)
+            if ((hasProjector || isBurning))
             {
-                outline.enabled = false;
+                if (!outline.enabled) outline.enabled = true;
+            }
+            else
+            {
+                if (outline.enabled) outline.enabled = false;
             }
         }
 
