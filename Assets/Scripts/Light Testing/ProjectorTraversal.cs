@@ -68,7 +68,7 @@ public class ProjectorTraversal : MonoBehaviour
                     lightReflection.RefreshProjectorProjection(detected, point, registerHit: true, insideProjector: false);
                 }
 
-                if (Input.GetKeyDown(enterTraversalKey) && detected.enterable && !isTraveling && player != null)
+                if (Input.GetKeyDown(enterTraversalKey) && detected.enterable && !isTraveling && player != null && GameManager.Instance.Player.playerControl)
                 {
                     currentProjector = detected;
                     if (currentProjector != null)
@@ -129,7 +129,7 @@ public class ProjectorTraversal : MonoBehaviour
         }
 
         // Exit Projector Mode:
-        if (Input.GetKeyDown(exitTraversalKey) && isInsideProjector && !isTraveling)
+        if (Input.GetKeyDown(exitTraversalKey) && isInsideProjector && !isTraveling && GameManager.Instance.Player.playerControl)
         {
             ExitProjectorMode();
             return;
