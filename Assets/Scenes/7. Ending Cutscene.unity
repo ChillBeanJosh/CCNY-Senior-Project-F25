@@ -292,10 +292,6 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: -3607045392602078933, guid: b02a9d9c17d25a7488f8624e4df7327f, type: 3}
-    - target: {fileID: -550384231657224861, guid: b02a9d9c17d25a7488f8624e4df7327f, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: -3607045392602078933, guid: b02a9d9c17d25a7488f8624e4df7327f, type: 3}
     - target: {fileID: 919132149155446097, guid: b02a9d9c17d25a7488f8624e4df7327f, type: 3}
       propertyPath: m_Name
       value: lighthouse_exteriorONLY_NEW
@@ -307,7 +303,7 @@ PrefabInstance:
     - target: {fileID: 2664967986947188877, guid: b02a9d9c17d25a7488f8624e4df7327f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: -3607045392602078933, guid: b02a9d9c17d25a7488f8624e4df7327f, type: 3}
+      objectReference: {fileID: 2100000, guid: 96541382b584ea441925a23f163a1e92, type: 2}
     - target: {fileID: 6075609120421033165, guid: b02a9d9c17d25a7488f8624e4df7327f, type: 3}
       propertyPath: m_IsActive
       value: 1
