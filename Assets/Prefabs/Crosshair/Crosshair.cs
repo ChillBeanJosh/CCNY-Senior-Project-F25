@@ -41,14 +41,15 @@ public class Crosshair : MonoBehaviour, MMEventListener<MMGameEvent> {
             Burnable burnable = hitObj.GetComponentInParent<Burnable>();
             Lantern lantern = hitObj.GetComponentInParent<Lantern>();
             Projector projector = hitObj.GetComponentInParent<Projector>();
+            Charger charger = hitObj.GetComponentInParent<Charger>();
 
             if (useDebugLogging) {
-                Debug.Log($"[DEBUG_LOG] Crosshair hit: {hitObj.name} on layer {LayerMask.LayerToName(hitObj.layer)}. Burnable: {burnable != null}, Lantern: {lantern != null}, Projector: {projector != null}");
+                Debug.Log($"[DEBUG_LOG] Crosshair hit: {hitObj.name} on layer {LayerMask.LayerToName(hitObj.layer)}. Burnable: {burnable != null}, Lantern: {lantern != null}, Projector: {projector != null}, Charger: {charger != null}");
             }
 
             if (burnable != null) {
                 SwitchState(CrosshairState.Flame);
-            } else if (lantern != null || projector != null) {
+            } else if (lantern != null || projector != null || charger != null) {
                 SwitchState(CrosshairState.Light);
             } else {
                 SwitchState(CrosshairState.Default);

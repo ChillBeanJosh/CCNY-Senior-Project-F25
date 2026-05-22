@@ -13105,6 +13105,9 @@ MonoBehaviour:
   currentRot: {x: 0, y: 0, z: 0}
   startingRot: {x: 0, y: 0, z: 0}
   ps: {fileID: 0}
+  x: 0
+  y: 0
+  z: 0
 --- !u!1 &215738522
 GameObject:
   m_ObjectHideFlags: 0
@@ -52563,6 +52566,9 @@ MonoBehaviour:
   currentRot: {x: 0, y: 0, z: 0}
   startingRot: {x: 0, y: 0, z: 0}
   ps: {fileID: 0}
+  x: 0
+  y: 0
+  z: 0
 --- !u!1 &716020543 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f9c31e958f8ed2940a2480f8f59bc512, type: 3}
@@ -71487,7 +71493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7017252358573770333, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
       propertyPath: 'soundPool.Array.data[1]'
-      value: Whispy Soul
+      value: Wood Creek
       objectReference: {fileID: 0}
     - target: {fileID: 7910016224972050789, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
       propertyPath: m_Name
@@ -71496,8 +71502,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1925177817800052250, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1037419069}
   m_SourcePrefab: {fileID: 100100000, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+--- !u!1 &1037419068 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1925177817800052250, guid: b8af369ccc6c6483987b67463dfde4b7, type: 3}
+  m_PrefabInstance: {fileID: 1037419067}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1037419069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037419068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9b73a2dd65b0924f99a5696ce105e8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPool:
+  - Wood Creek
+  minWaitTime: 7
+  maxWaitTime: 12
+  minSnippetDuration: 0.5
+  maxSnippetDuration: 2
+  playbackSpeed: 1
 --- !u!1001 &1046667335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96332,6 +96365,9 @@ MonoBehaviour:
   currentRot: {x: 0, y: 0, z: 0}
   startingRot: {x: 0, y: 0, z: 0}
   ps: {fileID: 0}
+  x: 0
+  y: 0
+  z: 0
 --- !u!1001 &1321264119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -141708,31 +141744,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6592084117046535992, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 35.35
+      value: 79.49214
       objectReference: {fileID: 0}
     - target: {fileID: 6592084117046535992, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 89.020004
+      value: 57.97391
       objectReference: {fileID: 0}
     - target: {fileID: 6592084117046535992, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -64.51
+      value: -55.330627
       objectReference: {fileID: 0}
     - target: {fileID: 6592084117046535992, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: -0.91267824
       objectReference: {fileID: 0}
     - target: {fileID: 6592084117046535992, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.21947555
       objectReference: {fileID: 0}
     - target: {fileID: 6592084117046535992, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: -0.33518553
       objectReference: {fileID: 0}
     - target: {fileID: 6592084117046535992, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.08062071
       objectReference: {fileID: 0}
     - target: {fileID: 7184880868918079258, guid: 380a918a878873b45984b55e5e80ff1b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -165609,6 +165645,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bottles: []
+  singleObj: 0
+  glassObj: {fileID: 0}
 --- !u!1001 &2119018799
 PrefabInstance:
   m_ObjectHideFlags: 0

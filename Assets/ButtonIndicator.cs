@@ -8,14 +8,34 @@ public class ButtonIndicator : MonoBehaviour
     public MMF_Player ExitFeedback;
     public MMF_Player BumpFeedback;
     public TMP_Text TMPComponent;
+    public GameObject LMBImage;
+    public GameObject RMBImage;
 
     private bool _isEntered;
 
     public void Appearance(string text)
     {
-        if (TMPComponent != null)
+        if (text == "LMB")
         {
-            TMPComponent.text = text;
+            if (TMPComponent != null) TMPComponent.transform.localScale = Vector3.zero;
+            if (LMBImage != null) LMBImage.transform.localScale = Vector3.one;
+            if (RMBImage != null) RMBImage.transform.localScale = Vector3.zero;
+        }
+        else if (text == "RMB")
+        {
+            if (TMPComponent != null) TMPComponent.transform.localScale = Vector3.zero;
+            if (LMBImage != null) LMBImage.transform.localScale = Vector3.zero;
+            if (RMBImage != null) RMBImage.transform.localScale = Vector3.one;
+        }
+        else
+        {
+            if (TMPComponent != null)
+            {
+                TMPComponent.transform.localScale = Vector3.one;
+                TMPComponent.text = text;
+            }
+            if (LMBImage != null) LMBImage.transform.localScale = Vector3.zero;
+            if (RMBImage != null) RMBImage.transform.localScale = Vector3.zero;
         }
 
         if (_isEntered)
@@ -41,6 +61,17 @@ public class ButtonIndicator : MonoBehaviour
         {
             ExitFeedback.PlayFeedbacks();
         }
+
+        if (LMBImage != null)
+        {
+            LMBImage.transform.localScale = Vector3.zero;
+        }
+
+        if (RMBImage != null)
+        {
+            RMBImage.transform.localScale = Vector3.zero;
+        }
+
         _isEntered = false;
     }
 }
