@@ -214,7 +214,7 @@ public class PlayerMovement : MonoBehaviour
             //AudioLibrary.Instance.PlaySound(Sfx.Walk);
 
             //Walking Audio Conditions (Start):
-            AudioController.Instance.Play("Walking", 2f);
+            AudioController.Instance.Play("Walking", 2f, 0.65f);
         }
         else
         {

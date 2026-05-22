@@ -28,7 +28,12 @@ public class DropLadder : MonoBehaviour
             }
         }
 
-        if (!ropes[0].activeInHierarchy && !ropes[1].activeInHierarchy && rb.isKinematic) rb.isKinematic = false;
+
+        if (!ropes[0].activeInHierarchy && !ropes[1].activeInHierarchy && rb.isKinematic)
+        {
+            rb.isKinematic = false;
+            AudioController.Instance.OneShot("Wood Falling", 0.5f, 1f);
+        }
 
     }
 }
