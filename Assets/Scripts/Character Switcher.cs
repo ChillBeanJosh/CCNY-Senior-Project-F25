@@ -95,11 +95,13 @@ public class CharacterSwitcher : MonoBehaviour
         if (player1Active)
         {
             // player 1 is active, disable player 2
+            AudioController.Instance.Stop("Crystal");
             player2Controller.enabled = false;
             player2Controller.gameObject.SetActive(false);
         }
         else
         {
+            AudioController.Instance.Stop("Crystal");
             player1Controller.enabled = false;
             player1Controller.gameObject.SetActive(false);
         }

@@ -106,6 +106,9 @@ public class LightReflection : MonoBehaviour
         ClearMarkers();
         ClearPrismSplits();
         ClearSplitRayMarkers();
+
+        //Implemented to stop audio on disabled player:
+        AudioController.Instance.Stop("Crystal");
     }
 
     private void Start()
@@ -1131,7 +1134,14 @@ public class LightReflection : MonoBehaviour
             ?? hit.collider.GetComponentInParent<CrystalActivation>();
 
         if (crystal != null)
+        {
             crystal.RegisterBeamHit(this);
+            AudioController.Instance.Play("Crystal", 0.8f, 0.25f);
+        }
+        else
+        {
+            AudioController.Instance.Stop("Crystal");
+        }
     }
 
     public void HandleGemHit(RaycastHit hit)
@@ -1155,7 +1165,7 @@ public class LightReflection : MonoBehaviour
 
         if (crystalHit)
         {
-            AudioController.Instance.Play("Crystal");
+            AudioController.Instance.Play("Crystal", 0.75f, 0.20f);
         }
         else
         {
