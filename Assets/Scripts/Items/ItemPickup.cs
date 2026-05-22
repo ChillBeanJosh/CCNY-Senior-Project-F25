@@ -3,6 +3,7 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour
 {
     [SerializeField] SunWheelController sunWheel;
+    [SerializeField] GameObject tutorial;
 
     void OnTriggerEnter(Collider col)
     {
@@ -13,6 +14,8 @@ public class ItemPickup : MonoBehaviour
 
             if (sunWheel != null)
                 sunWheel.UnlockAbility(SunSpike.SunSpikeType.Telescope);
+
+            tutorial.SetActive(true);
 
             Destroy(this.gameObject);
         }
