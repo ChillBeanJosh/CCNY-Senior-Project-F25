@@ -90,6 +90,8 @@ public class LightReflection : MonoBehaviour
 
     [Header("Crystal Activation")]
     public LayerMask crystalLayer;
+    public bool crystalHit;
+    [Space]
 
     [Header("Convergence")]
     [SerializeField] private bool useConvergence = false;
@@ -787,8 +789,7 @@ public class LightReflection : MonoBehaviour
         lanternHit = false;
         projectorHit = false;
         gemHit = false;
-
-
+        crystalHit = false;
     }
 
     private bool IsCrystalBeingHit()
@@ -1122,6 +1123,8 @@ public class LightReflection : MonoBehaviour
 
     public void HandleCrystalHit(RaycastHit hit)
     {
+        crystalHit = true;
+
         laserPoints.Add(hit.point);
 
         CrystalActivation crystal = hit.collider.GetComponent<CrystalActivation>()
@@ -1147,6 +1150,16 @@ public class LightReflection : MonoBehaviour
         else
         {
             AudioController.Instance.Stop("Burning");
+        }
+
+
+        if (crystalHit)
+        {
+            AudioController.Instance.Play("Crystal");
+        }
+        else
+        {
+            AudioController.Instance.Stop("Crystal");
         }
     }
 }

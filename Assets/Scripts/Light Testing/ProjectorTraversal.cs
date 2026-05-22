@@ -1,7 +1,6 @@
 ﻿using System.Collections;
-using TreeEditor;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class ProjectorTraversal : MonoBehaviour
 {
@@ -46,6 +45,8 @@ public class ProjectorTraversal : MonoBehaviour
     public Projector currentProjector = null;
     public bool isInsideProjector = false;
     public bool isTraveling = false;
+
+    private Dictionary<Projector, Vector3> initialRotations = new Dictionary<Projector, Vector3>();
 
     private void Awake()
     {
@@ -140,53 +141,64 @@ public class ProjectorTraversal : MonoBehaviour
     {
         if (currentProjector == null) return;
 
-        // Choose transform to rotate: ParentObject preferred, otherwise projector.transform
-        Transform rotation = currentProjector.ParentObject != null ? currentProjector.ParentObject : currentProjector.transform;
+        // Choose transform to rotate: NOT parent since all projectors are nested under a common parent:
+        Transform rotation = currentProjector.transform;
+
+        //Store Initial Rotation For Projector if Not Already Stored, to Use as Clamping Reference Point:
+        if (!initialRotations.ContainsKey(currentProjector))
+        {
+            initialRotations[currentProjector] = rotation.localEulerAngles;
+        }
+        Vector3 baseEuler = initialRotations[currentProjector];
+        Debug.Log($"Base Euler for {currentProjector.name}: {baseEuler}");
 
         // Y-axis rotation controlled by A/D, clamped to +/- maxAngleVertical
         float yDelta = 0f;
-        //float ySpeed = Input.GetMouseButton(1) ? yAimSpeedDegPerSec : ySpeedDegPerSec;
         if (Input.GetKey(rotateYLeftKey)) yDelta -= yAimSpeedDegPerSec * Time.deltaTime;
         if (Input.GetKey(rotateYRightKey)) yDelta += yAimSpeedDegPerSec * Time.deltaTime;
 
         if (Mathf.Abs(yDelta) > Mathf.Epsilon)
         {
             Vector3 localEuler = rotation.localEulerAngles;
-            float currentY = NormalizeAngle(localEuler.y);
-            float targetY = currentY + yDelta;
+            float newY = localEuler.y + yDelta;
 
+            //Use Projectors Base Rotation as center point for clamping: 
             float limitY = currentProjector != null ? currentProjector.maxHorizontalRotatation : 45f;
-            targetY = Mathf.Clamp(targetY, -limitY, limitY);
 
-            localEuler.y = targetY;
+            //Shortest Angle Between Base and New Angle:
+            float angleDiffernceY = Mathf.DeltaAngle(baseEuler.y, newY);
+
+            //Clamp Angle Difference to Limits:
+            float clampedAngleDifferenceY = Mathf.Clamp(angleDiffernceY, -limitY, limitY);
+
+            //Apply Clamped Angle Difference to Base Angle:
+            localEuler.y = baseEuler.y + clampedAngleDifferenceY;
             rotation.localEulerAngles = localEuler;
         }
 
         // Z-axis rotation controlled by W/S, clamped to +/- maxAngleVertical
         float zDelta = 0f;
-        //float zSpeed = Input.GetMouseButton(1) ? zAimSpeedDegPerSec : zSpeedDegPerSec;
         if (Input.GetKey(rotateZUpKey)) zDelta -= zAimSpeedDegPerSec * Time.deltaTime;
         if (Input.GetKey(rotateZDownKey)) zDelta += zAimSpeedDegPerSec * Time.deltaTime;
 
         if (Mathf.Abs(zDelta) > Mathf.Epsilon)
         {
             Vector3 localEuler = rotation.localEulerAngles;
-            float currentZ = NormalizeAngle(localEuler.z);
-            float targetZ = currentZ + zDelta;
+            float newZ = localEuler.z + zDelta;
 
-            float limitZ = currentProjector != null ? currentProjector.maxVerticalRotatation : 45f;
-            targetZ = Mathf.Clamp(targetZ, -limitZ, limitZ);
+            //Use Projectors Base Rotation as center point for clamping:
+            float limitZ = currentProjector != null ? currentProjector.maxVerticalRotatation : 30f;
 
-            localEuler.z = targetZ;
+            //Shortest Angle Between Base and New Angle:
+            float angleDifferenceZ = Mathf.DeltaAngle(baseEuler.z, newZ);
+
+            //Clamp Angle Difference to Limits:
+            float clampedAngleDifferenceZ = Mathf.Clamp(angleDifferenceZ, -limitZ, limitZ);
+
+            //Apply Clamped Angle Difference to Base Angle:
+            localEuler.z = baseEuler.z + clampedAngleDifferenceZ;
             rotation.localEulerAngles = localEuler;
         }
-    }
-
-    // Convert Euler to signed angle
-    private static float NormalizeAngle(float angle)
-    {
-        if (angle > 180f) angle -= 360f;
-        return angle;
     }
 
     private IEnumerator MoveToProjector(Projector target)

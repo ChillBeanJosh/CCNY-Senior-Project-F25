@@ -56,10 +56,12 @@ public class CharacterSwitcher : MonoBehaviour
     {
         if (!isSplitModeUnlocked && isPlayerInside && Input.GetKeyDown(KeyCode.C))
         {
+            AudioController.Instance.OneShot("Swap", 2f);
             EnableSplitMode();
         }
         else if (isSplitModeUnlocked && Input.GetKeyDown(KeyCode.C) && (GameManager.Instance.LanternTravel == null || !GameManager.Instance.LanternTravel.isInsideLantern))
         {
+            AudioController.Instance.OneShot("Swap", 2f);
             SwitchPlayer();
         }
     }
