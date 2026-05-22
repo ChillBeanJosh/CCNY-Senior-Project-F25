@@ -314,14 +314,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isAiming)
         {
+            float y = OnSlope() ? GetSlopeDashDirection().y : transform.forward.y;
+
             // Make sure target position isn't inside of something
             // Ignores collider
             bool clearLeft = !Physics.Raycast(new Vector3(transform.position.x - 0.5f, transform.position.y, transform.position.z),
-            new Vector3(camOrientation.forward.x, transform.forward.y, camOrientation.forward.z), 3.1f, allLayersExceptPhase, QueryTriggerInteraction.Ignore);
+            new Vector3(camOrientation.forward.x, y, camOrientation.forward.z), 3.1f, allLayersExceptPhase, QueryTriggerInteraction.Ignore);
             bool clearRight = !Physics.Raycast(new Vector3(transform.position.x + 0.5f, transform.position.y, transform.position.z),
-            new Vector3(camOrientation.forward.x, transform.forward.y, camOrientation.forward.z), 3.1f, allLayersExceptPhase, QueryTriggerInteraction.Ignore);
+            new Vector3(camOrientation.forward.x, y, camOrientation.forward.z), 3.1f, allLayersExceptPhase, QueryTriggerInteraction.Ignore);
 
-            float y = OnSlope() ? GetSlopeDashDirection().y : transform.forward.y;
 
             //Debug.Log(GetSlopeDashDirection());
 
@@ -331,7 +332,7 @@ public class PlayerMovement : MonoBehaviour
 
 
             // Check for jump
-            if ((clearLeft && clearRight || OnSlope()) && Input.GetKeyDown(KeyCode.Space) && grounded && ladder == null)
+            if (clearLeft && clearRight && Input.GetKeyDown(KeyCode.Space) && grounded && ladder == null)
             {
                 float capsuleSize = y < -0.1f ? 0.7f : 0.4f;
                 // Check to see if the space is clear

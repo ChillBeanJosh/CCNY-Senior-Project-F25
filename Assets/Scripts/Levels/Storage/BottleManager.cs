@@ -3,6 +3,8 @@ using UnityEngine;
 public class BottleManager : MonoBehaviour
 {
     public Wobble[] bottles;
+    [SerializeField] bool singleObj;
+    [SerializeField] Wobble glassObj;
     void Start()
     {
         bottles = new Wobble[transform.childCount];
@@ -22,9 +24,16 @@ public class BottleManager : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            for (int i = 0; i < bottles.Length; i++)
+            if (singleObj)
             {
-                bottles[i].wobble = true;
+                glassObj.wobble = true;
+            }
+            else
+            {
+                for (int i = 0; i < bottles.Length; i++)
+                {
+                    bottles[i].wobble = true;
+                }
             }
         }
     }
@@ -33,9 +42,16 @@ public class BottleManager : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            for (int i = 0; i < bottles.Length; i++)
+            if (singleObj)
             {
-                bottles[i].wobble = false;
+                glassObj.wobble = false;
+            }
+            else
+            {
+                for (int i = 0; i < bottles.Length; i++)
+                {
+                    bottles[i].wobble = false;
+                }
             }
         }
     }
