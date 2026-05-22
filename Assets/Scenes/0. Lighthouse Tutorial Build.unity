@@ -5154,7 +5154,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bb6201ee26305b44cb5cdd5f53e78afe, type: 2}
+  - {fileID: 2100000, guid: 339a5746355490d4784fff7a794038e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -21178,7 +21178,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2408428392036221898, guid: 9c794306025ac274983c35507bc6d37a, type: 3}
       propertyPath: telescopeUnlocked
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2547391724192116558, guid: 9c794306025ac274983c35507bc6d37a, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
