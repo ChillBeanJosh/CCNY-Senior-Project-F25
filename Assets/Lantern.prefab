@@ -562,7 +562,7 @@ MonoBehaviour:
   nextLantern: {fileID: 0}
   previousLantern: {fileID: 0}
   activationTime: 1
-  detectionRadius: 3
+  detectionRadius: 4
   activationMode: 0
   activeLantern: 1
   currentActivation: 0
@@ -649,18 +649,6 @@ PrefabInstance:
     - target: {fileID: 3838134380973950011, guid: b4b92ea95176cc141af0eb099cbef333, type: 3}
       propertyPath: m_SizeDelta.y
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3838134380973950011, guid: b4b92ea95176cc141af0eb099cbef333, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3838134380973950011, guid: b4b92ea95176cc141af0eb099cbef333, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3838134380973950011, guid: b4b92ea95176cc141af0eb099cbef333, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3838134380973950011, guid: b4b92ea95176cc141af0eb099cbef333, type: 3}
       propertyPath: m_LocalPosition.x
