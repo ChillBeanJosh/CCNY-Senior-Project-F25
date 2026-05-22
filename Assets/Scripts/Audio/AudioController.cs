@@ -51,7 +51,7 @@ public class AudioController : MonoBehaviour
     }
 
     // ------------------------------------------------------------------------------------------------------------
-    public void Play(string name, float speed = 1f)
+    public void Play(string name, float speed = 1f, float volume = 1f)
     {
         //If Audio We Are Playing Is Already Looping, Don't Start Another Loop:
         if (_activeLoops.ContainsKey(name)) return;
@@ -65,6 +65,7 @@ public class AudioController : MonoBehaviour
             newSource.clip = clip;
             newSource.loop = true;
             newSource.pitch = speed;
+            newSource.volume = volume;
             newSource.Play();
 
             _activeLoops.Add(name, newSource);
@@ -86,29 +87,30 @@ public class AudioController : MonoBehaviour
     }
 
     // ------------------------------------------------------------------------------------------------------------
-    public void OneShot(string name, float speed = 1f)
+    public void OneShot(string name, float speed = 1f, float volume = 1f)
     {
         //Play A One-Shot Sound Using The Default AudioSource:
         AudioClip clip = GetSound(name);
         if (clip != null)
         {
             _defaultSource.pitch = speed;
+            _defaultSource.volume = volume;
             _defaultSource.PlayOneShot(clip);
         }
     }
 
     // ------------------------------------------------------------------------------------------------------------
-    public void RandomizedOneShot(string name, float minDuration, float maxDuration, float speed = 1f, bool useFade = false)
+    public void RandomizedOneShot(string name, float minDuration, float maxDuration, float speed = 1f, float volume = 1f, bool useFade = false)
     {
         //Play A Random Snippet Of The Sound With Optional Fade In/Out:
         AudioClip clip = GetSound(name);
         if (clip != null)
         {
-            StartCoroutine(PlayRandomSnippet(clip, minDuration, maxDuration, speed, useFade));
+            StartCoroutine(PlayRandomSnippet(clip, minDuration, maxDuration, speed, volume, useFade));
         }
     }
 
-    private IEnumerator PlayRandomSnippet(AudioClip clip, float min, float max, float speed, bool useFade)
+    private IEnumerator PlayRandomSnippet(AudioClip clip, float min, float max, float speed, float volume, bool useFade)
     {
         AudioSource tempSource = gameObject.AddComponent<AudioSource>();
 
@@ -119,6 +121,7 @@ public class AudioController : MonoBehaviour
         tempSource.clip = clip;
         tempSource.time = startTime;
         tempSource.pitch = speed;
+        tempSource.volume = volume;
 
         // If using fade, start at 0 volume and fade in:
         if (useFade)
