@@ -304,9 +304,10 @@ MonoBehaviour:
   suppressRaycasting: 0
   laserPoints: []
   lazerDistance: 10
-  lineMaterial: {fileID: 2100000, guid: 4cf5a6a91f15cd642bf970c2a7c4f623, type: 2}
-  chargingMaterial: {fileID: 0}
-  nonchargingMaterial: {fileID: 0}
+  lineMaterial: {fileID: 2100000, guid: aab4d63ec52134241bace585702c233c, type: 2}
+  chargingMaterial: {fileID: 2100000, guid: 583a2ebda750d0f4387800153b4efb86, type: 2}
+  burningMaterial: {fileID: 2100000, guid: a728afa9a3874474eb617419b63df437, type: 2}
+  nonchargingMaterial: {fileID: 2100000, guid: aab4d63ec52134241bace585702c233c, type: 2}
   wallLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -348,6 +349,11 @@ MonoBehaviour:
   cameraRotationOffset: {x: 0, y: 0, z: 0, w: 1}
   useExplicitDirection: 0
   explicitDirection: {x: 0, y: 1, z: 0}
+  chargerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  chargerHit: 0
+  currentChargerHit: {fileID: 0}
   gemLayer:
     serializedVersion: 2
     m_Bits: 0
