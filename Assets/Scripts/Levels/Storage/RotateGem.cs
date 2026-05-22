@@ -28,7 +28,7 @@ public class RotateGem : GemInteractions
     {
         base.Update();
 
-        isHitting = LightTool() != null;
+        isHitting = LightTool() != null && LightTool().gemHit;
 
         if (isHitting && !moveWall)
         {

@@ -98,6 +98,8 @@ public class LightReflection : MonoBehaviour
 
     [Header("Crystal Activation")]
     public LayerMask crystalLayer;
+    public bool crystalHit;
+    [Space]
 
     [Header("Convergence")]
     [SerializeField] private bool useConvergence = false;
@@ -112,6 +114,9 @@ public class LightReflection : MonoBehaviour
         ClearMarkers();
         ClearPrismSplits();
         ClearSplitRayMarkers();
+
+        //Implemented to stop audio on disabled player:
+        AudioController.Instance.Stop("Crystal");
     }
 
     private void Start()
@@ -805,8 +810,7 @@ public class LightReflection : MonoBehaviour
         projectorHit = false;
         chargerHit = false;
         gemHit = false;
-
-
+        crystalHit = false;
     }
 
     private bool IsCrystalBeingHit()
@@ -1143,13 +1147,22 @@ public class LightReflection : MonoBehaviour
 
     public void HandleCrystalHit(RaycastHit hit)
     {
+        crystalHit = true;
+
         laserPoints.Add(hit.point);
 
         CrystalActivation crystal = hit.collider.GetComponent<CrystalActivation>()
             ?? hit.collider.GetComponentInParent<CrystalActivation>();
 
         if (crystal != null)
+        {
             crystal.RegisterBeamHit(this);
+            AudioController.Instance.Play("Crystal", 0.8f, 0.25f);
+        }
+        else
+        {
+            AudioController.Instance.Stop("Crystal");
+        }
     }
 
     private void HandleChargerHit(RaycastHit hit)
@@ -1188,6 +1201,16 @@ public class LightReflection : MonoBehaviour
         else
         {
             AudioController.Instance.Stop("Burning");
+        }
+
+
+        if (crystalHit)
+        {
+            AudioController.Instance.Play("Crystal", 0.75f, 0.20f);
+        }
+        else
+        {
+            AudioController.Instance.Stop("Crystal");
         }
     }
 }

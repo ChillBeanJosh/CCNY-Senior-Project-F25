@@ -6,7 +6,7 @@ public class ShadowRegen : MonoBehaviour
 {
     [SerializeField] GameObject piecesPrefab;
     [SerializeField] List<GameObject> allPillars;
-    [SerializeField] GameObject regenObj;
+    [SerializeField] GameObject regenObj, regenAnchor;
     [SerializeField] CycleSprites sprites;
     DrawShadows drawShadows;
     [SerializeField] ShadowCaster shadowCaster;
@@ -44,7 +44,7 @@ public class ShadowRegen : MonoBehaviour
             if (!allPillars[i].activeInHierarchy) regen = true;
         }
 
-        UpdateShadowSprite();
+        if (!regen) UpdateShadowSprite();
 
         // Regenerate object if all pillars have been removed
         if (regen && !regenInProgress) StartCoroutine(SpawnObject());
@@ -52,6 +52,7 @@ public class ShadowRegen : MonoBehaviour
 
     void UpdateShadowSprite()
     {
+
         if (allPillars[0].activeInHierarchy && allPillars[1].activeInHierarchy)
         {
             if (state is not PillarsDestroyed.None)
@@ -92,14 +93,18 @@ public class ShadowRegen : MonoBehaviour
         regenInProgress = true;
 
         regenObj.SetActive(false);
+        Destroy(sprites.gameObject);
 
-        Vector3 target = regenObj.transform.position;
+        Vector3 target = regenAnchor.transform.position;
         Vector3 start = target + Vector3.up * 6f;
+
+        regenAnchor.transform.position = start;
 
         yield return new WaitForSeconds(1);
 
         // Reset object and pillars
         regenObj.SetActive(true);
+
         foreach (GameObject p in allPillars)
         {
             p.SetActive(true);
@@ -111,12 +116,12 @@ public class ShadowRegen : MonoBehaviour
         while (elapsed < duration)
         {
             float time = elapsed / duration;
-            regenObj.transform.position = Vector3.Lerp(start, target, time);
+            regenAnchor.transform.position = Vector3.Lerp(start, target, time);
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        regenObj.transform.position = target;
+        regenAnchor.transform.position = target;
         regenInProgress = false;
     }
 }

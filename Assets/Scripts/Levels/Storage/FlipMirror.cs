@@ -29,7 +29,7 @@ public class FlipMirror : GemInteractions
         base.Update();
 
         //LightReflection light = GameManager.Instance.Player.gameObject.GetComponentInChildren<LightReflection>();
-        isHitting = LightTool() != null;
+        isHitting = LightTool() != null && LightTool().gemHit;
 
         if ((isHitting && !flip) || (test && !flip))
         {

@@ -9,7 +9,7 @@ public class ShadowCaster : MonoBehaviour
     [SerializeField] Transform player;
     [SerializeField] List<Transform> players;
     [SerializeField] float castingTime, currentCastingTime = 0f;
-    bool castComplete;
+    public bool castComplete;
     [Space(15)]
     [Header("Door")]
     [SerializeField] bool hasDoor;
@@ -86,30 +86,30 @@ public class ShadowCaster : MonoBehaviour
             return;
         }
 
-        if (shadowDetection.shadowIsInside)
-        {
-            if (currentCastingTime != 1f)
-            {
-                ShadowCasting(true);
-            }
-            else
-            {
-                castComplete = true;
-            }
+        // if (shadowDetection.shadowIsInside)
+        // {
+        //     if (currentCastingTime != 1f)
+        //     {
+        //         ShadowCasting(true);
+        //     }
+        //     else
+        //     {
+        //         castComplete = true;
+        //     }
 
-        }
-        else
-        {
-            if (currentCastingTime > 0f)
-            {
-                ShadowCasting(false);
-            }
-            else
-            {
-                currentCastingTime = 0f;
-            }
+        // }
+        // else
+        // {
+        //     if (currentCastingTime > 0f)
+        //     {
+        //         ShadowCasting(false);
+        //     }
+        //     else
+        //     {
+        //         currentCastingTime = 0f;
+        //     }
 
-        }
+        // }
     }
 
     void ShadowCasting(bool inPosition)

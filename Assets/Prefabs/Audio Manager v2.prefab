@@ -48,8 +48,8 @@ MonoBehaviour:
   soundPool:
   - Whale Call
   - Whale Heartbeat
-  minWaitTime: 4
-  maxWaitTime: 10
+  minWaitTime: 10
+  maxWaitTime: 20
   minSnippetDuration: 0.5
   maxSnippetDuration: 3
   playbackSpeed: 1
@@ -68,8 +68,8 @@ MonoBehaviour:
   soundPool:
   - Whispy Soul
   - Water Drip
-  minWaitTime: 4
-  maxWaitTime: 10
+  minWaitTime: 8
+  maxWaitTime: 16
   minSnippetDuration: 0.5
   maxSnippetDuration: 3
   playbackSpeed: 1
