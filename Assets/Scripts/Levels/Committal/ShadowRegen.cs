@@ -44,7 +44,7 @@ public class ShadowRegen : MonoBehaviour
             if (!allPillars[i].activeInHierarchy) regen = true;
         }
 
-        if (!regen) UpdateShadowSprite();
+        if (!regen && sprites != null) UpdateShadowSprite();
 
         // Regenerate object if all pillars have been removed
         if (regen && !regenInProgress) StartCoroutine(SpawnObject());

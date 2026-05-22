@@ -36,6 +36,7 @@ public class ShadowDetection : MonoBehaviour
     [SerializeField] Outline shadowObjOutline;
 
     [SerializeField] Outline finalCheckOutline;
+    [SerializeField] Outline leftFinalCheck, rightFinalCheck;
     Outline outline;
     [SerializeField] Transform approximatePos;
     [SerializeField] Transform targetPos;
@@ -100,8 +101,27 @@ public class ShadowDetection : MonoBehaviour
                     }
                 }
 
+                if (rightCol.transform.position == targetPos.position && !leftFinalCheck.enabled)
+                {
+                    leftFinalCheck.enabled = true;
+                }
+                else if (leftFinalCheck && rightCol.transform.position != targetPos.position)
+                {
+                    leftFinalCheck.enabled = false;
+                }
+
+                if (leftCol.transform.position == targetPos2.position && !rightFinalCheck.enabled)
+                {
+                    rightFinalCheck.enabled = true;
+                }
+                else if (rightFinalCheck && leftCol.transform.position != targetPos2.position)
+                {
+                    rightFinalCheck.enabled = false;
+                }
+
                 shadowIsInside = rightCol.transform.position == targetPos.position && leftCol.transform.position == targetPos2.position;
-                Debug.Log((rightCol.transform.position == targetPos2.position) + "  |  " + (leftCol.transform.position == targetPos2.position));
+
+                Debug.Log((rightCol.transform.position == targetPos.position) + "  |  " + (leftCol.transform.position == targetPos2.position));
 
             }
 
@@ -190,6 +210,13 @@ public class ShadowDetection : MonoBehaviour
     void PuzzleComplete()
     {
         if (outline.OutlineColor != Color.black) outline.OutlineColor = Color.black;
+
+        if (requiresTwoPlayers)
+        {
+            if (leftFinalCheck.enabled) leftFinalCheck.enabled = false;
+            if (rightFinalCheck.enabled) rightFinalCheck.enabled = false;
+        }
+
         if (shadowDetected) shadowDetected = false;
         if (shadowCol != null) shadowCol = null;
         if (shadowTrigger.detectPlayer) shadowTrigger.detectPlayer = false;

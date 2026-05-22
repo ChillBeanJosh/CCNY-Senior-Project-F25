@@ -3,7 +3,8 @@ using UnityEngine;
 public class OscillateObject : MonoBehaviour
 {
     [Header("Position")]
-    Vector3 pos;
+    public Vector3 pos;
+    public bool pause;
     float dist, moveSpeed;
     [SerializeField] float distRangeStart = 0.5f, distRangeEnd = 0.8f;
     [SerializeField] float moveSpeedRangeStart = 0.25f, moveSpeedRangeEnd = 0.8f;
@@ -32,6 +33,12 @@ public class OscillateObject : MonoBehaviour
     }
     void Update()
     {
+        if (pause)
+        {
+            if (time != 0f) time = 0f;
+            return;
+        }
+
         time += Time.deltaTime;
 
         if (heads)
