@@ -12,6 +12,7 @@ public class LightReflection : MonoBehaviour
     private LineRenderer lineRenderer;
     public Material lineMaterial;
     public Material chargingMaterial;
+    public Material burningMaterial;
     public Material nonchargingMaterial;
     private List<GameObject> laserPointMarkers = new List<GameObject>();
     [Space]
@@ -74,6 +75,13 @@ public class LightReflection : MonoBehaviour
     public Quaternion cameraRotationOffset = Quaternion.identity;
     [HideInInspector] public bool useExplicitDirection = false;
     [HideInInspector] public Vector3 explicitDirection = Vector3.up;
+    [Space]
+
+    [Header("Charger Collision")]
+    public LayerMask chargerLayer;
+    public bool chargerHit;
+    private Charger charger;
+    public Charger currentChargerHit;
     [Space]
 
     [Header("Gem Collision: ")]
@@ -229,10 +237,11 @@ public class LightReflection : MonoBehaviour
             mirror = hit.collider.GetComponent<Mirror>() ?? hit.collider.GetComponentInParent<Mirror>();
             lantern = hit.collider.GetComponent<Lantern>() ?? hit.collider.GetComponentInParent<Lantern>();
             projector = hit.collider.GetComponent<Projector>() ?? hit.collider.GetComponentInParent<Projector>();
+            charger = hit.collider.GetComponent<Charger>() ?? hit.collider.GetComponentInParent<Charger>();
             gem = hit.collider.CompareTag("Gem 1") ? hit.collider.GetComponent<FlipMirror>() : hit.collider.GetComponent<RotateGem>();
 
             // null object checks:
-            if (wall == null && lens == null && prism == null && burnable == null && mirror == null && lantern == null && projector == null && gem == null && hit.collider.gameObject.layer != 16)
+            if (wall == null && lens == null && prism == null && burnable == null && mirror == null && lantern == null && projector == null && charger == null && gem == null && hit.collider.gameObject.layer != 16)
             {
                 laserPoints.Add(ObjectPosition + ObjectDirection * remainingLazerDistance);
                 break;
@@ -292,6 +301,14 @@ public class LightReflection : MonoBehaviour
             {
                 projectorHit = true;
                 HandleProjectorHit(hit);
+                break;
+            }
+
+            // charger collision: 
+            if (charger != null)
+            {
+                chargerHit = true;
+                HandleChargerHit(hit);
                 break;
             }
 
@@ -786,6 +803,7 @@ public class LightReflection : MonoBehaviour
         mirrorHit = false;
         lanternHit = false;
         projectorHit = false;
+        chargerHit = false;
         gemHit = false;
 
 
@@ -1075,13 +1093,16 @@ public class LightReflection : MonoBehaviour
         if (lineRenderer != null)
         {
             bool isCharging = (lanternHit && currentLanternHit != null && !currentLanternHit.activeLantern)
-                           || (burnableHit && burnable != null);
+                           || (chargerHit && currentChargerHit != null && !currentChargerHit.isFullyCharged);
+            bool isBurning = (burnableHit && burnable != null);
 
             Material targetMaterial = lineMaterial;
 
-            if (isCharging && chargingMaterial != null)
+            if (isBurning && burningMaterial != null)
+                targetMaterial = burningMaterial;
+            else if (isCharging && chargingMaterial != null)
                 targetMaterial = chargingMaterial;
-            else if (!isCharging && nonchargingMaterial != null)
+            else if (!isCharging && !isBurning && nonchargingMaterial != null)
                 targetMaterial = nonchargingMaterial;
 
             if (lineRenderer.sharedMaterial != targetMaterial)
@@ -1131,6 +1152,26 @@ public class LightReflection : MonoBehaviour
             crystal.RegisterBeamHit(this);
     }
 
+    private void HandleChargerHit(RaycastHit hit)
+    {
+        charger = hit.collider.GetComponent<Charger>();
+        if (charger != null)
+        {
+            chargerHit = true;
+            currentChargerHit = charger;
+
+            //Increment The Charger Activation Time:
+            charger.hitsThisFrame++;
+
+            laserPoints.Add(hit.point);
+            obstructionPoints.Add(hit.point);
+        }
+        else
+        {
+            chargerHit = false;
+        }
+    }
+
     public void HandleGemHit(RaycastHit hit)
     {
         laserPoints.Add(hit.point);
@@ -1140,7 +1181,7 @@ public class LightReflection : MonoBehaviour
 
     public void AudioManage()
     {
-        if (burnableHit || lanternHit)
+        if (burnableHit || lanternHit || chargerHit)
         {
             AudioController.Instance.Play("Burning");
         }
