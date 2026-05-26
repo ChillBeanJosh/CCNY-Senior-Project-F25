@@ -62,7 +62,7 @@ public class DrawShadows : MonoBehaviour
 
         if (shadow != null)
         {
-            if (Vector3.Distance(transform.position, new Vector3(approximatePos.position.x, transform.position.y, approximatePos.position.z)) > 0.1f)
+            if (Vector3.Distance(transform.position, new Vector3(approximatePos.position.x, transform.position.y, approximatePos.position.z)) > 0.3f)
             {
                 // Smoothly move shadow into position
                 shadow.transform.position = Vector3.SmoothDamp
@@ -75,13 +75,20 @@ public class DrawShadows : MonoBehaviour
             }
             else if (shadowCaster.isChecking)
             {
-                shadow.transform.position = Vector3.SmoothDamp
-                (
-                    shadow.transform.position,
-                    targetPos.position,
-                    ref velocity,
-                    0.10f
-                );
+                if (Vector3.Distance(transform.position, new Vector3(approximatePos.position.x, transform.position.y, approximatePos.position.z)) > 0.1f)
+                {
+                    shadow.transform.position = Vector3.SmoothDamp
+                    (
+                        shadow.transform.position,
+                        targetPos.position,
+                        ref velocity,
+                        0.10f
+                    );
+                }
+                else
+                {
+                    shadow.transform.position = targetPos.position;
+                }
             }
 
             //shadow.transform.position = GetAveragePosition(currentRayPoints);
