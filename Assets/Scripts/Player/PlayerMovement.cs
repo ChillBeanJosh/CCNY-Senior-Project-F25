@@ -88,6 +88,8 @@ public class PlayerMovement : MonoBehaviour
     SunWheelController sunWheel;
     [SerializeField] Animator anim;
     [SerializeField] AudioSource walkingAudio;
+    [SerializeField] private TrailerCameraController trailerCameraController;
+    bool isTrailerMode = false;
     bool test;
     bool teleportFromLadder;
 
@@ -184,6 +186,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Minus))
+        {
+            ToggleTrailerMode();
+        }
+
+        if (isTrailerMode) return;
         if (!canMove) return;
 
         //Debug.Log(camOrientation.localEulerAngles);
@@ -466,6 +474,32 @@ public class PlayerMovement : MonoBehaviour
     public void KinematicMode()
     {
         rb.isKinematic = !rb.isKinematic;
+    }
+
+    private void ToggleTrailerMode()
+    {
+        if (trailerCameraController == null) return;
+
+        isTrailerMode = !isTrailerMode;
+        trailerCameraController.SetActive(isTrailerMode);
+
+        if (sunWheel != null)
+        {
+            sunWheel.gameObject.SetActive(!isTrailerMode);
+        }
+
+        if (isTrailerMode)
+        {
+            canMove = false;
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.isKinematic = true;
+        }
+        else
+        {
+            canMove = true;
+            rb.isKinematic = false;
+        }
     }
 
 }
