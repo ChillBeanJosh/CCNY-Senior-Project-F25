@@ -143,6 +143,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 043cad0fae45c408892fb85496d6101b, type: 3}
   - name: Swap
     clip: {fileID: 8300000, guid: cb52a1975942eeb4a8728ff989df8587, type: 3}
+  - name: Theme Song
+    clip: {fileID: 8300000, guid: 531f9669d160665479c4c221f4c58b89, type: 3}
 --- !u!82 &7956753644119250461
 AudioSource:
   m_ObjectHideFlags: 0
