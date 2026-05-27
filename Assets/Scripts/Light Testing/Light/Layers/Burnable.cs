@@ -29,6 +29,7 @@ public class Burnable : MonoBehaviour
     private bool wasBurning;
 
     private Vector3 lastHitPoint;
+    public bool keepOutline;
     public void RegisterHit(Vector3 hitPoint)
     {
         if (completed) return;
@@ -46,7 +47,7 @@ public class Burnable : MonoBehaviour
         {
             outline.OutlineColor = burnStartColor;
             outline.OutlineWidth = burnStartWidth;
-            outline.enabled = false;
+            if (!keepOutline) outline.enabled = false;
         }
     }
 
@@ -124,7 +125,7 @@ public class Burnable : MonoBehaviour
             }
             else
             {
-                if (outline.enabled) outline.enabled = false;
+                if (outline.enabled && !keepOutline) outline.enabled = false;
             }
         }
 
@@ -189,7 +190,7 @@ public class Burnable : MonoBehaviour
                     outline.OutlineWidth = 0f;
                     outline.OutlineColor = Color.white;
                 }
-                
+
                 completed = false;
                 isBurning = false;
                 hitsThisFrame = 0;
