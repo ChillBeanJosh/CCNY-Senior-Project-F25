@@ -12,13 +12,15 @@ public class CycleSprites : MonoBehaviour
         //if (spr == null) spr = GetComponent<SpriteRenderer>();
         if (mask == null) mask = GetComponent<SpriteMask>();
 
-        if (!enteredScene)
-        {
-            enteredScene = true;
 
-            //spr.sprite = sprites[0];
-            mask.sprite = sprites[0];
-        }
+
+        // if (!enteredScene)
+        // {
+        //     enteredScene = true;
+
+        //     //spr.sprite = sprites[0];
+        //     mask.sprite = sprites[0];
+        // }
     }
 
     public void ChangeSprite(int s)

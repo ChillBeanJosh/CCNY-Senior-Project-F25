@@ -31,7 +31,7 @@ public class ShadowDetection : MonoBehaviour
     [SerializeField] ShadowCaster shadowCaster;
     public bool completed;
     bool turnOffPlayerCheck;
-    [SerializeField] float currentBurnTime = 0f;
+    [SerializeField] float castingTime, currentBurnTime = 0f;
     //Vector3 testCorner = Vector3.zero;
     [SerializeField] Outline shadowObjOutline;
 
@@ -52,7 +52,7 @@ public class ShadowDetection : MonoBehaviour
 
     void Update()
     {
-        if (requiresTwoPlayers) Debug.Log(players[1].activeInHierarchy);
+        //if (requiresTwoPlayers) Debug.Log(players[1].activeInHierarchy);
         if (completed)
         {
             PuzzleComplete();
@@ -67,16 +67,14 @@ public class ShadowDetection : MonoBehaviour
                 if (players[0].transform.position.x <= players[1].transform.position.x)
                 {
                     leftCol = playerShadows[0];
-                    if (players[0].GetComponent<DrawShadows>().approximatePos != approximatePos2 ||
-                        players[0].GetComponent<DrawShadows>().targetPos != targetPos2)
+                    if (players[0].GetComponent<DrawShadows>().targetPos != targetPos2)
                     {
-                        players[0].GetComponent<DrawShadows>().approximatePos = approximatePos2;
                         players[0].GetComponent<DrawShadows>().targetPos = targetPos2;
+                        players[0].GetComponent<DrawShadows>().approximatePos = approximatePos2;
                     }
 
                     rightCol = playerShadows[1];
-                    if (players[1].GetComponent<DrawShadows>().approximatePos != approximatePos ||
-                        players[1].GetComponent<DrawShadows>().targetPos != targetPos)
+                    if (players[1].GetComponent<DrawShadows>().targetPos != targetPos)
                     {
                         players[1].GetComponent<DrawShadows>().approximatePos = approximatePos;
                         players[1].GetComponent<DrawShadows>().targetPos = targetPos;
@@ -85,16 +83,14 @@ public class ShadowDetection : MonoBehaviour
                 else
                 {
                     leftCol = playerShadows[1];
-                    if (players[1].GetComponent<DrawShadows>().approximatePos != approximatePos2 ||
-                        players[1].GetComponent<DrawShadows>().targetPos != targetPos2)
+                    if (players[1].GetComponent<DrawShadows>().targetPos != targetPos2)
                     {
                         players[1].GetComponent<DrawShadows>().approximatePos = approximatePos2;
                         players[1].GetComponent<DrawShadows>().targetPos = targetPos2;
                     }
 
                     rightCol = playerShadows[0];
-                    if (players[0].GetComponent<DrawShadows>().approximatePos != approximatePos ||
-                        players[0].GetComponent<DrawShadows>().targetPos != targetPos)
+                    if (players[0].GetComponent<DrawShadows>().targetPos != targetPos)
                     {
                         players[0].GetComponent<DrawShadows>().approximatePos = approximatePos;
                         players[0].GetComponent<DrawShadows>().targetPos = targetPos;
@@ -251,7 +247,7 @@ public class ShadowDetection : MonoBehaviour
 
     void ApplyBurn()
     {
-        float time = Time.deltaTime / 3f;
+        float time = Time.deltaTime / castingTime;
 
         if (shadowIsInside)
         {

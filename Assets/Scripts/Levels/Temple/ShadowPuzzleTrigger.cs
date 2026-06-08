@@ -36,14 +36,19 @@ public class ShadowPuzzleTrigger : MonoBehaviour
             if (col.gameObject.CompareTag("Player"))
             {
                 DrawShadows drawShadows = col.gameObject.GetComponent<DrawShadows>();
-                drawShadows.approximatePos = approximatePos;
-                drawShadows.targetPos = targetPos;
+
                 if (requiresP2 && playersEntered == 1)
                 {
-                    drawShadows.targetPos = approximatePos2;
+                    drawShadows.approximatePos = approximatePos2;
                     drawShadows.targetPos = targetPos2;
                     Debug.Log("ADDED");
                 }
+                else
+                {
+                    drawShadows.approximatePos = approximatePos;
+                    drawShadows.targetPos = targetPos;
+                }
+
                 drawShadows.shadowCaster = GetComponent<ShadowCaster>();
                 drawShadows.box = this.transform;
                 drawShadows.boxCorners = corners;

@@ -108,7 +108,7 @@ public class FourKeyPlatform : MonoBehaviour
 
 
         float elapsed = 0f;
-        float duration = 6f;
+        float duration = 4f;
 
         // lerp to target
         while (elapsed < duration)
