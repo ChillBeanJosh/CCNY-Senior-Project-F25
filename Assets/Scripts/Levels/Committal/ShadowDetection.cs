@@ -15,9 +15,8 @@ public class ShadowDetection : MonoBehaviour
     [Space(15)]
     [SerializeField] Collider leftSizeCheckCol;
     [SerializeField] Collider rightSizeCheckCol;
-    [Space(15)]
-    [SerializeField] Collider leftCol;
-    [SerializeField] Collider rightCol;
+    Collider[] leftCol = new Collider[2];
+    Collider[] rightCol = new Collider[2];
     [Space(15)]
     [SerializeField] Transform centerPt;
     [SerializeField] Transform approximatePos2;
@@ -60,68 +59,70 @@ public class ShadowDetection : MonoBehaviour
         }
 
         //if (requiresTwoPlayers && playerShadows.Count == 2)
-        if (requiresTwoPlayers && players[1].activeInHierarchy)
+        if (requiresTwoPlayers)
         {
-            if (playerShadows.Count == 2 && playerShadows[0] != null && playerShadows[1] != null)
+            bool check1 = false, check2 = false;
+
+            for (int i = 0; i < players.Length; i++)
             {
-                if (players[0].transform.position.x <= players[1].transform.position.x)
+                if (players[i].GetComponent<DrawShadows>().shadow != null && players[i].GetComponent<DrawShadows>().needsDouble)
                 {
-                    leftCol = playerShadows[0];
-                    if (players[0].GetComponent<DrawShadows>().targetPos != targetPos2)
+                    if (players[i].transform.position.x <= centerPt.position.x)
                     {
-                        players[0].GetComponent<DrawShadows>().targetPos = targetPos2;
-                        players[0].GetComponent<DrawShadows>().approximatePos = approximatePos2;
+                        if (leftCol[i] != players[i].GetComponent<DrawShadows>().shadow.GetComponent<Collider>())
+                        {
+                            rightCol[i] = null;
+                            players[i].GetComponent<DrawShadows>().targetPos = targetPos2;
+                            players[i].GetComponent<DrawShadows>().approximatePos = approximatePos2;
+                            leftCol[i] = players[i].GetComponent<DrawShadows>().shadow.GetComponent<Collider>();
+                        }
+                    }
+                    else
+                    {
+                        if (rightCol[i] != players[i].GetComponent<DrawShadows>().shadow.GetComponent<Collider>())
+                        {
+                            leftCol[i] = null;
+                            players[i].GetComponent<DrawShadows>().targetPos = targetPos;
+                            players[i].GetComponent<DrawShadows>().approximatePos = approximatePos;
+                            rightCol[i] = players[i].GetComponent<DrawShadows>().shadow.GetComponent<Collider>();
+                        }
                     }
 
-                    rightCol = playerShadows[1];
-                    if (players[1].GetComponent<DrawShadows>().targetPos != targetPos)
+                    if (rightCol[i] != null && rightCol[i].transform.position == targetPos.position && !check1)
                     {
-                        players[1].GetComponent<DrawShadows>().approximatePos = approximatePos;
-                        players[1].GetComponent<DrawShadows>().targetPos = targetPos;
-                    }
-                }
-                else
-                {
-                    leftCol = playerShadows[1];
-                    if (players[1].GetComponent<DrawShadows>().targetPos != targetPos2)
-                    {
-                        players[1].GetComponent<DrawShadows>().approximatePos = approximatePos2;
-                        players[1].GetComponent<DrawShadows>().targetPos = targetPos2;
+                        check1 = true;
                     }
 
-                    rightCol = playerShadows[0];
-                    if (players[0].GetComponent<DrawShadows>().targetPos != targetPos)
+                    if (leftCol[i] != null && leftCol[i].transform.position == targetPos2.position && !check2)
                     {
-                        players[0].GetComponent<DrawShadows>().approximatePos = approximatePos;
-                        players[0].GetComponent<DrawShadows>().targetPos = targetPos;
+                        check2 = true;
                     }
-                }
 
-                if (rightCol.transform.position == targetPos.position && !leftFinalCheck.enabled)
-                {
-                    leftFinalCheck.enabled = true;
                 }
-                else if (leftFinalCheck && rightCol.transform.position != targetPos.position)
-                {
-                    leftFinalCheck.enabled = false;
-                }
-
-                if (leftCol.transform.position == targetPos2.position && !rightFinalCheck.enabled)
-                {
-                    rightFinalCheck.enabled = true;
-                }
-                else if (rightFinalCheck && leftCol.transform.position != targetPos2.position)
-                {
-                    rightFinalCheck.enabled = false;
-                }
-
-                shadowIsInside = rightCol.transform.position == targetPos.position && leftCol.transform.position == targetPos2.position;
-
-                Debug.Log((rightCol.transform.position == targetPos.position) + "  |  " + (leftCol.transform.position == targetPos2.position));
-
             }
 
-            if (shadowCaster.isChecking)
+            if (check1 && !leftFinalCheck.enabled)
+            {
+                leftFinalCheck.enabled = true;
+            }
+            else if (!check1 && leftFinalCheck.enabled)
+            {
+                leftFinalCheck.enabled = false;
+            }
+
+            if (check2 && !rightFinalCheck.enabled)
+            {
+                rightFinalCheck.enabled = true;
+            }
+            else if (!check2 && rightFinalCheck.enabled)
+            {
+                rightFinalCheck.enabled = false;
+            }
+
+            //Debug.Log("CHECKS: " + check1 + "  |  " + check2);
+            shadowIsInside = check1 && check2;
+
+            if (shadowCaster.isChecking && playerShadows.Count > 0)
             {
                 OutlineHandler();
             }
@@ -130,11 +131,10 @@ public class ShadowDetection : MonoBehaviour
                 if (outline.enabled) outline.enabled = false;
             }
         }
-        else if (shadowCol != null && shadowDetected && shadowCaster.isChecking)
+        else if (!requiresTwoPlayers && shadowCol != null && shadowDetected && shadowCaster.isChecking)
         {
             //shadowIsInside = Vector3.Distance(GameManager.Instance.Player.transform.position, approximatePos.position) < 0.05f;
             shadowIsInside = shadowCol.transform.position == targetPos.position;
-
             Debug.Log(shadowIsInside);
             //Debug.Log(ContainsCollider(detectionCol, shadowCol) + "  |  " + NoCornersDetected(sizeCheckCol, shadowCol));
 
@@ -325,7 +325,6 @@ public class ShadowDetection : MonoBehaviour
                 shadowCol = null;
                 shadowDetected = false;
             }
-
         }
     }
 }
