@@ -8,7 +8,6 @@ public class ShadowCaster : MonoBehaviour
     public int requiredPlayers = 1;
     [SerializeField] Transform player;
     [SerializeField] List<Transform> players;
-    [SerializeField] float castingTime, currentCastingTime = 0f;
     public bool castComplete;
     [Space(15)]
     [Header("Door")]
@@ -85,43 +84,8 @@ public class ShadowCaster : MonoBehaviour
 
             return;
         }
-
-        // if (shadowDetection.shadowIsInside)
-        // {
-        //     if (currentCastingTime != 1f)
-        //     {
-        //         ShadowCasting(true);
-        //     }
-        //     else
-        //     {
-        //         castComplete = true;
-        //     }
-
-        // }
-        // else
-        // {
-        //     if (currentCastingTime > 0f)
-        //     {
-        //         ShadowCasting(false);
-        //     }
-        //     else
-        //     {
-        //         currentCastingTime = 0f;
-        //     }
-
-        // }
     }
 
-    void ShadowCasting(bool inPosition)
-    {
-        float time = Time.deltaTime / castingTime;
-
-        if (inPosition)
-            currentCastingTime += time;
-        else
-            currentCastingTime -= time;
-        currentCastingTime = Mathf.Clamp01(currentCastingTime);
-    }
 
     IEnumerator OpenDoor(Vector3 target)
     {
