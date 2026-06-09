@@ -10,6 +10,7 @@ public class ShadowRegen : MonoBehaviour
     [SerializeField] CycleSprites sprites;
     DrawShadows drawShadows;
     [SerializeField] ShadowCaster shadowCaster;
+    int currentSprite = 0;
     public enum PillarsDestroyed
     {
         None,
@@ -30,10 +31,11 @@ public class ShadowRegen : MonoBehaviour
         // Update shadow script reference when player switches
         if (GameManager.Instance.Player.gameObject.GetComponent<DrawShadows>() != drawShadows) drawShadows = GameManager.Instance.Player.gameObject.GetComponent<DrawShadows>();
 
-        if (drawShadows.shadow != null && sprites == null)
+        if (drawShadows.shadow != null && sprites == null && drawShadows.shadow.TryGetComponent<CycleSprites>(out CycleSprites cycleSprites))
         {
             // Update shadow sprite based on which burnables are burned off
-            sprites = drawShadows.shadow.GetComponent<CycleSprites>();
+            sprites = cycleSprites; //drawShadows.shadow.GetComponent<CycleSprites>();
+            sprites.ChangeSprite(currentSprite);
         }
 
         bool regen = false;
@@ -58,7 +60,8 @@ public class ShadowRegen : MonoBehaviour
             if (state is not PillarsDestroyed.None)
             {
                 state = PillarsDestroyed.None;
-                sprites.ChangeSprite(0);
+                currentSprite = 0;
+                sprites.ChangeSprite(currentSprite);
                 shadowCaster.isChecking = false;
             }
         }
@@ -67,7 +70,8 @@ public class ShadowRegen : MonoBehaviour
             if (state is not PillarsDestroyed.Left)
             {
                 state = PillarsDestroyed.Left;
-                sprites.ChangeSprite(1);
+                currentSprite = 1;
+                sprites.ChangeSprite(currentSprite);
             }
         }
         else if (!allPillars[0].activeInHierarchy && allPillars[1].activeInHierarchy)
@@ -75,7 +79,8 @@ public class ShadowRegen : MonoBehaviour
             if (state is not PillarsDestroyed.Right)
             {
                 state = PillarsDestroyed.Right;
-                sprites.ChangeSprite(2);
+                currentSprite = 2;
+                sprites.ChangeSprite(currentSprite);
             }
         }
         else if (!allPillars[0].activeInHierarchy && !allPillars[1].activeInHierarchy)
@@ -83,7 +88,8 @@ public class ShadowRegen : MonoBehaviour
             if (state is not PillarsDestroyed.Top)
             {
                 state = PillarsDestroyed.Top;
-                sprites.ChangeSprite(3);
+                currentSprite = 3;
+                sprites.ChangeSprite(currentSprite);
                 shadowCaster.isChecking = true;
             }
         }

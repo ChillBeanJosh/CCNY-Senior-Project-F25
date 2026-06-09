@@ -24,6 +24,7 @@ public class DrawShadows : MonoBehaviour
     public bool shadowPuzzleActive;
     public Transform approximatePos, targetPos;
     public ShadowCaster shadowCaster;
+    public bool needsDouble;
 
     void Start()
     {
