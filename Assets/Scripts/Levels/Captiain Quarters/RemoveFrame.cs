@@ -12,17 +12,17 @@ public class RemoveFrame : MonoBehaviour
 
     void Update()
     {
-        if (!rb.isKinematic && rb.constraints != RigidbodyConstraints.None)
-        {
-            if (targetTime > 0f)
-            {
-                targetTime -= Time.deltaTime;
-            }
-            else
-            {
-                rb.constraints = RigidbodyConstraints.None;
-            }
-        }
+        // if (!rb.isKinematic && rb.constraints != RigidbodyConstraints.None)
+        // {
+        //     if (targetTime > 0f)
+        //     {
+        //         targetTime -= Time.deltaTime;
+        //     }
+        //     else
+        //     {
+        //         rb.constraints = RigidbodyConstraints.None;
+        //     }
+        // }
     }
 
     void OnCollisionEnter(Collision col)

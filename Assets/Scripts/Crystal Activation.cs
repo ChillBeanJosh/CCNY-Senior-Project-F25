@@ -13,6 +13,8 @@ public class CrystalActivation : MonoBehaviour
     // tracks which light reflect beams are hitting crystal at current frame
     private List<LightReflection> beamsHittingThisFrame = new List<LightReflection>();
     private float timer = 0f;
+    [SerializeField] MeshRenderer crystal;
+    [SerializeField] Material unlit, lit;
 
     private void LateUpdate()
     {
@@ -28,19 +30,19 @@ public class CrystalActivation : MonoBehaviour
         if (conditionMet)
         {
             timer += Time.deltaTime;
-            
+            if (crystal.material != lit) crystal.material = lit;
             if (timer >= activationTime)
             {
+
                 timer = 0f;
 
-                if (splitUnlocked)
-                    characterSwitcher.DisableSplitMode();
-                else
+                if (!splitUnlocked)
                     characterSwitcher.EnableSplitMode();
             }
         }
         else
         {
+            if (crystal.material != unlit) crystal.material = unlit;
             timer = 0f;
         }
 
