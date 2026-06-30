@@ -6,25 +6,27 @@ using UnityEngine;
 public class Book_GhostTrial : MonoBehaviour
 {
     [Header("Trial Settings")]
-    [SerializeField] float Speed = 1.0f;
-    [SerializeField] float TimeIdle = 2.25f;
+    [SerializeField] float Speed = 0.2f;
+    [SerializeField] float TimeIdle = 2.55f;
     float IdleTimer = 0.0f;
-    public List<Vector3> Destinations;
-    private int CurrentDest;
 
-    Material DefaultMat;
-    [SerializeField] Material GhostMat;
-    
+
+    [SerializeField] List<Vector3> Destinations;
+    private int CurrentDest;
+    [SerializeField] Quaternion[] rotations;
+    [SerializeField] GameObject Wisp;
+    [SerializeField] GameObject PlankToDestroy;
+
     Quaternion originalRotation;
     Vector3 originalPosition;
 
+    bool ActivatingTrial = true;
     bool TrialActive = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        DefaultMat = this.GetComponent<Renderer>().material;
         originalPosition = this.transform.position;
         originalRotation = this.transform.rotation;
         IdleTimer = TimeIdle;
@@ -33,6 +35,12 @@ public class Book_GhostTrial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ActivatingTrial)
+        {
+            ActivateBookTrial();
+            
+        }
+
         if (TrialActive)
         {
             BookTrial();
@@ -45,9 +53,9 @@ public class Book_GhostTrial : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !TrialActive)
         {
-            ActivateBookTrial();
+            ActivatingTrial = true;
         }
     }
 
@@ -55,11 +63,15 @@ public class Book_GhostTrial : MonoBehaviour
     void ActivateBookTrial()
     {
         TrialActive = true;
-        this.GetComponent<Renderer>().material = GhostMat;
 
-        CurrentDest = Random.Range(0, Destinations.Count);
-        Vector3 dest = Destinations[CurrentDest];
-        transform.position = Vector3.MoveTowards(transform.position, dest, Speed);
+        Vector3 dest = Destinations[0];
+        transform.position = Vector3.MoveTowards(transform.position, dest, 0.05f);
+        transform.rotation = rotations[Random.Range(0, rotations.Length)];
+        if (Vector3.Distance(transform.position, dest) < 0.01f)
+        {
+            ActivatingTrial = false;
+            TrialActive = true;
+        }
     }
 
     void BookTrial()
@@ -72,7 +84,7 @@ public class Book_GhostTrial : MonoBehaviour
 
         if (Vector3.Distance(transform.position, dest) < 0.01f)
         {
-            IdleTimer -= Time.fixedDeltaTime;
+            IdleTimer -= Time.deltaTime;
 
             if (IdleTimer <= 0)
             {
@@ -80,6 +92,8 @@ public class Book_GhostTrial : MonoBehaviour
                 //Make sure same number isn't chosen twice in a row
                 while (CurrentDest == Destinations.IndexOf(transform.position))
                 {
+                    //Quaternion startRotation = transform.rotation;
+                    //transform.rotation = Quaternion.Lerp(startRotation, rotations[Random.Range(0, rotations.Length)], 1f);
                     CurrentDest = Random.Range(0, Destinations.Count);
                 }
                 IdleTimer = TimeIdle;
@@ -88,10 +102,19 @@ public class Book_GhostTrial : MonoBehaviour
         
     }
 
+
+    private void OnDestroy()
+    {
+        EndBookTrial();
+    }
     void EndBookTrial()
     {
-        this.GetComponent<Renderer>().material = DefaultMat;
-        this.transform.position = originalPosition;
-        this.transform.rotation = originalRotation;
+        //this.transform.position = originalPosition;
+        //this.transform.rotation = originalRotation;
+        TrialActive = false;
+        var wispObject = Instantiate(Wisp, transform.position, Quaternion.identity);
+        ConfirmTrial confirmTrial = wispObject.GetComponent<ConfirmTrial>();
+        // Set the GhostPlank reference in the ConfirmTrial script
+        confirmTrial.SetGhostPlank(PlankToDestroy);
     }
 }
