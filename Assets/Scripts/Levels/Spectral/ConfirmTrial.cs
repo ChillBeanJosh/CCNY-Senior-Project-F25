@@ -11,7 +11,6 @@ public class ConfirmTrial : MonoBehaviour
     void Awake()
     {
         MoveDelayTimer = MoveDelayTime;
-        
     }
 
     // Update is called once per frame

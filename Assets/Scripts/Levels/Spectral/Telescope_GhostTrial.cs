@@ -1,32 +1,27 @@
- using NUnit.Framework.Internal;
+using NUnit.Framework.Internal;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Book_GhostTrial : MonoBehaviour
+public class Telescope_GhostTrial : MonoBehaviour
 {
     [Header("Trial Settings")]
     [SerializeField] float Speed = 0.2f;
     [SerializeField] float TimeIdle = 2.55f;
     float IdleTimer = 0.0f;
 
-    [Header("Trial References")]
-    [Tooltip("Positions the object will fly between")]
+
     [SerializeField] List<Vector3> Destinations;
-    [Tooltip("Rotates the object when the trial begins")]
+    private int CurrentDest;
     [SerializeField] Quaternion[] rotations;
-    [Tooltip("The Door Plank the Wisp will fly to and destroy")]
+    [SerializeField] GameObject Wisp;
     [SerializeField] GameObject PlankToDestroy;
-    [Tooltip("Trial Manager script that tracks the completion of trials and spawning of wisps")]
-    [SerializeField] GameObject TrialManager;
-    [SerializeField] Material GhostMaterial;
 
     Quaternion originalRotation;
     Vector3 originalPosition;
-    Material originalMaterial;
-    int CurrentDest;
-    bool ActivatingBookTrial = false;
-    bool BookTrialActive = false;
+
+    bool ActivatingTrial = true;
+    bool TrialActive = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -34,44 +29,64 @@ public class Book_GhostTrial : MonoBehaviour
     {
         originalPosition = this.transform.position;
         originalRotation = this.transform.rotation;
-        originalMaterial = this.GetComponent<Renderer>().material;
         IdleTimer = TimeIdle;
+    }
+
+    public void StartTrial(bool TrialStart = false)
+    {
+        TrialActive = TrialStart;
+        Debug.Log("Trial started: " + TrialStart);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (ActivatingBookTrial) ActivateBookTrial();
+        if (ActivatingTrial)
+        {
+            ActivateBookTrial();
+            
+        }
 
-        if (BookTrialActive) BookTrial();
-        
+        if (TrialActive)
+        {
+            BookTrial();
+        }
+        else
+        {
+            EndBookTrial();
+        }
     }
 
-    public void StartTrial(bool TrialStart = false)
+    private void OnTriggerEnter(Collider other)
     {
-        ActivatingBookTrial = TrialStart;
-        this.GetComponent<Renderer>().material = GhostMaterial;
+        if (other.CompareTag("Player") && !TrialActive)
+        {
+            ActivatingTrial = true;
+        }
     }
 
-    public void ActivateBookTrial()
+
+    void ActivateBookTrial()
     {
+        TrialActive = true;
+
         Vector3 dest = Destinations[0];
-        transform.position = Vector3.MoveTowards(transform.position, dest, 0.1f);
-        
+        transform.position = Vector3.MoveTowards(transform.position, dest, 0.05f);
+        transform.rotation = rotations[Random.Range(0, rotations.Length)];
         if (Vector3.Distance(transform.position, dest) < 0.01f)
         {
-            this.GetComponent<BoxCollider>().enabled = true;
-            transform.rotation = rotations[Random.Range(0, rotations.Length)];
-            ActivatingBookTrial = false;
-            BookTrialActive = true;
+            ActivatingTrial = false;
+            TrialActive = true;
         }
     }
 
     void BookTrial()
     {
+
         if (Destinations.Count == 0) return;
         Vector3 dest = Destinations[CurrentDest];
         transform.position = Vector3.MoveTowards(transform.position, dest, Speed);
+
 
         if (Vector3.Distance(transform.position, dest) < 0.01f)
         {
@@ -90,16 +105,22 @@ public class Book_GhostTrial : MonoBehaviour
                 IdleTimer = TimeIdle;
             }
         }
+        
     }
 
-    private void OnDisable()
+
+    private void OnDestroy()
     {
         EndBookTrial();
     }
     void EndBookTrial()
     {
-        BookTrialActive = false;
-        
-        TrialManager.GetComponent<TrialManager>().TrialCompletion(this.transform.position, PlankToDestroy);
+        //this.transform.position = originalPosition;
+        //this.transform.rotation = originalRotation;
+        TrialActive = false;
+        var wispObject = Instantiate(Wisp, transform.position, Quaternion.identity);
+        ConfirmTrial confirmTrial = wispObject.GetComponent<ConfirmTrial>();
+        // Set the GhostPlank reference in the ConfirmTrial script
+        confirmTrial.SetGhostPlank(PlankToDestroy);
     }
 }
