@@ -25,8 +25,11 @@ public class Book_GhostTrial : MonoBehaviour
     Vector3 originalPosition;
     Material originalMaterial;
     int CurrentDest;
-    bool ActivatingBookTrial = false;
-    bool BookTrialActive = false;
+
+    bool PreparingTrial = false; // True when trial animations and preparations are active, false when trial is ready to start
+    bool TrialActive = false; // True when trial sequence is active, false when the trial sequence is not active
+    bool TrialCompleted = false; // True when the trial is completed, false when the trial is not completed
+    bool BookTrialRunning = false; // True when trial preparation or trial is active, false when trial is not active and not preparing
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -41,19 +44,20 @@ public class Book_GhostTrial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ActivatingBookTrial) ActivateBookTrial();
+        if (PreparingTrial) StartBookTrialSequence();
 
-        if (BookTrialActive) BookTrial();
+        if (TrialActive) BookTrial();
         
+        if (TrialActive || PreparingTrial) BookTrialRunning = true;
     }
 
     public void StartTrial(bool TrialStart = false)
     {
-        ActivatingBookTrial = TrialStart;
+        PreparingTrial = TrialStart;
         this.GetComponent<Renderer>().material = GhostMaterial;
     }
 
-    public void ActivateBookTrial()
+    void StartBookTrialSequence()
     {
         Vector3 dest = Destinations[0];
         transform.position = Vector3.MoveTowards(transform.position, dest, 0.1f);
@@ -62,8 +66,8 @@ public class Book_GhostTrial : MonoBehaviour
         {
             this.GetComponent<BoxCollider>().enabled = true;
             transform.rotation = rotations[Random.Range(0, rotations.Length)];
-            ActivatingBookTrial = false;
-            BookTrialActive = true;
+            PreparingTrial = false;
+            TrialActive = true;
         }
     }
 
@@ -87,19 +91,20 @@ public class Book_GhostTrial : MonoBehaviour
                     //transform.rotation = Quaternion.Lerp(startRotation, rotations[Random.Range(0, rotations.Length)], 1f);
                     CurrentDest = Random.Range(0, Destinations.Count);
                 }
+
                 IdleTimer = TimeIdle;
             }
         }
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
-        EndBookTrial();
+        if (BookTrialRunning && this.gameObject.scene.isLoaded) EndBookTrial();
     }
     void EndBookTrial()
     {
-        BookTrialActive = false;
-        
+        TrialCompleted = false;
+        BookTrialRunning = false;
         TrialManager.GetComponent<TrialManager>().TrialCompletion(this.transform.position, PlankToDestroy);
     }
 }

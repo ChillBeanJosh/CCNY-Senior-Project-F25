@@ -29,16 +29,19 @@ public class Bottle_GhostTrial : MonoBehaviour
     Animator GhostAnimator;
     Quaternion originalRotation;
     Vector3 originalPosition;
-    bool TrialActive = false;
+    
     private Dictionary<GameObject, Vector3> targetPositions = new Dictionary<GameObject, Vector3>();
+
     int CorrectBottleIndex;
-    bool gameRunning = false;
+    bool PreparingTrial = false; // True when trial animations and preparations are active, false when trial is ready to start
+    bool TrialActive = false; // True when trial sequence is active, false when the trial sequence is not active
+    bool TrialCompleted = false; // True when the trial is completed, false when the trial is not completed
+    bool BottleTrialRunning = false; // True when trial preparation or trial is active, false when trial is not active and not preparing
+    bool CorrectBottleChosen = false; // True when the correct bottle is chosen, false when the correct bottle is not chosen
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        CorrectBottleIndex = Random.Range(0, GhostBottles.Count);
-
         if (Destinations.Count < GhostBottles.Count)
         {
             Debug.LogError("Must be at least as many destinations as bottles. Please assign destinations in the inspector.");
@@ -62,16 +65,13 @@ public class Bottle_GhostTrial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameRunning)
-        {
-            MoveBottles();
-        }
-        
+        if (TrialActive) MoveBottles();
+        if (TrialActive || PreparingTrial) BottleTrialRunning = true;
 
         //If the correct bottle is no longer active, end the trial
-        if (!GhostBottles[CorrectBottleIndex].activeInHierarchy)
+        if (!GhostBottles[CorrectBottleIndex].activeInHierarchy && BottleTrialRunning)
         {
-            EndBookTrial();
+            
         }
     }
 
@@ -83,11 +83,27 @@ public class Bottle_GhostTrial : MonoBehaviour
 
     IEnumerator TrialStartSequence()
     {
+        CorrectBottleIndex = Random.Range(0, GhostBottles.Count);
+        foreach (GameObject obj in GhostBottles)
+        {
+            obj.SetActive(true); // Set all bottles to active at the start of the trial
+            obj.GetComponent<GhostBottle>().SetIsCorrectBottle(false); // Reset all bottles to not correct
+        }
+        //Set the correct bottle to be the correct one
+        GhostBottle correctBottleScript = GhostBottles[CorrectBottleIndex].GetComponent<GhostBottle>();
+        if (correctBottleScript != null) {
+            correctBottleScript.SetIsCorrectBottle(true);
+        } else {
+            Debug.LogError("GhostBottle component not found on the correct bottle.");
+        }
+
+
         GhostAnimator.enabled = true; // Enable the animator when the trial starts
-        yield return new WaitForSeconds(3f);
-        GhostAnimator.SetBool("BottleReady", true); // Play the guessing animation
-        yield return new WaitForSeconds(2.75f);
+        yield return new WaitForSeconds(2.5f);
+        GhostAnimator.SetBool("BottleReady", true); // Plays the bottle splitting animation
+        yield return new WaitForSeconds(2.25f);
         GhostAnimator.enabled = false; // Disable the animator after the animation is finished
+        GhostAnimator.SetBool("BottleReady", false); // Returns to transition state for next time the trial starts
 
         yield return new WaitForSeconds(TimeBeforeTrialStart);
 
@@ -108,49 +124,96 @@ public class Bottle_GhostTrial : MonoBehaviour
             Debug.LogWarning("shuffleRounds is set to 0 or less. No shuffling will occur.");
             yield break; // Exit the coroutine if there are no rounds to shuffle
         }
-        gameRunning = true;
+
+        TrialActive = true;
         ShuffleRounds = Mathf.Max(1, ShuffleRounds); // Ensure at least one round
         ShuffleRounds -= 1; // Decrement the rounds since we are starting the first shuffle immediately
 
-        //for (int round = 0; round < shuffleRounds; round++)
-        //{
         AssignRandomPositions();
 
-            // Wait until everyone reaches their destination
-            yield return new WaitUntil(AllObjectsReachedDestination);
+        yield return new WaitUntil(AllObjectsReachedDestination);
 
-            yield return new WaitForSeconds(RoundInterval);
-        //}
+        yield return new WaitForSeconds(RoundInterval);
 
-        gameRunning = false;
+        //TrialActive = false;
         StartCoroutine(GameLoop());
     }
 
-    
-    void ActivateBookTrial()
-    {
-        TrialActive = true;
-        this.GetComponent<Renderer>().material = GhostMat;
-
-        CurrentDest = Random.Range(0, Destinations.Count);
-        Vector3 dest = Destinations[CurrentDest];
-        transform.position = Vector3.MoveTowards(transform.position, dest, Speed);
-    }
     void AssignRandomPositions()
     {
-        List<Vector3> availablePositions = new List<Vector3>(Destinations);
-
-        foreach (GameObject obj in GhostBottles)
+        if (Destinations.Count < GhostBottles.Count)
         {
-            int index = Random.Range(0, availablePositions.Count);
+            Debug.LogError("There must be at least as many positions as objects.");
+            return;
+        }
 
-            targetPositions[obj] = availablePositions[index];
+        bool success = false;
+        int attempts = 0;
 
-            // Prevent duplicate positions
-            availablePositions.RemoveAt(index);
+        while (!success && attempts < 100)
+        {
+            attempts++;
+
+            success = true;
+
+            List<Vector3> availablePositions = new List<Vector3>(Destinations);
+            Dictionary<GameObject, Vector3> newTargets = new Dictionary<GameObject, Vector3>();
+
+            foreach (GameObject obj in GhostBottles)
+            {
+                // Find all valid positions for this object
+                List<Vector3> validPositions = new List<Vector3>();
+
+                foreach (Vector3 pos in availablePositions)
+                {
+                    // Don't allow the object to remain in the same position
+                    if (!targetPositions.ContainsKey(obj) || targetPositions[obj] != pos)
+                    {
+                        validPositions.Add(pos);
+                    }
+                }
+
+                // No valid positions? Retry the entire assignment.
+                if (validPositions.Count == 0)
+                {
+                    success = false;
+                    break;
+                }
+
+                Vector3 chosen = validPositions[Random.Range(0, validPositions.Count)];
+
+                newTargets.Add(obj, chosen);
+                availablePositions.Remove(chosen);
+            }
+
+            if (success)
+            {
+                foreach (var pair in newTargets)
+                {
+                    targetPositions[pair.Key] = pair.Value;
+                }
+            }
+        }
+
+        if (!success)
+        {
+            Debug.LogWarning("Couldn't find a valid shuffle after 100 attempts.");
         }
     }
 
+    public void ReceiveChoiceResults(bool BottleResult)
+    {
+        CorrectBottleChosen = BottleResult;
+        DetermineResult();
+    }
+
+    void DetermineResult()
+    {
+        if (CorrectBottleChosen)
+        {
+            EndBottleTrial();
+        }
+    }
     bool AllObjectsReachedDestination()
     {
         foreach (GameObject obj in GhostBottles)
@@ -175,7 +238,7 @@ public class Bottle_GhostTrial : MonoBehaviour
     }
 
 
-    void EndBookTrial()
+    void EndBottleTrial()
     {
         TrialActive = false;
         TrialManager.GetComponent<TrialManager>().TrialCompletion(GhostBottles[CorrectBottleIndex].transform.position, PlankToDestroy);
