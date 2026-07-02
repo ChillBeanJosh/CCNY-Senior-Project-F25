@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GhostBottle : MonoBehaviour
 {
-    bool isCorrectBottle = false;
+    [SerializeField] bool isCorrectBottle = false;
     bool isTrialActive = false;
     Bottle_GhostTrial bottleTrial;
 
@@ -12,16 +12,23 @@ public class GhostBottle : MonoBehaviour
         bottleTrial = GetComponentInParent<Bottle_GhostTrial>();
     }
 
-    public void SetIsCorrectBottle(bool isCorrect)
+    public void SetBottles(bool isCorrect)
     {
         isCorrectBottle = isCorrect;
     }
 
+    public void SetTrialActive(bool TrialStarted)
+    {
+        isTrialActive = TrialStarted;
+    }
+    
     private void OnDisable()
     {
         if (isTrialActive)
         {
+            Debug.Log("Bottle Destroyed");
             bottleTrial.ReceiveChoiceResults(isCorrectBottle);
+            transform.position = Vector3.zero; // Reset position to zero when the object is disabled
         }
     }
 }

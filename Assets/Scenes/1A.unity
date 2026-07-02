@@ -8357,6 +8357,19 @@ MonoBehaviour:
   burnEndWidth: 5
   currentBurnTime: 0
   keepOutline: 0
+--- !u!114 &172992928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172992918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba5673499ce7ce74fb768c87fd99e76e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCorrectBottle: 0
 --- !u!1001 &175474289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12037,6 +12050,19 @@ MonoBehaviour:
   burnEndWidth: 5
   currentBurnTime: 0
   keepOutline: 0
+--- !u!114 &270940442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270940432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba5673499ce7ce74fb768c87fd99e76e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCorrectBottle: 0
 --- !u!1001 &272777797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52241,15 +52267,15 @@ MonoBehaviour:
   - {x: 56.20551, y: 52.468, z: -97.726}
   - {x: 56.20551, y: 54.976, z: -95.321}
   - {x: 56.20551, y: 54.162, z: -96.683}
-  - {x: 56.20551, y: 54.162, z: -96.683}
   - {x: 56.20551, y: 55.998, z: -97.883}
   GhostBottles:
   - {fileID: 172992918}
-  - {fileID: 1862567217}
   - {fileID: 270940432}
+  - {fileID: 1862567217}
   - {fileID: 1217233198}
   PlankToDestroy: {fileID: 2014287674}
   TrialManager: {fileID: 418951075}
+  TrialTrigger: {fileID: 1368081602}
   GhostMat: {fileID: 2100000, guid: 407bde7f19a84b441a3267bfc72b3bdf, type: 2}
 --- !u!1001 &791067681
 PrefabInstance:
@@ -59295,7 +59321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3473232144008743090, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3473232144008743090, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
       propertyPath: m_IsActive
@@ -59353,11 +59379,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 8412094707545387502, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2060886495458685162, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3473232144008743090, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 270940442}
     - targetCorrespondingSourceObject: {fileID: 3473232144008743090, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 270940438}
@@ -70138,7 +70171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3473232144008743090, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3473232144008743090, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
       propertyPath: m_IsActive
@@ -70196,11 +70229,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 8412094707545387502, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2060886495458685162, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3473232144008743090, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 172992928}
     - targetCorrespondingSourceObject: {fileID: 3473232144008743090, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 172992924}
@@ -74664,11 +74704,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6803915540937752084, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.31900024
+      value: 0.3190002
       objectReference: {fileID: 0}
     - target: {fileID: 6803915540937752084, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.421997
+      value: 14.422
       objectReference: {fileID: 0}
     - target: {fileID: 6803915540937752084, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -75560,6 +75600,19 @@ MonoBehaviour:
   burnEndWidth: 5
   currentBurnTime: 0
   keepOutline: 0
+--- !u!114 &1217233208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217233198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba5673499ce7ce74fb768c87fd99e76e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCorrectBottle: 0
 --- !u!1001 &1218640586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -149163,7 +149216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3473232144008743090, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3473232144008743090, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
       propertyPath: m_IsActive
@@ -149221,11 +149274,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 8412094707545387502, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2060886495458685162, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3473232144008743090, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1217233208}
     - targetCorrespondingSourceObject: {fileID: 3473232144008743090, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1217233204}
@@ -154199,6 +154259,19 @@ MonoBehaviour:
   burnEndWidth: 5
   currentBurnTime: 0
   keepOutline: 0
+--- !u!114 &1862567227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862567217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba5673499ce7ce74fb768c87fd99e76e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCorrectBottle: 0
 --- !u!1001 &1867883987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -185560,7 +185633,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3473232144008743090, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3473232144008743090, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
       propertyPath: m_IsActive
@@ -185618,11 +185691,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 8412094707545387502, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2060886495458685162, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3473232144008743090, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1862567227}
     - targetCorrespondingSourceObject: {fileID: 3473232144008743090, guid: 5da1c267a0095ad4ab7c58e5520690a8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1862567223}
