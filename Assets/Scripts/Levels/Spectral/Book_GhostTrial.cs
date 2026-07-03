@@ -13,6 +13,8 @@ public class Book_GhostTrial : MonoBehaviour
     [Header("Trial References")]
     [Tooltip("Positions the object will fly between")]
     [SerializeField] List<Vector3> Destinations;
+    [Tooltip("First position object will fly to before starting trial")]
+    [SerializeField] Vector3 TrialStartPosition;
     [Tooltip("Rotates the object when the trial begins")]
     [SerializeField] Quaternion[] rotations;
     [Tooltip("The Door Plank the Wisp will fly to and destroy")]
@@ -59,7 +61,7 @@ public class Book_GhostTrial : MonoBehaviour
 
     void StartBookTrialSequence()
     {
-        Vector3 dest = Destinations[0];
+        Vector3 dest = TrialStartPosition;
         transform.position = Vector3.MoveTowards(transform.position, dest, 0.1f);
         
         if (Vector3.Distance(transform.position, dest) < 0.01f)
