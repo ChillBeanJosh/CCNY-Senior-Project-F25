@@ -116,7 +116,7 @@ public class LightReflection : MonoBehaviour
         ClearSplitRayMarkers();
 
         //Implemented to stop audio on disabled player:
-        AudioController.Instance.Stop("Crystal");
+        //AudioController.Instance.Stop("Crystal");
     }
 
     private void Start()
