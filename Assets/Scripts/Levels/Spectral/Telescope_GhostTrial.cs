@@ -59,6 +59,7 @@ public class Telescope_GhostTrial : MonoBehaviour
         if (TrialActive) TelescopeTrial();
 
         if (TrialActive || PreparingTrial) BookTrialRunning = true;
+        Debug.Log(whereToSpawnWisp);
     }
 
     public void StartTrial(bool TrialStart = false)
@@ -89,35 +90,36 @@ public class Telescope_GhostTrial : MonoBehaviour
     void TelescopeTrial()
     {
         //Any barnacles that go inactive, get removed from the list of barnacles. When the list is empty, the trial is completed.
-        if (TrialActive) {
-            for (int i = 0; i < Barnacles.Length; i++)
+        for (int i = 0; i < Barnacles.Length; i++)
+        {
+            if (!Barnacles[i].activeSelf)
             {
-                if (!Barnacles[i].activeSelf)
-                {
-                    List<GameObject> barnacleList = Barnacles.ToList();
-                    barnacleList.Remove(Barnacles[i]);
-                    Barnacles = barnacleList.ToArray();
-                }
+                List<GameObject> barnacleList = Barnacles.ToList();
+                barnacleList.Remove(Barnacles[i]);
+                Barnacles = barnacleList.ToArray();
             }
         }
+
         if (Barnacles.Length == 1)
         {
             whereToSpawnWisp = Barnacles[0].transform.position;
         }
-        if (Barnacles.Length == 0)
+        if (Barnacles == null || Barnacles.Length <= 0)
         {
-            if(whereToSpawnWisp != null)
-                CompleteTelescopeTrial(whereToSpawnWisp);
+            Debug.Log("Telescope Trial");
+            CompleteTelescopeTrial(whereToSpawnWisp);
         }
     }
 
     void CompleteTelescopeTrial(Vector3 WispSpawn)
     {
+        TrialActive = false;
         TakeAwayTelescope();
-        TrialCompleted = false;
-        BookTrialRunning = false;
+        //TrialManager.GetComponent<TrialManager>().CleanupTrial();
+        TrialManager.GetComponent<TrialManager>().UpdateTrialStatus(false);
         TrialManager.GetComponent<TrialManager>().TrialCompletion(WispSpawn, PlankToDestroy);
-        Destroy(gameObject);
+        Debug.Log("Telescope Trial Completed");
+        this.gameObject.transform.position = Vector3.zero;
     }
 
     void TakeAwayTelescope()

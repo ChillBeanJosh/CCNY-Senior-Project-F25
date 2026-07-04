@@ -35,6 +35,7 @@ public class TrialManager : MonoBehaviour
     bool TrialInProgress = false;
     bool AllTrialsCompleted = false;
     bool LevelSetupComplete = false;
+    GameObject Plank;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -62,6 +63,23 @@ public class TrialManager : MonoBehaviour
                 }
             }
         }
+
+        if (TrialCount >= 3) AllTrialsCompleted = true;
+
+
+        if (AllTrialsCompleted && !LevelSetupComplete && Plank == null)
+        {
+            LevelSetupComplete = true;
+            for (int i = 0; i < SpawnOnLevelComplete.Length; i++)
+            {
+                if (SpawnOnLevelComplete[i] != null)
+                {
+                    SpawnOnLevelComplete[i].SetActive(true);
+                }
+            }
+            ExitDoorAnimator.enabled = true; // Enable the animator when the trial starts
+            ExitDoorAnimator.Play("Open_GhostDoor", 0, 0f); // Places bottle into position
+        }
     }
 
     public void UpdateTrialStatus(bool value)
@@ -77,21 +95,8 @@ public class TrialManager : MonoBehaviour
         // Set the GhostPlank reference in the ConfirmTrial script
         confirmTrial.SetGhostPlank(PlankTarget);
 
-        if (TrialCount >= 3) AllTrialsCompleted = true;
-        
+        Plank = PlankTarget;
 
-        if (AllTrialsCompleted)
-        {
-            //LevelSetupComplete = false;
-            for (int i = 0; i < SpawnOnLevelComplete.Length; i++)
-            {
-                if (SpawnOnLevelComplete[i] != null)
-                {
-                    SpawnOnLevelComplete[i].SetActive(true);
-                }
-            }
-            ExitDoorAnimator.Play("Open_GhostDoor", 0, 0f); // Places bottle into position
-        }
     }
 
     public void InitiateBookTrial()
@@ -104,6 +109,11 @@ public class TrialManager : MonoBehaviour
     }
 
     public void CleanupTrial()
+    {
+        Trial();
+    }
+
+    void Trial()
     {
         Projector projector = GhostLens.GetComponent<Projector>();
         if (projector != null) projector.ClearDriver(); // Disable the projector when the trial is completed
