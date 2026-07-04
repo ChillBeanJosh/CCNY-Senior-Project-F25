@@ -15,9 +15,9 @@ public class ItemPickup : MonoBehaviour
             if (sunWheel != null)
                 sunWheel.UnlockAbility(SunSpike.SunSpikeType.Telescope);
 
-            tutorial.SetActive(true);
+            if (tutorial != null) tutorial.SetActive(true);
 
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 }

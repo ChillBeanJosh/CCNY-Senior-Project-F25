@@ -165,4 +165,12 @@ public class SunWheelController : MonoBehaviour
             InitializeWheel(); // Refresh display with new ability
         }
     }
+    public void RemoveAbility(SunSpike.SunSpikeType abilityType)
+    {
+        if (unlockedAbilities.Contains(abilityType))
+        {
+            unlockedAbilities.Remove(abilityType);
+            InitializeWheel(); // Refresh display with new ability
+        }
+    }
 }
