@@ -260,7 +260,7 @@ public class ProjectorTraversal : MonoBehaviour
         }
     }
 
-    private void ExitProjectorMode()
+    public void ExitProjectorMode()
     {
         isInsideProjector = false;
 
@@ -282,6 +282,7 @@ public class ProjectorTraversal : MonoBehaviour
 
         currentProjector = null;
         transform.position = transform.position;
+        return;
     }
 
     private void OnDrawGizmos()

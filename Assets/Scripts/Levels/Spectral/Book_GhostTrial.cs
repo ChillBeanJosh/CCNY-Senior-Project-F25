@@ -13,7 +13,7 @@ public class Book_GhostTrial : MonoBehaviour
     [Header("Trial References")]
     [Tooltip("Positions the object will fly between")]
     [SerializeField] List<Vector3> Destinations;
-    [Tooltip("First position object will fly to before starting trial")]
+    [Tooltip("First position object will fly to before starting trialsa")]
     [SerializeField] Vector3 TrialStartPosition;
     [Tooltip("Rotates the object when the trial begins")]
     [SerializeField] Quaternion[] rotations;
@@ -51,10 +51,21 @@ public class Book_GhostTrial : MonoBehaviour
         if (TrialActive) BookTrial();
         
         if (TrialActive || PreparingTrial) BookTrialRunning = true;
+
+        if (BookTrialRunning)
+        {
+            TrialManager.GetComponent<TrialManager>().BookTrialActive = true;
+        }
+        else
+        {
+            TrialManager.GetComponent<TrialManager>().BookTrialActive = false;
+        }
+
     }
 
     public void StartTrial(bool TrialStart = false)
     {
+        TrialManager.GetComponent<TrialManager>().InitiateBookTrial();
         PreparingTrial = TrialStart;
         this.GetComponent<Renderer>().material = GhostMaterial;
     }
@@ -107,6 +118,8 @@ public class Book_GhostTrial : MonoBehaviour
     {
         TrialCompleted = false;
         BookTrialRunning = false;
+        TrialManager.GetComponent<TrialManager>().CleanupTrial();
+        TrialManager.GetComponent<TrialManager>().UpdateTrialStatus(false);
         TrialManager.GetComponent<TrialManager>().TrialCompletion(this.transform.position, PlankToDestroy);
     }
 }

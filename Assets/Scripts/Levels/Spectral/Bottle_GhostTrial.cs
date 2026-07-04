@@ -46,6 +46,13 @@ public class Bottle_GhostTrial : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GhostBottles.Clear();
+        //Add bottle gameobjects to the GhostBottles list if they are not already assigned in the inspector
+        foreach (Transform child in transform)
+        {
+            GhostBottles.Add(child.gameObject);
+        }
+
         if (Destinations.Count < GhostBottles.Count)
         {
             Debug.LogError("Must be at least as many destinations as bottles. Please assign destinations in the inspector.");
@@ -76,6 +83,7 @@ public class Bottle_GhostTrial : MonoBehaviour
 
     public void StartTrial(bool TrialStart = false)
     {
+        TrialManager.GetComponent<TrialManager>().InitiateBottleTrial();
         StartCoroutine(TrialStartSequence());
         Debug.Log("Trial started: " + TrialStart);
     }
@@ -83,6 +91,7 @@ public class Bottle_GhostTrial : MonoBehaviour
     IEnumerator TrialStartSequence()
     {
         CorrectBottleIndex = Random.Range(0, GhostBottles.Count);
+        //DefaultLensPosition = GhostLens.transform.position; // Store the default position of the lens at the start of the trial
 
         foreach (GameObject obj in GhostBottles)
         {
@@ -112,9 +121,10 @@ public class Bottle_GhostTrial : MonoBehaviour
             Debug.LogError("GhostBottle component not found on the correct bottle.");
         }
 
-
+        //Starting Animations for the trial
         GhostAnimator.enabled = true; // Enable the animator when the trial starts
         GhostAnimator.Play("StartBottleTrial", 0, 0f); // Places bottle into position
+        //GhostLens.transform.position = LensPosition; // Move the lens to the specified position
         yield return new WaitForSeconds(2.5f);
         GhostAnimator.Play("SeparateBottles", 0, 0f); // Plays the bottle splitting animatio
         yield return new WaitForSeconds(2.25f);
@@ -122,6 +132,7 @@ public class Bottle_GhostTrial : MonoBehaviour
         
         yield return new WaitForSeconds(TimeBeforeTrialStart);
 
+        //Highlighting correct bottle
         GhostBottles[CorrectBottleIndex].GetComponent<Renderer>().material = GhostMat; // Highlight the correct bottle
 
         yield return new WaitForSeconds(1f);
@@ -130,6 +141,7 @@ public class Bottle_GhostTrial : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        //Start shuffing the bottles
         StartCoroutine(GameLoop());
     }
     IEnumerator GameLoop()
@@ -234,9 +246,9 @@ public class Bottle_GhostTrial : MonoBehaviour
         Debug.Log("Determining result. CorrectBottleChosen: " + CorrectBottleChosen + ", TrialActive: " + TrialActive + ", SceneLoaded: " + this.gameObject.scene.isLoaded);
         if (CorrectBottleChosen && this.gameObject.scene.isLoaded)
         {
-            EndBottleTrial();
+            CompleteBottleTrial();
         }
-        else if (!CorrectBottleChosen)
+        else if (!CorrectBottleChosen && this.gameObject.scene.isLoaded)
         {
             StartCoroutine(ResetTrial());
         }
@@ -264,11 +276,15 @@ public class Bottle_GhostTrial : MonoBehaviour
         }
     }
 
-    void EndBottleTrial()
+    void CompleteBottleTrial()
     {
         TrialActive = false;
+        TrialManager.GetComponent<TrialManager>().CleanupTrial();
+        TrialManager.GetComponent<TrialManager>().UpdateTrialStatus(false);
         TrialManager.GetComponent<TrialManager>().TrialCompletion(GhostBottles[CorrectBottleIndex].transform.position, PlankToDestroy);
-        Destroy(gameObject);
+        //yield return new WaitForSeconds(2f);
+        gameObject.transform.position = Vector3.zero; // Reset position to zero
+        //gameObject.SetActive(false); // Disable the game object instead of destroying it to prevent issues with the trial manager
     }
 
     IEnumerator ResetTrial()
@@ -276,6 +292,8 @@ public class Bottle_GhostTrial : MonoBehaviour
         Debug.Log("Resetting trial due to incorrect choice.");
         TrialActive = false;
         TrialResetting = true;
+        TrialManager.GetComponent<TrialManager>().CleanupTrial();
+        
         //Set bottle scripts boolean to false so they don't call ReceiveChoiceResults again when they are destroyed
         for (int i = 0; i < GhostBottles.Count; i++)
         {
@@ -301,6 +319,7 @@ public class Bottle_GhostTrial : MonoBehaviour
         numberOfShuffles = ShuffleRounds; // Reset the number of shuffles for the next trial
         GhostAnimator.enabled = false; // Disable the animator after the animation is finished
         TrialTrigger.SetActive(true);
+        TrialManager.GetComponent<TrialManager>().UpdateTrialStatus(false);
         TrialResetting = false;
     }
 }
