@@ -54,7 +54,6 @@ public class SpectralEntry : MonoBehaviour
                     canTeleport = false;
                     StartCoroutine(TeleportPlayer());
                 }
-
             }
             else
             {
@@ -67,13 +66,6 @@ public class SpectralEntry : MonoBehaviour
         {
             indicator.Exit();
             ButtonIndicator.GetComponent<Canvas>().enabled = false;
-        }
-
-
-        if (Input.GetKey(KeyCode.P))
-        {
-            canTeleport = false;
-            StartCoroutine(TeleportPlayer());
         }
     }
 
